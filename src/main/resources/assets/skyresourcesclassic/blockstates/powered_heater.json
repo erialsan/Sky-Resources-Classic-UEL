@@ -1,0 +1,16 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:powered_heater"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "running": {
+      "false": {"model": "skyresourcesclassic:powered_heater_off"},
+      "true": {
+              "model": "skyresourcesclassic:powered_heater"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:life_injector"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

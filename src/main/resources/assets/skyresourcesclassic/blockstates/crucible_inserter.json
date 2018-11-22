@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:crucible_inserter"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

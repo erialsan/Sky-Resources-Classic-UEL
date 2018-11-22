@@ -1,0 +1,19 @@
+{
+  "parent":"block/cube_all",
+  "textures": {
+       "down": "skyresourcesclassic:blocks/ironmachine",
+         "up": "skyresourcesclassic:blocks/ironcondenser",
+      "north": "skyresourcesclassic:blocks/ironmachine",
+      "south": "skyresourcesclassic:blocks/ironmachine",
+       "west": "skyresourcesclassic:blocks/ironmachine",
+       "east": "skyresourcesclassic:blocks/ironmachine",
+   "particle": "skyresourcesclassic:blocks/ironcondenser"
+  },
+  "display": {
+        "thirdperson": {
+            "rotation": [ 10, -45, 170 ],
+            "translation": [ 0, 1.5, -2.75 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    }
+}

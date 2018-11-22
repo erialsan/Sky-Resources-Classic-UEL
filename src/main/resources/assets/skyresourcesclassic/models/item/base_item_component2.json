@@ -1,0 +1,6 @@
+{
+  "parent":"skyresourcesclassic:item/base_item_model",
+  "textures": {
+    "layer0":"skyresourcesclassic:items/plant_matter"
+  }
+}

@@ -1,14 +1,14 @@
 [
 {
-  "modid": "skyresources",
-  "name": "Sky Resources",
+  "modid": "skyresourcesclassic",
+  "name": "Sky Resources Clasic",
   "description": "The skyblock companion mod. Everything comes from nearly nothing.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://github.com/Bartz24/SkyResources",
+  "url": "https://github.com/EmosewaPixel/Sky-Resources-Classic",
   "updateUrl": "",
-  "authorList": ["Bartz24"],
-  "credits": "The Forge and FML people for 1.11.2",
+  "authorList": ["TheEmosewaPixel"],
+  "credits": "Bartz24 as the original developer of the mod",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

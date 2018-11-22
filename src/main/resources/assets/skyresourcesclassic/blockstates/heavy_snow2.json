@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:heavy_snow2"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:dark_matter_warper"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

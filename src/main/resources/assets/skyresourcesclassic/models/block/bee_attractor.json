@@ -1,0 +1,19 @@
+{
+  "parent":"block/cube_all",
+  "textures": {
+       "down": "skyresourcesclassic:blocks/bee_attractor_bottom",
+         "up": "forestry:blocks/beehouse.1",
+      "north": "skyresourcesclassic:blocks/bee_attractor_side",
+      "south": "skyresourcesclassic:blocks/bee_attractor_side",
+       "west": "skyresourcesclassic:blocks/bee_attractor_side",
+       "east": "skyresourcesclassic:blocks/bee_attractor_side",
+   "particle": "skyresourcesclassic:blocks/bee_attractor_side"
+  },
+  "display": {
+        "thirdperson": {
+            "rotation": [ 10, -45, 170 ],
+            "translation": [ 0, 1.5, -2.75 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    }
+}

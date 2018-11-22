@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:cactus_fruit_needle"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]	
+  }
+}

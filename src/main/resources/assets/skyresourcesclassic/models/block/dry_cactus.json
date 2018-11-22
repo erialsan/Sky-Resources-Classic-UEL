@@ -1,0 +1,16 @@
+{
+  "parent":"block/cactus",
+  "textures": {    
+        "particle": "skyresourcesclassic:blocks/dry_cactus_side",
+        "bottom": "skyresourcesclassic:blocks/dry_cactus_bottom",
+        "top": "skyresourcesclassic:blocks/dry_cactus_top",
+        "side": "skyresourcesclassic:blocks/dry_cactus_side"
+  },
+  "display": {
+        "thirdperson": {
+            "rotation": [ 10, -45, 170 ],
+            "translation": [ 0, 1.5, -2.75 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    }
+}

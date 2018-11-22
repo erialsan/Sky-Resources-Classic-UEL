@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:combustion_collector"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

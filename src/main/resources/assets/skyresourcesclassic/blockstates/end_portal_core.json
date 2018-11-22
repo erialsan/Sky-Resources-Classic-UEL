@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:end_portal_core"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

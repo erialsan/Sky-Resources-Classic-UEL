@@ -1,0 +1,89 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "forge:fluid"
+    },
+    "variants": {
+        "iron_crystal_fluid": [{
+            "custom": { "fluid": "iron_crystal_fluid" }
+        }],
+        "gold_crystal_fluid": [{
+            "custom": { "fluid": "gold_crystal_fluid" }
+        }],
+        "copper_crystal_fluid": [{
+            "custom": { "fluid": "copper_crystal_fluid" }
+        }],
+        "tin_crystal_fluid": [{
+            "custom": { "fluid": "tin_crystal_fluid" }
+        }],
+        "silver_crystal_fluid": [{
+            "custom": { "fluid": "silver_crystal_fluid" }
+        }],
+        "zinc_crystal_fluid": [{
+            "custom": { "fluid": "zinc_crystal_fluid" }
+        }],
+        "nickel_crystal_fluid": [{
+            "custom": { "fluid": "nickel_crystal_fluid" }
+        }],
+        "platinum_crystal_fluid": [{
+            "custom": { "fluid": "platinum_crystal_fluid" }
+        }],
+        "aluminum_crystal_fluid": [{
+            "custom": { "fluid": "aluminum_crystal_fluid" }
+        }],
+        "lead_crystal_fluid": [{
+            "custom": { "fluid": "lead_crystal_fluid" }
+        }],
+        "mercury_crystal_fluid": [{
+            "custom": { "fluid": "mercury_crystal_fluid" }
+        }],
+        "quartz_molten_crystal_fluid": [{
+            "custom": { "fluid": "quartz_molten_crystal_fluid" }
+        }],
+        "cobalt_molten_crystal_fluid": [{
+            "custom": { "fluid": "cobalt_molten_crystal_fluid" }
+        }],
+        "ardite_molten_crystal_fluid": [{
+            "custom": { "fluid": "ardite_molten_crystal_fluid" }
+        }],
+        "osmium_crystal_fluid": [{
+            "custom": { "fluid": "osmium_crystal_fluid" }
+        }],
+        "lapis_crystal_fluid": [{
+            "custom": { "fluid": "lapis_crystal_fluid" }
+        }],
+        "draconium_crystal_fluid": [{
+            "custom": { "fluid": "draconium_crystal_fluid" }
+        }],
+        "draconium_molten_crystal_fluid": [{
+            "custom": { "fluid": "draconium_molten_crystal_fluid" }
+        }],
+        "certus_crystal_fluid": [{
+            "custom": { "fluid": "certus_crystal_fluid" }
+        }],
+        "titanium_crystal_fluid": [{
+            "custom": { "fluid": "titanium_crystal_fluid" }
+        }],
+        "tungsten_crystal_fluid": [{
+            "custom": { "fluid": "tungsten_crystal_fluid" }
+        }],
+        "chrome_crystal_fluid": [{
+            "custom": { "fluid": "chrome_crystal_fluid" }
+        }],
+        "iridium_crystal_fluid": [{
+            "custom": { "fluid": "iridium_crystal_fluid" }
+        }],
+        "quartzblack_crystal_fluid": [{
+            "custom": { "fluid": "quartzblack_crystal_fluid" }
+        }],
+        "boron_crystal_fluid": [{
+            "custom": { "fluid": "boron_crystal_fluid" }
+        }],
+        "lithium_crystal_fluid": [{
+            "custom": { "fluid": "lithium_crystal_fluid" }
+        }],
+        "magnesium_crystal_fluid": [{
+            "custom": { "fluid": "magnesium_crystal_fluid" }
+        }]
+    }
+}

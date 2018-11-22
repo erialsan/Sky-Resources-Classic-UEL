@@ -1,101 +1,69 @@
 buildscript {
     repositories {
         jcenter()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
+        maven { url = "http://files.minecraftforge.net/maven" }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-/*
-// for people who want stable - not yet functional for MC 1.8.8 - we require the forgegradle 2.1 snapshot
-plugins {
-    id "net.minecraftforge.gradle.forge" version "2.0.2"
-}
-*/
 
-repositories {
-  maven {
-    // location of the maven that hosts JEI files
-    url = "http://dvs1.progwml6.com/files/maven"
-  }
-}
+version = "${minecraft_version}-${mod_version}"
+group= "com.skyresourcesclassic"
+archivesBaseName = "skyresourcesclassic"
 
-version = "1.6.6"
-group= "com.bartz24.skyresources" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "skyresources"
-
-sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = "1.8"
 compileJava {
     sourceCompatibility = targetCompatibility = "1.8"
 }
 
 minecraft {
-    version = "1.11.2-13.20.0.2315"
+    version = "${minecraft_version}-14.23.4.2749"
     runDir = "run"
-    
-    // the mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   snapshot are built nightly.
-    // stable_#            stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not allways work.
-    // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20170206"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    mappings = "snapshot_20171003"
+
+    replace("@VERSION@",project.version)
+    replaceIn("References.java")
+}
+
+repositories {
+    maven {
+        name = "Progwml6 maven"
+        url = "http://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name = "CraftTweaker Maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "Forestry Maven"
+        url = "http://maven.ic2.player.to"
+    }
+    maven {
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
 }
 
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-	compile files("lib/jei_1.11.2-4.5.0.289.jar")
-	compile files("lib/theoneprobe-1.1x-1.4.7.jar")
-	compile files("lib/CraftTweaker-1.11.2-3.0.26.jar")
-	//compile files("lib/Waila-1.7.0-B3_1.9.4.jar")
-	compile files("lib/forestry_1.11.2-5.3.4.102.jar")
-	//compile files("lib/industrialcraft-2-2.6.69-ex110.jar")
-	//compile files("lib/Draconic-Evolution-1.10.2-2.0.3.137-universal.jar")
-	//compile files("lib/BrandonsCore-1.10.2-2.1.1.61-universal.jar")
-	  
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // the 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
-    //provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // the deobf configurations:  'deobfCompile' and 'deobfProvided' are the same as the normal compile and provided,
-    // except that these dependencies get remapped to your current MCP mappings
-    //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-    //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC${stripped_version}-Main:${short_version}-${crafttweaker_version}"
+    deobfCompile "net.sengir.forestry:forestry_${minecraft_version}:${forestry_version}"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe-${short_version}:${short_version}-${top_version}"
 }
 
-processResources
-{
-    // this will ensure that this task is redone when the versions change.
+processResources {
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
-        // replace version and mcversion
+
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-        
-    // copy everything else, thats not the mcmod.info
+
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }

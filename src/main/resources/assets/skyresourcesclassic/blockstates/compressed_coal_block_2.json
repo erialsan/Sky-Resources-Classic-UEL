@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:compressed_coal_block2"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

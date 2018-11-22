@@ -1,0 +1,6 @@
+{
+  "parent":"skyresourcesclassic:item/baseitemmodel",
+  "textures": {
+    "layer0":"skyresourcesclassic:items/dark_matter"
+  }
+}

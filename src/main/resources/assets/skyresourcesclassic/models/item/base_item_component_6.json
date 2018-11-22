@@ -1,0 +1,6 @@
+{
+  "parent":"skyresourcesclassic:item/baseitemmodel",
+  "textures": {
+    "layer0":"skyresourcesclassic:items/enriched_bonemeal"
+  }
+}
