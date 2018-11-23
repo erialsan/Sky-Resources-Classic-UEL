@@ -40,6 +40,15 @@ public class CondenserBlock extends BlockContainer implements IMetaBlockName {
     }
 
     @Override
+    public void getSubBlocks(CreativeTabs par2, NonNullList<ItemStack> par3)
+    {
+        par3.add(new ItemStack(this, 1, 0));
+        par3.add(new ItemStack(this, 1, 1));
+        par3.add(new ItemStack(this, 1, 2));
+        par3.add(new ItemStack(this, 1, 3));
+    }
+
+    @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
@@ -70,13 +79,6 @@ public class CondenserBlock extends BlockContainer implements IMetaBlockName {
             meta = 0;
         }
         return getDefaultState().withProperty(variant, CondenserVariants.values()[meta]);
-    }
-
-    public void getSubBlocks(Item par1, CreativeTabs par2, NonNullList<ItemStack> par3) {
-        par3.add(new ItemStack(par1, 1, 0));
-        par3.add(new ItemStack(par1, 1, 1));
-        par3.add(new ItemStack(par1, 1, 2));
-        par3.add(new ItemStack(par1, 1, 3));
     }
 
     public enum CondenserVariants implements IStringSerializable {

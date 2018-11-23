@@ -44,7 +44,7 @@ public class ItemWaterExtractor extends Item implements IFluidHandler {
         this.setCreativeTab(ModCreativeTabs.tabMain);
         tank = new FluidTank(new FluidStack(FluidRegistry.WATER, 0), maxAmount);
         setUnlocalizedName(References.ModID + ".water_extractor");
-        setRegistryName("watere_xtractor");
+        setRegistryName("water_extractor");
     }
 
     @Override
@@ -100,7 +100,7 @@ public class ItemWaterExtractor extends Item implements IFluidHandler {
                                 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F));
                         return;
                     }
-                    if (blockHitSide == EnumFacing.UP && world.getBlockState(pos.up()).getBlock() == Blocks.WATER
+                    if (world.getBlockState(pos.add(blockHitSide.getDirectionVec())) == Blocks.WATER.getDefaultState()
                             && getCompound(stack).getInteger("amount") < maxAmount) {
                         world.setBlockToAir(pos.up());
                         getCompound(stack).setInteger("amount", getCompound(stack).getInteger("amount") + 1000);

@@ -49,9 +49,10 @@ public class AlchemyItemComponent extends Item {
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item id, CreativeTabs tab, NonNullList<ItemStack> list) {
-        for (int i = 0; i < names.size(); i++)
-            list.add(new ItemStack(id, 1, i));
+    public void getSubItems(CreativeTabs creativeTab, NonNullList<ItemStack> list) {
+        if (isInCreativeTab(creativeTab))
+            for (int i = 0; i < names.size(); i++)
+                list.add(new ItemStack(this, 1, i));
     }
 
     public static ItemStack getStack(String name) {

@@ -38,6 +38,7 @@ public class ProcessRecipeManager {
             fontRendererObj.drawString(s, 70, 0, java.awt.Color.gray.getRGB());
         }
     };
+    public static ProcessRecipeManager knifeRecipes = new ProcessRecipeManager("knife");
     public static ProcessRecipeManager crucibleRecipes = new ProcessRecipeManager("crucible");
     public static ProcessRecipeManager freezerRecipes = new ProcessRecipeManager("freezer") {
         public void drawJEIInfo(ProcessRecipe rec, Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX,

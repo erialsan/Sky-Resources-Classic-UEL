@@ -37,9 +37,6 @@
         "mercury_crystal_fluid": [{
             "custom": { "fluid": "mercury_crystal_fluid" }
         }],
-        "quartz_molten_crystal_fluid": [{
-            "custom": { "fluid": "quartz_molten_crystal_fluid" }
-        }],
         "cobalt_molten_crystal_fluid": [{
             "custom": { "fluid": "cobalt_molten_crystal_fluid" }
         }],
@@ -49,17 +46,11 @@
         "osmium_crystal_fluid": [{
             "custom": { "fluid": "osmium_crystal_fluid" }
         }],
-        "lapis_crystal_fluid": [{
-            "custom": { "fluid": "lapis_crystal_fluid" }
-        }],
         "draconium_crystal_fluid": [{
             "custom": { "fluid": "draconium_crystal_fluid" }
         }],
         "draconium_molten_crystal_fluid": [{
             "custom": { "fluid": "draconium_molten_crystal_fluid" }
-        }],
-        "certus_crystal_fluid": [{
-            "custom": { "fluid": "certus_crystal_fluid" }
         }],
         "titanium_crystal_fluid": [{
             "custom": { "fluid": "titanium_crystal_fluid" }
@@ -73,9 +64,6 @@
         "iridium_crystal_fluid": [{
             "custom": { "fluid": "iridium_crystal_fluid" }
         }],
-        "quartzblack_crystal_fluid": [{
-            "custom": { "fluid": "quartzblack_crystal_fluid" }
-        }],
         "boron_crystal_fluid": [{
             "custom": { "fluid": "boron_crystal_fluid" }
         }],
@@ -84,6 +72,9 @@
         }],
         "magnesium_crystal_fluid": [{
             "custom": { "fluid": "magnesium_crystal_fluid" }
+        }],
+        "mithril_crystal_fluid": [{
+            "custom": { "fluid": "mithril_crystal_fluid" }
         }]
     }
 }

@@ -1,7 +1,7 @@
 [
 {
   "modid": "skyresourcesclassic",
-  "name": "Sky Resources Clasic",
+  "name": "Sky Resources Classic",
   "description": "The skyblock companion mod. Everything comes from nearly nothing.",
   "version": "${version}",
   "mcversion": "${mcversion}",

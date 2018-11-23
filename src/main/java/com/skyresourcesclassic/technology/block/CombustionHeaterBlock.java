@@ -94,11 +94,13 @@ public class CombustionHeaterBlock extends BlockContainer implements IMetaBlockN
         return getDefaultState().withProperty(heaterVariant, CombustionHeaterVariants.values()[meta]);
     }
 
-    public void getBlockState(Item par1, CreativeTabs par2, NonNullList<ItemStack> par3) {
-        par3.add(new ItemStack(par1, 1, 0));
-        par3.add(new ItemStack(par1, 1, 1));
-        par3.add(new ItemStack(par1, 1, 2));
-        par3.add(new ItemStack(par1, 1, 3));
+    @Override
+    public void getSubBlocks(CreativeTabs par2, NonNullList<ItemStack> par3)
+    {
+        par3.add(new ItemStack(this, 1, 0));
+        par3.add(new ItemStack(this, 1, 1));
+        par3.add(new ItemStack(this, 1, 2));
+        par3.add(new ItemStack(this, 1, 3));
     }
 
     public enum CombustionHeaterVariants implements IStringSerializable {

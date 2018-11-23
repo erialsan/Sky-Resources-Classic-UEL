@@ -37,6 +37,7 @@ public class CraftTweakerPlugin implements IModPlugin {
         CraftTweakerAPI.registerClass(MTWaterExtractorInsertRecipe.class);
         CraftTweakerAPI.registerClass(MTWaterExtractorExtractRecipe.class);
         CraftTweakerAPI.registerClass(MTHeatSources.class);
+        CraftTweakerAPI.registerClass(MTKnifeRecipe.class);
     }
 
     public void initRenderers() {

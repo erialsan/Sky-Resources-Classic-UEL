@@ -4,6 +4,7 @@ import com.skyresourcesclassic.alchemy.item.ItemInfusionStone;
 import com.skyresourcesclassic.technology.item.ItemRockGrinder;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -40,6 +41,16 @@ public class ItemHelper {
         Block block = ((ItemBlock) stack.getItem()).getBlock();
 
         return block.getStateFromMeta(meta);
+    }
+
+    private static List<ItemStack> knives = new ArrayList<ItemStack>();
+
+    public static List<ItemStack> getKnives() {
+        return knives;
+    }
+
+    public static void addKnife(Item item) {
+        knives.add(new ItemStack(item));
     }
 
     public static boolean itemStacksEqualOD(ItemStack stack1, ItemStack stack2) {

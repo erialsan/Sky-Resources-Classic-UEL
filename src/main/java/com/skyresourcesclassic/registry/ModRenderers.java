@@ -106,14 +106,14 @@ public class ModRenderers {
         registerItemRenderer(ModItems.redSandstoneInfusionStone);
 
         ModelBakery.registerItemVariants(ModItems.waterExtractor,
-                new ModelResourceLocation("skyresourcesclassic:WaterExtractor.empty", "inventory"),
-                new ModelResourceLocation("skyresourcesclassic:WaterExtractor.full1", "inventory"),
-                new ModelResourceLocation("skyresourcesclassic:WaterExtractor.full2", "inventory"),
+                new ModelResourceLocation("skyresourcesclassic:water_extractor.empty", "inventory"),
+                new ModelResourceLocation("skyresourcesclassic:water_extractor.full1", "inventory"),
+                new ModelResourceLocation("skyresourcesclassic:water_extractor.full2", "inventory"),
 
-                new ModelResourceLocation("skyresourcesclassic:WaterExtractor.full3", "inventory"),
-                new ModelResourceLocation("skyresourcesclassic:WaterExtractor.full4", "inventory"),
-                new ModelResourceLocation("skyresourcesclassic:WaterExtractor.full5", "inventory"),
-                new ModelResourceLocation("skyresourcesclassic:WaterExtractor.full6", "inventory"));
+                new ModelResourceLocation("skyresourcesclassic:water_extractor.full3", "inventory"),
+                new ModelResourceLocation("skyresourcesclassic:water_extractor.full4", "inventory"),
+                new ModelResourceLocation("skyresourcesclassic:water_extractor.full5", "inventory"),
+                new ModelResourceLocation("skyresourcesclassic:water_extractor.full6", "inventory"));
 
         registerVariantsDefaulted(ModBlocks.combustionHeater, CombustionHeaterBlock.CombustionHeaterVariants.class, "variant");
         registerVariantsDefaulted(ModBlocks.alchemicalCondenser, CondenserVariants.class, "variant");

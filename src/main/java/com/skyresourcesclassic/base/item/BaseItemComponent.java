@@ -29,7 +29,7 @@ public class BaseItemComponent extends Item {
     public static final String ironHeatComp = "iron_heat_component";
     public static final String plantMatter = "plant_matter";
     public static final String steelPowerComp = "steel_power_component";
-    public static final String frozenIronComp = "frozen_ron_cooling_component";
+    public static final String frozenIronComp = "frozen_iron_cooling_component";
     public static final String darkMatter = "dark_matter";
     public static final String enrichedBonemeal = "enriched_bonemeal";
     public static final String sawdust = "sawdust";
@@ -59,12 +59,6 @@ public class BaseItemComponent extends Item {
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         return super.getUnlocalizedName(stack) + names.get(stack.getItemDamage());
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(Item id, CreativeTabs creativeTab, NonNullList<ItemStack> list) {
-        for (int i = 0; i < names.size(); i++)
-            list.add(new ItemStack(id, 1, i));
     }
 
     public static ItemStack getStack(String name) {
@@ -102,6 +96,14 @@ public class BaseItemComponent extends Item {
         } else if (stack.getMetadata() == names.indexOf(enrichedBonemeal)) {
             list.add(TextFormatting.DARK_GRAY + "2-4x as effective as normal bonemeal");
         }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(CreativeTabs creativeTab, NonNullList<ItemStack> list) {
+        if (isInCreativeTab(creativeTab))
+            for (int i = 0; i < names.size(); i++)
+                list.add(new ItemStack(this, 1, i));
     }
 
     public static boolean applyBonemeal(ItemStack stack, World worldIn, BlockPos target, EntityPlayer player) {

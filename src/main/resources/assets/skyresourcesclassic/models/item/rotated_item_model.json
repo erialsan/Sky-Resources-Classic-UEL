@@ -1,5 +1,5 @@
 {
-  "parent":"skyresourcesclassic:item/base_item_model",
+  "parent":"item/generated",
   "display": {
     "thirdperson": {
       "rotation": [0, 90, -90 ],

@@ -7,7 +7,7 @@
       "south": "blocks/log_oak",
        "west": "blocks/log_oak",
        "east": "blocks/log_oak",
-   "particle": "skyresourcesclassic:blocks/combustion_heater)_wood"
+   "particle": "skyresourcesclassic:blocks/combustion_heater_wood"
   },
   "display": {
         "thirdperson": {

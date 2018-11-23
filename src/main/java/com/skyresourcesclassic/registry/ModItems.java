@@ -5,10 +5,14 @@ import com.skyresourcesclassic.SkyResourcesClassic;
 import com.skyresourcesclassic.alchemy.item.*;
 import com.skyresourcesclassic.base.item.*;
 import com.skyresourcesclassic.technology.item.GemRegisterInfo;
+import com.skyresourcesclassic.technology.item.ItemKnife;
 import com.skyresourcesclassic.technology.item.ItemRockGrinder;
 import com.skyresourcesclassic.technology.item.TechItemComponent;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.GameData;
 
@@ -48,46 +52,50 @@ public class ModItems {
     public static ArrayList<GemRegisterInfo> gemList = new ArrayList<GemRegisterInfo>();
 
     public static void init() {
-        ModItems.addGem("emerald", 0xFF12DB3A, 0.005F);
-        ModItems.addGem("diamond", 0xFF6BFFFD, 0.011F);
-        ModItems.addGem("ruby", 0xFFFA1E1E, 0.005F);
-        ModItems.addGem("sapphire", 0xFF1E46FA, 0.005F);
-        ModItems.addGem("peridot", 0xFF1CB800, 0.005F);
-        ModItems.addGem("redGarnet", 0xFFC90014, 0.005F);
-        ModItems.addGem("yellowGarnet", 0xFFF7FF0F, 0.005F);
-        ModItems.addGem("apatite", 0xFF2B95FF, 0.200F);
-        ModItems.addGem("amber", 0xFFF5CC53, 0.007F);
-        ModItems.addGem("lepidolite", 0xFF57008A, 0.007F);
-        ModItems.addGem("malachite", 0xFF23AD00, 0.007F);
-        ModItems.addGem("onyx", 0xFF3D3D3D, 0.007F);
-        ModItems.addGem("moldavite", 0xFFADFF99, 0.007F);
-        ModItems.addGem("agate", 0xFFFF63FF, 0.007F);
-        ModItems.addGem("opal", 0xFFDEDEDE, 0.007F);
-        ModItems.addGem("amethyst", 0xFF780078, 0.006F);
-        ModItems.addGem("jasper", 0xFF874800, 0.006F);
-        ModItems.addGem("aquamarine", 0xFF36E7FF, 0.006F);
-        ModItems.addGem("heliodor", 0xFFFFFF7D, 0.006F);
-        ModItems.addGem("turquoise", 0xFF2EF2C8, 0.006F);
-        ModItems.addGem("moonstone", 0xFF016A8A, 0.006F);
-        ModItems.addGem("morganite", 0xFFFA61FF, 0.006F);
-        ModItems.addGem("carnelian", 0xFF630606, 0.006F);
-        ModItems.addGem("beryl", 0xFF46E334, 0.005F);
-        ModItems.addGem("goldenBeryl", 0xFFD6AE2B, 0.005F);
-        ModItems.addGem("citrine", 0xFF871616, 0.005F);
-        ModItems.addGem("indicolite", 0xFF39E6BD, 0.005F);
-        ModItems.addGem("garnet", 0xFFFF9999, 0.005F);
-        ModItems.addGem("topaz", 0xFFFFD399, 0.005F);
-        ModItems.addGem("ametrine", 0xFFA300BF, 0.005F);
-        ModItems.addGem("tanzanite", 0xFF00076E, 0.005F);
-        ModItems.addGem("violetSapphire", 0xFF451287, 0.004F);
-        ModItems.addGem("alexandrite", 0xFFE3E3E3, 0.004F);
-        ModItems.addGem("blueTopaz", 0xFF1000C4, 0.004F);
-        ModItems.addGem("spinel", 0xFF750000, 0.004F);
-        ModItems.addGem("iolite", 0xFF9502CF, 0.004F);
-        ModItems.addGem("blackDiamond", 0xFF262626, 0.003F);
-        ModItems.addGem("chaos", 0xFFFFE6FB, 0.003F);
-        ModItems.addGem("enderEssence", 0xFF356E19, 0.003F);
-        ModItems.addGem("dark", 0xFF242424, 0.09F);
+        ModItems.addGem("emerald", 0xFF12DB3A, 0.015F, Blocks.STONE);
+        ModItems.addGem("diamond", 0xFF6BFFFD, 0.033F, Blocks.STONE);
+        ModItems.addGem("ruby", 0xFFFA1E1E, 0.015F, Blocks.STONE);
+        ModItems.addGem("sapphire", 0xFF1E46FA, 0.015F, Blocks.STONE);
+        ModItems.addGem("peridot", 0xFF1CB800, 0.015F, Blocks.STONE);
+        ModItems.addGem("redGarnet", 0xFFC90014, 0.015F, Blocks.STONE);
+        ModItems.addGem("yellowGarnet", 0xFFF7FF0F, 0.015F, Blocks.STONE);
+        ModItems.addGem("apatite", 0xFF2B95FF, 0.600F, Blocks.STONE);
+        ModItems.addGem("amber", 0xFFF5CC53, 0.021F, Blocks.STONE);
+        ModItems.addGem("lepidolite", 0xFF57008A, 0.021F, Blocks.NETHERRACK);
+        ModItems.addGem("malachite", 0xFF23AD00, 0.021F, Blocks.NETHERRACK);
+        ModItems.addGem("onyx", 0xFF3D3D3D, 0.021F, Blocks.STONE);
+        ModItems.addGem("moldavite", 0xFFADFF99, 0.021F, Blocks.NETHERRACK);
+        ModItems.addGem("agate", 0xFFFF63FF, 0.021F, Blocks.STONE);
+        ModItems.addGem("opal", 0xFFDEDEDE, 0.021F, Blocks.STONE);
+        ModItems.addGem("amethyst", 0xFF780078, 0.018F, Blocks.STONE);
+        ModItems.addGem("jasper", 0xFF874800, 0.018F, Blocks.NETHERRACK);
+        ModItems.addGem("aquamarine", 0xFF36E7FF, 0.018F, Blocks.STONE);
+        ModItems.addGem("heliodor", 0xFFFFFF7D, 0.018F, Blocks.STONE);
+        ModItems.addGem("turquoise", 0xFF2EF2C8, 0.018F, Blocks.NETHERRACK);
+        ModItems.addGem("moonstone", 0xFF016A8A, 0.018F, Blocks.NETHERRACK);
+        ModItems.addGem("morganite", 0xFFFA61FF, 0.018F, Blocks.STONE);
+        ModItems.addGem("carnelian", 0xFF630606, 0.018F, Blocks.NETHERRACK);
+        ModItems.addGem("beryl", 0xFF46E334, 0.015F, Blocks.STONE);
+        ModItems.addGem("goldenBeryl", 0xFFD6AE2B, 0.015F, Blocks.NETHERRACK);
+        ModItems.addGem("citrine", 0xFF871616, 0.015F, Blocks.NETHERRACK);
+        ModItems.addGem("indicolite", 0xFF39E6BD, 0.015F, Blocks.STONE);
+        ModItems.addGem("garnet", 0xFFFF9999, 0.015F, Blocks.STONE);
+        ModItems.addGem("topaz", 0xFFFFD399, 0.015F, Blocks.STONE);
+        ModItems.addGem("ametrine", 0xFFA300BF, 0.015F, Blocks.NETHERRACK);
+        ModItems.addGem("tanzanite", 0xFF00076E, 0.015F, Blocks.NETHERRACK);
+        ModItems.addGem("violetSapphire", 0xFF451287, 0.012F, Blocks.NETHERRACK);
+        ModItems.addGem("alexandrite", 0xFFE3E3E3, 0.012F, Blocks.NETHERRACK);
+        ModItems.addGem("blueTopaz", 0xFF1000C4, 0.012F, Blocks.NETHERRACK);
+        ModItems.addGem("spinel", 0xFF750000, 0.012F, Blocks.NETHERRACK);
+        ModItems.addGem("iolite", 0xFF9502CF, 0.012F, Blocks.STONE);
+        ModItems.addGem("blackDiamond", 0xFF262626, 0.009F, Blocks.NETHERRACK);
+        ModItems.addGem("chaos", 0xFFFFE6FB, 0.009F, Blocks.STONE);
+        ModItems.addGem("enderEssence", 0xFF356E19, 0.009F, Blocks.END_STONE);
+        ModItems.addGem("dark", 0xFF242424, 0.27F, Blocks.STONE);
+        ModItems.addGem("quartz", 0xFFFFFFFF, 0.42F, Blocks.NETHERRACK);
+        ModItems.addGem("lapis", 0xFF075BBA, 0.54F, Blocks.STONE);
+        ModItems.addGem("quartzBlack", 0xFF171717, 0.36F, Blocks.STONE);
+        ModItems.addGem("certus", 0xFFB0F4F7, 0.48F, Blocks.STONE);
 
         alchemyComponent = registerItem(new AlchemyItemComponent());
         metalCrystal = registerItem(new MetalCrystalItem());
@@ -143,7 +151,7 @@ public class ModItems {
         return item;
     }
 
-    public static void addGem(String name, int color, float rarity) {
-        gemList.add(new GemRegisterInfo(name, color, rarity));
+    public static void addGem(String name, int color, float rarity, Block block) {
+        gemList.add(new GemRegisterInfo(name, color, rarity, new ItemStack(block)));
     }
 }

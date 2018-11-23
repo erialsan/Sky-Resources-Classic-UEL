@@ -1,5 +1,5 @@
 {
-  "parent":"skyresourcesclassic:item/base_item_model",
+  "parent":"item/generated",
   "textures": {
     "layer0":"skyresourcesclassic:items/dust_alchemical"
   }

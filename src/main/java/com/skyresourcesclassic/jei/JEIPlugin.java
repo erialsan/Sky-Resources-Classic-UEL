@@ -12,6 +12,7 @@ import com.skyresourcesclassic.jei.freezer.FreezerRecipeCategory;
 import com.skyresourcesclassic.jei.heatsources.HeatSourceHandler;
 import com.skyresourcesclassic.jei.heatsources.HeatSourcesRecipeCategory;
 import com.skyresourcesclassic.jei.infusion.InfusionRecipeCategory;
+import com.skyresourcesclassic.jei.knife.KnifeRecipeCategory;
 import com.skyresourcesclassic.jei.rockgrinder.RockGrinderRecipeCategory;
 import com.skyresourcesclassic.jei.waterextractor.WaterExtractorRecipeCategory;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
@@ -38,6 +39,7 @@ public class JEIPlugin implements IModPlugin {
         registry.addRecipeCategories(new InfusionRecipeCategory(jeiHelpers.getGuiHelper()),
                 new CombustionRecipeCategory(jeiHelpers.getGuiHelper()),
                 new RockGrinderRecipeCategory(jeiHelpers.getGuiHelper()),
+                new KnifeRecipeCategory(jeiHelpers.getGuiHelper()),
                 new CrucibleRecipeCategory(jeiHelpers.getGuiHelper()),
                 new FreezerRecipeCategory(jeiHelpers.getGuiHelper()),
                 new HeatSourcesRecipeCategory(jeiHelpers.getGuiHelper()),
@@ -51,6 +53,7 @@ public class JEIPlugin implements IModPlugin {
         registry.addRecipes(ProcessRecipeManager.rockGrinderRecipes.getRecipes());
         registry.addRecipes(ProcessRecipeManager.crucibleRecipes.getRecipes());
         registry.addRecipes(ProcessRecipeManager.freezerRecipes.getRecipes());
+        registry.addRecipes(ProcessRecipeManager.knifeRecipes.getRecipes());
         registry.addRecipes(HeatSourceHandler.getSources());
         registry.addRecipes(ProcessRecipeManager.waterExtractorExtractRecipes.getRecipes());
         registry.addRecipes(ProcessRecipeManager.waterExtractorInsertRecipes.getRecipes());
@@ -103,6 +106,9 @@ public class JEIPlugin implements IModPlugin {
         registry.addDescription(new ItemStack(ModItems.alchemyComponent, 1, 0), "jei.skyresourcesclassic.desc.cactusNeedle");
         registry.addDescription(new ItemStack(ModBlocks.blazePowderBlock, 1, 0),
                 "jei.skyresourcesclassic.desc.blazePowderBlock");
+        for (ItemStack i : ItemHelper.getKnives()) {
+            registry.addRecipeCategoryCraftingItem(i, References.ModID + ":knife");
+        }
     }
 
     public static void openRecipesGui(ItemStack stack) {
