@@ -67,6 +67,7 @@ public class ModRenderers {
         registerItemRenderer(ModItems.heavySnowball);
         registerItemRenderer(ModItems.heavyExpSnowball);
         registerItemRenderer(ModItems.cactusKnife);
+        registerItemRenderer(ModItems.stoneKnife);
         registerItemRenderer(ModItems.ironKnife);
         registerItemRenderer(ModItems.diamondKnife);
         registerItemRenderer(ModItems.stoneGrinder);

@@ -1,7 +1,7 @@
 package com.skyresourcesclassic.technology.tile;
 
 import com.skyresourcesclassic.base.tile.TileBase;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;

@@ -13,8 +13,8 @@ import org.lwjgl.opengl.GL11;
 
 public class CrucibleTESR extends TileEntitySpecialRenderer<CrucibleTile> {
 
-    public void renderTileEntityAt(CrucibleTile te, double x, double y,
-                                   double z, float partialTicks, int destroyStage) {
+    @Override
+    public void render(CrucibleTile te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5f, (float) y + 1.50f, (float) z + 0.5f);
         GL11.glRotatef(180f, 1, 0, 0);

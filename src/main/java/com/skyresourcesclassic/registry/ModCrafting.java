@@ -1,11 +1,11 @@
 package com.skyresourcesclassic.registry;
 
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.RandomHelper;
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.alchemy.fluid.FluidRegisterInfo;
 import com.skyresourcesclassic.base.HeatSources;
 import com.skyresourcesclassic.base.ModFuelHandler;
-import com.skyresourcesclassic.config.ConfigOptions;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import com.skyresourcesclassic.technology.item.GemRegisterInfo;
 import net.minecraft.block.Block;
@@ -37,6 +37,8 @@ public class ModCrafting {
                 new Object[]{" #", "# ", '#', new ItemStack(ModItems.alchemyComponent, 1, 0)});
         CraftingRegistry.addShapedOreRecipe(new ItemStack(ModItems.ironKnife), new Object[]{"#  ", "#X ", " #X", 'X',
                 new ItemStack(Items.STICK), '#', new ItemStack(Items.IRON_INGOT)});
+        CraftingRegistry.addShapedOreRecipe(new ItemStack(ModItems.stoneKnife), new Object[]{"#  ", "#X ", " #X", 'X',
+                new ItemStack(Items.STICK), '#', new ItemStack(Blocks.COBBLESTONE)});
         CraftingRegistry.addShapedOreRecipe(new ItemStack(ModItems.diamondKnife), new Object[]{"#  ", "#X ", " #X", 'X',
                 new ItemStack(Items.STICK), '#', new ItemStack(Items.DIAMOND)});
         CraftingRegistry.addShapedOreRecipe(new ItemStack(ModItems.stoneGrinder), new Object[]{"#  ", " # ", "  X", 'X',
@@ -535,7 +537,7 @@ public class ModCrafting {
         ProcessRecipeManager.knifeRecipes.addRecipe(new ItemStack(Blocks.PLANKS, 6, 3), 1, new ItemStack(Blocks.LOG, 1, 3));
         ProcessRecipeManager.knifeRecipes.addRecipe(new ItemStack(Blocks.PLANKS, 6, 4), 1, new ItemStack(Blocks.LOG2));
         ProcessRecipeManager.knifeRecipes.addRecipe(new ItemStack(Blocks.PLANKS, 6, 5), 1, new ItemStack(Blocks.LOG2, 1, 1));
-        ProcessRecipeManager.knifeRecipes.addRecipe(new ItemStack(Items.STICK, 3, 5), 1, "plankWood");
+        ProcessRecipeManager.knifeRecipes.addRecipe(new ItemStack(Items.STICK, 3), 1, "plankWood");
 
         /*
          * for (int i = 0; i < ModFluids.crystalFluidInfos().length; i++) {
@@ -596,10 +598,10 @@ public class ModCrafting {
                 ItemStack dustStack = OreDictionary.getOres(dust).get(0);
                 dustStack.setCount(1);
                 if (i.type == FluidRegisterInfo.CrystalFluidType.NORMAL) {
-                    ProcessRecipeManager.cauldronCleanRecipes.addRecipe(dustStack, 1F / ((float) i.rarity * 3.2F),
+                    ProcessRecipeManager.cauldronCleanRecipes.addRecipe(dustStack, 1F / (((float) Math.pow((i.rarity + 2.5f), 3.7f))),
                             new ItemStack(ModItems.techComponent, 1, 0));
                 } else if (i.type == FluidRegisterInfo.CrystalFluidType.MOLTEN) {
-                    ProcessRecipeManager.cauldronCleanRecipes.addRecipe(dustStack, 1F / ((float) i.rarity * 4.4F),
+                    ProcessRecipeManager.cauldronCleanRecipes.addRecipe(dustStack, 1F / (((float) Math.pow((i.rarity + 2.5f), 4.4f))),
                             new ItemStack(ModItems.techComponent, 1, 3));
                 }
             }

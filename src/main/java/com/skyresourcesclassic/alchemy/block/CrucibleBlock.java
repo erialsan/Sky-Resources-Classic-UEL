@@ -3,14 +3,13 @@ package com.skyresourcesclassic.alchemy.block;
 import com.skyresourcesclassic.RandomHelper;
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.alchemy.tile.CrucibleTile;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.registry.ModCreativeTabs;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -20,6 +19,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidActionResult;
 import net.minecraftforge.fluids.FluidUtil;
 
 import javax.annotation.Nullable;
@@ -84,28 +84,28 @@ public class CrucibleBlock extends BlockContainer {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player,
                                     EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (player == null) {
-            return false;
-        }
+        if (!world.isRemote) {
+            if (!player.getHeldItem(hand).isEmpty()) {
+                CrucibleTile tile = (CrucibleTile) world.getTileEntity(pos);
+                FluidActionResult result = FluidUtil
+                        .tryFillContainer(player.getHeldItem(hand), tile.getTank(), tile.getTank().getFluidAmount(), player, true);
 
-        CrucibleTile crucible = (CrucibleTile) world.getTileEntity(pos);
-        ItemStack item = player.getHeldItem(hand);
-
-        if (item != ItemStack.EMPTY && crucible != null) {
-            if (item.getItem() == Items.BUCKET) {
-                ItemStack newStack = FluidUtil.tryFillContainer(item, crucible.getTank(), 1000, player, true).getResult();
-                if (newStack != ItemStack.EMPTY) {
-                    if (item.getCount() > 1) {
-                        item.shrink(1);
-                        RandomHelper.spawnItemInWorld(world, newStack, player.getPosition());
+                if (result.success) {
+                    if (player.getHeldItem(hand).getCount() > 1) {
+                        player.getHeldItem(hand).shrink(1);
+                        RandomHelper.spawnItemInWorld(world, result.getResult(), player.getPosition());
                     } else {
-                        player.setHeldItem(hand, newStack);
-                        return true;
+                        player.setHeldItem(hand, result.getResult());
                     }
+                    return true;
                 }
+
+                ItemStack contents = player.getHeldItem(hand).copy();
+                contents.setCount(1);
+                return true;
             }
         }
-        return false;
+        return true;
     }
 
     @Override

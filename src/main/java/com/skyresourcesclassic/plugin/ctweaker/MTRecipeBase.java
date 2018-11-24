@@ -5,10 +5,8 @@ import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MTRecipeBase {
+
 
     public static void addRecipe(ProcessRecipe recipe, ProcessRecipeManager type) {
         CraftTweakerAPI.apply(new AddSkyResourcesRecipe(recipe, type));
@@ -29,7 +27,7 @@ public class MTRecipeBase {
 
         @Override
         public void apply() {
-            recipeType.addRecipe(recipe);
+            recipeType.addCTRecipe(recipe);
         }
 
         @Override
@@ -41,7 +39,6 @@ public class MTRecipeBase {
 
     public static class RemoveSkyResourcesRecipe implements IAction {
         private final ProcessRecipe recipe;
-        List<ProcessRecipe> removedRecipes = new ArrayList<ProcessRecipe>();
         private final ProcessRecipeManager recipeType;
 
         public RemoveSkyResourcesRecipe(ProcessRecipe recipe, ProcessRecipeManager recipeType) {
@@ -51,8 +48,7 @@ public class MTRecipeBase {
 
         @Override
         public void apply() {
-            removedRecipes.addAll(recipeType.removeRecipe(recipe));
-            for (ProcessRecipe recipe2 : removedRecipes) ;
+            recipeType.removeCTRecipe(recipe);
         }
 
         @Override

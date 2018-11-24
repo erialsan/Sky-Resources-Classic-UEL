@@ -1,4 +1,4 @@
-package com.skyresourcesclassic.config;
+package com.skyresourcesclassic;
 
 import com.skyresourcesclassic.References;
 import net.minecraftforge.common.config.Config;
@@ -51,6 +51,9 @@ public class ConfigOptions {
         @Config.Comment("Display mod info in chat on login")
         @Config.Name("Login Mod Info")
         public boolean displayFirstChatInfo = true;
+
+        @Config.Name("Should Blaze Blocks be meltable in-world?")
+        public boolean meltableBlazeBlocks = true;
     }
 
     public static class health
@@ -89,7 +92,6 @@ public class ConfigOptions {
     public static class crucible
 
     {
-
         @Config.Name("Crucible Capacity")
         public int crucibleCapacity = 4000;
     }

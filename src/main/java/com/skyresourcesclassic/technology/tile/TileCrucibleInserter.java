@@ -3,7 +3,7 @@ package com.skyresourcesclassic.technology.tile;
 import com.skyresourcesclassic.alchemy.tile.CrucibleTile;
 import com.skyresourcesclassic.base.gui.ItemHandlerSpecial;
 import com.skyresourcesclassic.base.tile.TileItemInventory;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import net.minecraft.item.ItemStack;

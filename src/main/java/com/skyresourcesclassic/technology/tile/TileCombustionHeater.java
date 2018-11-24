@@ -1,7 +1,7 @@
 package com.skyresourcesclassic.technology.tile;
 
 import com.skyresourcesclassic.base.tile.TileItemInventory;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import com.skyresourcesclassic.technology.block.CombustionHeaterBlock;

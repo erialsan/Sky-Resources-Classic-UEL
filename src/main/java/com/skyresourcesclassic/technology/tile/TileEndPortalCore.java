@@ -1,7 +1,7 @@
 package com.skyresourcesclassic.technology.tile;
 
 import com.skyresourcesclassic.base.tile.TileItemInventory;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.registry.ModBlocks;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.player.EntityPlayerMP;

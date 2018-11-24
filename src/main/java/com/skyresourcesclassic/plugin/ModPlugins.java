@@ -39,13 +39,6 @@ public class ModPlugins {
         for (IModPlugin p : plugins) {
             p.preInit();
         }
-
-        /*
-         * if (Loader.isModLoaded("IC2")) IC2Plugin.preInit(); if
-         * (Loader.isModLoaded("EnderIO")) EnderIOPlugin.preInit(); if
-         * (Loader.isModLoaded("quantumflux")) QFluxPlugin.preInit(); if
-         * (Loader.isModLoaded("appliedenergistics2")) AE2Plugin.preInit();
-         */
     }
 
     public static void init() {

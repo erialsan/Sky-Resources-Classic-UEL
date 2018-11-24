@@ -3,7 +3,7 @@ package com.skyresourcesclassic.registry;
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.alchemy.fluid.FluidRegisterInfo;
 import com.skyresourcesclassic.alchemy.fluid.FluidRegisterInfo.CrystalFluidType;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;

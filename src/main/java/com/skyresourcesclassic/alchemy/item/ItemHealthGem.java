@@ -2,7 +2,7 @@ package com.skyresourcesclassic.alchemy.item;
 
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.alchemy.effects.IHealthBoostItem;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.registry.ModCreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;

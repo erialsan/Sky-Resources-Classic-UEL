@@ -1,6 +1,5 @@
 package com.skyresourcesclassic.plugin.ctweaker;
 
-import com.skyresourcesclassic.base.guide.SkyResourcesGuide;
 import com.skyresourcesclassic.plugin.IModPlugin;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IIngredient;
@@ -9,7 +8,6 @@ import crafttweaker.api.item.IngredientStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.oredict.IOreDictEntry;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
@@ -24,7 +22,6 @@ public class CraftTweakerPlugin implements IModPlugin {
 
     public void init() {
         initRecipes();
-        SkyResourcesGuide.addPage("minetweaker", "guide.skyresourcesclassic.misc", new ItemStack(Blocks.CRAFTING_TABLE));
     }
 
     public static void initRecipes() {

@@ -75,6 +75,8 @@ public class ProcessRecipeManager {
 
     public ProcessRecipeManager(String recipeType) {
         recipes = new ArrayList();
+        ctRemovedRecipes = new ArrayList();
+        ctAddedRecipes = new ArrayList();
         type = recipeType;
         if (managers == null)
             managers = new ArrayList<>();
@@ -90,6 +92,8 @@ public class ProcessRecipeManager {
     }
 
     private List<ProcessRecipe> recipes;
+    private List<ProcessRecipe> ctRemovedRecipes;
+    private List<ProcessRecipe> ctAddedRecipes;
 
     public ProcessRecipe getRecipe(List<Object> input, float intVal, boolean forceEqual, boolean mergeStacks) {
         input = mergeStacks ? mergeStacks(input) : input;
@@ -256,6 +260,31 @@ public class ProcessRecipeManager {
         recipes.add(recipe);
     }
 
+    public void addCTRecipe(ProcessRecipe recipe) {
+        if ((recipe.getInputs() == null || recipe.getInputs().size() == 0)
+                && (recipe.getFluidInputs() == null || recipe.getFluidInputs().size() == 0)) {
+            SkyResourcesClassic.logger.error("Need inputs for recipe. DID NOT ADD RECIPE.");
+            return;
+        }
+
+        if ((recipe.getOutputs() == null || recipe.getOutputs().size() == 0)
+                && (recipe.getFluidOutputs() == null || recipe.getFluidOutputs().size() == 0)) {
+            SkyResourcesClassic.logger.error("Need outputs for recipe. DID NOT ADD RECIPE.");
+            return;
+        }
+
+        ctAddedRecipes.add(recipe);
+    }
+
+    public void ctRecipes() {
+        for (ProcessRecipe recipe : ctRemovedRecipes) {
+            removeRecipe(recipe);
+        }
+        for (ProcessRecipe r : ctAddedRecipes) {
+            addRecipe(r);
+        }
+    }
+
     public List<ProcessRecipe> removeRecipe(ProcessRecipe recipe) {
         if ((recipe.getOutputs() == null || recipe.getOutputs().size() == 0) && (recipe.getFluidOutputs() == null
                 || recipe.getFluidOutputs().size() == 0)) {
@@ -318,6 +347,10 @@ public class ProcessRecipeManager {
             recipes.remove((int) recipesToRemoveAt.get(i));
         }
         return recipesToRemove;
+    }
+
+    public void removeCTRecipe(ProcessRecipe recipe) {
+        ctRemovedRecipes.add(recipe);
     }
 
     public void drawJEIInfo(ProcessRecipe rec, Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX,

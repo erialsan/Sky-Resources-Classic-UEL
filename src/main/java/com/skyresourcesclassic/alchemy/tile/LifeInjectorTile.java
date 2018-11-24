@@ -2,7 +2,7 @@ package com.skyresourcesclassic.alchemy.tile;
 
 import com.skyresourcesclassic.alchemy.item.ItemHealthGem;
 import com.skyresourcesclassic.base.tile.TileItemInventory;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

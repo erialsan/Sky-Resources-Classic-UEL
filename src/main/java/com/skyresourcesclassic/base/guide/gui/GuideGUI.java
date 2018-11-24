@@ -1,7 +1,7 @@
 package com.skyresourcesclassic.base.guide.gui;
 
 import com.skyresourcesclassic.base.guide.*;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import joptsimple.internal.Strings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

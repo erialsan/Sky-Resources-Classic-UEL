@@ -5,7 +5,7 @@ import com.skyresourcesclassic.alchemy.fluid.FluidCrystalBlock;
 import com.skyresourcesclassic.alchemy.fluid.FluidRegisterInfo;
 import com.skyresourcesclassic.base.HeatSources;
 import com.skyresourcesclassic.base.tile.TileBase;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.registry.ModBlocks;
 import com.skyresourcesclassic.registry.ModFluids;
 import net.minecraft.block.Block;

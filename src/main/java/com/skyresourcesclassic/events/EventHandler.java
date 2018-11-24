@@ -5,7 +5,7 @@ import com.skyresourcesclassic.SkyResourcesClassic;
 import com.skyresourcesclassic.alchemy.effects.IHealthBoostItem;
 import com.skyresourcesclassic.alchemy.item.AlchemyItemComponent;
 import com.skyresourcesclassic.base.ModKeyBindings;
-import com.skyresourcesclassic.config.ConfigOptions;
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import com.skyresourcesclassic.registry.ModGuiHandler;

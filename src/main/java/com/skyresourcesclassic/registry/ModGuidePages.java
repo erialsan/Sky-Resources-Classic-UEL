@@ -1,5 +1,6 @@
 package com.skyresourcesclassic.registry;
 
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.base.guide.SkyResourcesGuide;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -31,7 +32,10 @@ public class ModGuidePages {
 
         SkyResourcesGuide.addPage("dirtFurnace", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.dirtFurnace));
 
-        SkyResourcesGuide.addPage("lavaBlaze", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.blazePowderBlock));
+        if (ConfigOptions.general.meltableBlazeBlocks)
+            SkyResourcesGuide.addPage("lavaBlaze", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.blazePowderBlock));
+        else
+            SkyResourcesGuide.addPage("lavaBlaze1", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.blazePowderBlock));
 
         SkyResourcesGuide.addPage("heatSources", "guide.skyresourcesclassic.stage2", new ItemStack(Blocks.TORCH));
 
