@@ -3,6 +3,7 @@ package com.skyresourcesclassic.plugin.ctweaker;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import crafttweaker.CraftTweakerAPI;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemBlock;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -14,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @ZenClass("mods.skyresourcesclassic.infusion")
+@ZenRegister
 public class MTInfusionRecipe extends MTRecipeBase {
 
     @ZenMethod

@@ -3,6 +3,7 @@ package com.skyresourcesclassic.plugin.ctweaker;
 import com.skyresourcesclassic.base.HeatSources;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ZenClass("mods.skyresourcesclassic.heatsources")
+@ZenRegister
 public class MTHeatSources {
 
     @ZenMethod

@@ -2,6 +2,7 @@ package com.skyresourcesclassic.plugin.ctweaker;
 
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -12,6 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 @ZenClass("mods.skyresourcesclassic.combustion")
+@ZenRegister
 public class MTCombustionRecipe extends MTRecipeBase {
 
     @ZenMethod

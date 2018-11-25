@@ -21,20 +21,6 @@ public class CraftTweakerPlugin implements IModPlugin {
     }
 
     public void init() {
-        initRecipes();
-    }
-
-    public static void initRecipes() {
-        CraftTweakerAPI.registerClass(MTRockGrinderRecipe.class);
-        CraftTweakerAPI.registerClass(MTCombustionRecipe.class);
-        CraftTweakerAPI.registerClass(MTCauldronCleaningRecipe.class);
-        CraftTweakerAPI.registerClass(MTInfusionRecipe.class);
-        CraftTweakerAPI.registerClass(MTFreezerRecipe.class);
-        CraftTweakerAPI.registerClass(MTCrucibleRecipe.class);
-        CraftTweakerAPI.registerClass(MTWaterExtractorInsertRecipe.class);
-        CraftTweakerAPI.registerClass(MTWaterExtractorExtractRecipe.class);
-        CraftTweakerAPI.registerClass(MTHeatSources.class);
-        CraftTweakerAPI.registerClass(MTKnifeRecipe.class);
     }
 
     public void initRenderers() {
