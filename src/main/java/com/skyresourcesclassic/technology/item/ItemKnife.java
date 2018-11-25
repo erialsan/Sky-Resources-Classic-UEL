@@ -1,10 +1,10 @@
 package com.skyresourcesclassic.technology.item;
 
 import com.google.common.collect.Multimap;
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.ItemHelper;
 import com.skyresourcesclassic.RandomHelper;
 import com.skyresourcesclassic.References;
-import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import com.skyresourcesclassic.registry.ModCreativeTabs;
@@ -106,8 +106,7 @@ public class ItemKnife extends Item {
                 }
             }
         }
-        if (!world.isRemote)
-            world.destroyBlock(pos, !worked);
+        world.destroyBlock(pos, !worked);
         return worked;
 
     }

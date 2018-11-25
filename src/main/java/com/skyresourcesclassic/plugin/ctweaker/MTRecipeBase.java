@@ -32,7 +32,7 @@ public class MTRecipeBase {
 
         @Override
         public String describe() {
-            return "Adding Sky Resources recipe for " + (recipe.getOutputs().size() > 0 ? recipe.getOutputs().get(0)
+            return "Adding Sky Resources Classic recipe for " + (recipe.getOutputs().size() > 0 ? recipe.getOutputs().get(0)
                     : (recipe.getFluidOutputs().size() > 0 ? recipe.getFluidOutputs().get(0) : "NULL"));
         }
     }
@@ -53,7 +53,7 @@ public class MTRecipeBase {
 
         @Override
         public String describe() {
-            return "Removing Sky Resources recipe for " + (recipe.getOutputs().size() > 0 ? recipe.getOutputs().get(0)
+            return "Removing Sky Resources Classic recipe for " + (recipe.getOutputs().size() > 0 ? recipe.getOutputs().get(0)
                     : (recipe.getFluidOutputs().size() > 0 ? recipe.getFluidOutputs().get(0) : "NULL"));
         }
     }

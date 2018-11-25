@@ -36,14 +36,14 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new ModBucketHandler());
         NetworkRegistry.INSTANCE.registerGuiHandler(SkyResourcesClassic.instance, new ModGuiHandler());
         ModEntities.init();
+        ModCrafting.init();
         ModCrafting.initOreDict();
 
         ModPlugins.init();
     }
 
     public void postInit(FMLPostInitializationEvent e) {
-        ModCrafting.init();
-
+        ModCrafting.postInit();
         ModPlugins.postInit();
     }
 }

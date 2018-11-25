@@ -54,7 +54,7 @@ public class MTHeatSources {
         @Override
         public void apply() {
             Block block = Block.getBlockFromItem(stack.getItem());
-            HeatSources.addHeatSource(block.getStateFromMeta(stack.getMetadata()), val);
+            HeatSources.addCTHeatSource(block.getStateFromMeta(stack.getMetadata()), val);
         }
 
         @Override
@@ -74,7 +74,7 @@ public class MTHeatSources {
         @Override
         public void apply() {
             Block block = Block.getBlockFromItem(stack.getItem());
-            HeatSources.removeHeatSource(block.getStateFromMeta(stack.getMetadata()));
+            HeatSources.removeCTHeatSource(block.getStateFromMeta(stack.getMetadata()));
         }
 
         @Override

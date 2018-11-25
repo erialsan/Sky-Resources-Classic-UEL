@@ -83,6 +83,10 @@ public class ProcessRecipeManager {
         managers.add(this);
     }
 
+    public static List<ProcessRecipeManager> getManagers() {
+        return managers;
+    }
+
     public static ProcessRecipeManager getManagerFromType(String type) {
         for (ProcessRecipeManager m : managers) {
             if (m.type.equals(type))
@@ -285,11 +289,11 @@ public class ProcessRecipeManager {
         }
     }
 
-    public List<ProcessRecipe> removeRecipe(ProcessRecipe recipe) {
+    public void removeRecipe(ProcessRecipe recipe) {
         if ((recipe.getOutputs() == null || recipe.getOutputs().size() == 0) && (recipe.getFluidOutputs() == null
                 || recipe.getFluidOutputs().size() == 0)) {
             SkyResourcesClassic.logger.error("Need outputs for recipe. DID NOT REMOVE RECIPE.");
-            return null;
+            return;
         }
 
         if ((recipe.getInputs() == null || recipe.getInputs().size() == 0) && (recipe.getFluidInputs() == null
@@ -318,11 +322,10 @@ public class ProcessRecipeManager {
                 recipesToRemove.add(recipes.get(recipesToRemoveAt.get(i)));
                 recipes.remove((int) recipesToRemoveAt.get(i));
             }
-            return recipesToRemove;
+            return;
         }
 
         List<Integer> recipesToRemoveAt = new ArrayList<Integer>();
-        List<ProcessRecipe> recipesToRemove = new ArrayList<ProcessRecipe>();
         for (int i = 0; i < recipes.size(); i++) {
             if (recipes.get(i).isInputRecipeEqualTo(recipe, false)) {
                 boolean valid = true;
@@ -343,10 +346,8 @@ public class ProcessRecipeManager {
             }
         }
         for (int i = recipesToRemoveAt.size() - 1; i >= 0; i--) {
-            recipesToRemove.add(recipes.get(recipesToRemoveAt.get(i)));
             recipes.remove((int) recipesToRemoveAt.get(i));
         }
-        return recipesToRemove;
     }
 
     public void removeCTRecipe(ProcessRecipe recipe) {

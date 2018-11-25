@@ -539,38 +539,6 @@ public class ModCrafting {
         ProcessRecipeManager.knifeRecipes.addRecipe(new ItemStack(Blocks.PLANKS, 6, 5), 1, new ItemStack(Blocks.LOG2, 1, 1));
         ProcessRecipeManager.knifeRecipes.addRecipe(new ItemStack(Items.STICK, 3), 1, "plankWood");
 
-        /*
-         * for (int i = 0; i < ModFluids.crystalFluidInfos().length; i++) {
-         * String oreName = "ore" +
-         * RandomHelper.capatilizeString(ModFluids.crystalFluidInfos()[i].name);
-         *
-         * if (OreDictionary.getOres(oreName).size() > 0) {
-         *
-         * ProcessRecipeManager.concentratorRecipes.addRecipe(
-         * Block.getBlockFromItem(OreDictionary.getOres(oreName).get(0).
-         * getItem()) .getStateFromMeta(OreDictionary.getOres(oreName).get(0).
-         * getMetadata()), ModFluids.crystalFluidInfos()[i].rarity * 100, new
-         * ItemStack(ModItems.metalCrystal,
-         * ConfigOptions.crystalConcentratorAmount,
-         * ModFluids.crystalFluidInfos()[i].crystalIndex),
-         * ModBlocks.compressedStone.getDefaultState());
-         *
-         * } }
-         */
-
-        /*
-         * ConcentratorRecipes.addRecipe(Blocks.COAL_ORE.getDefaultState(), 100,
-         * new ItemStack(ModItems.alchemyComponent, 1, 2),
-         * ModBlocks.compressedStone.getDefaultState());
-         *
-         * ConcentratorRecipes.addRecipe(Blocks.DIAMOND_ORE.getDefaultState(),
-         * 800, new ItemStack(ModItems.alchemyComponent, 1, 4),
-         * ModBlocks.compressedStone.getDefaultState());
-         *
-         * ConcentratorRecipes.addRecipe(Blocks.REDSTONE_ORE.getDefaultState(),
-         * 700, new ItemStack(ModItems.alchemyComponent, 12, 3),
-         * ModBlocks.compressedStone.getDefaultState());
-         */
         if (OreDictionary.getOres("dustUranium").size() > 0) {
             for (ItemStack s : OreDictionary.getOres("dustUranium")) {
                 if (Loader.isModLoaded("bigreactors")
@@ -621,6 +589,13 @@ public class ModCrafting {
 
         LootTableList.register(new ResourceLocation(References.ModID, "gameplay/fishingsurvivalist"));
         LootTableList.register(new ResourceLocation(References.ModID, "gameplay/fishing/survivalistjunk"));
+    }
+
+    public static void postInit() {
+        for (ProcessRecipeManager m : ProcessRecipeManager.getManagers()) {
+            m.ctRecipes();
+        }
+        HeatSources.ctRecipes();
     }
 
     public static void initOreDict() {
