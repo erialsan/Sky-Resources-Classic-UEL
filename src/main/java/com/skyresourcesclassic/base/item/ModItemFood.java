@@ -7,10 +7,10 @@ import net.minecraft.item.ItemFood;
 public class ModItemFood extends ItemFood {
 
     public ModItemFood(int amount, float saturation, boolean isWolfFood,
-                       String unlocalizedName, String registryName) {
+                       String name) {
         super(amount, saturation, isWolfFood);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
-        setRegistryName(registryName);
+        this.setUnlocalizedName(References.ModID + "." + name);
+        setRegistryName(name);
         this.setCreativeTab(ModCreativeTabs.tabMain);
     }
 

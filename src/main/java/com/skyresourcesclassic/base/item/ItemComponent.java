@@ -1,0 +1,74 @@
+package com.skyresourcesclassic.base.item;
+
+import com.skyresourcesclassic.References;
+import net.minecraft.block.IGrowable;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+
+import java.util.List;
+
+public class ItemComponent extends Item {
+    public ItemComponent(String name, CreativeTabs tab) {
+        super();
+
+        this.setUnlocalizedName(References.ModID + "." + name);
+        setRegistryName(name);
+        this.setCreativeTab(tab);
+    }
+
+    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand,
+                                      EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (!playerIn.canPlayerEdit(pos.offset(facing), facing, playerIn.getHeldItem(hand))) {
+            return EnumActionResult.FAIL;
+        } else {
+            if (playerIn.getHeldItem(hand).getUnlocalizedName().equals("skyresourcesclassic.plant_matter")
+                    || playerIn.getHeldItem(hand).getUnlocalizedName().equals("skyresourcesclassic.enriched_bonemeal")) {
+                if (applyBonemeal(playerIn.getHeldItem(hand), worldIn, pos)) {
+                    if (!worldIn.isRemote) {
+                        worldIn.playEvent(2005, pos, 0);
+                    }
+
+                    return EnumActionResult.SUCCESS;
+                }
+            }
+
+            return EnumActionResult.PASS;
+        }
+    }
+
+    public void addInformation(ItemStack stack, List list) {
+        if (stack.getUnlocalizedName().equals("item.skyresourcesclassic.plant_matter")) {
+            list.add(TextFormatting.DARK_GRAY + "Acts as bonemeal");
+            list.add(TextFormatting.DARK_GRAY + "2-4x as effective as normal bonemeal");
+        } else if (stack.getUnlocalizedName().equals("item.skyresourcesclassic.enriched_bonemeal")) {
+            list.add(TextFormatting.DARK_GRAY + "2-4x as effective as normal bonemeal");
+        }
+    }
+
+    public static boolean applyBonemeal(ItemStack stack, World worldIn, BlockPos target) {
+        if (worldIn.getBlockState(target).getBlock() instanceof IGrowable && !worldIn.isRemote) {
+            int tries = 100;
+            while (worldIn.getBlockState(target).getBlock() instanceof IGrowable && tries > 0) {
+                tries--;
+                IGrowable igrowable = (IGrowable) worldIn.getBlockState(target).getBlock();
+                if (igrowable.canGrow(worldIn, target, worldIn.getBlockState(target), false)) {
+                    igrowable.grow(worldIn, worldIn.rand, target, worldIn.getBlockState(target));
+                }
+            }
+
+            stack.shrink(1);
+
+            return true;
+        }
+
+        return false;
+    }
+}

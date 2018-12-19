@@ -29,12 +29,12 @@ public class ItemKnife extends Item {
 
     ToolMaterial toolMaterial;
 
-    public ItemKnife(Item.ToolMaterial material, String unlocalizedName, String registryName) {
+    public ItemKnife(Item.ToolMaterial material, String name) {
         this.setMaxDamage((int) (material.getMaxUses() * ConfigOptions.knife.knifeBaseDurability));
         toolMaterial = material;
         this.damageVsEntity = ConfigOptions.knife.knifeBaseDamage + material.getAttackDamage();
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
-        setRegistryName(registryName);
+        this.setUnlocalizedName(References.ModID + "." + name);
+        setRegistryName(name);
         this.setMaxStackSize(1);
         this.setNoRepair();
         this.setCreativeTab(ModCreativeTabs.tabMain);

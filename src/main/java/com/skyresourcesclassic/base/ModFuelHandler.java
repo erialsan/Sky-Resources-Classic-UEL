@@ -9,7 +9,7 @@ public class ModFuelHandler implements IFuelHandler {
     @Override
     public int getBurnTime(ItemStack fuel) {
 
-        if (fuel.isItemEqual(new ItemStack(ModItems.alchemyComponent, 1, 2)))
+        if (fuel.isItemEqual(new ItemStack(ModItems.itemComponent[2])))
             return 2400;
         else if (fuel.isItemEqual(new ItemStack(ModBlocks.coalInfusedBlock)))
             return 24000;

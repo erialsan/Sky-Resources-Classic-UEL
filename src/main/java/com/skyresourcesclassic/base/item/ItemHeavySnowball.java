@@ -21,11 +21,11 @@ import net.minecraft.world.World;
 
 public class ItemHeavySnowball extends Item
 {
-	public ItemHeavySnowball(String unlocalizedName, String registryName)
+	public ItemHeavySnowball(String name)
 	{
 		this.maxStackSize = 8;
-		this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
-		setRegistryName(registryName);
+		this.setUnlocalizedName(References.ModID + "." + name);
+		setRegistryName(name);
 		this.setCreativeTab(ModCreativeTabs.tabMain);
 	}
 

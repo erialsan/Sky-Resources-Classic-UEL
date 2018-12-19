@@ -29,13 +29,13 @@ public class ItemRockGrinder extends ItemPickaxe {
 
     ToolMaterial toolMaterial;
 
-    public ItemRockGrinder(ToolMaterial material, String unlocalizedName, String registryName) {
+    public ItemRockGrinder(ToolMaterial material, String name) {
         super(material);
         toolMaterial = material;
         this.setMaxDamage((int) (material.getMaxUses() * ConfigOptions.rockGrinder.rockGrinderBaseDurability));
         this.damageVsEntity = ConfigOptions.rockGrinder.rockGrinderBaseDamage + material.getAttackDamage();
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
-        setRegistryName(registryName);
+        this.setUnlocalizedName(References.ModID + "." + name);
+        setRegistryName(name);
         this.setMaxStackSize(1);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHarvestLevel("rockGrinder", material.getHarvestLevel());

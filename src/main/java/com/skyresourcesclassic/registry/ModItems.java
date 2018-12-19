@@ -2,12 +2,14 @@ package com.skyresourcesclassic.registry;
 
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.SkyResourcesClassic;
-import com.skyresourcesclassic.alchemy.item.*;
+import com.skyresourcesclassic.alchemy.item.DirtyGemItem;
+import com.skyresourcesclassic.alchemy.item.ItemHealthGem;
+import com.skyresourcesclassic.alchemy.item.ItemInfusionStone;
+import com.skyresourcesclassic.alchemy.item.MetalCrystalItem;
 import com.skyresourcesclassic.base.item.*;
 import com.skyresourcesclassic.technology.item.GemRegisterInfo;
 import com.skyresourcesclassic.technology.item.ItemKnife;
 import com.skyresourcesclassic.technology.item.ItemRockGrinder;
-import com.skyresourcesclassic.technology.item.TechItemComponent;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -19,10 +21,7 @@ import net.minecraftforge.registries.GameData;
 import java.util.ArrayList;
 
 public class ModItems {
-    public static Item alchemyComponent;
     public static Item metalCrystal;
-    public static Item baseComponent;
-    public static Item techComponent;
     public static Item healthGem;
 
     public static Item cactusFruit;
@@ -49,6 +48,29 @@ public class ModItems {
     public static Item alchemicalInfusionStone;
 
     public static Item survivalistFishingRod;
+
+    public static String[] ItemComponentName = {
+            "cactus_needle",
+            "coal_alchemical",
+            "dust_alchemical",
+            "diamond_alchemical",
+            "gold_ingot_alchemical",
+            "gold_needle_alchemical",
+            "wood_heat_component",
+            "iron_heat_component",
+            "plant_matter",
+            "steel_power_component",
+            "frozen_iron_cooling_component",
+            "dark_matter",
+            "enriched_bonemeal",
+            "sawdust",
+            "stone_crushed",
+            "radioactive_mix",
+            "frozen_iron_ingot",
+            "netherrack_crushed"
+    };
+
+    public static Item[] itemComponent = new Item[18];
 
     public static ArrayList<GemRegisterInfo> gemList = new ArrayList<GemRegisterInfo>();
 
@@ -98,42 +120,46 @@ public class ModItems {
         ModItems.addGem("quartzBlack", 0xFF171717, 0.36F, Blocks.STONE);
         ModItems.addGem("certus", 0xFFB0F4F7, 0.48F, Blocks.STONE);
 
-        alchemyComponent = registerItem(new AlchemyItemComponent());
+        for (int i = 0; i < itemComponent.length; i++)
+            if (i < 6)
+                itemComponent[i] = registerItem(new ItemComponent(ItemComponentName[i], ModCreativeTabs.tabAlchemy));
+            else if (i > 5 && i < 14)
+                itemComponent[i] = registerItem(new ItemComponent(ItemComponentName[i], ModCreativeTabs.tabMain));
+            else
+                itemComponent[i] = registerItem(new ItemComponent(ItemComponentName[i], ModCreativeTabs.tabTech));
         metalCrystal = registerItem(new MetalCrystalItem());
         dirtyGem = registerItem(new DirtyGemItem());
-        baseComponent = registerItem(new BaseItemComponent());
-        techComponent = registerItem(new TechItemComponent());
         healthGem = registerItem(new ItemHealthGem());
         waterExtractor = registerItem(new ItemWaterExtractor());
-        heavySnowball = registerItem(new ItemHeavySnowball("heavy_snowball", "heavy_snowball"));
-        heavyExpSnowball = registerItem(new ItemHeavyExplosiveSnowball("heavy_explosive_snowball", "heavy_explosive_snowball"));
-        cactusFruit = registerItem(new ModItemFood(3, 2F, false, "cactus_fruit", "cactus_fruit"));
+        heavySnowball = registerItem(new ItemHeavySnowball("heavy_snowball"));
+        heavyExpSnowball = registerItem(new ItemHeavyExplosiveSnowball("heavy_explosive_snowball"));
+        cactusFruit = registerItem(new ModItemFood(3, 2F, false, "cactus_fruit"));
         fleshySnowNugget = registerItem(
-                new ModItemFood(4, 1.5F, false, "fleshy_snow_nugget", "fleshy_snow_nugget"));
+                new ModItemFood(4, 1.5F, false, "fleshy_snow_nugget"));
         cactusKnife = registerItem(new ItemKnife(SkyResourcesClassic.materialCactusNeedle,
-                "cactus_cutting_knife", "cactus_cutting_knife"));
+                "cactus_cutting_knife"));
         stoneKnife = registerItem(
-                new ItemKnife(ToolMaterial.STONE, "stone_cutting_knife", "stone_cutting_knife"));
+                new ItemKnife(ToolMaterial.STONE, "stone_cutting_knife"));
         ironKnife = registerItem(
-                new ItemKnife(ToolMaterial.IRON, "iron_cutting_knife", "iron_cutting_knife"));
+                new ItemKnife(ToolMaterial.IRON, "iron_cutting_knife"));
         diamondKnife = registerItem(
-                new ItemKnife(ToolMaterial.DIAMOND, "diamond_cutting_knife", "diamond_cutting_knife"));
+                new ItemKnife(ToolMaterial.DIAMOND, "diamond_cutting_knife"));
 
         stoneGrinder = registerItem(
-                new ItemRockGrinder(ToolMaterial.STONE, "stone_grinder", "stone_grinder"));
+                new ItemRockGrinder(ToolMaterial.STONE, "stone_grinder"));
         ironGrinder = registerItem(
-                new ItemRockGrinder(ToolMaterial.IRON, "iron_grinder", "iron_grinder"));
+                new ItemRockGrinder(ToolMaterial.IRON, "iron_grinder"));
         diamondGrinder = registerItem(
-                new ItemRockGrinder(ToolMaterial.DIAMOND, "diamond_grinder", "diamond_grinder"));
+                new ItemRockGrinder(ToolMaterial.DIAMOND, "diamond_grinder"));
 
         sandstoneInfusionStone = registerItem(
-                new ItemInfusionStone(100, "sandstone_infusion_stone", "sandstone_infusion_stone"));
+                new ItemInfusionStone(100, "sandstone_infusion_stone"));
         redSandstoneInfusionStone = registerItem(new ItemInfusionStone(80,
-                "red_sandstone_infusion_stone", "red_sandstone_infusion_stone"));
+                "red_sandstone_infusion_stone"));
         alchemicalInfusionStone = registerItem(
-                new ItemInfusionStone(1500, "alchemical_infusion_stone", "alchemical_infusion_stone"));
+                new ItemInfusionStone(1500, "alchemical_infusion_stone"));
         survivalistFishingRod = registerItem(
-                new ItemSurvivalFishingRod("survivalist_fishing_rod", "survivalist_fishing_rod"));
+                new ItemSurvivalFishingRod("survivalist_fishing_rod"));
     }
 
     private static Item registerItem(Item item, String name) {

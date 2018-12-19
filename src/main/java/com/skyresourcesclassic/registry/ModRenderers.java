@@ -3,7 +3,6 @@ package com.skyresourcesclassic.registry;
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.alchemy.block.CondenserBlock.CondenserVariants;
 import com.skyresourcesclassic.alchemy.block.CrystallizerBlock.CrystallizerVariants;
-import com.skyresourcesclassic.alchemy.item.AlchemyItemComponent;
 import com.skyresourcesclassic.alchemy.item.DirtyGemItem;
 import com.skyresourcesclassic.alchemy.item.MetalCrystalItem;
 import com.skyresourcesclassic.alchemy.render.CrucibleTESR;
@@ -11,10 +10,8 @@ import com.skyresourcesclassic.alchemy.tile.CrucibleTile;
 import com.skyresourcesclassic.base.entity.EntityHeavyExplosiveSnowball;
 import com.skyresourcesclassic.base.entity.EntityHeavySnowball;
 import com.skyresourcesclassic.base.entity.RenderEntityItem;
-import com.skyresourcesclassic.base.item.BaseItemComponent;
 import com.skyresourcesclassic.base.item.ItemWaterExtractor;
 import com.skyresourcesclassic.technology.block.CombustionHeaterBlock;
-import com.skyresourcesclassic.technology.item.TechItemComponent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -45,10 +42,6 @@ public class ModRenderers {
             mapFluidState(ModFluids.crystalFluids.get(i));
         }
 
-        for (int i = 0; i < AlchemyItemComponent.getNames().size(); i++) {
-            registerItemRenderer(ModItems.alchemyComponent, i);
-        }
-
         for (int i = 0; i < MetalCrystalItem.getNames().size(); i++) {
             registerItemRenderer(ModItems.metalCrystal, i, true);
         }
@@ -56,11 +49,9 @@ public class ModRenderers {
         for (int i = 0; i < DirtyGemItem.getNames().size(); i++) {
             registerItemRenderer(ModItems.dirtyGem, i, true);
         }
-        for (int i = 0; i < BaseItemComponent.getNames().size(); i++) {
-            registerItemRenderer(ModItems.baseComponent, i);
-        }
-        for (int i = 0; i < TechItemComponent.getNames().size(); i++) {
-            registerItemRenderer(ModItems.techComponent, i);
+
+        for (int i = 0; i < ModItems.itemComponent.length; i++) {
+            registerItemRenderer(ModItems.itemComponent[i]);
         }
         registerItemRenderer(ModItems.cactusFruit);
         registerItemRenderer(ModItems.fleshySnowNugget);

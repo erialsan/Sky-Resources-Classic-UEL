@@ -24,7 +24,7 @@ public class TechRebornPlugin implements IModPlugin {
         Item sapling = Item.REGISTRY.getObject(new ResourceLocation("techreborn", "rubbersapling"));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(part, 1, 31), 350, new ArrayList<Object>(
-                Arrays.asList(new ItemStack(Items.SLIME_BALL, 2), new ItemStack(ModItems.baseComponent, 4, 2))));
+                Arrays.asList(new ItemStack(Items.SLIME_BALL, 2), new ItemStack(ModItems.itemComponent[8], 4))));
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(sapling, 1), 12,
                 new ArrayList<Object>(Arrays.asList(new ItemStack(part, 4, 31), new ItemStack(Blocks.SAPLING, 1, 1))));
 

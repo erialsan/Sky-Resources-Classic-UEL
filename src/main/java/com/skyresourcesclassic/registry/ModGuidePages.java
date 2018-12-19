@@ -62,12 +62,12 @@ public class ModGuidePages {
         SkyResourcesGuide.addPage("quickDropper", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.quickDropper));
 
         SkyResourcesGuide.addPage("crushedStone", "guide.skyresourcesclassic.stage2",
-                new ItemStack(ModItems.techComponent, 1, 0));
+                new ItemStack(ModItems.itemComponent[14]));
 
         SkyResourcesGuide.addPage("gemProduction", "guide.skyresourcesclassic.stage2", new ItemStack(Items.EMERALD));
 
         SkyResourcesGuide.addPage("alchemicalItems", "guide.skyresourcesclassic.stage3",
-                new ItemStack(ModItems.alchemyComponent, 1, 4));
+                new ItemStack(ModItems.itemComponent[0]));
 
         SkyResourcesGuide.addPage("ironFreezer", "guide.skyresourcesclassic.stage3", new ItemStack(ModBlocks.ironFreezer));
 

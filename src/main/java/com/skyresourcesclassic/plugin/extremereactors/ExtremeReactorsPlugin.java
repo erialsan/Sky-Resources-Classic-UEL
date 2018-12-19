@@ -29,7 +29,7 @@ public class ExtremeReactorsPlugin implements IModPlugin
 		Item ingot = Item.REGISTRY.getObject(new ResourceLocation("bigreactors", "ingotmetals"));
 
 		ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(dust, 5), 1200, new ArrayList<Object>(
-				Arrays.asList(new ItemStack(Items.REDSTONE, 2), new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(ModItems.techComponent, 2, 1))));
+				Arrays.asList(new ItemStack(Items.REDSTONE, 2), new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(ModItems.itemComponent[15], 2))));
 
 		SkyResourcesGuide.addPage("extremereactors", "guide.skyresourcesclassic.misc", new ItemStack(ingot, 1));
 	}

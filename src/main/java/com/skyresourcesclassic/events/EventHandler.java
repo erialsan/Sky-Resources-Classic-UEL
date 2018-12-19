@@ -3,7 +3,6 @@ package com.skyresourcesclassic.events;
 import com.skyresourcesclassic.RandomHelper;
 import com.skyresourcesclassic.SkyResourcesClassic;
 import com.skyresourcesclassic.alchemy.effects.IHealthBoostItem;
-import com.skyresourcesclassic.alchemy.item.AlchemyItemComponent;
 import com.skyresourcesclassic.base.ModKeyBindings;
 import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
@@ -43,8 +42,7 @@ public class EventHandler {
             Block block = event.getWorld().getBlockState(event.getPos()).getBlock();
             if (block != null && equip.isEmpty() && event.getEntityPlayer().isSneaking()) {
                 if (block == Blocks.CACTUS) {
-                    RandomHelper.spawnItemInWorld(event.getWorld(), new ItemStack(ModItems.alchemyComponent, 1,
-                                    ((AlchemyItemComponent) ModItems.alchemyComponent).getNames().indexOf("cactusNeedle")),
+                    RandomHelper.spawnItemInWorld(event.getWorld(), new ItemStack(ModItems.itemComponent[0]),
                             event.getEntityPlayer().getPosition());
                     event.getEntityPlayer().attackEntityFrom(DamageSource.CACTUS, 5);
                 } else if (block == Blocks.SNOW_LAYER) {

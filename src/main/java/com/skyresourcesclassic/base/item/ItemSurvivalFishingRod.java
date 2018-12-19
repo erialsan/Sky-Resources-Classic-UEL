@@ -19,13 +19,12 @@ public class ItemSurvivalFishingRod extends ItemFishingRod {
 
     public static final String[] icons = new String[]{"uncast", "cast"};
 
-    public ItemSurvivalFishingRod(String unlocalizedName,
-                                  String registryName) {
+    public ItemSurvivalFishingRod(String name) {
         super();
         this.setMaxDamage(32);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabMain);
-        setRegistryName(registryName);
+        setRegistryName(name);
     }
 
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {

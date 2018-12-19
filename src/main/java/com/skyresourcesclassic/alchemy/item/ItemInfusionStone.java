@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ItemInfusionStone extends Item {
-    public ItemInfusionStone(int durability, String unlocalizedName, String registryName) {
+    public ItemInfusionStone(int durability, String name) {
         this.setMaxDamage(durability);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
-        setRegistryName(registryName);
+        this.setUnlocalizedName(References.ModID + "." + name);
+        setRegistryName(name);
         this.setMaxStackSize(1);
         this.setNoRepair();
         this.setCreativeTab(ModCreativeTabs.tabAlchemy);
