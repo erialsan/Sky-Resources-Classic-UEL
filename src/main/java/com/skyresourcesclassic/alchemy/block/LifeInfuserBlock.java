@@ -22,14 +22,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class LifeInfuserBlock extends BlockContainer {
 
-    public LifeInfuserBlock(String unlocalizedName, String registryName, float hardness,
+    public LifeInfuserBlock(String name, float hardness,
                             float resistance) {
         super(Material.WOOD);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabAlchemy);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(registryName);
+        this.setRegistryName(name);
     }
 
     public boolean isFullCube(IBlockState state) {

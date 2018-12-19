@@ -21,7 +21,7 @@ public class BlockDryCactus extends BaseBlock {
             1.0D, 0.9375D);
 
     public BlockDryCactus() {
-        super(Material.PLANTS, "dry_cactus", "dry_cactus", 0.5F, 0.5F, SoundType.PLANT);
+        super(Material.PLANTS, "dry_cactus", 0.5F, 0.5F, SoundType.PLANT);
     }
 
     @Override

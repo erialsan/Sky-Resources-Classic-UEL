@@ -18,14 +18,14 @@ import net.minecraft.world.World;
 
 public class BlockQuickDropper extends BlockContainer {
 
-    public BlockQuickDropper(String unlocalizedName, String registryName, float hardness,
+    public BlockQuickDropper(String name, float hardness,
                              float resistance) {
         super(Material.IRON);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(registryName);
+        this.setRegistryName(name);
     }
 
     @Override

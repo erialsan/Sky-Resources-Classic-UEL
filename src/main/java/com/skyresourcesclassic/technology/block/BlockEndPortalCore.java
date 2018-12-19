@@ -17,13 +17,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockEndPortalCore extends BlockContainer {
-    public BlockEndPortalCore(String unlocalizedName, String registryName, float hardness, float resistance) {
+    public BlockEndPortalCore(String name, float hardness, float resistance) {
         super(Material.ROCK);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(registryName);
+        this.setRegistryName(name);
     }
 
     @Override

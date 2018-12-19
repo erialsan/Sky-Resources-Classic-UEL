@@ -35,13 +35,13 @@ public class CombustionHeaterBlock extends BlockContainer implements IMetaBlockN
 
     private String[] combustionHeaterTypes = new String[]{"wood", "iron", "steel", "dark_matter"};
 
-    public CombustionHeaterBlock(String unlocalizedName, String registryName, float hardness, float resistance) {
+    public CombustionHeaterBlock(String name, float hardness, float resistance) {
         super(Material.WOOD);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(registryName);
+        this.setRegistryName(name);
 
         setDefaultState(blockState.getBaseState().withProperty(heaterVariant, CombustionHeaterVariants.WOOD));
     }

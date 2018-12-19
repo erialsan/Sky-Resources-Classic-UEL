@@ -28,15 +28,14 @@ public class CondenserBlock extends BlockContainer implements IMetaBlockName {
             CondenserVariants.class);
 
     private String[] condenserTypes = new String[]{"stone", "iron", "steel", "dark_matter"};
-    int timeCondense;
 
-    public CondenserBlock(String unlocalizedName, String registryName, float hardness, float resistance) {
+    public CondenserBlock(String name, float hardness, float resistance) {
         super(Material.ROCK);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabAlchemy);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(registryName);
+        this.setRegistryName(name);
     }
 
     @Override

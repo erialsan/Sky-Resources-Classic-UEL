@@ -28,13 +28,13 @@ import java.util.List;
 public class BlockMiniFreezer extends BlockContainer {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
-    public BlockMiniFreezer(String unlocalizedName, String registryName, float hardness, float resistance) {
+    public BlockMiniFreezer(String name, float hardness, float resistance) {
         super(Material.GROUND);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(registryName);
+        this.setRegistryName(name);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

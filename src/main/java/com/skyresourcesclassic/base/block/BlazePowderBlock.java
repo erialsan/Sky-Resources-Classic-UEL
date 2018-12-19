@@ -15,9 +15,9 @@ import java.util.Random;
 
 public class BlazePowderBlock extends BaseBlock {
 
-    public BlazePowderBlock(Material material, String unlocalizedName, String registryName,
+    public BlazePowderBlock(Material material, String name,
                             float hardness, float resistance, SoundType stepSound) {
-        super(material, registryName, registryName, resistance, resistance, stepSound);
+        super(material, name, hardness, resistance, stepSound);
     }
 
     @Override

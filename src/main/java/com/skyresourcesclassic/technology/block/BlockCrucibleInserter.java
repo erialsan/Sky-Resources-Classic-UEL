@@ -18,14 +18,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCrucibleInserter extends BlockContainer {
 
-    public BlockCrucibleInserter(String unlocalizedName, String registryName, float hardness,
+    public BlockCrucibleInserter(String name, float hardness,
                                  float resistance) {
         super(Material.ROCK);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(registryName);
+        this.setRegistryName(name);
     }
 
     public boolean isFullCube(IBlockState state) {

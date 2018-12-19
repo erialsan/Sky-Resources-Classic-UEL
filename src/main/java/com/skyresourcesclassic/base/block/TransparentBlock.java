@@ -18,9 +18,9 @@ import java.util.List;
 public class TransparentBlock extends BaseBlock {
     protected static AxisAlignedBB BoundingBox = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 
-    public TransparentBlock(Material material, String unlocalizedName, String registryName, float hardness,
+    public TransparentBlock(Material material, String name, float hardness,
                             float resistance, AxisAlignedBB bounds, SoundType stepSound) {
-        super(material, unlocalizedName, registryName, hardness, resistance, stepSound);
+        super(material, name, hardness, resistance, stepSound);
         BoundingBox = bounds;
     }
 

@@ -13,15 +13,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BaseBlock extends Block {
 
-    public BaseBlock(Material material, String unlocalizedName,
-                     String registryName, float hardness, float resistance,
+    public BaseBlock(Material material, String name, float hardness, float resistance,
                      SoundType stepSound) {
         super(material);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabMain);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(registryName);
+        this.setRegistryName(name);
         this.setSoundType(stepSound);
     }
 

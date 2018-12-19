@@ -2,6 +2,7 @@ package com.skyresourcesclassic.base.item;
 
 import com.skyresourcesclassic.References;
 import net.minecraft.block.IGrowable;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -12,7 +13,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemComponent extends Item {
@@ -29,8 +33,8 @@ public class ItemComponent extends Item {
         if (!playerIn.canPlayerEdit(pos.offset(facing), facing, playerIn.getHeldItem(hand))) {
             return EnumActionResult.FAIL;
         } else {
-            if (playerIn.getHeldItem(hand).getUnlocalizedName().equals("skyresourcesclassic.plant_matter")
-                    || playerIn.getHeldItem(hand).getUnlocalizedName().equals("skyresourcesclassic.enriched_bonemeal")) {
+            if (playerIn.getHeldItem(hand).getUnlocalizedName().equals("item.skyresourcesclassic.plant_matter")
+                    || playerIn.getHeldItem(hand).getUnlocalizedName().equals("item.skyresourcesclassic.enriched_bonemeal")) {
                 if (applyBonemeal(playerIn.getHeldItem(hand), worldIn, pos)) {
                     if (!worldIn.isRemote) {
                         worldIn.playEvent(2005, pos, 0);
@@ -44,12 +48,13 @@ public class ItemComponent extends Item {
         }
     }
 
-    public void addInformation(ItemStack stack, List list) {
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         if (stack.getUnlocalizedName().equals("item.skyresourcesclassic.plant_matter")) {
-            list.add(TextFormatting.DARK_GRAY + "Acts as bonemeal");
-            list.add(TextFormatting.DARK_GRAY + "2-4x as effective as normal bonemeal");
+            tooltip.add(TextFormatting.DARK_GRAY + "Acts as bonemeal");
+            tooltip.add(TextFormatting.DARK_GRAY + "Grows instantly");
         } else if (stack.getUnlocalizedName().equals("item.skyresourcesclassic.enriched_bonemeal")) {
-            list.add(TextFormatting.DARK_GRAY + "2-4x as effective as normal bonemeal");
+            tooltip.add(TextFormatting.DARK_GRAY + "Grows instantly");
         }
     }
 

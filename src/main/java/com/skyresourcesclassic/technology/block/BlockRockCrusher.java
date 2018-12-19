@@ -28,13 +28,13 @@ import java.util.Random;
 public class BlockRockCrusher extends BlockContainer {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
-    public BlockRockCrusher(String unlocalizedName, String registryName, float hardness, float resistance) {
+    public BlockRockCrusher(String name, float hardness, float resistance) {
         super(Material.ROCK);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setUnlocalizedName(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(registryName);
+        this.setRegistryName(name);
     }
 
     @Nullable

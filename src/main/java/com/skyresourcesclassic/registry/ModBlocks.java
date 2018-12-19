@@ -57,58 +57,58 @@ public class ModBlocks {
     public static void init() {
         crystalFluidBlocks = new ArrayList<Block>();
         cactusFruitNeedle = registerBlock(new TransparentBlock(Material.PLANTS, "cactus_fruit_needle",
-                "cactus_fruit_needle", 0.5F, 0.5F, new AxisAlignedBB(0.3D, 0D, 0.3D, 0.7D, 0.8D, 0.7D), SoundType.PLANT));
+                0.5F, 0.5F, new AxisAlignedBB(0.3D, 0D, 0.3D, 0.7D, 0.8D, 0.7D), SoundType.PLANT));
 
         compressedCoalBlock = registerBlock(
-                new BaseBlock(Material.ROCK, "compressed_coal_block", "compressed_coal_block", 6F, 6F, SoundType.STONE));
+                new BaseBlock(Material.ROCK, "compressed_coal_block", 6F, 6F, SoundType.STONE));
 
         sandyNetherrack = registerBlock(
-                new BaseBlock(Material.ROCK, "sandy_netherrack", "sandy_netherrack", 2F, 2F, SoundType.STONE));
+                new BaseBlock(Material.ROCK, "sandy_netherrack", 2F, 2F, SoundType.STONE));
 
         coalInfusedBlock = registerBlock(
-                new BaseBlock(Material.ROCK, "coal_infused_block", "coal_infused_block", 6F, 6F, SoundType.STONE));
+                new BaseBlock(Material.ROCK, "coal_infused_block", 6F, 6F, SoundType.STONE));
         darkMatterBlock = registerBlock(
-                new BaseBlock(Material.ROCK, "dark_matter_block", "dark_matter_block", 10F, 12F, SoundType.STONE));
+                new BaseBlock(Material.ROCK, "dark_matter_block", 10F, 12F, SoundType.STONE));
 
-        blazePowderBlock = registerBlock(new BlazePowderBlock(Material.CLAY, "blaze_powder_block", "blaze_powder_block",
+        blazePowderBlock = registerBlock(new BlazePowderBlock(Material.CLAY, "blaze_powder_block",
                 0.5F, 0.5F, SoundType.GROUND));
-        heavySnow = registerBlock(new BaseBlock(Material.CLAY, "heavy_snow", "heavy_snow", 0.5F, 0.5F, SoundType.SNOW));
-        heavySnow2 = registerBlock(new BaseBlock(Material.CLAY, "heavy_snow2", "heavy_snow2", 1F, 1F, SoundType.SNOW));
+        heavySnow = registerBlock(new BaseBlock(Material.CLAY, "heavy_snow", 0.5F, 0.5F, SoundType.SNOW));
+        heavySnow2 = registerBlock(new BaseBlock(Material.CLAY, "heavy_snow2", 1F, 1F, SoundType.SNOW));
 
         registerItemBlock(
-                alchemicalCondenser = new CondenserBlock("alchemical_condenser", "alchemical_condenser", 2F, 12F));
+                alchemicalCondenser = new CondenserBlock("alchemical_condenser", 2F, 12F));
 
-        registerItemBlock(crystallizer = new CrystallizerBlock("crystallizer", "crystallizer", 6F, 12F));
+        registerItemBlock(crystallizer = new CrystallizerBlock("crystallizer", 6F, 12F));
 
-        poweredHeater = registerBlock(new BlockPoweredHeater("powered_heater", "powered_heater", 4F, 12F));
-        darkMatterWarper = registerBlock(new BlockDarkMatterWarper("dark_matter_warper", "dark_matter_warper", 8F, 12F));
-        endPortalCore = registerBlock(new BlockEndPortalCore("end_portal_core", "end_portal_core", 6F, 12F));
-        rockCrusher = registerBlock(new BlockRockCrusher("rock_crusher", "rock_crusher", 6F, 12F));
-        rockCleaner = registerBlock(new BlockRockCleaner("rock_cleaner", "rock_cleaner", 6F, 12F));
+        poweredHeater = registerBlock(new BlockPoweredHeater("powered_heater", 4F, 12F));
+        darkMatterWarper = registerBlock(new BlockDarkMatterWarper("dark_matter_warper", 8F, 12F));
+        endPortalCore = registerBlock(new BlockEndPortalCore("end_portal_core", 6F, 12F));
+        rockCrusher = registerBlock(new BlockRockCrusher("rock_crusher", 6F, 12F));
+        rockCleaner = registerBlock(new BlockRockCleaner("rock_cleaner", 6F, 12F));
         combustionCollector = registerBlock(
-                new BlockCombustionCollector("combustion_collector", "combustion_collector", 6F, 12F));
-        quickDropper = registerBlock(new BlockQuickDropper("quick_dropper", "quick_dropper", 6F, 12F));
-        lifeInfuser = registerBlock(new LifeInfuserBlock("life_infuser", "life_infuser", 6F, 12F));
-        lifeInjector = registerBlock(new LifeInjectorBlock("life_injector", "life_injector", 6F, 12F));
+                new BlockCombustionCollector("combustion_collector", 6F, 12F));
+        quickDropper = registerBlock(new BlockQuickDropper("quick_dropper", 6F, 12F));
+        lifeInfuser = registerBlock(new LifeInfuserBlock("life_infuser", 6F, 12F));
+        lifeInjector = registerBlock(new LifeInjectorBlock("life_injector", 6F, 12F));
 
-        miniFreezer = registerBlock(new BlockMiniFreezer("mini_freezer", "mini_freezer", 0.5F, 0.5F));
-        ironFreezer = registerBlock(new BlockFreezer("iron_freezer", "iron_freezer", 2F, 2F));
+        miniFreezer = registerBlock(new BlockMiniFreezer("mini_freezer", 0.5F, 0.5F));
+        ironFreezer = registerBlock(new BlockFreezer("iron_freezer", 2F, 2F));
 
-        crucible = registerBlock(new CrucibleBlock("crucible", "crucible", 2F, 12F));
+        crucible = registerBlock(new CrucibleBlock("crucible", 2F, 12F));
 
-        fluidDropper = registerBlock(new FluidDropperBlock("fluid_dropper", "fluid_dropper", 2F, 12F));
+        fluidDropper = registerBlock(new FluidDropperBlock("fluid_dropper", 2F, 12F));
 
-        crucibleInserter = registerBlock(new BlockCrucibleInserter("crucible_inserter", "crucible_inserter", 2F, 12F));
+        crucibleInserter = registerBlock(new BlockCrucibleInserter("crucible_inserter", 2F, 12F));
         aqueousConcentrator = registerBlock(
-                new BlockAqueousConcentrator("aqueous_concentrator", "aqueous_concentrator", 2F, 12F));
+                new BlockAqueousConcentrator("aqueous_concentrator", 2F, 12F));
         aqueousDeconcentrator = registerBlock(
-                new BlockAqueousDeconcentrator("aqueous_deconcentrator", "aqueous_deconcentrator", 2F, 12F));
+                new BlockAqueousDeconcentrator("aqueous_deconcentrator", 2F, 12F));
 
         registerItemBlock(
-                combustionHeater = new CombustionHeaterBlock("combustion_heater", "combustion_heater", 2F, 12F));
+                combustionHeater = new CombustionHeaterBlock("combustion_heater", 2F, 12F));
         dryCactus = registerBlock(new BlockDryCactus());
 
-        dirtFurnace = registerBlock(new BlockDirtFurnace("dirt_furnace", "dirt_furnace", 0.5F, 0.5F));
+        dirtFurnace = registerBlock(new BlockDirtFurnace("dirt_furnace", 0.5F, 0.5F));
 
         for (int i = 0; i < ModFluids.crystalFluidInfos().length; i++) {
             CrystalFluidType type = ModFluids.crystalFluidInfos()[i].type;
