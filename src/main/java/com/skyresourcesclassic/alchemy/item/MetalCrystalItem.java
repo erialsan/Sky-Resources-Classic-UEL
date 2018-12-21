@@ -14,43 +14,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 
 public class MetalCrystalItem extends Item {
-    private static ArrayList<String> names = new ArrayList<String>();
 
-    public MetalCrystalItem() {
+    public MetalCrystalItem(String material) {
         super();
 
-        setUnlocalizedName(References.ModID + ".metal_crystal.");
-        setRegistryName("metal_crystal");
+        setUnlocalizedName(References.ModID + "." + material + "_crystal");
+        setRegistryName(material + "_crystal");
         setHasSubtypes(true);
         this.setCreativeTab(ModCreativeTabs.tabAlchemy);
-
-        itemList();
-    }
-
-    private void itemList() {
-        for (int i = 0; i < ModFluids.crystalFluidInfos().length; i++) {
-            names.add(ModFluids.getFluidInfo(i).name);
-        }
-    }
-
-    @Override
-    public String getUnlocalizedName(ItemStack stack) {
-        return super.getUnlocalizedName(stack) + names.get(stack.getItemDamage());
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(CreativeTabs creativeTab, NonNullList<ItemStack> list) {
-        if (isInCreativeTab(creativeTab))
-            for (int i = 0; i < names.size(); i++)
-                list.add(new ItemStack(this, 1, i));
-    }
-
-    public static ItemStack getStack(String name) {
-        return new ItemStack(ModItems.metalCrystal, 1, names.indexOf(name));
-    }
-
-    public static ArrayList<String> getNames() {
-        return names;
     }
 }

@@ -2,16 +2,10 @@ package com.skyresourcesclassic.plugin.actuallyadditions;
 
 import com.skyresourcesclassic.base.guide.SkyResourcesGuide;
 import com.skyresourcesclassic.plugin.IModPlugin;
-import com.skyresourcesclassic.recipe.ProcessRecipeManager;
-import com.skyresourcesclassic.registry.ModItems;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ActAddPlugin implements IModPlugin {
 
@@ -30,10 +24,6 @@ public class ActAddPlugin implements IModPlugin {
         MinecraftForge.addGrassSeed(new ItemStack(coffee), 10);
         MinecraftForge.addGrassSeed(new ItemStack(flax), 10);
         MinecraftForge.addGrassSeed(new ItemStack(rice), 10);
-
-
-        ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(misc, 6, 5), 500, new ArrayList<Object>(
-                Arrays.asList(new ItemStack(ModItems.metalCrystal, 1, 22), new ItemStack(Items.FLINT, 3))));
 
         SkyResourcesGuide.addPage("actadd", "guide.skyresourcesclassic.misc", new ItemStack(misc, 1, 5));
     }

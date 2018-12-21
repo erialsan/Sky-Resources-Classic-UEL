@@ -14,42 +14,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 
 public class DirtyGemItem extends Item {
-    private static ArrayList<String> names = new ArrayList<String>();
 
-    public DirtyGemItem() {
+    public DirtyGemItem(String gem) {
         super();
 
-        setUnlocalizedName(References.ModID + ".dirty_gem.");
-        setRegistryName("dirty_gem");
+        setUnlocalizedName(References.ModID + ".dirty_"  + gem);
+        setRegistryName("dirty_" + gem);
         setHasSubtypes(true);
         this.setCreativeTab(ModCreativeTabs.tabTech);
-
-        itemList();
-    }
-
-    private void itemList() {
-        for (GemRegisterInfo g : ModItems.gemList)
-            names.add(g.name);
-    }
-
-    @Override
-    public String getUnlocalizedName(ItemStack stack) {
-        return super.getUnlocalizedName(stack) + names.get(stack.getItemDamage());
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(CreativeTabs creativeTab, NonNullList<ItemStack> list) {
-        if (isInCreativeTab(creativeTab))
-            for (int i = 0; i < names.size(); i++)
-                list.add(new ItemStack(this, 1, i));
-    }
-
-    public static ItemStack getStack(String name) {
-        return new ItemStack(ModItems.dirtyGem, 1, names.indexOf(name));
-    }
-
-    public static ArrayList<String> getNames() {
-        return names;
     }
 }

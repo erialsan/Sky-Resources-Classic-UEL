@@ -3,8 +3,6 @@ package com.skyresourcesclassic.registry;
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.alchemy.block.CondenserBlock.CondenserVariants;
 import com.skyresourcesclassic.alchemy.block.CrystallizerBlock.CrystallizerVariants;
-import com.skyresourcesclassic.alchemy.item.DirtyGemItem;
-import com.skyresourcesclassic.alchemy.item.MetalCrystalItem;
 import com.skyresourcesclassic.alchemy.render.CrucibleTESR;
 import com.skyresourcesclassic.alchemy.tile.CrucibleTile;
 import com.skyresourcesclassic.base.entity.EntityHeavyExplosiveSnowball;
@@ -42,12 +40,12 @@ public class ModRenderers {
             mapFluidState(ModFluids.crystalFluids.get(i));
         }
 
-        for (int i = 0; i < MetalCrystalItem.getNames().size(); i++) {
-            registerItemRenderer(ModItems.metalCrystal, i, true);
+        for (int i = 0; i < ModItems.metalCrystal.length; i++) {
+            registerItemRenderer(ModItems.metalCrystal[i], new ResourceLocation("skyresourcesclassic:metal_crystal"));
         }
 
-        for (int i = 0; i < DirtyGemItem.getNames().size(); i++) {
-            registerItemRenderer(ModItems.dirtyGem, i, true);
+        for (int i = 0; i < ModItems.dirtyGem.length; i++) {
+            registerItemRenderer(ModItems.dirtyGem[i], new ResourceLocation("skyresourcesclassic:dirty_gem"));
         }
 
         for (int i = 0; i < ModItems.itemComponent.length; i++) {
@@ -150,29 +148,39 @@ public class ModRenderers {
     }
 
     public static void init() {
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
+        for (int i = 0; i < ModItems.metalCrystal.length; i++)
+            Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
 
-            @Override
-            public int colorMultiplier(ItemStack stack, int tintIndex) {
-                if (stack.getMetadata() < 0 || stack.getMetadata() >= MetalCrystalItem.getNames().size())
-                    return -1;
+                @Override
+                public int colorMultiplier(ItemStack stack, int tintIndex) {
+                    if (stack.getMetadata() != 0)
+                        return -1;
+                    int i;
+                    for (i = 0; i < ModItems.metalCrystal.length; i++)
+                        if (stack.getItem() == ModItems.metalCrystal[i]) {
+                            break;
+                        }
+                    return ModFluids.getFluidInfo(i).color;
+                }
 
-                return ModFluids.getFluidInfo(stack.getMetadata()).color;
-            }
+            }, ModItems.metalCrystal[i]);
 
-        }, ModItems.metalCrystal);
+        for (int i = 0; i < ModItems.dirtyGem.length; i++)
+            Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
 
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
+                @Override
+                public int colorMultiplier(ItemStack stack, int tintIndex) {
+                    if (stack.getMetadata() != 0)
+                        return -1;
+                    int i;
+                    for (i = 0; i < ModItems.dirtyGem.length; i++)
+                        if (stack.getItem() == ModItems.dirtyGem[i]) {
+                            break;
+                        }
+                    return ModItems.gemList.get(i).color;
+                }
 
-            @Override
-            public int colorMultiplier(ItemStack stack, int tintIndex) {
-                if (stack.getMetadata() < 0 || stack.getMetadata() >= ModItems.gemList.size())
-                    return -1;
-
-                return ModItems.gemList.get(stack.getMetadata()).color;
-            }
-
-        }, ModItems.dirtyGem);
+            }, ModItems.dirtyGem[i]);
 
         ClientRegistry.bindTileEntitySpecialRenderer(CrucibleTile.class, new CrucibleTESR());
     }

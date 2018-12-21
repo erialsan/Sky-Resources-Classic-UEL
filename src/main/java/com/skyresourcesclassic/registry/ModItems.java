@@ -21,7 +21,7 @@ import net.minecraftforge.registries.GameData;
 import java.util.ArrayList;
 
 public class ModItems {
-    public static Item metalCrystal;
+    public static Item metalCrystal[] = new Item[ModFluids.crystalFluidInfos().length];
     public static Item healthGem;
 
     public static Item cactusFruit;
@@ -32,7 +32,7 @@ public class ModItems {
     public static Item heavySnowball;
     public static Item heavyExpSnowball;
 
-    public static Item dirtyGem;
+    public static Item dirtyGem[] = new Item[44];
 
     public static Item cactusKnife;
     public static Item stoneKnife;
@@ -70,7 +70,7 @@ public class ModItems {
             "netherrack_crushed"
     };
 
-    public static Item[] itemComponent = new Item[18];
+    public static Item[] itemComponent = new Item[ItemComponentName.length];
 
     public static ArrayList<GemRegisterInfo> gemList = new ArrayList<GemRegisterInfo>();
 
@@ -127,8 +127,12 @@ public class ModItems {
                 itemComponent[i] = registerItem(new ItemComponent(ItemComponentName[i], ModCreativeTabs.tabMain));
             else
                 itemComponent[i] = registerItem(new ItemComponent(ItemComponentName[i], ModCreativeTabs.tabTech));
-        metalCrystal = registerItem(new MetalCrystalItem());
-        dirtyGem = registerItem(new DirtyGemItem());
+
+        for (int i = 0; i < ModFluids.crystalFluidInfos().length; i++) {
+            metalCrystal[i] = registerItem(new MetalCrystalItem(ModFluids.getFluidInfo(i).name));
+        }
+        for (int i = 0; i < gemList.size(); i++)
+            dirtyGem[i] = registerItem(new DirtyGemItem(gemList.get(i).name));
         healthGem = registerItem(new ItemHealthGem());
         waterExtractor = registerItem(new ItemWaterExtractor());
         heavySnowball = registerItem(new ItemHeavySnowball("heavy_snowball"));

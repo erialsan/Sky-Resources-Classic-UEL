@@ -23,7 +23,7 @@ public class ArmorPlusPlugin implements IModPlugin {
         Item crystal = Item.REGISTRY.getObject(new ResourceLocation("armorplus", "lava_crystal"));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(crystal), 1200,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal, 16, 0),
+                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0], 16),
                         new ItemStack(Blocks.OBSIDIAN), new ItemStack(Items.LAVA_BUCKET))));
 
         SkyResourcesGuide.addPage("armorplus", "guide.skyresourcesclassic.misc", new ItemStack(crystal));

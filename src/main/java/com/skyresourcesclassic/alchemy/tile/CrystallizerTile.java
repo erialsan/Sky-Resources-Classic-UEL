@@ -60,8 +60,8 @@ public class CrystallizerTile extends TileBase implements ITickable {
                                 .indexOf(crystalBlock)].rarity * 5) >= 40 + 15 * getCrystallizeEfficiencyFromTier())
                             world.setBlockToAir(pos.up());
 
-                        ItemStack stack = new ItemStack(ModItems.metalCrystal, 1, ModFluids
-                                .crystalFluidInfos()[ModBlocks.crystalFluidBlocks.indexOf(crystalBlock)].crystalIndex);
+                        ItemStack stack = new ItemStack(ModItems.metalCrystal[ModFluids
+                                .crystalFluidInfos()[ModBlocks.crystalFluidBlocks.indexOf(crystalBlock)].crystalIndex]);
                         ejectResultSlot(stack);
                         success = true;
                         timeCondense = 0;

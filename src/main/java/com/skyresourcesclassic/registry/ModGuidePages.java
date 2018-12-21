@@ -41,7 +41,7 @@ public class ModGuidePages {
 
         SkyResourcesGuide.addPage("rockGrinder", "guide.skyresourcesclassic.stage2", new ItemStack(ModItems.stoneGrinder));
 
-        SkyResourcesGuide.addPage("metalCreation", "guide.skyresourcesclassic.stage2", new ItemStack(ModItems.metalCrystal));
+        SkyResourcesGuide.addPage("metalCreation", "guide.skyresourcesclassic.stage2", new ItemStack(ModItems.metalCrystal[0]));
 
         SkyResourcesGuide.addPage("crucible", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.crucible));
 
