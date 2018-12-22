@@ -4,7 +4,7 @@ import com.skyresourcesclassic.base.tile.TileGenericPower;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import com.skyresourcesclassic.technology.block.CombustionHeaterBlock;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -12,6 +12,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
@@ -72,33 +73,20 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
     }
 
     public boolean hasValidMultiblock() {
-        if (!isBlockValid(pos.add(-1, 1, 0)) || !isBlockValid(pos.add(1, 1, 0)) || !isBlockValid(pos.add(0, 2, 0))
-                || !isBlockValid(pos.add(0, 1, -1)) || !isBlockValid(pos.add(0, 1, 1))
-                || !world.isAirBlock(pos.add(0, 1, 0)))
+        if (!isBlockValid(pos.up(), pos.add(-1, 1, 0))
+                || !isBlockValid(pos.up(), pos.add(1, 1, 0))
+                || !isBlockValid(pos.up(), pos.add(0, 2, 0))
+                || !isBlockValid(pos.up(), pos.add(0, 1, -1))
+                || !isBlockValid(pos.up(), pos.add(0, 1, 1))
+                || !world.isAirBlock(pos.up()))
             return false;
         return true;
     }
 
-    private List<Material> ValidMaterialsForCrafting() {
-        if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
-            return null;
-        List<Material> mats = new ArrayList<>();
-        switch (tier) {
-            case 3: // STEEL
-                mats.add(Material.ROCK);
-                mats.add(Material.IRON);
-                break;
-            case 4: // DARKMATTER
-                mats.add(Material.ROCK);
-                mats.add(Material.IRON);
-                break;
-        }
-        return mats;
-    }
-
-    private boolean isBlockValid(BlockPos pos) {
-        return ValidMaterialsForCrafting().contains(world.getBlockState(pos).getMaterial())
-                && world.isBlockFullCube(pos) && world.getBlockState(pos).isOpaqueCube();
+    private boolean isBlockValid(BlockPos center, BlockPos pos) {
+        BlockPos dir = center.subtract(pos);
+        return world.getBlockState(pos).getBlockFaceShape(world, pos,
+                EnumFacing.getFacingFromVector(dir.getX(), dir.getY(), dir.getZ())) == BlockFaceShape.SOLID;
     }
 
     private void craftItem() {

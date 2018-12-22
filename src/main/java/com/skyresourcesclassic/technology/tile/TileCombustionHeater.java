@@ -5,15 +5,15 @@ import com.skyresourcesclassic.base.tile.TileItemInventory;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import com.skyresourcesclassic.technology.block.CombustionHeaterBlock;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
@@ -34,22 +34,6 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
     private int heatPerTick;
     public int currentItemBurnTime;
     private int tier;
-
-    private List<Material> ValidMaterialsForCrafting() {
-        if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
-            return null;
-        List<Material> mats = new ArrayList<>();
-        switch (tier) {
-            case 1: // WOOD
-                mats.add(Material.WOOD);
-                break;
-            case 2: // IRON
-                mats.add(Material.IRON);
-                mats.add(Material.ROCK);
-                break;
-        }
-        return mats;
-    }
 
     public int getMaxHeat() {
         if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
@@ -176,16 +160,20 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
     }
 
     public boolean hasValidMultiblock() {
-        if (!isBlockValid(pos.add(-1, 1, 0)) || !isBlockValid(pos.add(1, 1, 0)) || !isBlockValid(pos.add(0, 2, 0))
-                || !isBlockValid(pos.add(0, 1, -1)) || !isBlockValid(pos.add(0, 1, 1))
-                || !world.isAirBlock(pos.add(0, 1, 0)))
+        if (!isBlockValid(pos.up(), pos.add(-1, 1, 0))
+                || !isBlockValid(pos.up(), pos.add(1, 1, 0))
+                || !isBlockValid(pos.up(), pos.add(0, 2, 0))
+                || !isBlockValid(pos.up(), pos.add(0, 1, -1))
+                || !isBlockValid(pos.up(), pos.add(0, 1, 1))
+                || !world.isAirBlock(pos.up()))
             return false;
         return true;
     }
 
-    private boolean isBlockValid(BlockPos pos) {
-        return ValidMaterialsForCrafting().contains(world.getBlockState(pos).getMaterial())
-                && world.isBlockFullCube(pos) && world.getBlockState(pos).isOpaqueCube();
+    private boolean isBlockValid(BlockPos center, BlockPos pos) {
+        BlockPos dir = center.subtract(pos);
+        return world.getBlockState(pos).getBlockFaceShape(world, pos,
+                EnumFacing.getFacingFromVector(dir.getX(), dir.getY(), dir.getZ())) == BlockFaceShape.SOLID;
     }
 
     private void craftItem() {
@@ -193,7 +181,7 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
         if (recipe != null) {
             this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, pos.getX(), pos.getY() + 1.5D, pos.getZ(),
                     0.0D, 0.0D, 0.0D, new int[0]);
-            this.world.playSound((EntityPlayer) null, pos.getX(), pos.getY() + 1.5D, pos.getZ(),
+            this.world.playSound(null, pos.getX(), pos.getY() + 1.5D, pos.getZ(),
                     SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F,
                     (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F);
 

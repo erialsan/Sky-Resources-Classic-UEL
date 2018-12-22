@@ -22,28 +22,19 @@ public class ModItems {
     public static Item metalCrystal[] = new Item[ModFluids.crystalFluidInfos().length];
     public static Item healthGem;
 
-    public static Item cactusFruit;
-    public static Item fleshySnowNugget;
+    public static Item cactusFruit, fleshySnowNugget;
 
     public static Item waterExtractor;
 
-    public static Item heavySnowball;
-    public static Item heavyExpSnowball;
+    public static Item heavySnowball, heavyExpSnowball;
 
     public static Item dirtyGem[] = new Item[44];
 
-    public static Item cactusKnife;
-    public static Item stoneKnife;
-    public static Item ironKnife;
-    public static Item diamondKnife;
+    public static Item cactusKnife, stoneKnife, ironKnife, diamondKnife;
 
-    public static Item stoneGrinder;
-    public static Item ironGrinder;
-    public static Item diamondGrinder;
+    public static Item stoneGrinder, ironGrinder, diamondGrinder;
 
-    public static Item sandstoneInfusionStone;
-    public static Item redSandstoneInfusionStone;
-    public static Item alchemicalInfusionStone;
+    public static Item sandstoneInfusionStone, redSandstoneInfusionStone, alchemicalInfusionStone;
 
     public static Item survivalistFishingRod;
 
