@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:crucible"
+  },
+  "pattern": [
+    "X X",
+    "X X",
+    "XXX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:brick"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:sandstone_infusion_stone"
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "skyresourcesclassic:cactus_needle"
+    },
+    "Y": {
+      "item": "minecraft:sandstone",
+      "data": 32767
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:wooden_combustion_heater"
+  },
+  "pattern": [
+    "XYX",
+    "X X",
+    "XXX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "logWood"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:wood_heat_component"
+    }
+  }
+}

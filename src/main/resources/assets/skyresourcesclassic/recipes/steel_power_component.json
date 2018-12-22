@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:steel_power_component"
+  },
+  "pattern": [
+    "XZX",
+    "XYX",
+    "XZX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "Y": {
+      "item": "minecraft:redstone_block"
+    },
+    "Z": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    }
+  }
+}

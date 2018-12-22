@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:plant_matter",
+    "count": 3
+  },
+  "pattern": [
+    " X ",
+    "XXX",
+    " X "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "treeSapling"
+    }
+  }
+}

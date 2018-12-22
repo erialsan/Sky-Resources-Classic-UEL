@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:rock_cleaner"
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XZX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "Y": {
+      "item": "minecraft:cauldron"
+    },
+    "Z": {
+      "item": "skyresourcesclassic:steel_power_component"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:stone_condenser"
+  },
+  "pattern": [
+    "XXX",
+    "X X",
+    "XYX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "cobblestone"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:wood_heat_component"
+    }
+  }
+}

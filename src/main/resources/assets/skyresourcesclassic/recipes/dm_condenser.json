@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:dm_condenser"
+  },
+  "pattern": [
+    "XXX",
+    "X X",
+    "XYX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "skyresourcesclassic:dark_matter"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:frozen_iron_cooling_component"
+    }
+  }
+}

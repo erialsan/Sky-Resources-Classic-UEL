@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:life_infuser"
+  },
+  "pattern": [
+    "XXX",
+    " X ",
+    " Y "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "logWood"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:item_health_gem",
+      "data": 0
+    }
+  }
+}

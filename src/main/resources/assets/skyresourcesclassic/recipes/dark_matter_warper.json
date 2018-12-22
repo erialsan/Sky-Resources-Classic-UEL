@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:dark_matter_warper"
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:obsidian"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:dark_matter"
+    }
+  }
+}

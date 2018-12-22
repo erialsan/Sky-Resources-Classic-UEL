@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:frozen_iron_cooling_component"
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotFrozenIron"
+    },
+    "Y": {
+      "item": "minecraft:glowstone_dust"
+    }
+  }
+}

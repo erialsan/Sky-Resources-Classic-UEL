@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:heavy_explosive_snowball",
+    "count": 3
+  },
+  "ingredients": [
+    {
+      "item": "skyresourcesclassic:heavy_snowball"
+    },
+    {
+      "item": "skyresourcesclassic:heavy_snowball"
+    },
+    {
+      "item": "skyresourcesclassic:heavy_snowball"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

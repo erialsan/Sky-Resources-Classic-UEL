@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:dark_matter_block"
+  },
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "skyresourcesclassic:dark_matter"
+    }
+  }
+}

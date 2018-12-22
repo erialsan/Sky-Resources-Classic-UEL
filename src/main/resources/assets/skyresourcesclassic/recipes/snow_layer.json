@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "minecraft:snow_layer",
+    "count": 3
+  },
+  "pattern": [
+    "XX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:snowball"
+    }
+  }
+}

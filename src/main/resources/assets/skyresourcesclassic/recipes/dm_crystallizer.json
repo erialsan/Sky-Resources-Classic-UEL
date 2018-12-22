@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:dm_crystallizer"
+  },
+  "pattern": [
+    "XYX",
+    "X X",
+    "X X"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "skyresourcesclassic:dark_matter"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:frozen_iron_cooling_component"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:sandy_netherrack",
+    "count": 4
+  },
+  "pattern": [
+    "XY",
+    "ZX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:sand",
+      "data": 0
+    },
+    "Y": {
+      "item": "minecraft:nether_wart"
+    },
+    "Z": {
+      "item": "minecraft:netherrack"
+    }
+  }
+}

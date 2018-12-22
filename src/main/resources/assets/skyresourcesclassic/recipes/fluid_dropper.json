@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:fluid_dropper"
+  },
+  "pattern": [
+    "XXX",
+    "X X",
+    "X X"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "cobblestone"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:rock_crusher"
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XZX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:diamond_grinder"
+    },
+    "Z": {
+      "item": "skyresourcesclassic:steel_power_component"
+    }
+  }
+}

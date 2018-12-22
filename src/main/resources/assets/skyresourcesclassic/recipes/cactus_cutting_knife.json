@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:cactus_cutting_knife"
+  },
+  "pattern": [
+    " #",
+    "# "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "skyresourcesclassic:cactus_needle"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:alchemical_infusion_stone"
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "skyresourcesclassic:gold_needle_alchemical"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:gold_ingot_alchemical"
+    }
+  }
+}

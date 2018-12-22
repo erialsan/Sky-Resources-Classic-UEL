@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:cactus_fruit_needle"
+  },
+  "pattern": [
+    "X",
+    "Y"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "skyresourcesclassic:cactus_fruit"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:cactus_needle"
+    }
+  }
+}

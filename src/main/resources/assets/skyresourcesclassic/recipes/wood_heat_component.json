@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:wood_heat_component"
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XXX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "Y": {
+      "item": "minecraft:gunpowder"
+    }
+  }
+}

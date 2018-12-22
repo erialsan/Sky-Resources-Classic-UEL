@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:survivalist_fishing_rod"
+  },
+  "pattern": [
+    " X",
+    "XY"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:stick"
+    },
+    "Y": {
+      "item": "minecraft:string"
+    }
+  }
+}

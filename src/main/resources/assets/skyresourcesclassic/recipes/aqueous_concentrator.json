@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:aqueous_concentrator"
+  },
+  "pattern": [
+    "XAX",
+    "XZX",
+    "XYX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:snow"
+    },
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:steel_power_component"
+    },
+    "Z": {
+      "item": "skyresourcesclassic:water_extractor"
+    }
+  }
+}

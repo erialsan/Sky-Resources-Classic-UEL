@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:water_extractor"
+  },
+  "pattern": [
+    "XXX",
+    " XX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    }
+  }
+}

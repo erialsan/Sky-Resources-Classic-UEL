@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:life_injector"
+  },
+  "pattern": [
+    " Y ",
+    " X ",
+    "XXX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "logWood"
+    },
+    "Y": {
+      "item": "minecraft:diamond_sword"
+    }
+  }
+}

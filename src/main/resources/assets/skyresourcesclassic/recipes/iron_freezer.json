@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:iron_freezer"
+  },
+  "pattern": [
+    "XXX",
+    "XZX",
+    "XXX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotFrozenIron"
+    },
+    "Z": {
+      "item": "skyresourcesclassic:mini_freezer"
+    }
+  }
+}

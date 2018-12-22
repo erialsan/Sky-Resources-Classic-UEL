@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:dm_combustion_heater"
+  },
+  "pattern": [
+    "XYX",
+    "X X",
+    "XZX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "skyresourcesclassic:dark_matter"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:iron_heat_component"
+    },
+    "Z": {
+      "item": "skyresourcesclassic:steel_power_component"
+    }
+  }
+}

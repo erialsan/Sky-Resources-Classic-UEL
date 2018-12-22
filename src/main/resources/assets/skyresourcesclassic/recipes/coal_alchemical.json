@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:coal_alchemical"
+  },
+  "pattern": [
+    "X"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "skyresourcesclassic:coal_infused_block"
+    }
+  }
+}

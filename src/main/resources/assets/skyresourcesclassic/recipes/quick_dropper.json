@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:quick_dropper"
+  },
+  "pattern": [
+    "XXX",
+    "XZX",
+    "XYX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "Y": {
+      "item": "minecraft:dropper"
+    },
+    "Z": {
+      "item": "minecraft:glowstone"
+    }
+  }
+}

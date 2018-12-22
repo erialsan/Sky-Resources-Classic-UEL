@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:steel_crystallizer"
+  },
+  "pattern": [
+    "XYX",
+    "XZX",
+    "X X"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:frozen_iron_cooling_component"
+    },
+    "Z": {
+      "item": "skyresourcesclassic:iron_heat_component"
+    }
+  }
+}

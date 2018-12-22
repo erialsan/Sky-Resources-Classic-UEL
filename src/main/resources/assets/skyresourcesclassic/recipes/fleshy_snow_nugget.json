@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:fleshy_snow_nugget",
+    "count": 3
+  },
+  "pattern": [
+    "XX",
+    "XY"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:snowball"
+    },
+    "Y": {
+      "item": "minecraft:rotten_flesh"
+    }
+  }
+}

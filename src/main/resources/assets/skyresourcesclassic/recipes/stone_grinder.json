@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:stone_grinder"
+  },
+  "pattern": [
+    "#  ",
+    " # ",
+    "  X"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:cobblestone"
+    },
+    "X": {
+      "item": "minecraft:stick"
+    }
+  }
+}

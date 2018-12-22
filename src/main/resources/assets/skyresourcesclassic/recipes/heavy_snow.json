@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:heavy_snow"
+  },
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "skyresourcesclassic:heavy_snowball"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:iron_cutting_knife"
+  },
+  "pattern": [
+    "#  ",
+    "#X ",
+    " #X"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "X": {
+      "item": "minecraft:stick"
+    }
+  }
+}

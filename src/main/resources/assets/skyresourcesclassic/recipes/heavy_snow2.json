@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:heavy_snow2"
+  },
+  "ingredients": [
+    {
+      "item": "skyresourcesclassic:heavy_snow"
+    },
+    {
+      "item": "skyresourcesclassic:heavy_snow"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

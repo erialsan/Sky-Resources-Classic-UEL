@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:powered_heater"
+  },
+  "pattern": [
+    "XZX",
+    "XYX",
+    "XXX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "Y": {
+      "item": "skyresourcesclassic:steel_power_component"
+    },
+    "Z": {
+      "item": "skyresourcesclassic:iron_heat_component"
+    }
+  }
+}

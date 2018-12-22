@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:diamond_grinder"
+  },
+  "pattern": [
+    "#  ",
+    " # ",
+    "  X"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "X": {
+      "item": "minecraft:stick"
+    }
+  }
+}

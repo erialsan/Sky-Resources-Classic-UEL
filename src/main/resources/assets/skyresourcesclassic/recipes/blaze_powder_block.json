@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:blaze_powder_block"
+  },
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:blaze_powder"
+    }
+  }
+}
