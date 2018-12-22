@@ -5,9 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.item.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GuideLinkPageButton extends GuidePageButton {
 
     public GuideLinkPageButton(String linkId, String display, ItemStack stack) {
@@ -43,12 +40,5 @@ public class GuideLinkPageButton extends GuidePageButton {
     @Override
     public GuidePageButton clone() {
         return new GuideLinkPageButton(this.id, this.display, this.stackDisplay);
-    }
-
-    @Override
-    public List<String> getHoverDisplay() {
-        List<String> list = new ArrayList<String>();
-        list.add("Click to go to page");
-        return list;
     }
 }

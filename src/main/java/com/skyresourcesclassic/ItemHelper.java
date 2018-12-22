@@ -2,10 +2,7 @@ package com.skyresourcesclassic;
 
 import com.skyresourcesclassic.alchemy.item.ItemInfusionStone;
 import com.skyresourcesclassic.technology.item.ItemRockGrinder;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -13,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemHelper {
-    private static List<ItemStack> infusionStones = new ArrayList<ItemStack>();
+    private static List<ItemStack> infusionStones = new ArrayList<>();
 
     public static List<ItemStack> getInfusionStones() {
         return infusionStones;
@@ -23,7 +20,7 @@ public class ItemHelper {
         infusionStones.add(new ItemStack(item));
     }
 
-    private static List<ItemStack> rockGrinders = new ArrayList<ItemStack>();
+    private static List<ItemStack> rockGrinders = new ArrayList<>();
 
     public static List<ItemStack> getRockGrinders() {
         return rockGrinders;
@@ -33,17 +30,7 @@ public class ItemHelper {
         rockGrinders.add(new ItemStack(item));
     }
 
-    public static IBlockState getBlockStateFromStack(ItemStack stack) {
-        int meta = stack.getMetadata();
-        if (!(stack.getItem() instanceof ItemBlock))
-            return null;
-
-        Block block = ((ItemBlock) stack.getItem()).getBlock();
-
-        return block.getStateFromMeta(meta);
-    }
-
-    private static List<ItemStack> knives = new ArrayList<ItemStack>();
+    private static List<ItemStack> knives = new ArrayList<>();
 
     public static List<ItemStack> getKnives() {
         return knives;

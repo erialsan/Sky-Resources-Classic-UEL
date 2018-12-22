@@ -37,7 +37,7 @@ public class FreezerTile extends MiniFreezerTile implements ITickable {
         return false;
     }
 
-    boolean validMulti2x1() {
+    private boolean validMulti2x1() {
         IBlockState state = this.world.getBlockState(pos);
         IBlockState stateUp = this.world.getBlockState(pos.up());
 

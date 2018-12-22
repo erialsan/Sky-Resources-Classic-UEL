@@ -1,9 +1,10 @@
 package com.skyresourcesclassic.alchemy.item;
 
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.alchemy.effects.IHealthBoostItem;
-import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.registry.ModCreativeTabs;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,6 +17,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemHealthGem extends Item implements IHealthBoostItem {
@@ -75,24 +77,24 @@ public class ItemHealthGem extends Item implements IHealthBoostItem {
         return slotChanged;
     }
 
-    public void addInformation(ItemStack itemStack, EntityPlayer player,
-                               List list, boolean par4) {
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 
-        if (player != null && Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-            list.add(TextFormatting.GREEN + "Shift-right click to inject health.");
-            if (itemStack.getTagCompound() != null) {
-                list.add(TextFormatting.RED + "Health Injected: "
-                        + itemStack.getTagCompound().getInteger("health"));
+        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+            tooltip.add(TextFormatting.GREEN + "Shift-right click to inject health.");
+            if (stack.getTagCompound() != null) {
+                tooltip.add(TextFormatting.RED + "Health Injected: "
+                        + stack.getTagCompound().getInteger("health"));
             } else
-                list.add("Health Injected: " + 0);
+                tooltip.add("Health Injected: " + 0);
 
-            list.add(TextFormatting.DARK_RED + "Health Gained: "
-                    + getHealthBoost(itemStack));
+            tooltip.add(TextFormatting.DARK_RED + "Health Gained: "
+                    + getHealthBoost(stack));
         } else
-            list.add(TextFormatting.GREEN + "Hold LSHIFT for info.");
+            tooltip.add(TextFormatting.GREEN + "Hold LSHIFT for info.");
     }
 
-    public NBTTagCompound getCompound(ItemStack stack) {
+    private NBTTagCompound getCompound(ItemStack stack) {
         NBTTagCompound com = stack.getTagCompound();
         if (com == null)
             onCreated(stack, null, null);

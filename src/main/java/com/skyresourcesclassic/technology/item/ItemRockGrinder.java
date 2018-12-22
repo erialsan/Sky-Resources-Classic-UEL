@@ -27,7 +27,7 @@ import java.util.Collections;
 public class ItemRockGrinder extends ItemPickaxe {
     private float damageVsEntity;
 
-    ToolMaterial toolMaterial;
+    private ToolMaterial toolMaterial;
 
     public ItemRockGrinder(ToolMaterial material, String name) {
         super(material);

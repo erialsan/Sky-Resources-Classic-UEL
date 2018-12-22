@@ -23,6 +23,7 @@ import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.gui.Focus;
 import mezz.jei.plugins.jei.JEIInternalPlugin;
+import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -60,27 +61,16 @@ public class JEIPlugin implements IModPlugin {
         if (ProcessRecipeManager.cauldronCleanRecipes.getRecipes().size() > 0)
             registry.addRecipes(ProcessRecipeManager.cauldronCleanRecipes.getRecipes());
         registry.addRecipes(CondenserRecipeMaker.getRecipes());
-
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.combustionHeater, 1, 0),
-                References.ModID + ":combustion");
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.combustionHeater, 1, 1),
-                References.ModID + ":combustion");
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.combustionHeater, 1, 2),
-                References.ModID + ":combustion");
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.combustionHeater, 1, 3),
-                References.ModID + ":combustion");
+        for (Block block : ModBlocks.combustionHeater)
+            registry.addRecipeCategoryCraftingItem(new ItemStack(block),
+                    References.ModID + ":combustion");
         registry.addRecipeCategoryCraftingItem(new ItemStack(Items.CAULDRON, 1, 0),
                 References.ModID + ":cauldronclean");
         registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.rockCleaner),
                 References.ModID + ":cauldronclean");
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.alchemicalCondenser, 1, 0),
-                References.ModID + ":condenser");
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.alchemicalCondenser, 1, 1),
-                References.ModID + ":condenser");
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.alchemicalCondenser, 1, 2),
-                References.ModID + ":condenser");
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.alchemicalCondenser, 1, 3),
-                References.ModID + ":condenser");
+        for (Block block : ModBlocks.alchemicalCondenser)
+            registry.addRecipeCategoryCraftingItem(new ItemStack(block),
+                    References.ModID + ":condenser");
         registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.crucible, 1, 0), References.ModID + ":crucible");
         registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.miniFreezer, 1, 0),
                 References.ModID + ":freezer");

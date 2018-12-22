@@ -4,7 +4,11 @@ import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.alchemy.block.*;
 import com.skyresourcesclassic.alchemy.fluid.FluidCrystalBlock;
 import com.skyresourcesclassic.alchemy.fluid.FluidRegisterInfo.CrystalFluidType;
-import com.skyresourcesclassic.base.block.*;
+import com.skyresourcesclassic.base.block.BaseBlock;
+import com.skyresourcesclassic.base.block.BlazePowderBlock;
+import com.skyresourcesclassic.base.block.BlockDryCactus;
+import com.skyresourcesclassic.base.block.TransparentBlock;
+import com.skyresourcesclassic.base.tile.MachineTierInfo;
 import com.skyresourcesclassic.technology.block.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -20,11 +24,11 @@ import java.util.List;
 public class ModBlocks {
     public static Block cactusFruitNeedle;
 
-    public static Block combustionHeater;
+    public static Block combustionHeater[] = new Block[4];
     public static Block crucible;
     public static Block fluidDropper;
-    public static Block alchemicalCondenser;
-    public static Block crystallizer;
+    public static Block alchemicalCondenser[] = new Block[4];
+    public static Block crystallizer[] = new Block[4];
     public static Block miniFreezer;
     public static Block ironFreezer;
     public static Block poweredHeater;
@@ -54,8 +58,15 @@ public class ModBlocks {
 
     public static List<Block> crystalFluidBlocks;
 
+    private static ArrayList<MachineTierInfo> tiers = new ArrayList<>();
+
     public static void init() {
-        crystalFluidBlocks = new ArrayList<Block>();
+        tiers.add(new MachineTierInfo("stone", 1.5F, 10F, 1));
+        tiers.add(new MachineTierInfo("iron", 5F, 10F, 2));
+        tiers.add(new MachineTierInfo("steel", 6F, 11F, 3));
+        tiers.add(new MachineTierInfo("dm", 10F, 12F, 4));
+
+        crystalFluidBlocks = new ArrayList<>();
         cactusFruitNeedle = registerBlock(new TransparentBlock(Material.PLANTS, "cactus_fruit_needle",
                 0.5F, 0.5F, new AxisAlignedBB(0.3D, 0D, 0.3D, 0.7D, 0.8D, 0.7D), SoundType.PLANT));
 
@@ -75,11 +86,16 @@ public class ModBlocks {
         heavySnow = registerBlock(new BaseBlock(Material.CLAY, "heavy_snow", 0.5F, 0.5F, SoundType.SNOW));
         heavySnow2 = registerBlock(new BaseBlock(Material.CLAY, "heavy_snow2", 1F, 1F, SoundType.SNOW));
 
-        registerItemBlock(
-                alchemicalCondenser = new CondenserBlock("alchemical_condenser", 2F, 12F));
-
-        registerItemBlock(crystallizer = new CrystallizerBlock("crystallizer", 6F, 12F));
-
+        registerBlock(combustionHeater[0] = new CombustionHeaterBlock("wooden", 2.0F, 5.0F, 1));
+        for (MachineTierInfo tier : tiers) {
+            registerBlock(
+                    alchemicalCondenser[tier.id - 1] = new CondenserBlock(tier.name, tier.hardness, tier.resistance, tier.id));
+            registerBlock(
+                    crystallizer[tier.id - 1] = new CrystallizerBlock(tier.name, tier.hardness, tier.resistance, tier.id));
+            if (tier.id != 1)
+                registerBlock(
+                        combustionHeater[tier.id - 1] = new CombustionHeaterBlock(tier.name, tier.hardness, tier.resistance, tier.id));
+        }
         poweredHeater = registerBlock(new BlockPoweredHeater("powered_heater", 4F, 12F));
         darkMatterWarper = registerBlock(new BlockDarkMatterWarper("dark_matter_warper", 8F, 12F));
         endPortalCore = registerBlock(new BlockEndPortalCore("end_portal_core", 6F, 12F));
@@ -103,9 +119,6 @@ public class ModBlocks {
                 new BlockAqueousConcentrator("aqueous_concentrator", 2F, 12F));
         aqueousDeconcentrator = registerBlock(
                 new BlockAqueousDeconcentrator("aqueous_deconcentrator", 2F, 12F));
-
-        registerItemBlock(
-                combustionHeater = new CombustionHeaterBlock("combustion_heater", 2F, 12F));
         dryCactus = registerBlock(new BlockDryCactus());
 
         dirtFurnace = registerBlock(new BlockDirtFurnace("dirt_furnace", 0.5F, 0.5F));
@@ -134,7 +147,7 @@ public class ModBlocks {
         return block;
     }
 
-    public static Block registerBlockOnly(Block block) {
+    private static Block registerBlockOnly(Block block) {
         GameData.register_impl(block);
 
         return block;
@@ -145,11 +158,5 @@ public class ModBlocks {
         GameData.register_impl(new ItemBlock(block).setRegistryName(block.getRegistryName()));
 
         return block;
-    }
-
-    public static void registerItemBlock(Block block) {
-        GameData.register_impl(block);
-        GameData.register_impl(new ItemBlockMeta(block).setRegistryName(block.getRegistryName()));
-
     }
 }

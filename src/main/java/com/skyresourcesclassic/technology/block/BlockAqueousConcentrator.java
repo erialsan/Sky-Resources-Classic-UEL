@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 public class BlockAqueousConcentrator extends BlockContainer {
-    public static final PropertyDirection FACING = BlockHorizontal.FACING;
+    private static final PropertyDirection FACING = BlockHorizontal.FACING;
 
     public BlockAqueousConcentrator(String name, float hardness, float resistance) {
         super(Material.GROUND);

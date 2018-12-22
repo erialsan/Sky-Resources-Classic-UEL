@@ -58,7 +58,7 @@ public class TileAqueousConcentrator extends TileGenericPower implements ITickab
                     && this.getInventory().insertInternalItem(1, recipe.getOutputs().get(0).copy(), true).isEmpty()
                     && recipe != null) {
                 this.getInventory().insertInternalItem(1, recipe.getOutputs().get(0).copy(), false);
-                tank.drain((int) recipe.getFluidInputs().get(0).amount, true);
+                tank.drain(recipe.getFluidInputs().get(0).amount, true);
                 this.getInventory().getStackInSlot(0).shrink(1);
                 curProgress = 0;
             }
@@ -107,7 +107,7 @@ public class TileAqueousConcentrator extends TileGenericPower implements ITickab
         tank.readFromNBT(compound);
     }
 
-    FluidTank tank;
+    private FluidTank tank;
 
     @Override
     public IFluidTankProperties[] getTankProperties() {

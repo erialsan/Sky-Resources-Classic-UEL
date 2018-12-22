@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GuideImageButton extends GuidePageButton {
-    GuideImage image;
+    private GuideImage image;
 
     public GuideImageButton(String imgLink, String display, ItemStack stack) {
         super(display, stack);
@@ -42,12 +42,4 @@ public class GuideImageButton extends GuidePageButton {
         return new GuideImageButton(image.imgLocation.toString(), this.display,
                 this.stackDisplay);
     }
-
-    @Override
-    public List<String> getHoverDisplay() {
-        List<String> list = new ArrayList<String>();
-        list.add("Click to go to image");
-        return list;
-    }
-
 }

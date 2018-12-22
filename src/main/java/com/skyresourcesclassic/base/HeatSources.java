@@ -10,11 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class HeatSources {
-    static HashMap<IBlockState, Integer> validHeatSources;
+    private static HashMap<IBlockState, Integer> validHeatSources;
 
     public HeatSources() {
-        validHeatSources = new HashMap<IBlockState, Integer>();
-        ctAdded = new HashMap<IBlockState, Integer>();
+        validHeatSources = new HashMap<>();
+        ctAdded = new HashMap<>();
         ctRemoved = new ArrayList<>();
     }
 
@@ -26,7 +26,6 @@ public class HeatSources {
         if (!validHeatSources.containsKey(world.getBlockState(pos))) {
             for (IBlockState key : validHeatSources.keySet()) {
                 IBlockState block = key;
-                int val = (Integer) validHeatSources.get(key);
                 if (block.getBlock() == world.getBlockState(pos).getBlock())
                     return true;
             }
@@ -41,11 +40,10 @@ public class HeatSources {
         return false;
     }
 
-    public static boolean isValidHeatSource(IBlockState state) {
+    private static boolean isValidHeatSource(IBlockState state) {
         if (!validHeatSources.containsKey(state)) {
             for (IBlockState key : validHeatSources.keySet()) {
                 IBlockState block = key;
-                int val = (Integer) validHeatSources.get(key);
                 if (block.getBlock() == state.getBlock())
                     return true;
             }
@@ -66,7 +64,7 @@ public class HeatSources {
         else {
             for (IBlockState key : validHeatSources.keySet()) {
                 IBlockState block = key;
-                int val = (Integer) validHeatSources.get(key);
+                int val = validHeatSources.get(key);
                 if (block.getBlock() == state.getBlock())
                     return val;
             }
@@ -89,7 +87,7 @@ public class HeatSources {
         else {
             for (IBlockState key : validHeatSources.keySet()) {
                 IBlockState block = key;
-                int val = (Integer) validHeatSources.get(key);
+                int val = validHeatSources.get(key);
                 if (block.getBlock() == state.getBlock())
                     return val;
             }
@@ -117,7 +115,7 @@ public class HeatSources {
             addHeatSource(s, ctAdded.get(s));
     }
 
-    public static void removeHeatSource(IBlockState blockState) {
+    private static void removeHeatSource(IBlockState blockState) {
         validHeatSources.remove(blockState);
     }
 

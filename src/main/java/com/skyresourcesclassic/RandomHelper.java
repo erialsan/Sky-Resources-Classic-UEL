@@ -77,7 +77,7 @@ public class RandomHelper {
         post();
     }
 
-    public static void putTexturedQuad(BufferBuilder renderer,
+    private static void putTexturedQuad(BufferBuilder renderer,
                                        TextureAtlasSprite sprite, double x, double y, double z, double w,
                                        double h, double d, EnumFacing face, int color, int brightness,
                                        boolean flowing) {
@@ -94,7 +94,7 @@ public class RandomHelper {
     }
 
     // x and x+w has to be within [0,1], same for y/h and z/d
-    public static void putTexturedQuad(BufferBuilder renderer,
+    private static void putTexturedQuad(BufferBuilder renderer,
                                        TextureAtlasSprite sprite, double x, double y, double z, double w,
                                        double h, double d, EnumFacing face, int r, int g, int b, int a,
                                        int light1, int light2, boolean flowing) {
@@ -227,7 +227,7 @@ public class RandomHelper {
         }
     }
 
-    public static void pre(double x, double y, double z) {
+    private static void pre(double x, double y, double z) {
         GlStateManager.pushMatrix();
 
         GlStateManager.disableLighting();
@@ -244,13 +244,13 @@ public class RandomHelper {
         GlStateManager.translate(x, y, z);
     }
 
-    public static void post() {
+    private static void post() {
         GlStateManager.disableBlend();
         GlStateManager.enableLighting();
         GlStateManager.popMatrix();
     }
 
-    public static boolean canStacksMerge(ItemStack stack1, ItemStack stack2) {
+    private static boolean canStacksMerge(ItemStack stack1, ItemStack stack2) {
         if (stack1 == ItemStack.EMPTY || stack2 == ItemStack.EMPTY) {
             return false;
         }

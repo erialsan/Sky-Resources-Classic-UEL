@@ -18,7 +18,7 @@ public class MiniFreezerTile extends TileItemInventory implements ITickable {
         super("freezer", 6, noInsert, noExtract);
     }
 
-    float[] timeFreeze;
+    private float[] timeFreeze;
 
     public float getFreezerSpeed() {
         return 0.25f;
@@ -93,7 +93,7 @@ public class MiniFreezerTile extends TileItemInventory implements ITickable {
 
     }
 
-    int getGroupsFreezing(ProcessRecipe recipe, ItemStack input) {
+    private int getGroupsFreezing(ProcessRecipe recipe, ItemStack input) {
         return (int) Math.floor((float) input.getCount() / (float) ((ItemStack) recipe.getInputs().get(0)).getCount());
     }
 
@@ -101,7 +101,7 @@ public class MiniFreezerTile extends TileItemInventory implements ITickable {
         return (int) (recipe.getIntParameter() * getGroupsFreezing(recipe, input));
     }
 
-    boolean ejectResultSlot(ItemStack output, int inSlot) {
+    private boolean ejectResultSlot(ItemStack output, int inSlot) {
         if (canProcess(output, inSlot + this.getInventory().getSlots() / 2)) {
             this.getInventory().insertInternalItem(inSlot + this.getInventory().getSlots() / 2, output, false);
             return true;
@@ -116,17 +116,13 @@ public class MiniFreezerTile extends TileItemInventory implements ITickable {
         return true;
     }
 
-    public ProcessRecipe recipeToCraft(int slot) {
+    private ProcessRecipe recipeToCraft(int slot) {
         if (slot >= getInventory().getSlots())
             return null;
         ProcessRecipe recipe = ProcessRecipeManager.freezerRecipes.getRecipe(getInventory().getStackInSlot(slot),
                 Integer.MAX_VALUE, false, false);
 
         return recipe;
-    }
-
-    public int getUpdateIdSize() {
-        return getInventory().getSlots();
     }
 
     public int getUpdateData(int id) {

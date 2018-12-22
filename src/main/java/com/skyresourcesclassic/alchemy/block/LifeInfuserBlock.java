@@ -53,10 +53,6 @@ public class LifeInfuserBlock extends BlockContainer {
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
-    public boolean isFullyOpaque(IBlockState state) {
-        return true;
-    }
-
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;

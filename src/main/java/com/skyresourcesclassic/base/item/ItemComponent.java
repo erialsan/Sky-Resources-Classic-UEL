@@ -58,7 +58,7 @@ public class ItemComponent extends Item {
         }
     }
 
-    public static boolean applyBonemeal(ItemStack stack, World worldIn, BlockPos target) {
+    private static boolean applyBonemeal(ItemStack stack, World worldIn, BlockPos target) {
         if (worldIn.getBlockState(target).getBlock() instanceof IGrowable && !worldIn.isRemote) {
             int tries = 100;
             while (worldIn.getBlockState(target).getBlock() instanceof IGrowable && tries > 0) {

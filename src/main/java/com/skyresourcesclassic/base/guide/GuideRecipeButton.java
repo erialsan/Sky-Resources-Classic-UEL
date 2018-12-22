@@ -39,12 +39,4 @@ public class GuideRecipeButton extends GuidePageButton {
     public GuidePageButton clone() {
         return new GuideRecipeButton(this.stackDisplay);
     }
-
-    @Override
-    public List<String> getHoverDisplay() {
-        List<String> list = new ArrayList<String>();
-        list.add("Click for recipe");
-        list.add("(Requires JEI)");
-        return list;
-    }
 }

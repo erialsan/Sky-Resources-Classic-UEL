@@ -44,7 +44,7 @@ public class EntitySurvivalistHook extends EntityFishHook {
     private int ticksCaughtDelay;
     private int ticksCatchableDelay;
     private float fishApproachAngle;
-    public Entity caughtEntity;
+    private Entity caughtEntity;
     private EntitySurvivalistHook.State currentState = EntitySurvivalistHook.State.FLYING;
     private int field_191518_aw;
     private int field_191519_ax;
@@ -536,7 +536,7 @@ public class EntitySurvivalistHook extends EntityFishHook {
         return this.angler;
     }
 
-    static enum State {
+    enum State {
         FLYING, HOOKED_IN_ENTITY, BOBBING;
     }
 }

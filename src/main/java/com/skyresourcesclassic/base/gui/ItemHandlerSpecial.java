@@ -11,8 +11,8 @@ public class ItemHandlerSpecial extends ItemStackHandler {
 
     public ItemHandlerSpecial(int size) {
         super(size);
-        this.slotsNoExtract = new ArrayList<Integer>();
-        this.slotsNoInsert = new ArrayList<Integer>();
+        this.slotsNoExtract = new ArrayList<>();
+        this.slotsNoInsert = new ArrayList<>();
     }
 
     public ItemHandlerSpecial(int size, Integer[] noInsert, Integer[] noExtract) {
@@ -48,7 +48,7 @@ public class ItemHandlerSpecial extends ItemStackHandler {
         return super.extractItem(slot, amount, simulate);
     }
 
-    public ItemStack containerExtractItem(int slot, int amount, boolean simulate) {
+    protected ItemStack containerExtractItem(int slot, int amount, boolean simulate) {
         return super.extractItem(slot, amount, simulate);
     }
 }

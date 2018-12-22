@@ -2,49 +2,44 @@ package com.skyresourcesclassic.technology.block;
 
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.SkyResourcesClassic;
-import com.skyresourcesclassic.base.block.IMetaBlockName;
 import com.skyresourcesclassic.registry.ModCreativeTabs;
 import com.skyresourcesclassic.registry.ModGuiHandler;
 import com.skyresourcesclassic.technology.tile.TileCombustionHeater;
 import com.skyresourcesclassic.technology.tile.TilePoweredCombustionHeater;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class CombustionHeaterBlock extends BlockContainer implements IMetaBlockName {
-    public static final PropertyEnum<CombustionHeaterVariants> heaterVariant = PropertyEnum.create("variant",
-            CombustionHeaterVariants.class);
-
-    private String[] combustionHeaterTypes = new String[]{"wood", "iron", "steel", "dark_matter"};
-
-    public CombustionHeaterBlock(String name, float hardness, float resistance) {
+public class CombustionHeaterBlock extends BlockContainer {
+    public CombustionHeaterBlock(String material, float hardness, float resistance, int tier) {
         super(Material.WOOD);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setUnlocalizedName(References.ModID + "." + material + "_combustion_heater");
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(name);
-
-        setDefaultState(blockState.getBaseState().withProperty(heaterVariant, CombustionHeaterVariants.WOOD));
+        this.setRegistryName(material + "_combustion_heater");
+        this.tier = tier;
     }
+
+    private int tier;
 
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
@@ -53,69 +48,24 @@ public class CombustionHeaterBlock extends BlockContainer implements IMetaBlockN
 
     @Override
     public Material getMaterial(IBlockState state) {
-        switch (getMetaFromState(state)) {
-            case 0:
-                return Material.WOOD;
+        switch (tier) {
             case 1:
-                return Material.IRON;
-            case 2:
+                return Material.WOOD;
+            default:
                 return Material.IRON;
         }
-        return Material.IRON;
     }
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        if (meta >= 2)
-            return new TilePoweredCombustionHeater();
-        return new TileCombustionHeater();
-    }
-
-    @Override
-    public BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, heaterVariant);
-    }
-
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return state.getValue(heaterVariant).ordinal();
-    }
-
-    @Override
-    public int damageDropped(IBlockState state) {
-        return getMetaFromState(state);
-    }
-
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        if (meta >= CombustionHeaterVariants.values().length || meta < 0) {
-            meta = 0;
-        }
-        return getDefaultState().withProperty(heaterVariant, CombustionHeaterVariants.values()[meta]);
-    }
-
-    @Override
-    public void getSubBlocks(CreativeTabs par2, NonNullList<ItemStack> par3)
-    {
-        par3.add(new ItemStack(this, 1, 0));
-        par3.add(new ItemStack(this, 1, 1));
-        par3.add(new ItemStack(this, 1, 2));
-        par3.add(new ItemStack(this, 1, 3));
-    }
-
-    public enum CombustionHeaterVariants implements IStringSerializable {
-        WOOD, IRON, STEEL, DARKMATTER;
-
-        @Override
-        public String getName() {
-            return name().toLowerCase(Locale.ROOT);
-        }
-
+        if (tier > 2)
+            return new TilePoweredCombustionHeater(tier);
+        return new TileCombustionHeater(tier);
     }
 
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        if (this.getMetaFromState(state) < 2) {
+        if (tier < 3) {
             TileCombustionHeater te = (TileCombustionHeater) world.getTileEntity(pos);
             te.dropInventory();
         }
@@ -124,36 +74,42 @@ public class CombustionHeaterBlock extends BlockContainer implements IMetaBlockN
     }
 
     public int getMaximumHeat(IBlockState state) {
-        // Celsius
-        // Because it's superior to F
-        if (getMetaFromState(state) == 0) {
-            return 100;
-        } else if (getMetaFromState(state) == 1) {
-            return 1538;
-        } else if (getMetaFromState(state) == 2) {
-            return 2750;
-        } else if (getMetaFromState(state) == 3) {
-            return 6040;
+        switch (tier) {
+            case 1:
+                return 100;
+            case 2:
+                return 1538;
+            case 3:
+                return 2750;
+            default:
+                return 6040;
         }
-        return 0;
     }
 
-    @Override
-    public String getSpecialName(ItemStack stack) {
-        return combustionHeaterTypes[stack.getItemDamage()];
-    }
-
-    @Override
-    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
-                                  EntityPlayer player) {
-        return new ItemStack(Item.getItemFromBlock(this), 1, this.getMetaFromState(world.getBlockState(pos)));
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        int heat;
+        switch (tier) {
+            case 1:
+                heat = 100;
+                break;
+            case 2:
+                heat = 1538;
+                break;
+            case 3:
+                heat = 2750;
+                break;
+            default:
+                heat = 6040;
+        }
+        tooltip.add(TextFormatting.RED + "Max Heat: " + Integer.toString(heat));
     }
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
                                     EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            if (getMetaFromState(state) < 2) {
+            if (tier < 3) {
                 player.openGui(SkyResourcesClassic.instance, ModGuiHandler.CombustionHeaterGUI, world, pos.getX(), pos.getY(),
                         pos.getZ());
             } else {

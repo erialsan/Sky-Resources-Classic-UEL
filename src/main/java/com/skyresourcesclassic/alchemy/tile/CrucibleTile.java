@@ -1,7 +1,7 @@
 package com.skyresourcesclassic.alchemy.tile;
 
-import com.skyresourcesclassic.base.HeatSources;
 import com.skyresourcesclassic.ConfigOptions;
+import com.skyresourcesclassic.base.HeatSources;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import net.minecraft.entity.item.EntityItem;

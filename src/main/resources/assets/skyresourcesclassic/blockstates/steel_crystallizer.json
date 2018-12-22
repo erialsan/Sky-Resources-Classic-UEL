@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:steel_crystallizer"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

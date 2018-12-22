@@ -6,8 +6,6 @@ import com.skyresourcesclassic.technology.tile.TileEndPortalCore;
 import net.minecraft.inventory.IInventory;
 
 public class ContainerEndPortalCore extends ContainerBase {
-    private int burnTime;
-
     public ContainerEndPortalCore(IInventory playerInv,
                                   TileEndPortalCore te) {
         super(playerInv, te);

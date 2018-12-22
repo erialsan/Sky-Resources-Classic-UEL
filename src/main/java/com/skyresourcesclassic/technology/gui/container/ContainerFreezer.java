@@ -7,7 +7,6 @@ import net.minecraft.inventory.IInventory;
 
 public class ContainerFreezer extends ContainerBase {
     private MiniFreezerTile tile;
-    private int timeValue;
 
     public ContainerFreezer(IInventory playerInv, MiniFreezerTile te) {
         super(playerInv, te);

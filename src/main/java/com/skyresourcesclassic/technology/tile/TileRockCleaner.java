@@ -34,7 +34,7 @@ public class TileRockCleaner extends TileGenericPower implements ITickable, IFlu
     @Override
     public void update() {
         if (!this.world.isRemote) {
-            if (bufferStacks.size() > 0 && !fullOutput()) {
+            if (bufferStacks.size() > 0 && fullOutput()) {
                 this.addToOutput(1);
                 this.addToOutput(2);
                 this.addToOutput(3);
@@ -75,7 +75,7 @@ public class TileRockCleaner extends TileGenericPower implements ITickable, IFlu
         }
     }
 
-    public void addToOutput(int slot) {
+    private void addToOutput(int slot) {
         if (bufferStacks.size() > 0) {
             ItemStack stack = this.getInventory().insertInternalItem(slot, bufferStacks.get(bufferStacks.size() - 1),
                     false);
@@ -85,12 +85,12 @@ public class TileRockCleaner extends TileGenericPower implements ITickable, IFlu
         }
     }
 
-    public boolean fullOutput() {
+    private boolean fullOutput() {
         return !this.getInventory().getStackInSlot(1).isEmpty() && !this.getInventory().getStackInSlot(2).isEmpty()
                 && !this.getInventory().getStackInSlot(3).isEmpty();
     }
 
-    public boolean hasRecipes() {
+    private boolean hasRecipes() {
         List<ProcessRecipe> recipes = ProcessRecipeManager.cauldronCleanRecipes.getRecipes();
         for (ProcessRecipe r : recipes)
 
@@ -128,12 +128,12 @@ public class TileRockCleaner extends TileGenericPower implements ITickable, IFlu
         tank.readFromNBT(compound);
     }
 
-    public NBTTagCompound bufferListWrite() {
+    private NBTTagCompound bufferListWrite() {
         NBTTagList nbtTagList = new NBTTagList();
-        for (int i = 0; i < bufferStacks.size(); i++) {
-            if (!bufferStacks.get(i).isEmpty()) {
+        for (ItemStack stack : bufferStacks) {
+            if (!stack.isEmpty()) {
                 NBTTagCompound itemTag = new NBTTagCompound();
-                bufferStacks.get(i).writeToNBT(itemTag);
+                stack.writeToNBT(itemTag);
                 nbtTagList.appendTag(itemTag);
             }
         }
@@ -142,7 +142,7 @@ public class TileRockCleaner extends TileGenericPower implements ITickable, IFlu
         return nbt;
     }
 
-    public void bufferListRead(NBTTagCompound nbt) {
+    private void bufferListRead(NBTTagCompound nbt) {
         NBTTagList tagList = nbt.getTagList("Items", Constants.NBT.TAG_COMPOUND);
         for (int i = 0; i < tagList.tagCount(); i++) {
             NBTTagCompound itemTags = tagList.getCompoundTagAt(i);
@@ -150,7 +150,7 @@ public class TileRockCleaner extends TileGenericPower implements ITickable, IFlu
         }
     }
 
-    FluidTank tank;
+    private FluidTank tank;
 
     @Override
     public IFluidTankProperties[] getTankProperties() {

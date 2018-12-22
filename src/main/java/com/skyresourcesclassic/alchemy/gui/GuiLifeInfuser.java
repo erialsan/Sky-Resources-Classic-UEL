@@ -96,7 +96,7 @@ public class GuiLifeInfuser extends GuiContainer {
         }
     }
 
-    void drawItem(ItemStack stack, int x, int y) {
+    private void drawItem(ItemStack stack, int x, int y) {
         RenderHelper.enableGUIStandardItemLighting();
         this.itemRender.renderItemAndEffectIntoGUI(stack, x, y);
         RenderHelper.disableStandardItemLighting();

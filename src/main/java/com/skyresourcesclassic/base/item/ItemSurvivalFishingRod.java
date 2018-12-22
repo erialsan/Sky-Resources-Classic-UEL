@@ -17,8 +17,6 @@ import net.minecraft.world.World;
 
 public class ItemSurvivalFishingRod extends ItemFishingRod {
 
-    public static final String[] icons = new String[]{"uncast", "cast"};
-
     public ItemSurvivalFishingRod(String name) {
         super();
         this.setMaxDamage(32);
@@ -34,7 +32,7 @@ public class ItemSurvivalFishingRod extends ItemFishingRod {
             int i = playerIn.fishEntity.handleHookRetraction();
             playerIn.swingArm(handIn);
         } else {
-            worldIn.playSound((EntityPlayer) null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_BOBBER_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+            worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_BOBBER_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
             if (!worldIn.isRemote) {
                 EntitySurvivalistHook entityfishhook = new EntitySurvivalistHook(worldIn, playerIn);

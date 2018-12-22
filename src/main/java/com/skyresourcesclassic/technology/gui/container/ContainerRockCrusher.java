@@ -6,8 +6,6 @@ import com.skyresourcesclassic.technology.tile.TileRockCrusher;
 import net.minecraft.inventory.IInventory;
 
 public class ContainerRockCrusher extends ContainerBase {
-    private int curProgress;
-
     public ContainerRockCrusher(IInventory playerInv, TileRockCrusher te) {
         super(playerInv, te, 0, 24);
         this.addSlotToContainer(new SlotSpecial(tile.getInventory(), 0, 44, 84));

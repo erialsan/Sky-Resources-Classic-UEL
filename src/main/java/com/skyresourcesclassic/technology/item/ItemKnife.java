@@ -27,7 +27,7 @@ import java.util.Collections;
 public class ItemKnife extends Item {
     private float damageVsEntity;
 
-    ToolMaterial toolMaterial;
+    private ToolMaterial toolMaterial;
 
     public ItemKnife(Item.ToolMaterial material, String name) {
         this.setMaxDamage((int) (material.getMaxUses() * ConfigOptions.knife.knifeBaseDurability));

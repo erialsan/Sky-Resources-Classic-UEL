@@ -8,6 +8,8 @@ import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import net.minecraft.item.ItemStack;
 
+import javax.annotation.Nonnull;
+
 public class TileCrucibleInserter extends TileItemInventory {
     public TileCrucibleInserter() {
         super("crucibleInserter", 1);
@@ -44,6 +46,7 @@ public class TileCrucibleInserter extends TileItemInventory {
             }
 
             @Override
+            @Nonnull
             public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
                 if (!isItemValid(slot, stack)) {
                     return stack;

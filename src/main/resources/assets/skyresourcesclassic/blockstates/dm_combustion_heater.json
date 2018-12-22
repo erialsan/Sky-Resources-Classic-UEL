@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:combustion_heater_dark_matter"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

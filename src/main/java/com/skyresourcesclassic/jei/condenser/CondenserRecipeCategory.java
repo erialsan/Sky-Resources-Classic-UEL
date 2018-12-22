@@ -65,11 +65,10 @@ public class CondenserRecipeCategory extends BlankRecipeCategory {
         List<ItemStack> condensers = new ArrayList();
         if (ModFluids.getFluidInfo(
                 ModFluids.crystalFluids.indexOf(inputs.get(0).get(0).getFluid())).type == FluidRegisterInfo.CrystalFluidType.NORMAL) {
-            condensers.add(new ItemStack(ModBlocks.alchemicalCondenser));
+            condensers.add(new ItemStack(ModBlocks.alchemicalCondenser[0]));
         }
-        condensers.add(new ItemStack(ModBlocks.alchemicalCondenser, 1, 1));
-        condensers.add(new ItemStack(ModBlocks.alchemicalCondenser, 1, 2));
-        condensers.add(new ItemStack(ModBlocks.alchemicalCondenser, 1, 3));
+        for (int i = 1; i < ModBlocks.alchemicalCondenser.length; i++)
+            condensers.add(new ItemStack(ModBlocks.alchemicalCondenser[i]));
         List<List<ItemStack>> outputs = ingredients.getOutputs(ItemStack.class);
         layout.getItemStacks().set(slotOutput, outputs.get(0));
         layout.getItemStacks().set(slotCondenser, condensers);

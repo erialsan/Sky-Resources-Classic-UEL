@@ -24,29 +24,28 @@ import java.util.List;
 
 public class GuideGUI extends GuiScreen {
 
-    GuiButton closeButton, cycleCatLeftButton, cycleCatRightButton, backButton;
 
-    List<GuiPageButton> linkButtons;
-    List<GuiButton> infoButtons;
+    private GuiButton closeButton, cycleCatLeftButton, cycleCatRightButton, backButton;
 
-    String currentCategory;
+    private List<GuiPageButton> linkButtons;
+    private List<GuiButton> infoButtons;
 
-    GuideImage currentImage;
+    private String currentCategory;
 
-    GuidePage currentPage;
+    private GuideImage currentImage;
 
-    List<List<Object>> currentPageInfo;
+    private GuidePage currentPage;
 
-    GuiTextField searchBox;
+    private List<List<Object>> currentPageInfo;
 
-    List<String> pageHistory;
+    private GuiTextField searchBox;
 
-    int fontType = 0;
+    private List<String> pageHistory;
 
-    int curIndex = 0;
+    private int fontType = 0, curIndex = 0;
 
-    PageList pageScroll;
-    PageInfo pageInfo;
+    private PageList pageScroll;
+    private PageInfo pageInfo;
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -97,7 +96,7 @@ public class GuideGUI extends GuiScreen {
         }
     }
 
-    public void closeImage() {
+    private void closeImage() {
         currentImage = null;
         for (GuiButton b : buttonList) {
             b.enabled = true;
@@ -113,9 +112,9 @@ public class GuideGUI extends GuiScreen {
         }
     }
 
-    public static String lastGuidePage;
-    public static String lastGuideCat;
-    public static String lastGuideSearch;
+    private static String lastGuidePage;
+    private static String lastGuideCat;
+    private static String lastGuideSearch;
 
     @Override
     public void onGuiClosed() {
@@ -237,7 +236,6 @@ public class GuideGUI extends GuiScreen {
                 if (curIndex < -1)
                     curIndex = categories.size() - 1;
                 currentCategory = (curIndex == -1) ? "" : categories.get(curIndex);
-                curIndex = 0;
                 removeLinkButtons();
                 addLinkButtons();
             }
@@ -248,7 +246,6 @@ public class GuideGUI extends GuiScreen {
                 if (curIndex >= categories.size())
                     curIndex = -1;
                 currentCategory = (curIndex == -1) ? "" : categories.get(curIndex);
-                curIndex = 0;
                 removeLinkButtons();
                 addLinkButtons();
             }
@@ -320,7 +317,7 @@ public class GuideGUI extends GuiScreen {
         }
     }
 
-    void drawItem(ItemStack stack, int x, int y) {
+    private void drawItem(ItemStack stack, int x, int y) {
         RenderHelper.enableGUIStandardItemLighting();
         this.itemRender.renderItemAndEffectIntoGUI(stack, x, y);
         RenderHelper.disableStandardItemLighting();
@@ -411,7 +408,7 @@ public class GuideGUI extends GuiScreen {
 
     private class PageList extends GuiScrollingList {
 
-        public PageList(Minecraft client, int width, int height, int top, int bottom, int left, int entryHeight,
+        private PageList(Minecraft client, int width, int height, int top, int bottom, int left, int entryHeight,
                         int screenWidth, int screenHeight) {
             super(client, width, height, top, bottom, left, entryHeight, screenWidth, screenHeight);
         }

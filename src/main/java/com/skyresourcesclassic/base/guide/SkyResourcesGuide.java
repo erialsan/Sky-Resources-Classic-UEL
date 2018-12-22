@@ -12,12 +12,12 @@ public class SkyResourcesGuide {
     private static List<GuidePageButton> blankButtonTypes;
 
     public SkyResourcesGuide() {
-        guidePages = new ArrayList<GuidePage>();
-        blankButtonTypes = new ArrayList<GuidePageButton>();
+        guidePages = new ArrayList<>();
+        blankButtonTypes = new ArrayList<>();
     }
 
     public static List<String> getCategories() {
-        List<String> cats = new ArrayList<String>();
+        List<String> cats = new ArrayList<>();
 
         for (GuidePage p : guidePages) {
             if (!cats.contains(p.pageCategory))
@@ -37,7 +37,7 @@ public class SkyResourcesGuide {
     public static List<GuidePage> getPages(String category, String filter) {
         if (Strings.isNullOrEmpty(category) && Strings.isNullOrEmpty(filter.trim()))
             return guidePages;
-        List<GuidePage> pages = new ArrayList<GuidePage>();
+        List<GuidePage> pages = new ArrayList<>();
         for (GuidePage p : guidePages) {
             if ((category == null || p.pageCategory.equals(category)) && (Strings.isNullOrEmpty(filter.trim())
                     || p.pageDisplay.toLowerCase().contains(filter.trim().toLowerCase())))
@@ -49,7 +49,7 @@ public class SkyResourcesGuide {
     public static List<GuidePage> getPages(String category) {
         if (Strings.isNullOrEmpty(category))
             return guidePages;
-        List<GuidePage> pages = new ArrayList<GuidePage>();
+        List<GuidePage> pages = new ArrayList<>();
         for (GuidePage p : guidePages) {
             if (p.pageCategory.equals(category))
                 pages.add(p);

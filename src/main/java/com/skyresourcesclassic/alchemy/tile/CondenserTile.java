@@ -1,11 +1,11 @@
 package com.skyresourcesclassic.alchemy.tile;
 
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.RandomHelper;
 import com.skyresourcesclassic.alchemy.fluid.FluidCrystalBlock;
 import com.skyresourcesclassic.alchemy.fluid.FluidRegisterInfo;
 import com.skyresourcesclassic.base.HeatSources;
 import com.skyresourcesclassic.base.tile.TileBase;
-import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.registry.ModBlocks;
 import com.skyresourcesclassic.registry.ModFluids;
 import net.minecraft.block.Block;
@@ -15,17 +15,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Random;
 
 public class CondenserTile extends TileBase implements ITickable {
-    public CondenserTile() {
+    public CondenserTile(int tier) {
         super("condenser");
+        this.tier = tier;
     }
 
     private int timeCondense;
+    private int tier;
 
     @Override
     public void update() {
@@ -33,19 +34,18 @@ public class CondenserTile extends TileBase implements ITickable {
         crystalFluidUpdate();
     }
 
-    void crystalFluidUpdate() {
+    private void crystalFluidUpdate() {
         Random rand = world.rand;
         Block block = getBlockAbove();
         if (block instanceof FluidCrystalBlock && getRedstoneSignal() == 0) {
             FluidCrystalBlock crystalBlock = (FluidCrystalBlock) block;
-            Fluid fluid = crystalBlock.getFluid();
             String type = ModFluids.crystalFluidInfos()[ModBlocks.crystalFluidBlocks.indexOf(crystalBlock)].name;
             FluidRegisterInfo.CrystalFluidType fluidType = ModFluids.crystalFluidInfos()[ModBlocks.crystalFluidBlocks
                     .indexOf(crystalBlock)].type;
 
             String oreDictCheck = "ingot" + RandomHelper.capatilizeString(type);
 
-            if (tierCanCondense(fluidType) && crystalBlock.isSourceBlock(world, pos.add(0, 1, 0))
+            if ((tier != 1 || fluidType == FluidRegisterInfo.CrystalFluidType.NORMAL) && crystalBlock.isSourceBlock(world, pos.add(0, 1, 0))
                     && crystalBlock.isNotFlowing(world, pos.add(0, 1, 0), world.getBlockState(pos.add(0, 1, 0)))
                     && OreDictionary.getOres(oreDictCheck).size() > 0
                     && HeatSources.isValidHeatSource(pos.down(), world)) {
@@ -67,12 +67,12 @@ public class CondenserTile extends TileBase implements ITickable {
         }
     }
 
-    public int getTimeToCondense(FluidCrystalBlock block) {
+    private int getTimeToCondense(FluidCrystalBlock block) {
         return (int) (ModFluids.crystalFluidInfos()[ModBlocks.crystalFluidBlocks.indexOf(block)].rarity
                 * ConfigOptions.condenser.condenserProcessTimeBase
                 * (ModFluids.crystalFluidInfos()[ModBlocks.crystalFluidBlocks
                 .indexOf(block)].type == FluidRegisterInfo.CrystalFluidType.NORMAL ? 1 : 20)
-                * getCondenserSpeedFromTier());
+                * (1F / tier));
     }
 
     @Override
@@ -90,35 +90,7 @@ public class CondenserTile extends TileBase implements ITickable {
         timeCondense = compound.getInteger("time");
     }
 
-    public Block getBlockAbove() {
+    private Block getBlockAbove() {
         return getWorld().getBlockState(pos.add(0, 1, 0)).getBlock();
-    }
-
-    public boolean tierCanCondense(FluidRegisterInfo.CrystalFluidType type) {
-        switch (getBlockMetadata()) {
-            case 0:
-                return type == FluidRegisterInfo.CrystalFluidType.NORMAL;
-            case 1:
-                return true;
-            case 2:
-                return true;
-            case 3:
-                return true;
-        }
-        return false;
-    }
-
-    public float getCondenserSpeedFromTier() {
-        switch (getBlockMetadata()) {
-            case 0:
-                return 1;
-            case 1:
-                return 0.5f;
-            case 2:
-                return 1f / 3f;
-            case 3:
-                return 0.25f;
-        }
-        return 1;
     }
 }

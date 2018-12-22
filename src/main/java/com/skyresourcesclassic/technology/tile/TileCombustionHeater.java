@@ -1,12 +1,11 @@
 package com.skyresourcesclassic.technology.tile;
 
-import com.skyresourcesclassic.base.tile.TileItemInventory;
 import com.skyresourcesclassic.ConfigOptions;
+import com.skyresourcesclassic.base.tile.TileItemInventory;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import com.skyresourcesclassic.technology.block.CombustionHeaterBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,25 +24,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TileCombustionHeater extends TileItemInventory implements ITickable {
-    public TileCombustionHeater() {
+    public TileCombustionHeater(int tier) {
         super("combustionHeater", 1, null, new Integer[]{0});
+        this.tier = tier;
     }
 
     public int currentHeatValue;
     public int fuelBurnTime;
-    public int heatPerTick;
+    private int heatPerTick;
     public int currentItemBurnTime;
+    private int tier;
 
-    public List<Material> ValidMaterialsForCrafting() {
+    private List<Material> ValidMaterialsForCrafting() {
         if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
             return null;
-        IBlockState blockMeta = world.getBlockState(pos);
-        List<Material> mats = new ArrayList<Material>();
-        switch (world.getBlockState(pos).getBlock().getMetaFromState(blockMeta)) {
-            case 0: // WOOD
+        List<Material> mats = new ArrayList<>();
+        switch (tier) {
+            case 1: // WOOD
                 mats.add(Material.WOOD);
                 break;
-            case 1: // IRON
+            case 2: // IRON
                 mats.add(Material.IRON);
                 mats.add(Material.ROCK);
                 break;
@@ -59,22 +59,19 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
         return block.getMaximumHeat(world.getBlockState(pos));
     }
 
-    public int getMaxHeatPerTick() {
+    private int getMaxHeatPerTick() {
         if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
             return 0;
-        CombustionHeaterBlock block = (CombustionHeaterBlock) world.getBlockState(pos).getBlock();
 
-        switch (block.getMetaFromState(world.getBlockState(pos))) {
-            case 0:
-                return 8;
+        switch (tier) {
             case 1:
+                return 8;
+            default:
                 return 16;
         }
-
-        return 0;
     }
 
-    public int getHeatPerTick(ItemStack stack) {
+    private int getHeatPerTick(ItemStack stack) {
         int fuelTime = TileEntityFurnace.getItemBurnTime(stack);
         if (fuelTime > 0) {
             return (int) Math.cbrt((float) fuelTime * ConfigOptions.combustion.combustionHeatMultiplier);
@@ -83,14 +80,14 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
         return 0;
     }
 
-    public int getFuelBurnTime(ItemStack stack) {
+    private int getFuelBurnTime(ItemStack stack) {
         if ((float) getHeatPerTick(stack) <= 0)
             return 0;
 
         return (int) ((float) Math.pow(TileEntityFurnace.getItemBurnTime(stack), 0.75F) / getHeatPerTick(stack));
     }
 
-    public boolean isValidFuel(ItemStack stack) {
+    private boolean isValidFuel(ItemStack stack) {
         if (TileEntityFurnace.getItemBurnTime(stack) <= 0 || getHeatPerTick(stack) <= 0
                 || getHeatPerTick(stack) > getMaxHeatPerTick() || getFuelBurnTime(stack) <= 0)
             return false;
@@ -167,19 +164,18 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
         }
     }
 
-    public TileCombustionCollector getCollector() {
+    private TileCombustionCollector getCollector() {
         BlockPos[] poses = new BlockPos[]{pos.add(-1, 1, 0), pos.add(1, 1, 0), pos.add(0, 1, -1), pos.add(0, 1, 1),
                 pos.add(0, 2, 0)};
         for (BlockPos p : poses) {
             TileEntity t = world.getTileEntity(p);
-            if (t != null && t instanceof TileCombustionCollector)
+            if (t instanceof TileCombustionCollector)
                 return (TileCombustionCollector) t;
         }
         return null;
     }
 
     public boolean hasValidMultiblock() {
-        List<Material> materials = ValidMaterialsForCrafting();
         if (!isBlockValid(pos.add(-1, 1, 0)) || !isBlockValid(pos.add(1, 1, 0)) || !isBlockValid(pos.add(0, 2, 0))
                 || !isBlockValid(pos.add(0, 1, -1)) || !isBlockValid(pos.add(0, 1, 1))
                 || !world.isAirBlock(pos.add(0, 1, 0)))
@@ -187,12 +183,12 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
         return true;
     }
 
-    boolean isBlockValid(BlockPos pos) {
+    private boolean isBlockValid(BlockPos pos) {
         return ValidMaterialsForCrafting().contains(world.getBlockState(pos).getMaterial())
                 && world.isBlockFullCube(pos) && world.getBlockState(pos).isOpaqueCube();
     }
 
-    void craftItem() {
+    private void craftItem() {
         ProcessRecipe recipe = recipeToCraft();
         if (recipe != null) {
             this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, pos.getX(), pos.getY() + 1.5D, pos.getZ(),
@@ -217,11 +213,11 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
                     if (currentHeatValue < recipe.getIntParameter())
                         break;
 
-                    List<ItemStack> inputs = new ArrayList<ItemStack>();
+                    List<ItemStack> inputs = new ArrayList<>();
                     for (Object o : recipe.getInputs())
                         inputs.add(((ItemStack) o).copy());
-                    for (int i = 0; i < list.size(); i++) {
-                        ItemStack stack = list.get(i).getItem();
+                    for (EntityItem item : list) {
+                        ItemStack stack = item.getItem();
                         for (ItemStack i2 : inputs) {
                             int count = Math.min(i2.getCount(), stack.getCount());
                             if (stack.isItemEqual(i2)) {
@@ -235,8 +231,7 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
                         }
                     }
 
-                    currentHeatValue *= (world.getBlockState(pos).getBlock()
-                            .getMetaFromState(world.getBlockState(pos)) == 0 ? 0.7F : 0.85F);
+                    currentHeatValue *= tier == 1 ? 0.7F : 0.85F;
 
                     ItemStack stack = recipe.getOutputs().get(0).copy();
 
@@ -259,11 +254,11 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
         }
     }
 
-    public ProcessRecipe recipeToCraft() {
+    private ProcessRecipe recipeToCraft() {
         List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.getX(),
                 pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + 2, pos.getZ() + 1));
 
-        List<Object> items = new ArrayList<Object>();
+        List<Object> items = new ArrayList<>();
 
         for (EntityItem i : list) {
             items.add(i.getItem());

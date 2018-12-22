@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "skyresourcesclassic:iron_condenser"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

@@ -44,7 +44,7 @@ public class ItemInfusionStone extends Item {
         ItemStack offHand = player.getHeldItemOffhand();
 
         ProcessRecipe recipe = ProcessRecipeManager.infusionRecipes.getRecipe(
-                new ArrayList<Object>(Arrays.asList(offHand,
+                new ArrayList<>(Arrays.asList(offHand,
                         new ItemStack(block, 1, block.getMetaFromState(world.getBlockState(pos))))),
                 player.getHealth(), false, false);
 
@@ -87,7 +87,7 @@ public class ItemInfusionStone extends Item {
         return EnumActionResult.PASS;
     }
 
-    public static boolean applyBonemeal(ItemStack stack, World worldIn, BlockPos target, EntityPlayer player) {
+    private static boolean applyBonemeal(ItemStack stack, World worldIn, BlockPos target, EntityPlayer player) {
         IBlockState iblockstate = worldIn.getBlockState(target);
 
         int hook = net.minecraftforge.event.ForgeEventFactory.onApplyBonemeal(player, worldIn, target, iblockstate, stack, EnumHand.MAIN_HAND);

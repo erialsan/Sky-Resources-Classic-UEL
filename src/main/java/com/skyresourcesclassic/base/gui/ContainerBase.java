@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class ContainerBase extends Container {
     protected TileItemInventory tile;
 
-    protected int slotCount;
+    private int slotCount;
 
     public ContainerBase(IInventory playerInv, TileItemInventory te, int playerInvOffX, int playerInvOffY) {
         tile = te;

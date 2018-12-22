@@ -9,7 +9,6 @@ import com.skyresourcesclassic.registry.ModFluids;
 import com.skyresourcesclassic.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -19,18 +18,19 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 import java.util.Random;
 
 public class CrystallizerTile extends TileBase implements ITickable {
-    public CrystallizerTile() {
+    public CrystallizerTile(int tier) {
         super("crystallizer");
+        this.tier=tier;
     }
 
-    int timeCondense;
-    int randInterval;
+    private int timeCondense;
+    private int randInterval;
+    private int tier;
 
     @Override
     public void update() {
@@ -38,18 +38,16 @@ public class CrystallizerTile extends TileBase implements ITickable {
         fluidUpdate();
     }
 
-    void fluidUpdate() {
+    private void fluidUpdate() {
         Random rand = world.rand;
         Block block = getBlockAbove();
         boolean success = false;
         if (!world.isRemote && getRedstoneSignal() == 0) {
             if (block instanceof FluidCrystalBlock) {
                 FluidCrystalBlock crystalBlock = (FluidCrystalBlock) block;
-                Fluid fluid = crystalBlock.getFluid();
-                String type = ModFluids.crystalFluidInfos()[ModBlocks.crystalFluidBlocks.indexOf(crystalBlock)].name;
+                FluidRegisterInfo.CrystalFluidType type = ModFluids.crystalFluidInfos()[ModBlocks.crystalFluidBlocks.indexOf(crystalBlock)].type;
 
-                if (this.tierCanCrystallize(
-                        ModFluids.crystalFluidInfos()[ModBlocks.crystalFluidBlocks.indexOf(crystalBlock)].type)) {
+                if (tier != 1 || type == FluidRegisterInfo.CrystalFluidType.NORMAL) {
                     if (crystalBlock.isSourceBlock(world, pos.up())
                             && crystalBlock.isNotFlowing(world, pos.up(), world.getBlockState(pos.up())))
                         timeCondense++;
@@ -72,7 +70,7 @@ public class CrystallizerTile extends TileBase implements ITickable {
             }
         }
         if (success)
-            world.playSound((EntityPlayer) null, pos, SoundEvents.ENTITY_ARROW_HIT_PLAYER, SoundCategory.BLOCKS, 1.0F,
+            world.playSound(null, pos, SoundEvents.ENTITY_ARROW_HIT_PLAYER, SoundCategory.BLOCKS, 1.0F,
                     2.2F / (rand.nextFloat() * 0.2F + 0.9F));
     }
 
@@ -93,11 +91,11 @@ public class CrystallizerTile extends TileBase implements ITickable {
         randInterval = compound.getInteger("rand");
     }
 
-    public Block getBlockAbove() {
+    private Block getBlockAbove() {
         return this.world.getBlockState(pos.add(0, 1, 0)).getBlock();
     }
 
-    void ejectResultSlot(ItemStack output) {
+    private void ejectResultSlot(ItemStack output) {
         if (!world.isRemote) {
 
             BlockPos facingPos = getPos().down();
@@ -124,43 +122,29 @@ public class CrystallizerTile extends TileBase implements ITickable {
         }
     }
 
-    public boolean tierCanCrystallize(FluidRegisterInfo.CrystalFluidType type) {
-        switch (world.getTileEntity(pos).getBlockMetadata()) {
-            case 0:
-                return type == FluidRegisterInfo.CrystalFluidType.NORMAL;
+    private float getCrystallizeSpeedFromTier() {
+        switch (tier) {
             case 1:
-                return true;
-            case 2:
-                return true;
-            case 3:
-                return true;
-        }
-        return false;
-    }
-
-    public float getCrystallizeSpeedFromTier() {
-        switch (world.getTileEntity(pos).getBlockMetadata()) {
-            case 0:
                 return 0.5f;
-            case 1:
-                return 1;
             case 2:
-                return 2.5f;
+                return 1;
             case 3:
+                return 2.5f;
+            case 4:
                 return 4;
         }
         return 1;
     }
 
-    public float getCrystallizeEfficiencyFromTier() {
-        switch (world.getTileEntity(pos).getBlockMetadata()) {
-            case 0:
-                return 1;
+    private float getCrystallizeEfficiencyFromTier() {
+        switch (tier) {
             case 1:
-                return 1.5f;
+                return 1;
             case 2:
-                return 2;
+                return 1.5f;
             case 3:
+                return 2;
+            case 4:
                 return 3;
         }
         return 1;

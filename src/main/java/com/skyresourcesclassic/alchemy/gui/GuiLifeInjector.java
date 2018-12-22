@@ -5,9 +5,7 @@ import com.skyresourcesclassic.alchemy.gui.container.ContainerLifeInjector;
 import com.skyresourcesclassic.alchemy.tile.LifeInjectorTile;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiLifeInjector extends GuiContainer {
@@ -45,12 +43,5 @@ public class GuiLifeInjector extends GuiContainer {
         this.mc.getTextureManager().bindTexture(new ResourceLocation("textures/gui/icons.png"));
         this.drawTexturedModalRect(120, 29, 53, 1, 8, 8);
         this.fontRenderer.drawString("x" + (float) tile.getHealthInGem() / 2F, 130, 29, 4210752);
-    }
-
-    void drawItem(ItemStack stack, int x, int y) {
-        RenderHelper.enableGUIStandardItemLighting();
-        this.itemRender.renderItemAndEffectIntoGUI(stack, x, y);
-        RenderHelper.disableStandardItemLighting();
-
     }
 }

@@ -41,8 +41,8 @@ public class ContainerDirtFurnace extends Container {
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
-        for (int i = 0; i < this.listeners.size(); ++i) {
-            IContainerListener icontainerlistener = (IContainerListener) this.listeners.get(i);
+        for (IContainerListener listener : listeners) {
+            IContainerListener icontainerlistener = listener;
 
             if (this.cookTime != this.tileFurnace.getField(2)) {
                 icontainerlistener.sendWindowProperty(this, 2, this.tileFurnace.getField(2));

@@ -116,10 +116,6 @@ public class DirtFurnaceTile extends TileEntity implements ITickable, ISidedInve
         return this.furnaceCustomName != null && !this.furnaceCustomName.isEmpty();
     }
 
-    public void setCustomInventoryName(String p_145951_1_) {
-        this.furnaceCustomName = p_145951_1_;
-    }
-
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         NBTTagList nbttaglist = compound.getTagList("Items", 10);
@@ -254,7 +250,7 @@ public class DirtFurnaceTile extends TileEntity implements ITickable, ISidedInve
         }
     }
 
-    public int getCookTime(@Nullable ItemStack stack) {
+    private int getCookTime(@Nullable ItemStack stack) {
         return 200;
     }
 
@@ -282,7 +278,7 @@ public class DirtFurnaceTile extends TileEntity implements ITickable, ISidedInve
      * Turn one item from the furnace source stack into the appropriate smelted
      * item in the furnace result stack
      */
-    public void smeltItem() {
+    private void smeltItem() {
         if (this.canSmelt()) {
             ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(this.furnaceItemStacks.get(0));
 
@@ -311,7 +307,7 @@ public class DirtFurnaceTile extends TileEntity implements ITickable, ISidedInve
      * Returns the number of ticks that the supplied fuel item will keep the
      * furnace burning, or 0 if the item isn't fuel
      */
-    public static int getItemBurnTime(ItemStack stack) {
+    private static int getItemBurnTime(ItemStack stack) {
         if (stack == ItemStack.EMPTY) {
             return 0;
         } else {
@@ -366,8 +362,7 @@ public class DirtFurnaceTile extends TileEntity implements ITickable, ISidedInve
      * with Container
      */
     public boolean isUsableByPlayer(EntityPlayer player) {
-        return this.world.getTileEntity(this.pos) != this ? false
-                : player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D,
+        return this.world.getTileEntity(this.pos) == this && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D,
                 (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
@@ -462,11 +457,11 @@ public class DirtFurnaceTile extends TileEntity implements ITickable, ISidedInve
         }
     }
 
-    net.minecraftforge.items.IItemHandler handlerTop = new net.minecraftforge.items.wrapper.SidedInvWrapper(this,
+    private net.minecraftforge.items.IItemHandler handlerTop = new net.minecraftforge.items.wrapper.SidedInvWrapper(this,
             net.minecraft.util.EnumFacing.UP);
-    net.minecraftforge.items.IItemHandler handlerBottom = new net.minecraftforge.items.wrapper.SidedInvWrapper(this,
+    private net.minecraftforge.items.IItemHandler handlerBottom = new net.minecraftforge.items.wrapper.SidedInvWrapper(this,
             net.minecraft.util.EnumFacing.DOWN);
-    net.minecraftforge.items.IItemHandler handlerSide = new net.minecraftforge.items.wrapper.SidedInvWrapper(this,
+    private net.minecraftforge.items.IItemHandler handlerSide = new net.minecraftforge.items.wrapper.SidedInvWrapper(this,
             net.minecraft.util.EnumFacing.WEST);
 
     @SuppressWarnings("unchecked")

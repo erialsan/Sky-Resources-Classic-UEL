@@ -1,100 +1,82 @@
 package com.skyresourcesclassic.base.tile;
 
 import com.skyresourcesclassic.base.gui.ItemHandlerSpecial;
-
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 
-public class TileItemInventory extends TileBase
-{
-	private ItemHandlerSpecial inventory;
-	
-	public TileItemInventory(String name, int slots)
-	{
-		super(name);
-		inventory = new ItemHandlerSpecial(slots)
-		{
-			protected void onContentsChanged(int slot){
-	            super.onContentsChanged(slot);
-	            TileItemInventory.this.markDirty();
-	        }			
-		};
-	}
+public class TileItemInventory extends TileBase {
+    private ItemHandlerSpecial inventory;
 
-	public TileItemInventory(String name, int slots, Integer[] noInsert, Integer[] noExtract)
-	{
-		super(name);
-		inventory = new ItemHandlerSpecial(slots, noInsert, noExtract)
-		{
-			protected void onContentsChanged(int slot){
-	            super.onContentsChanged(slot);
-	            TileItemInventory.this.markDirty();
-	        }			
-		};
-	}
+    public TileItemInventory(String name, int slots) {
+        super(name);
+        inventory = new ItemHandlerSpecial(slots) {
+            protected void onContentsChanged(int slot) {
+                super.onContentsChanged(slot);
+                TileItemInventory.this.markDirty();
+            }
+        };
+    }
 
-	public ItemHandlerSpecial getInventory()
-	{
-		return inventory;
-	}
+    public TileItemInventory(String name, int slots, Integer[] noInsert, Integer[] noExtract) {
+        super(name);
+        inventory = new ItemHandlerSpecial(slots, noInsert, noExtract) {
+            protected void onContentsChanged(int slot) {
+                super.onContentsChanged(slot);
+                TileItemInventory.this.markDirty();
+            }
+        };
+    }
 
-	public void setInventory(ItemHandlerSpecial handler)
-	{
-		inventory = handler;
-	}
+    public ItemHandlerSpecial getInventory() {
+        return inventory;
+    }
 
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound)
-	{
-		super.writeToNBT(compound);
+    public void setInventory(ItemHandlerSpecial handler) {
+        inventory = handler;
+    }
 
-		compound.setTag("inv", inventory.serializeNBT());
-		return compound;
-	}
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        super.writeToNBT(compound);
 
-	@Override
-	public void readFromNBT(NBTTagCompound compound)
-	{
-		super.readFromNBT(compound);
+        compound.setTag("inv", inventory.serializeNBT());
+        return compound;
+    }
 
-		inventory.deserializeNBT(compound.getCompoundTag("inv"));
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
 
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
-	{
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-		{
-			return true;
-		}
-		return super.hasCapability(capability, facing);
-	}
+        inventory.deserializeNBT(compound.getCompoundTag("inv"));
+    }
 
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
-	{
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-		{
-			return (T) this.inventory;
-		}
-		return super.getCapability(capability, facing);
-	}
+    @Override
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return true;
+        }
+        return super.hasCapability(capability, facing);
+    }
 
-	public void dropInventory()
-	{
-		for (int i = 0; i < inventory.getSlots(); ++i)
-		{
-			ItemStack itemstack = inventory.getStackInSlot(i);
+    @Override
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return (T) this.inventory;
+        }
+        return super.getCapability(capability, facing);
+    }
 
-			if (!itemstack.isEmpty())
-			{
-				InventoryHelper.spawnItemStack(getWorld(), pos.getX(), pos.getY(), pos.getZ(), itemstack);
-			}
-		}
-	}
+    public void dropInventory() {
+        for (int i = 0; i < inventory.getSlots(); ++i) {
+            ItemStack itemstack = inventory.getStackInSlot(i);
+
+            if (!itemstack.isEmpty()) {
+                InventoryHelper.spawnItemStack(getWorld(), pos.getX(), pos.getY(), pos.getZ(), itemstack);
+            }
+        }
+    }
 }

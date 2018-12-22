@@ -16,7 +16,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
 public class FluidDropperTile extends TileBase implements ITickable, IFluidHandler {
-    FluidTank tank;
+    private FluidTank tank;
 
     @Override
     public IFluidTankProperties[] getTankProperties() {
@@ -87,7 +87,7 @@ public class FluidDropperTile extends TileBase implements ITickable, IFluidHandl
         }
     }
 
-    void pullFromAround() {
+    private void pullFromAround() {
         EnumFacing[] checkPoses = new EnumFacing[]{EnumFacing.UP, EnumFacing.UP.NORTH, EnumFacing.SOUTH, EnumFacing.WEST,
                 EnumFacing.EAST};
         if (this.getRedstoneSignal() == 0) {

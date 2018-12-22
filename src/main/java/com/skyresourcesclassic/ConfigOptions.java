@@ -1,6 +1,5 @@
 package com.skyresourcesclassic;
 
-import com.skyresourcesclassic.References;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = References.ModID)

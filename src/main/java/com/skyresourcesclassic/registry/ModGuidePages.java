@@ -25,7 +25,7 @@ public class ModGuidePages {
         SkyResourcesGuide.addPage("grassIsland", "guide.skyresourcesclassic.stage1", new ItemStack(Blocks.GRASS));
 
         SkyResourcesGuide.addPage("combustionHeater", "guide.skyresourcesclassic.stage2",
-                new ItemStack(ModBlocks.combustionHeater));
+                new ItemStack(ModBlocks.combustionHeater[0]));
 
         SkyResourcesGuide.addPage("waterExtractor", "guide.skyresourcesclassic.stage2",
                 new ItemStack(ModItems.waterExtractor));
@@ -48,10 +48,10 @@ public class ModGuidePages {
         SkyResourcesGuide.addPage("fluidDropper", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.fluidDropper));
 
         SkyResourcesGuide.addPage("alchemicalCondenser", "guide.skyresourcesclassic.stage2",
-                new ItemStack(ModBlocks.alchemicalCondenser));
+                new ItemStack(ModBlocks.alchemicalCondenser[0]));
 
         SkyResourcesGuide.addPage("crystallizer", "guide.skyresourcesclassic.stage2",
-                new ItemStack(ModBlocks.crystallizer));
+                new ItemStack(ModBlocks.crystallizer[0]));
 
         SkyResourcesGuide.addPage("crucibleInserter", "guide.skyresourcesclassic.stage2",
                 new ItemStack(ModBlocks.crucibleInserter));

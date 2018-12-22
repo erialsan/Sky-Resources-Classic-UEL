@@ -30,7 +30,7 @@ public class ModCreativeTabs {
         @Override
         @SideOnly(Side.CLIENT)
         public ItemStack getTabIconItem() {
-            return new ItemStack(ModBlocks.combustionHeater);
+            return new ItemStack(ModBlocks.combustionHeater[0]);
         }
     };
 }

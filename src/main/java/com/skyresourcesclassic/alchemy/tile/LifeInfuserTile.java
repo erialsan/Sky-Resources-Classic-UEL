@@ -101,7 +101,7 @@ public class LifeInfuserTile extends TileItemInventory implements ITickable {
         return false;
     }
 
-    void craftItem() {
+    private void craftItem() {
         ProcessRecipe recipe = recipeToCraft();
         boolean worked = false;
         if (recipe != null) {
@@ -139,7 +139,7 @@ public class LifeInfuserTile extends TileItemInventory implements ITickable {
         return 0;
     }
 
-    public ProcessRecipe recipeToCraft() {
+    private ProcessRecipe recipeToCraft() {
         IBlockState state = this.world.getBlockState(this.pos.down(1));
         if (state != null) {
             ProcessRecipe recipe = ProcessRecipeManager.infusionRecipes

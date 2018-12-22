@@ -2,12 +2,7 @@ package com.skyresourcesclassic.alchemy.render;
 
 import com.skyresourcesclassic.RandomHelper;
 import com.skyresourcesclassic.alchemy.tile.CrucibleTile;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import org.lwjgl.opengl.GL11;
 
@@ -24,34 +19,17 @@ public class CrucibleTESR extends TileEntitySpecialRenderer<CrucibleTile> {
 
             GL11.glTranslatef((float) x, (float) y + 1f, (float) z + 1);
             GL11.glRotatef(180f, 1f, 0f, 0f);
-            renderFluidContents(te, x, y, z);
+            renderFluidContents(te);
             GL11.glPopMatrix();
 
         }
     }
 
-    private void renderFluidContents(CrucibleTile crucible, double x, double y,
-                                     double z) {
+    private void renderFluidContents(CrucibleTile crucible) {
         GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glColor4f(1, 1, 1, 1);
         FluidStack fluidStack = crucible.getTank().getFluid();
-        final Fluid fluid = fluidStack.getFluid();
-
-        ResourceLocation textureRL = fluid.getStill();
-        TextureAtlasSprite texture = Minecraft.getMinecraft().getRenderItem()
-                .getItemModelMesher().getModelManager().getTextureMap()
-                .getAtlasSprite(textureRL.getResourceDomain() + ":"
-                        + textureRL.getResourcePath());
-
-        final int color;
-
-        Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-        if (texture != null) {
-            color = fluid.getColor(fluidStack);
-        } else {
-            color = 0xFFFFFFFF;
-        }
 
         double liquid = crucible.getTank().getFluidAmount();
         double maxLiquid = crucible.getTank().getCapacity();

@@ -157,12 +157,12 @@ public class BlockFreezer extends BlockContainer {
         return new BlockStateContainer(this, new IProperty[]{FACING, PART});
     }
 
-    public static enum EnumPartType implements IStringSerializable {
+    public enum EnumPartType implements IStringSerializable {
         TOP("top"), BOTTOM("bottom");
 
         private final String name;
 
-        private EnumPartType(String name) {
+        EnumPartType(String name) {
             this.name = name;
         }
 

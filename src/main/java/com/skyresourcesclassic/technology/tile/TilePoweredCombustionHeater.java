@@ -8,7 +8,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -25,13 +24,15 @@ import java.util.List;
 
 public class TilePoweredCombustionHeater extends TileGenericPower implements ITickable {
 
-    public TilePoweredCombustionHeater() {
+    public TilePoweredCombustionHeater(int tier) {
         super("combustionHeaterPowered", 100000, 2000, 0);
+        this.tier = tier;
     }
 
     public int currentHeatValue;
     private int heatPerTick = 20;
     private int powerUsage = 800;
+    private int tier;
 
     public int getMaxHeat() {
         if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
@@ -49,8 +50,8 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
 
         if (!this.world.isRemote) {
             updateRedstone();
-            heatPerTick = 40 * (world.getBlockState(pos).getBlock().getMetaFromState(world.getBlockState(pos)) - 1);
-            powerUsage = 400 * world.getBlockState(pos).getBlock().getMetaFromState(world.getBlockState(pos));
+            heatPerTick = 40 * (tier - 2);
+            powerUsage = 400 * (tier - 1);
             if (getEnergyStored() >= powerUsage && currentHeatValue < getMaxHeat()) {
                 internalExtractEnergy(powerUsage, false);
                 currentHeatValue += heatPerTick;
@@ -71,7 +72,6 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
     }
 
     public boolean hasValidMultiblock() {
-        List<Material> materials = ValidMaterialsForCrafting();
         if (!isBlockValid(pos.add(-1, 1, 0)) || !isBlockValid(pos.add(1, 1, 0)) || !isBlockValid(pos.add(0, 2, 0))
                 || !isBlockValid(pos.add(0, 1, -1)) || !isBlockValid(pos.add(0, 1, 1))
                 || !world.isAirBlock(pos.add(0, 1, 0)))
@@ -79,17 +79,16 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
         return true;
     }
 
-    public List<Material> ValidMaterialsForCrafting() {
+    private List<Material> ValidMaterialsForCrafting() {
         if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
             return null;
-        IBlockState blockMeta = world.getBlockState(pos);
-        List<Material> mats = new ArrayList<Material>();
-        switch (world.getBlockState(pos).getBlock().getMetaFromState(blockMeta)) {
-            case 2: // STEEL
+        List<Material> mats = new ArrayList<>();
+        switch (tier) {
+            case 3: // STEEL
                 mats.add(Material.ROCK);
                 mats.add(Material.IRON);
                 break;
-            case 3: // DARKMATTER
+            case 4: // DARKMATTER
                 mats.add(Material.ROCK);
                 mats.add(Material.IRON);
                 break;
@@ -97,17 +96,17 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
         return mats;
     }
 
-    boolean isBlockValid(BlockPos pos) {
+    private boolean isBlockValid(BlockPos pos) {
         return ValidMaterialsForCrafting().contains(world.getBlockState(pos).getMaterial())
                 && world.isBlockFullCube(pos) && world.getBlockState(pos).isOpaqueCube();
     }
 
-    void craftItem() {
+    private void craftItem() {
         ProcessRecipe recipe = recipeToCraft();
         if (recipe != null) {
             this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, pos.getX(), pos.getY() + 1.5D, pos.getZ(),
                     0.0D, 0.0D, 0.0D, new int[0]);
-            this.world.playSound((EntityPlayer) null, pos.getX(), pos.getY() + 1.5D, pos.getZ(),
+            this.world.playSound(null, pos.getX(), pos.getY() + 1.5D, pos.getZ(),
                     SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F,
                     (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F);
 
@@ -126,11 +125,11 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
                 for (int times = 0; times < timesToCraft; times++) {
                     if (currentHeatValue < recipe.getIntParameter())
                         break;
-                    List<ItemStack> inputs = new ArrayList<ItemStack>();
+                    List<ItemStack> inputs = new ArrayList<>();
                     for (Object o : recipe.getInputs())
                         inputs.add(((ItemStack) o).copy());
-                    for (int i = 0; i < list.size(); i++) {
-                        ItemStack stack = list.get(i).getItem();
+                    for (EntityItem item : list) {
+                        ItemStack stack = item.getItem();
                         for (ItemStack i2 : inputs) {
                             int count = Math.min(i2.getCount(), stack.getCount());
                             if (stack.isItemEqual(i2)) {
@@ -169,22 +168,22 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
             this.markDirty();
     }
 
-    public TileCombustionCollector getCollector() {
+    private TileCombustionCollector getCollector() {
         BlockPos[] poses = new BlockPos[]{pos.add(-1, 1, 0), pos.add(1, 1, 0), pos.add(0, 1, -1), pos.add(0, 1, 1),
                 pos.add(0, 2, 0)};
         for (BlockPos p : poses) {
             TileEntity t = world.getTileEntity(p);
-            if (t != null && t instanceof TileCombustionCollector)
+            if (t instanceof TileCombustionCollector)
                 return (TileCombustionCollector) t;
         }
         return null;
     }
 
-    public ProcessRecipe recipeToCraft() {
+    private ProcessRecipe recipeToCraft() {
         List<EntityItem> list = world.getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.getX(),
                 pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + 2, pos.getZ() + 1));
 
-        List<Object> items = new ArrayList<Object>();
+        List<Object> items = new ArrayList<>();
 
         for (EntityItem i : list) {
             items.add(i.getItem());
