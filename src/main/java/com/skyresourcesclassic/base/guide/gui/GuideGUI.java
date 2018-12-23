@@ -132,9 +132,9 @@ public class GuideGUI extends GuiScreen {
             if (ConfigOptions.guide.rememberGuide) {
                 currentCategory = lastGuideCat;
                 GuidePage lastPage = SkyResourcesGuide.getPage(lastGuidePage);
-                currentPage = lastPage == null ? SkyResourcesGuide.getPage("stage1") : lastPage;
+                currentPage = lastPage == null ? SkyResourcesGuide.getPage("basics") : lastPage;
             } else
-                currentPage = SkyResourcesGuide.getPage("stage1");
+                currentPage = SkyResourcesGuide.getPage("basics");
         }
         if (linkButtons == null)
             linkButtons = new ArrayList();

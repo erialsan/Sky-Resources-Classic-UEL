@@ -69,7 +69,6 @@ public class ModGuidePages {
         addImagePos("ingotSetup", new BlockPos(1, 2, 0), ModBlocks.crucible.getDefaultState());
         addImagePos("ingotSetup", new BlockPos(1, 1, 0), Blocks.TORCH.getDefaultState());
 
-        addImagePos("crystalSetup", new BlockPos(0, -2, 0), Blocks.HOPPER.getDefaultState());
         addImagePos("crystalSetup", new BlockPos(0, -1, 0), ModBlocks.crystallizer[0].getDefaultState());
         addImagePos("crystalSetup", new BlockPos(-1, 0, 0), Blocks.GLASS.getDefaultState());
         addImagePos("crystalSetup", new BlockPos(0, 0, 1), Blocks.GLASS.getDefaultState());
@@ -156,10 +155,8 @@ public class ModGuidePages {
         addImagePos("end", new BlockPos(1, -1, -1), Blocks.DIAMOND_BLOCK.getDefaultState());
         addImagePos("end", new BlockPos(-1, -1, 1), Blocks.DIAMOND_BLOCK.getDefaultState());
         addImagePos("end", new BlockPos(1, -1, 1), Blocks.DIAMOND_BLOCK.getDefaultState());
-        for (int x = -2; x <= 2; x++)
-        {
-            for (int z = -2; z <= 2; z++)
-            {
+        for (int x = -2; x <= 2; x++) {
+            for (int z = -2; z <= 2; z++) {
                 if (Math.abs(x) == 2 || Math.abs(z) == 2)
                     addImagePos("end", new BlockPos(x, -1, z), ModBlocks.darkMatterBlock.getDefaultState());
             }
@@ -179,8 +176,7 @@ public class ModGuidePages {
         addImagePos("end", new BlockPos(0, 0, 0), Blocks.STONE_BUTTON.getStateFromMeta(5));
     }
 
-    private static void addImagePos(String id, BlockPos pos, IBlockState block)
-    {
+    private static void addImagePos(String id, BlockPos pos, IBlockState block) {
         if (imageDesigns.get(id) == null)
             imageDesigns.put(id, new HashMap());
         Map map = imageDesigns.get(id);
