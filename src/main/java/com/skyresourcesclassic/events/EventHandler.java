@@ -1,12 +1,13 @@
 package com.skyresourcesclassic.events;
 
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.RandomHelper;
 import com.skyresourcesclassic.SkyResourcesClassic;
 import com.skyresourcesclassic.alchemy.effects.IHealthBoostItem;
 import com.skyresourcesclassic.base.ModKeyBindings;
-import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
+import com.skyresourcesclassic.registry.ModBlocks;
 import com.skyresourcesclassic.registry.ModGuiHandler;
 import com.skyresourcesclassic.registry.ModItems;
 import net.minecraft.block.Block;
@@ -22,16 +23,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 import java.util.List;
 
+@Mod.EventBusSubscriber
 public class EventHandler {
     @SubscribeEvent
     public void onPlayerRightClick(RightClickBlock event) {
@@ -44,7 +45,7 @@ public class EventHandler {
                 if (block == Blocks.CACTUS) {
                     RandomHelper.spawnItemInWorld(event.getWorld(), new ItemStack(ModItems.itemComponent[0]),
                             event.getEntityPlayer().getPosition());
-                    event.getEntityPlayer().attackEntityFrom(DamageSource.CACTUS, 5);
+                    event.getEntityPlayer().attackEntityFrom(DamageSource.CACTUS, 2);
                 } else if (block == Blocks.SNOW_LAYER) {
                     RandomHelper.spawnItemInWorld(event.getWorld(), new ItemStack(Items.SNOWBALL), event.getPos());
                     event.getEntityPlayer().addPotionEffect(
@@ -73,20 +74,21 @@ public class EventHandler {
                     if (i > 0) {
                         List<ProcessRecipe> recipes = ProcessRecipeManager.cauldronCleanRecipes.getRecipes();
                         if (recipes.size() > 0) {
-                            boolean worked = false;
+                            boolean validIn = false;
                             for (ProcessRecipe rec : recipes) {
+                                if (!validIn)
+                                    validIn = ((ItemStack) rec.getInputs().get(0)).isItemEqual(item);
                                 if (((ItemStack) rec.getInputs().get(0)).isItemEqual(item))
                                     if (event.getWorld().rand.nextFloat() <= rec.getIntParameter()) {
-                                        worked = true;
-                                        RandomHelper.spawnItemInWorld(event.getWorld(), rec.getOutputs().get(0),
-                                                event.getPos());
+                                        RandomHelper.spawnItemInWorld(event.getWorld(), rec.getOutputs().get(0).copy(),
+                                                event.getPos().up());
                                     }
                             }
-                            if (worked) {
-                                if (event.getWorld().rand.nextFloat() < 0.4F)
+                            if (validIn) {
+                                item.shrink(1);
+                                if (event.getWorld().rand.nextFloat() < 0.16F)
                                     new BlockCauldron().setWaterLevel(event.getWorld(), event.getPos(),
                                             event.getWorld().getBlockState(event.getPos()), i - 1);
-                                item.shrink(1);
                                 if (item.getCount() == 0)
                                     event.getEntityPlayer().setHeldItem(EnumHand.MAIN_HAND, ItemStack.EMPTY);
                             }
@@ -131,18 +133,6 @@ public class EventHandler {
     }
 
     @SubscribeEvent
-    public void onPlayerJoinEvent(PlayerLoggedInEvent event) {
-        EntityPlayer player = event.player;
-
-        if (ConfigOptions.general.displayFirstChatInfo && ConfigOptions.guide.allowGuide) {
-            TextComponentString text = new TextComponentString(
-                    "Need help or a guide? \nPress your " + TextFormatting.AQUA + "Open Guide Key (Default: G)"
-                            + TextFormatting.WHITE + " to open the Sky Resources in-game guide!");
-            player.sendMessage(text);
-        }
-    }
-
-    @SubscribeEvent
     public void onKeyInput(KeyInputEvent event) {
         if (ModKeyBindings.guideKey.isPressed() && ConfigOptions.guide.allowGuide) {
             EntityPlayerSP player = Minecraft.getMinecraft().player;
@@ -152,5 +142,15 @@ public class EventHandler {
                         player.getPosition().getY(), player.getPosition().getZ());
             }
         }
+    }
+
+    @SubscribeEvent
+    public void fuelTime(FurnaceFuelBurnTimeEvent event) {
+        if (event.getItemStack().isItemEqual(new ItemStack(ModItems.itemComponent[6])))
+            event.setBurnTime(3000);
+        else if (event.getItemStack().isItemEqual(new ItemStack(ModBlocks.coalInfusedBlock)))
+            event.setBurnTime(30000);
+        else if (event.getItemStack().isItemEqual(new ItemStack(ModBlocks.compressedCoalBlock)))
+            event.setBurnTime(128000);
     }
 }

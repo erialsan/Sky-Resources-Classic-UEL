@@ -16,27 +16,24 @@ public class GuiPageButton extends GuiButton {
         buttonInfo = button;
     }
 
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, int partialTicks)
+    {
         RenderHelper.enableGUIStandardItemLighting();
 
-        this.hovered = mouseX >= this.x && mouseY >= this.y
-                && mouseX < this.x + this.width
+        this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width
                 && mouseY < this.y + this.height;
 
         GlStateManager.enableDepth();
-        mc.getRenderItem().renderItemAndEffectIntoGUI(
-                buttonInfo.getItemDisplay(), this.x, this.y);
+        mc.getRenderItem().renderItemAndEffectIntoGUI(buttonInfo.getItemDisplay(), this.x, this.y);
 
-        mc.fontRenderer.drawString(I18n.translateToLocal(buttonInfo.getDisplay()),
-                this.x + 20, this.y + 4, 16777215);
+        mc.fontRenderer.drawString(I18n.translateToLocal(buttonInfo.getDisplay()), this.x + 20, this.y + 4, 16777215);
 
         resetWidth();
 
-        if (this.hovered) {
+        if (this.hovered)
+        {
             GlStateManager.disableDepth();
-            this.drawRect(this.x, this.y,
-                    this.x + this.width, this.y + this.height,
-                    2138733178);
+            this.drawRect(this.x, this.y, this.x + this.width, this.y + this.height, 2138733178);
             GlStateManager.color(1, 1, 1, 1);
             GlStateManager.enableDepth();
         }

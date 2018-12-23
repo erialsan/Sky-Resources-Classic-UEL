@@ -2,12 +2,19 @@ package com.skyresourcesclassic.registry;
 
 import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.base.guide.SkyResourcesGuide;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.Loader;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ModGuidePages {
+    public static Map<String, Map<BlockPos, IBlockState>> imageDesigns = new HashMap<>();
+
     public static void init() {
         SkyResourcesGuide.addPage("basics", "guide.skyresourcesclassic.stage1", new ItemStack(Blocks.BEDROCK));
 
@@ -26,6 +33,13 @@ public class ModGuidePages {
 
         SkyResourcesGuide.addPage("combustionHeater", "guide.skyresourcesclassic.stage2",
                 new ItemStack(ModBlocks.combustionHeater[0]));
+        addImagePos("combustion", new BlockPos(0, -1, 0), ModBlocks.combustionHeater[0].getDefaultState());
+        addImagePos("combustion", new BlockPos(1, 0, 0), Blocks.PLANKS.getDefaultState());
+        addImagePos("combustion", new BlockPos(-1, 0, 0), Blocks.PLANKS.getDefaultState());
+        addImagePos("combustion", new BlockPos(0, 0, 1), Blocks.PLANKS.getDefaultState());
+        addImagePos("combustion", new BlockPos(0, 0, -1), Blocks.PLANKS.getDefaultState());
+        addImagePos("combustion", new BlockPos(0, 1, 0), Blocks.PLANKS.getDefaultState());
+        addImagePos("combustion", new BlockPos(0, -1, -1), Blocks.WOODEN_BUTTON.getDefaultState());
 
         SkyResourcesGuide.addPage("waterExtractor", "guide.skyresourcesclassic.stage2",
                 new ItemStack(ModItems.waterExtractor));
@@ -36,12 +50,35 @@ public class ModGuidePages {
             SkyResourcesGuide.addPage("lavaBlaze", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.blazePowderBlock));
         else
             SkyResourcesGuide.addPage("lavaBlaze1", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.blazePowderBlock));
+        addImagePos("lava", new BlockPos(0, -1, 0), Blocks.TORCH.getDefaultState());
+        addImagePos("lava", new BlockPos(0, 0, 0), ModBlocks.blazePowderBlock.getDefaultState());
 
         SkyResourcesGuide.addPage("heatSources", "guide.skyresourcesclassic.stage2", new ItemStack(Blocks.TORCH));
 
         SkyResourcesGuide.addPage("rockGrinder", "guide.skyresourcesclassic.stage2", new ItemStack(ModItems.stoneGrinder));
 
         SkyResourcesGuide.addPage("metalCreation", "guide.skyresourcesclassic.stage2", new ItemStack(ModItems.metalCrystal[0]));
+        addImagePos("ingotSetup", new BlockPos(0, -2, 0), Blocks.TORCH.getDefaultState());
+        addImagePos("ingotSetup", new BlockPos(0, -1, 0), ModBlocks.alchemicalCondenser[0].getDefaultState());
+        addImagePos("ingotSetup", new BlockPos(-1, 0, 0), Blocks.GLASS.getDefaultState());
+        addImagePos("ingotSetup", new BlockPos(0, 0, 1), Blocks.GLASS.getDefaultState());
+        addImagePos("ingotSetup", new BlockPos(0, 0, -1), Blocks.GLASS.getDefaultState());
+        addImagePos("ingotSetup", new BlockPos(1, 0, 0), Blocks.GLASS.getDefaultState());
+        addImagePos("ingotSetup", new BlockPos(0, 1, 0), ModBlocks.fluidDropper.getDefaultState());
+        addImagePos("ingotSetup", new BlockPos(0, 2, 0), ModBlocks.fluidDropper.getDefaultState());
+        addImagePos("ingotSetup", new BlockPos(1, 2, 0), ModBlocks.crucible.getDefaultState());
+        addImagePos("ingotSetup", new BlockPos(1, 1, 0), Blocks.TORCH.getDefaultState());
+
+        addImagePos("crystalSetup", new BlockPos(0, -2, 0), Blocks.HOPPER.getDefaultState());
+        addImagePos("crystalSetup", new BlockPos(0, -1, 0), ModBlocks.crystallizer[0].getDefaultState());
+        addImagePos("crystalSetup", new BlockPos(-1, 0, 0), Blocks.GLASS.getDefaultState());
+        addImagePos("crystalSetup", new BlockPos(0, 0, 1), Blocks.GLASS.getDefaultState());
+        addImagePos("crystalSetup", new BlockPos(0, 0, -1), Blocks.GLASS.getDefaultState());
+        addImagePos("crystalSetup", new BlockPos(1, 0, 0), Blocks.GLASS.getDefaultState());
+        addImagePos("crystalSetup", new BlockPos(0, 1, 0), ModBlocks.fluidDropper.getDefaultState());
+        addImagePos("crystalSetup", new BlockPos(0, 2, 0), ModBlocks.fluidDropper.getDefaultState());
+        addImagePos("crystalSetup", new BlockPos(1, 2, 0), ModBlocks.crucible.getDefaultState());
+        addImagePos("crystalSetup", new BlockPos(1, 1, 0), Blocks.TORCH.getDefaultState());
 
         SkyResourcesGuide.addPage("crucible", "guide.skyresourcesclassic.stage2", new ItemStack(ModBlocks.crucible));
 
@@ -70,6 +107,8 @@ public class ModGuidePages {
                 new ItemStack(ModItems.itemComponent[0]));
 
         SkyResourcesGuide.addPage("ironFreezer", "guide.skyresourcesclassic.stage3", new ItemStack(ModBlocks.ironFreezer));
+        addImagePos("ironFreezer", new BlockPos(0, -1, 0), ModBlocks.ironFreezer.getStateFromMeta(8));
+        addImagePos("ironFreezer", new BlockPos(0, 0, 0), ModBlocks.ironFreezer.getStateFromMeta(0));
 
         SkyResourcesGuide.addPage("rockCrusher", "guide.skyresourcesclassic.stage3", new ItemStack(ModBlocks.rockCrusher));
 
@@ -87,7 +126,65 @@ public class ModGuidePages {
         SkyResourcesGuide.addPage("healthGem", "guide.skyresourcesclassic.stage3", new ItemStack(ModItems.healthGem));
 
         SkyResourcesGuide.addPage("lifeInfuser", "guide.skyresourcesclassic.stage3", new ItemStack(ModBlocks.lifeInfuser));
+        addImagePos("infuser", new BlockPos(-1, -1, -1), Blocks.LOG.getDefaultState());
+        addImagePos("infuser", new BlockPos(-1, 0, -1), Blocks.LOG.getDefaultState());
+        addImagePos("infuser", new BlockPos(1, -1, -1), Blocks.LOG.getDefaultState());
+        addImagePos("infuser", new BlockPos(1, 0, -1), Blocks.LOG.getDefaultState());
+        addImagePos("infuser", new BlockPos(-1, -1, 1), Blocks.LOG.getDefaultState());
+        addImagePos("infuser", new BlockPos(-1, 0, 1), Blocks.LOG.getDefaultState());
+        addImagePos("infuser", new BlockPos(1, -1, 1), Blocks.LOG.getDefaultState());
+        addImagePos("infuser", new BlockPos(1, 0, 1), Blocks.LOG.getDefaultState());
+        addImagePos("infuser", new BlockPos(-1, 1, -1), Blocks.LEAVES.getDefaultState());
+        addImagePos("infuser", new BlockPos(0, 1, -1), Blocks.LEAVES.getDefaultState());
+        addImagePos("infuser", new BlockPos(1, 1, -1), Blocks.LEAVES.getDefaultState());
+        addImagePos("infuser", new BlockPos(1, 1, 0), Blocks.LEAVES.getDefaultState());
+        addImagePos("infuser", new BlockPos(1, 1, 1), Blocks.LEAVES.getDefaultState());
+        addImagePos("infuser", new BlockPos(0, 1, 1), Blocks.LEAVES.getDefaultState());
+        addImagePos("infuser", new BlockPos(-1, 1, 1), Blocks.LEAVES.getDefaultState());
+        addImagePos("infuser", new BlockPos(-1, 1, 0), Blocks.LEAVES.getDefaultState());
+        addImagePos("infuser", new BlockPos(0, 0, 0), ModBlocks.lifeInfuser.getDefaultState());
+        addImagePos("infuser", new BlockPos(0, 1, 0), ModBlocks.darkMatterBlock.getDefaultState());
+        addImagePos("infuser", new BlockPos(0, 2, 0), Blocks.STONE_BUTTON.getStateFromMeta(5));
 
         SkyResourcesGuide.addPage("end", "guide.skyresourcesclassic.stage3", new ItemStack(Items.ENDER_EYE));
+        addImagePos("end", new BlockPos(0, -1, 0), ModBlocks.endPortalCore.getDefaultState());
+        addImagePos("end", new BlockPos(-1, -1, 0), Blocks.GOLD_BLOCK.getDefaultState());
+        addImagePos("end", new BlockPos(1, -1, 0), Blocks.GOLD_BLOCK.getDefaultState());
+        addImagePos("end", new BlockPos(0, -1, -1), Blocks.GOLD_BLOCK.getDefaultState());
+        addImagePos("end", new BlockPos(0, -1, 1), Blocks.GOLD_BLOCK.getDefaultState());
+        addImagePos("end", new BlockPos(-1, -1, -1), Blocks.DIAMOND_BLOCK.getDefaultState());
+        addImagePos("end", new BlockPos(1, -1, -1), Blocks.DIAMOND_BLOCK.getDefaultState());
+        addImagePos("end", new BlockPos(-1, -1, 1), Blocks.DIAMOND_BLOCK.getDefaultState());
+        addImagePos("end", new BlockPos(1, -1, 1), Blocks.DIAMOND_BLOCK.getDefaultState());
+        for (int x = -2; x <= 2; x++)
+        {
+            for (int z = -2; z <= 2; z++)
+            {
+                if (Math.abs(x) == 2 || Math.abs(z) == 2)
+                    addImagePos("end", new BlockPos(x, -1, z), ModBlocks.darkMatterBlock.getDefaultState());
+            }
+        }
+        addImagePos("end", new BlockPos(-2, 0, -2), Blocks.END_BRICKS.getDefaultState());
+        addImagePos("end", new BlockPos(-2, 1, -2), Blocks.END_BRICKS.getDefaultState());
+        addImagePos("end", new BlockPos(-2, 2, -2), Blocks.GLOWSTONE.getDefaultState());
+        addImagePos("end", new BlockPos(2, 0, -2), Blocks.END_BRICKS.getDefaultState());
+        addImagePos("end", new BlockPos(2, 1, -2), Blocks.END_BRICKS.getDefaultState());
+        addImagePos("end", new BlockPos(2, 2, -2), Blocks.GLOWSTONE.getDefaultState());
+        addImagePos("end", new BlockPos(-2, 0, 2), Blocks.END_BRICKS.getDefaultState());
+        addImagePos("end", new BlockPos(-2, 1, 2), Blocks.END_BRICKS.getDefaultState());
+        addImagePos("end", new BlockPos(-2, 2, 2), Blocks.GLOWSTONE.getDefaultState());
+        addImagePos("end", new BlockPos(2, 0, 2), Blocks.END_BRICKS.getDefaultState());
+        addImagePos("end", new BlockPos(2, 1, 2), Blocks.END_BRICKS.getDefaultState());
+        addImagePos("end", new BlockPos(2, 2, 2), Blocks.GLOWSTONE.getDefaultState());
+        addImagePos("end", new BlockPos(0, 0, 0), Blocks.STONE_BUTTON.getStateFromMeta(5));
+    }
+
+    private static void addImagePos(String id, BlockPos pos, IBlockState block)
+    {
+        if (imageDesigns.get(id) == null)
+            imageDesigns.put(id, new HashMap());
+        Map map = imageDesigns.get(id);
+        map.put(pos, block);
+        imageDesigns.put(id, map);
     }
 }

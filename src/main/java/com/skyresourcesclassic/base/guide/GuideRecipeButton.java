@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GuideRecipeButton extends GuidePageButton {
-
     public GuideRecipeButton(ItemStack stack) {
         super(stack.getDisplayName(), stack);
     }
@@ -38,5 +37,13 @@ public class GuideRecipeButton extends GuidePageButton {
     @Override
     public GuidePageButton clone() {
         return new GuideRecipeButton(this.stackDisplay);
+    }
+
+    @Override
+    public List<String> getHoverDisplay() {
+        List<String> list = new ArrayList<>();
+        list.add("Click for recipe");
+        list.add("(Requires JEI)");
+        return list;
     }
 }

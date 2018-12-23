@@ -36,7 +36,7 @@ public abstract class GuidePageButton {
             int meta = Integer.parseInt(trimmed.split(":")[2].split("\\*")[0]);
 
             ResourceLocation resourcelocation = new ResourceLocation(itemName);
-            Item item = Item.REGISTRY.getObject(resourcelocation);
+            Item item = (Item) Item.REGISTRY.getObject(resourcelocation);
 
             if (item == null)
                 stackDisplay = ItemStack.EMPTY;
@@ -56,4 +56,6 @@ public abstract class GuidePageButton {
     public abstract String getIdentifier();
 
     public abstract GuidePageButton clone();
+
+    public abstract List<String> getHoverDisplay();
 }
