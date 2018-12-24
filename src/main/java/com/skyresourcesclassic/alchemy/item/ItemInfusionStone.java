@@ -45,7 +45,7 @@ public class ItemInfusionStone extends Item {
 
         ProcessRecipe recipe = ProcessRecipeManager.infusionRecipes.getRecipe(
                 new ArrayList<>(Arrays.asList(offHand,
-                        new ItemStack(block, 1, block.getMetaFromState(world.getBlockState(pos))))),
+                        new ItemStack(block))),
                 player.getHealth(), false, false);
 
         if (recipe != null && recipe.getOutputs().get(0) != ItemStack.EMPTY) {

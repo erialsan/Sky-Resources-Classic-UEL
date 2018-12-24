@@ -43,6 +43,7 @@ public class ModBlocks {
     public static Block quickDropper;
     public static Block aqueousConcentrator;
     public static Block aqueousDeconcentrator;
+    public static Block wildlifeAttractor;
 
     public static Block compressedCoalBlock;
     public static Block coalInfusedBlock;
@@ -111,6 +112,8 @@ public class ModBlocks {
         ironFreezer = registerBlock(new BlockFreezer("iron_freezer", 2F, 2F));
 
         crucible = registerBlock(new CrucibleBlock("crucible", 2F, 12F));
+        wildlifeAttractor = registerBlock(
+                new BlockWildlifeAttractor("wildlife_attractor", 2F, 12F));
 
         fluidDropper = registerBlock(new FluidDropperBlock("fluid_dropper", 2F, 12F));
 

@@ -37,249 +37,248 @@ public class ModCrafting {
         GameRegistry.addSmelting(new ItemStack(ModItems.itemComponent[8]), new ItemStack(Items.COAL, 1, 1), 0.1F);
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.SAPLING, 1, 4), 10,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.itemComponent[0], 10),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.itemComponent[0], 10),
                         new ItemStack(ModBlocks.cactusFruitNeedle))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.SAPLING, 1, 0), 10,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.APPLE, 10, 0), "treeSapling")));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.APPLE, 10, 0), "treeSapling")));
 
-        ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.DIRT, 1, 1), 15, new ArrayList<Object>(
+        ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.DIRT, 1, 1), 15, new ArrayList<>(
                 Arrays.asList(new ItemStack(ModItems.cactusFruit, 4), new ItemStack(Blocks.SAND, 1, 1))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.CACTUS, 3), 8,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.itemComponent[0], 6),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.itemComponent[0], 6),
                         new ItemStack(Blocks.CACTUS, 1, OreDictionary.WILDCARD_VALUE))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.DEADBUSH), 10,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.ROTTEN_FLESH, 4), "treeSapling")));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.ROTTEN_FLESH, 4), "treeSapling")));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.GRASS, 1), 14,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.WHEAT_SEEDS, 4), new ItemStack(Blocks.DIRT))));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.WHEAT_SEEDS, 4), new ItemStack(Blocks.DIRT))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Items.APPLE), 10,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.SUGAR, 10), new ItemStack(Blocks.HAY_BLOCK))));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.SUGAR, 10), new ItemStack(Blocks.HAY_BLOCK))));
 
-        ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.SAPLING, 1, 5), 19, new ArrayList<Object>(
+        ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.SAPLING, 1, 5), 19, new ArrayList<>(
                 Arrays.asList(new ItemStack(Items.GUNPOWDER, 10), new ItemStack(Blocks.SAPLING, 1, 0))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.SAPLING, 1, 3), 19,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.DYE, 10, 3), "treeSapling")));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.DYE, 10, 3), "treeSapling")));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.SAPLING, 1, 2), 19,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.DYE, 10, 15), "treeSapling")));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.DYE, 10, 15), "treeSapling")));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Items.REEDS), 19,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.SPECKLED_MELON, 3),
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.SPECKLED_MELON, 3),
                         new ItemStack(Blocks.PUMPKIN, 1, OreDictionary.WILDCARD_VALUE))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Items.NETHER_WART), 19,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.SPIDER_EYE, 8),
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.SPIDER_EYE, 8),
                         new ItemStack(Blocks.RED_MUSHROOM, 1, OreDictionary.WILDCARD_VALUE))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.RED_MUSHROOM), 15,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.DYE, 8, 1),
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.DYE, 8, 1),
                         new ItemStack(Blocks.TALLGRASS, 1, OreDictionary.WILDCARD_VALUE))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.BROWN_MUSHROOM), 15,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.DYE, 8, 3),
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.DYE, 8, 3),
                         new ItemStack(Blocks.TALLGRASS, 1, OreDictionary.WILDCARD_VALUE))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(ModItems.healthGem), 15,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.itemComponent[3], 1),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.itemComponent[3], 1),
                         new ItemStack(Blocks.CHORUS_FLOWER, 1, OreDictionary.WILDCARD_VALUE))));
 
-        ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Items.CHORUS_FRUIT), 12, new ArrayList<Object>(Arrays.asList(new ItemStack(Items.ENDER_EYE, 4), new ItemStack(Blocks.MELON_BLOCK))));
+        ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Items.CHORUS_FRUIT), 12, new ArrayList<>(Arrays.asList(new ItemStack(Items.ENDER_EYE, 4), new ItemStack(Blocks.MELON_BLOCK))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.COAL, 1), 50,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.COAL, 1, 1))));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.COAL, 1, 1))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.BLAZE_POWDER, 3), 75,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.GUNPOWDER))));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.GUNPOWDER))));
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.GUNPOWDER), 120,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.FLINT))));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.FLINT))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.DIAMOND, 1), 1000,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModBlocks.compressedCoalBlock, 1))));
+                new ArrayList<>(Arrays.asList(new ItemStack(ModBlocks.compressedCoalBlock, 1))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Blocks.SAND, 12, 1), 200,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Blocks.SAND, 12), new ItemStack(Items.DYE, 1, 1))));
+                new ArrayList<>(Arrays.asList(new ItemStack(Blocks.SAND, 12), new ItemStack(Items.DYE, 1, 1))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[0]), 90,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Blocks.GLASS, 6),
+                new ArrayList<>(Arrays.asList(new ItemStack(Blocks.GLASS, 6),
                         new ItemStack(Items.ROTTEN_FLESH, 4), new ItemStack(Items.BLAZE_POWDER, 2))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[1]), 240,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
                         new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Items.REDSTONE, 6))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[2]), 125,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
                         new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.GUNPOWDER, 3))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[3]), 230,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[2]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[2]),
                         new ItemStack(Items.IRON_INGOT, 2), new ItemStack(Items.BLAZE_POWDER, 4))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[4]), 400,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                         new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(Items.SUGAR, 6))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[5]), 180,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
                         new ItemStack(Items.IRON_INGOT, 3), new ItemStack(Items.SUGAR, 2))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[6]), 420,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
                         new ItemStack(Items.IRON_INGOT, 3), new ItemStack(Items.GLOWSTONE_DUST, 3))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[7]), 600,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                         new ItemStack(Items.GOLD_INGOT, 4), new ItemStack(Items.DYE, 8, 4))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[8]), 160,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
                         new ItemStack(Items.IRON_INGOT, 3), new ItemStack(Items.DYE, 6, 15))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[9]), 300,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
                         new ItemStack(Items.IRON_INGOT, 5), new ItemStack(Items.COAL, 4))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[10]), 1200,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[9]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[9]),
                                 new ItemStack(Items.DYE, 9, 4), new ItemStack(Items.QUARTZ, 3),
                                 new ItemStack(Items.GOLD_INGOT, 2))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[11]), 1200,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[9]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[9]),
                                 new ItemStack(Items.MAGMA_CREAM, 5), new ItemStack(Items.QUARTZ, 2),
                                 new ItemStack(Items.GOLD_INGOT, 3))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[12]), 800,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                                 new ItemStack(Items.GOLD_INGOT, 3), new ItemStack(Items.QUARTZ, 2),
                                 new ItemStack(Items.REDSTONE, 7))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[13]), 2000,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                                 new ItemStack(Items.GOLD_INGOT, 6), new ItemStack(Items.ENDER_EYE, 3),
                                 new ItemStack(ModItems.itemComponent[11], 2))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[14]), 1400,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
                                 new ItemStack(Items.GOLD_INGOT, 2), new ItemStack(Items.IRON_INGOT, 4),
                                 new ItemStack(Items.QUARTZ, 5))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[15]), 1500,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                                 new ItemStack(Items.GOLD_INGOT, 3), new ItemStack(Items.NETHERBRICK, 4),
                                 new ItemStack(Items.COAL, 5))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[16]), 1800,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                         new ItemStack(Items.GOLD_INGOT, 3), new ItemStack(Items.IRON_INGOT, 8),
                         new ItemStack(Items.QUARTZ, 5), new ItemStack(Items.SUGAR, 2))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.metalCrystal[17]), 2600,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                         new ItemStack(Items.GOLD_INGOT, 7), new ItemStack(Items.DIAMOND, 5),
                         new ItemStack(Blocks.OBSIDIAN, 5), new ItemStack(Items.SUGAR, 2))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[18]), 1000,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                                 new ItemStack(Blocks.STONE, 4), new ItemStack(Items.IRON_INGOT, 6),
                                 new ItemStack(Blocks.DIRT, 3))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[19]), 1300,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                                 new ItemStack(Items.GUNPOWDER, 3), new ItemStack(Items.IRON_INGOT, 5),
                                 new ItemStack(Items.GOLD_INGOT, 3))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[20]), 700,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[0]),
                                 new ItemStack(Items.REDSTONE, 4), new ItemStack(Items.IRON_INGOT, 3),
                                 new ItemStack(Items.DYE, 3, 9))));
 
         ProcessRecipeManager.combustionRecipes
                 .addRecipe(new ItemStack(ModItems.metalCrystal[21]), 1800,
-                        new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
+                        new ArrayList<>(Arrays.asList(new ItemStack(ModItems.metalCrystal[1]),
                                 new ItemStack(Items.GOLD_INGOT, 6), new ItemStack(Items.DYE, 6, 4),
                                 new ItemStack(ModItems.itemComponent[11]))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModBlocks.dryCactus), 400,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Blocks.BONE_BLOCK), new ItemStack(Items.DYE, 8, 7),
+                new ArrayList<>(Arrays.asList(new ItemStack(Blocks.BONE_BLOCK), new ItemStack(Items.DYE, 8, 7),
                         new ItemStack(Blocks.LEAVES, 8, 1))));
 
-        ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.REDSTONE, 4), 400, new ArrayList<Object>(
+        ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.REDSTONE, 4), 400, new ArrayList<>(
                 Arrays.asList(new ItemStack(Items.GUNPOWDER, 2), new ItemStack(Items.BLAZE_POWDER, 2))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.itemComponent[1], 4), 400,
-                new ArrayList<Object>(
+                new ArrayList<>(
                         Arrays.asList(new ItemStack(Items.COAL, 3), new ItemStack(ModItems.itemComponent[2]))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.itemComponent[3]), 1200,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.DIAMOND, 1),
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.DIAMOND, 1),
                         new ItemStack(ModItems.itemComponent[2], 8))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.itemComponent[4]), 1000,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.GOLD_INGOT, 1),
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.GOLD_INGOT, 1),
                         new ItemStack(ModItems.itemComponent[2], 4))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.itemComponent[2], 4), 700,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.REDSTONE, 1), new ItemStack(Items.DYE, 1, 4),
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.REDSTONE, 1), new ItemStack(Items.DYE, 1, 4),
                         new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(Items.BLAZE_POWDER, 1))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.WHEAT_SEEDS, 1), 50,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Blocks.DEADBUSH, 1), new ItemStack(Items.FLINT, 2))));
+                new ArrayList<>(Arrays.asList(new ItemStack(Blocks.DEADBUSH, 1), new ItemStack(Items.FLINT, 2))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Blocks.DIRT), 100,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(ModItems.itemComponent[8], 8))));
+                new ArrayList<>(Arrays.asList(new ItemStack(ModItems.itemComponent[8], 8))));
 
-        ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.SLIME_BALL), 200, new ArrayList<Object>(
+        ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.SLIME_BALL), 200, new ArrayList<>(
                 Arrays.asList(new ItemStack(ModItems.itemComponent[8], 8), new ItemStack(Items.SNOWBALL))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.itemComponent[15]), 1400,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.POISONOUS_POTATO, 3),
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.POISONOUS_POTATO, 3),
                         new ItemStack(Items.FERMENTED_SPIDER_EYE, 2), new ItemStack(Items.GUNPOWDER, 2))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.PRISMARINE_SHARD, 4), 800,
-                new ArrayList<Object>(
+                new ArrayList<>(
                         Arrays.asList(new ItemStack(Items.QUARTZ, 4), new ItemStack(Blocks.MOSSY_COBBLESTONE))));
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.PRISMARINE_CRYSTALS, 4), 1200,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.QUARTZ, 4), new ItemStack(Blocks.GLASS, 3))));
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.QUARTZ, 4), new ItemStack(Blocks.GLASS, 3))));
 
         ItemStack waterBottle = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.WATER);
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.SNOWBALL), 200,
-                new ArrayList<Object>(Arrays.asList(waterBottle)));
+                new ArrayList<>(Arrays.asList(waterBottle)));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Blocks.NETHERRACK, 4), 800,
-                new ArrayList<Object>(
+                new ArrayList<>(
                         Arrays.asList(new ItemStack(Blocks.COBBLESTONE, 8), new ItemStack(Items.BLAZE_POWDER, 2))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(ModItems.itemComponent[11]), 1400,
-                new ArrayList<Object>(
+                new ArrayList<>(
                         Arrays.asList(new ItemStack(Blocks.OBSIDIAN, 3), new ItemStack(Items.NETHERBRICK, 6),
-                                new ItemStack(OreDictionary.getOres(steelIngot).get(0).getItem(), 3,
-                                        OreDictionary.getOres(steelIngot).get(0).getMetadata()))));
+                                new ItemStack(OreDictionary.getOres(steelIngot).get(0).getItem(), 3))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.GLOWSTONE_DUST, 5), 500,
-                new ArrayList<Object>(
+                new ArrayList<>(
                         Arrays.asList(new ItemStack(Items.REDSTONE, 4), new ItemStack(Items.BLAZE_POWDER, 2))));
 
-        ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.DYE, 8, 4), 800, new ArrayList<Object>(
+        ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.DYE, 8, 4), 800, new ArrayList<>(
                 Arrays.asList(new ItemStack(ModItems.metalCrystal[15]), new ItemStack(Items.FLINT, 3))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Blocks.END_STONE, 1), 1400,
-                new ArrayList<Object>(Arrays.asList(new ItemStack(Blocks.STONE, 6, 3), new ItemStack(Items.SUGAR, 2),
+                new ArrayList<>(Arrays.asList(new ItemStack(Blocks.STONE, 6, 3), new ItemStack(Items.SUGAR, 2),
                         new ItemStack(Items.ENDER_PEARL, 4), new ItemStack(Items.QUARTZ, 2),
                         new ItemStack(Blocks.BONE_BLOCK, 4))));
 
@@ -312,20 +311,20 @@ public class ModCrafting {
                 new ItemStack(ModBlocks.blazePowderBlock));
 
         ProcessRecipeManager.waterExtractorExtractRecipes.addRecipe(
-                new ArrayList<Object>(
+                new ArrayList<>(
                         Arrays.asList(new ItemStack(ModBlocks.dryCactus), new FluidStack(FluidRegistry.WATER, 50))),
                 0, new ItemStack(Blocks.CACTUS));
         ProcessRecipeManager.waterExtractorExtractRecipes.addRecipe(
-                new ArrayList<Object>(Arrays.asList(ItemStack.EMPTY, new FluidStack(FluidRegistry.WATER, 50))), 0,
+                new ArrayList<>(Arrays.asList(ItemStack.EMPTY, new FluidStack(FluidRegistry.WATER, 50))), 0,
                 new ItemStack(Blocks.SNOW));
         ProcessRecipeManager.waterExtractorExtractRecipes.addRecipe(
-                new ArrayList<Object>(Arrays.asList(ItemStack.EMPTY, new FluidStack(FluidRegistry.WATER, 20))), 0,
+                new ArrayList<>(Arrays.asList(ItemStack.EMPTY, new FluidStack(FluidRegistry.WATER, 20))), 0,
                 "treeLeaves");
 
-        ProcessRecipeManager.waterExtractorInsertRecipes.addRecipe(new ItemStack(Blocks.CLAY), 0, new ArrayList<Object>(
+        ProcessRecipeManager.waterExtractorInsertRecipes.addRecipe(new ItemStack(Blocks.CLAY), 0, new ArrayList<>(
                 Arrays.asList(new ItemStack(Blocks.DIRT), new FluidStack(FluidRegistry.WATER, 200))));
 
-        ProcessRecipeManager.waterExtractorInsertRecipes.addRecipe(new ItemStack(Blocks.CACTUS), 0, new ArrayList<Object>(
+        ProcessRecipeManager.waterExtractorInsertRecipes.addRecipe(new ItemStack(Blocks.CACTUS), 0, new ArrayList<>(
                 Arrays.asList(new ItemStack(ModBlocks.dryCactus), new FluidStack(FluidRegistry.WATER, 1200))));
 
         ProcessRecipeManager.freezerRecipes.addRecipe(new ItemStack(ModItems.heavySnowball), 40,
@@ -370,7 +369,7 @@ public class ModCrafting {
                     continue;
                 ProcessRecipeManager.combustionRecipes
                         .addRecipe(new ItemStack(s.getItem(), 5, s.getItemDamage()), 1100,
-                                new ArrayList<Object>(Arrays.asList(new ItemStack(Items.REDSTONE, 2),
+                                new ArrayList<>(Arrays.asList(new ItemStack(Items.REDSTONE, 2),
                                         new ItemStack(Items.BLAZE_POWDER, 1),
                                         new ItemStack(ModItems.itemComponent[15], 2))));
             }
@@ -379,7 +378,7 @@ public class ModCrafting {
         if (OreDictionary.getOres("dustThorium").size() > 0) {
             ItemStack s = OreDictionary.getOres("dustThorium").get(0);
             ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(s.getItem(), 5, s.getItemDamage()), 1500,
-                    new ArrayList<Object>(Arrays.asList(new ItemStack(Items.REDSTONE, 2),
+                    new ArrayList<>(Arrays.asList(new ItemStack(Items.REDSTONE, 2),
                             new ItemStack(Items.SPIDER_EYE, 1), new ItemStack(Items.BLAZE_POWDER, 3),
                             new ItemStack(ModItems.itemComponent[15], 5))));
         }

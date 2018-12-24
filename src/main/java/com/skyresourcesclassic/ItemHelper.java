@@ -4,7 +4,6 @@ import com.skyresourcesclassic.alchemy.item.ItemInfusionStone;
 import com.skyresourcesclassic.technology.item.ItemRockGrinder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +43,7 @@ public class ItemHelper {
         if (stack1.isItemEqual(stack2))
             return true;
 
-        if (!stack1.isEmpty() && !stack2.isEmpty() && stack1.getMetadata() == OreDictionary.WILDCARD_VALUE
-                || stack2.getMetadata() == OreDictionary.WILDCARD_VALUE) {
+        if (!stack1.isEmpty() && !stack2.isEmpty()) {
             return stack1.getItem() == stack2.getItem();
         }
         return false;

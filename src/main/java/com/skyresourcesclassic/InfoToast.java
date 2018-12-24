@@ -44,7 +44,7 @@ public class InfoToast implements IToast {
         return this.type;
     }
 
-    public static enum Type {
-        Info;
+    public enum Type {
+        Info
     }
 }

@@ -289,7 +289,6 @@ public class DirtFurnaceTile extends TileEntity implements ITickable, ISidedInve
             }
 
             if (this.furnaceItemStacks.get(0).getItem() == Item.getItemFromBlock(Blocks.SPONGE)
-                    && this.furnaceItemStacks.get(0).getMetadata() == 1
                     && this.furnaceItemStacks.get(1) != ItemStack.EMPTY
                     && this.furnaceItemStacks.get(1).getItem() == Items.BUCKET) {
                 this.furnaceItemStacks.set(1, new ItemStack(Items.WATER_BUCKET));

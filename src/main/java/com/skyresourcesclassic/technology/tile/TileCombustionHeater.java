@@ -72,11 +72,8 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
     }
 
     private boolean isValidFuel(ItemStack stack) {
-        if (TileEntityFurnace.getItemBurnTime(stack) <= 0 || getHeatPerTick(stack) <= 0
-                || getHeatPerTick(stack) > getMaxHeatPerTick() || getFuelBurnTime(stack) <= 0)
-            return false;
-
-        return true;
+        return !(TileEntityFurnace.getItemBurnTime(stack) <= 0 || getHeatPerTick(stack) <= 0
+                || getHeatPerTick(stack) > getMaxHeatPerTick() || getFuelBurnTime(stack) <= 0);
     }
 
     @Override
@@ -160,14 +157,12 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
     }
 
     public boolean hasValidMultiblock() {
-        if (!isBlockValid(pos.up(), pos.add(-1, 1, 0))
-                || !isBlockValid(pos.up(), pos.add(1, 1, 0))
-                || !isBlockValid(pos.up(), pos.add(0, 2, 0))
-                || !isBlockValid(pos.up(), pos.add(0, 1, -1))
-                || !isBlockValid(pos.up(), pos.add(0, 1, 1))
-                || !world.isAirBlock(pos.up()))
-            return false;
-        return true;
+        return isBlockValid(pos.up(), pos.add(-1, 1, 0))
+                && isBlockValid(pos.up(), pos.add(1, 1, 0))
+                && isBlockValid(pos.up(), pos.add(0, 2, 0))
+                && isBlockValid(pos.up(), pos.add(0, 1, -1))
+                && isBlockValid(pos.up(), pos.add(0, 1, 1))
+                && world.isAirBlock(pos.up());
     }
 
     private boolean isBlockValid(BlockPos center, BlockPos pos) {

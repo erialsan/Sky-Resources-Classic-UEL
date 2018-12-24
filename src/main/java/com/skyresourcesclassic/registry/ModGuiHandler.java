@@ -32,89 +32,99 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int QuickDropperGUI = 11;
     public static final int AqueousConcentratorGUI = 12;
     public static final int BeeAttractorGUI = 15;
+    public static final int WildlifeAttractorGUI = 20;
     public static final int GuideGUI = 25;
 
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-        if (id == CombustionHeaterGUI)
-            return new ContainerCombustionHeater(player.inventory,
-                    (TileCombustionHeater) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == FreezerGUI)
-            return new ContainerFreezer(player.inventory, (MiniFreezerTile) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == FurnaceGUI)
-            return new ContainerDirtFurnace(player.inventory,
-                    (DirtFurnaceTile) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == DarkMatterWarperGUI)
-            return new ContainerDarkMatterWarper(player.inventory,
-                    (TileDarkMatterWarper) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == EndPortalCoreGUI)
-            return new ContainerEndPortalCore(player.inventory,
-                    (TileEndPortalCore) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == LifeInfuserGUI)
-            return new ContainerLifeInfuser(player.inventory,
-                    (LifeInfuserTile) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == LifeInjectorGUI)
-            return new ContainerLifeInjector(player.inventory,
-                    (LifeInjectorTile) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == RockCrusherGUI)
-            return new ContainerRockCrusher(player.inventory,
-                    (TileRockCrusher) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == RockCleanerGUI)
-            return new ContainerRockCleaner(player.inventory,
-                    (TileRockCleaner) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == CombustionCollectorGUI)
-            return new ContainerCombustionCollector(player.inventory,
-                    (TileCombustionCollector) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == QuickDropperGUI)
-            return new ContainerQuickDropper(player.inventory,
-                    (TileQuickDropper) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == AqueousConcentratorGUI)
-            return new ContainerAqueousConcentrator(player.inventory,
-                    (TileAqueousConcentrator) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == BeeAttractorGUI)
-            return new ContainerBeeAttractor(player.inventory,
-                    (TileBeeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
-
-        return null;
+        switch (id) {
+            case CombustionHeaterGUI:
+                return new ContainerCombustionHeater(player.inventory,
+                        (TileCombustionHeater) world.getTileEntity(new BlockPos(x, y, z)));
+            case FreezerGUI:
+                return new ContainerFreezer(player.inventory, (MiniFreezerTile) world.getTileEntity(new BlockPos(x, y, z)));
+            case FurnaceGUI:
+                return new ContainerDirtFurnace(player.inventory,
+                        (DirtFurnaceTile) world.getTileEntity(new BlockPos(x, y, z)));
+            case DarkMatterWarperGUI:
+                return new ContainerDarkMatterWarper(player.inventory,
+                        (TileDarkMatterWarper) world.getTileEntity(new BlockPos(x, y, z)));
+            case EndPortalCoreGUI:
+                return new ContainerEndPortalCore(player.inventory,
+                        (TileEndPortalCore) world.getTileEntity(new BlockPos(x, y, z)));
+            case LifeInfuserGUI:
+                return new ContainerLifeInfuser(player.inventory,
+                        (LifeInfuserTile) world.getTileEntity(new BlockPos(x, y, z)));
+            case LifeInjectorGUI:
+                return new ContainerLifeInjector(player.inventory,
+                        (LifeInjectorTile) world.getTileEntity(new BlockPos(x, y, z)));
+            case RockCrusherGUI:
+                return new ContainerRockCrusher(player.inventory,
+                        (TileRockCrusher) world.getTileEntity(new BlockPos(x, y, z)));
+            case RockCleanerGUI:
+                return new ContainerRockCleaner(player.inventory,
+                        (TileRockCleaner) world.getTileEntity(new BlockPos(x, y, z)));
+            case CombustionCollectorGUI:
+                return new ContainerCombustionCollector(player.inventory,
+                        (TileCombustionCollector) world.getTileEntity(new BlockPos(x, y, z)));
+            case QuickDropperGUI:
+                return new ContainerQuickDropper(player.inventory,
+                        (TileQuickDropper) world.getTileEntity(new BlockPos(x, y, z)));
+            case AqueousConcentratorGUI:
+                return new ContainerAqueousConcentrator(player.inventory,
+                        (TileAqueousConcentrator) world.getTileEntity(new BlockPos(x, y, z)));
+            case BeeAttractorGUI:
+                return new ContainerBeeAttractor(player.inventory,
+                        (TileBeeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
+            case WildlifeAttractorGUI:
+                return new ContainerWildlifeAttractor(player.inventory,
+                        (TileWildlifeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
+            default:
+                return null;
+        }
     }
 
     @Override
     public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-        if (id == CombustionHeaterGUI)
-            return new GuiCombustionHeater(player.inventory,
-                    (TileCombustionHeater) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == FreezerGUI)
-            return new GuiFreezer(player.inventory, (MiniFreezerTile) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == FurnaceGUI)
-            return new GuiDirtFurnace(player.inventory, (DirtFurnaceTile) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == DarkMatterWarperGUI)
-            return new GuiDarkMatterWarper(player.inventory,
-                    (TileDarkMatterWarper) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == EndPortalCoreGUI)
-            return new GuiEndPortalCore(player.inventory,
-                    (TileEndPortalCore) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == LifeInfuserGUI)
-            return new GuiLifeInfuser(player.inventory, (LifeInfuserTile) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == LifeInjectorGUI)
-            return new GuiLifeInjector(player.inventory, (LifeInjectorTile) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == RockCrusherGUI)
-            return new GuiRockCrusher(player.inventory, (TileRockCrusher) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == RockCleanerGUI)
-            return new GuiRockCleaner(player.inventory, (TileRockCleaner) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == CombustionCollectorGUI)
-            return new GuiCombustionCollector(player.inventory,
-                    (TileCombustionCollector) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == QuickDropperGUI)
-            return new GuiQuickDropper(player.inventory, (TileQuickDropper) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == AqueousConcentratorGUI)
-            return new GuiAqueousConcentrator(player.inventory,
-                    (TileAqueousConcentrator) world.getTileEntity(new BlockPos(x, y, z)));
-        else if (id == BeeAttractorGUI)
-            return new GuiBeeAttractor(player.inventory, (TileBeeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
-
-        else if (id == GuideGUI)
-            return new GuideGUI();
-
-        return null;
+        switch (id) {
+            case CombustionHeaterGUI:
+                return new GuiCombustionHeater(player.inventory,
+                        (TileCombustionHeater) world.getTileEntity(new BlockPos(x, y, z)));
+            case FreezerGUI:
+                return new GuiFreezer(player.inventory, (MiniFreezerTile) world.getTileEntity(new BlockPos(x, y, z)));
+            case FurnaceGUI:
+                return new GuiDirtFurnace(player.inventory, (DirtFurnaceTile) world.getTileEntity(new BlockPos(x, y, z)));
+            case DarkMatterWarperGUI:
+                return new GuiDarkMatterWarper(player.inventory,
+                        (TileDarkMatterWarper) world.getTileEntity(new BlockPos(x, y, z)));
+            case EndPortalCoreGUI:
+                return new GuiEndPortalCore(player.inventory,
+                        (TileEndPortalCore) world.getTileEntity(new BlockPos(x, y, z)));
+            case LifeInfuserGUI:
+                return new GuiLifeInfuser(player.inventory, (LifeInfuserTile) world.getTileEntity(new BlockPos(x, y, z)));
+            case LifeInjectorGUI:
+                return new GuiLifeInjector(player.inventory, (LifeInjectorTile) world.getTileEntity(new BlockPos(x, y, z)));
+            case RockCrusherGUI:
+                return new GuiRockCrusher(player.inventory, (TileRockCrusher) world.getTileEntity(new BlockPos(x, y, z)));
+            case RockCleanerGUI:
+                return new GuiRockCleaner(player.inventory, (TileRockCleaner) world.getTileEntity(new BlockPos(x, y, z)));
+            case CombustionCollectorGUI:
+                return new GuiCombustionCollector(player.inventory,
+                        (TileCombustionCollector) world.getTileEntity(new BlockPos(x, y, z)));
+            case QuickDropperGUI:
+                return new GuiQuickDropper(player.inventory, (TileQuickDropper) world.getTileEntity(new BlockPos(x, y, z)));
+            case AqueousConcentratorGUI:
+                return new GuiAqueousConcentrator(player.inventory,
+                        (TileAqueousConcentrator) world.getTileEntity(new BlockPos(x, y, z)));
+            case BeeAttractorGUI:
+                return new GuiBeeAttractor(player.inventory, (TileBeeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
+            case WildlifeAttractorGUI:
+                return new GuiWildlifeAttractor(player.inventory,
+                        (TileWildlifeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
+            case GuideGUI:
+                return new GuideGUI();
+            default:
+                return null;
+        }
     }
 }

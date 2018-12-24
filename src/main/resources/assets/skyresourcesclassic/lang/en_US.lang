@@ -79,6 +79,7 @@ tile.skyresourcesclassic.combustion_collector.name=Combustion Collector
 tile.skyresourcesclassic.quick_dropper.name=Quick Dropper
 tile.skyresourcesclassic.aqueous_concentrator.name=Aqueous Concentrator
 tile.skyresourcesclassic.aqueous_deconcentrator.name=Aqueous Deconcentrator
+tile.skyresourcesclassic.wildlife_attractor.name=Wildlife Attractor
 
 
 tile.skyresourcesclassic.iron_crystal_fluid_block.name=Iron Crystal Fluid
@@ -139,6 +140,7 @@ container.skyresourcesclassic.rockCleaner=Rock Cleaner
 container.skyresourcesclassic.combustionCollector=Combustion Collector
 container.skyresourcesclassic.quick_dropper=Quick Dropper
 container.skyresourcesclassic.aqueousConcentrator=Aqueous Concentrator
+container.skyresourcesclassic.wildlifeAttractor=Wildlife Attractor
 
 item.skyresourcesclassic.iron_crystal.name=Iron Crystal Shard
 item.skyresourcesclassic.gold_crystal.name=Gold Crystal Shard
@@ -323,6 +325,9 @@ guide.skyresourcesclassic.stage2.crushedStone.text=Dusts for ores are obtained t
 
 guide.skyresourcesclassic.stage2.gemProduction.title=Gem Production
 guide.skyresourcesclassic.stage2.gemProduction.text=Gems like Emeralds, Diamonds, etc are obtained through this process. \n First, use the <link,rock_grinder,skyresourcesclassic:stone_grinder:0,rockGrinder> on stone to get dirty gems like the <recipe,,skyresourcesclassic:dirty_emerald:0> . These have a low chance to drop. \n Next, right-click the dirty gems on to a <recipe,,minecraft:cauldron:0> filled with water to get the clean, usable gems. This will not work if the clean gems do not exist in ore dictionary. \n The <recipe,,minecraft:cauldron:0> can be automated with the <link,Rock_Cleaner,skyresourcesclassic:rock_cleaner:0,rockCleaner> .
+
+guide.skyresources.stage2.wildlifeAttractor.title=Wildlife Attractor
+guide.skyresources.stage2.wildlifeAttractor.text=The <recipe,,skyresourcesclassic:wildlife_attractor:0> will attract random animals into the world on top of this block at a random rate of about 1 animal every 30 seconds. \n Requires 40 RF/tick, 20mB of water/tick, and <recipe,,skyresourcesclassic:plant_matter:0> which lasts for 6 seconds. \n Stops when given a redstone signal.
 
 guide.skyresourcesclassic.stage3.alchemicalItems.title=Alchemical Items
 guide.skyresourcesclassic.stage3.alchemicalItems.text=There are 4 alchemical items used for advanced crafting currently. \n <recipe,,skyresourcesclassic:diamond_alchemical:0> \n <recipe,,skyresourcesclassic:dust_alchemical:0> \n <recipe,,skyresourcesclassic:gold_ingot_alchemical:0> \n <recipe,,skyresourcesclassic:gold_needle_alchemical:0>

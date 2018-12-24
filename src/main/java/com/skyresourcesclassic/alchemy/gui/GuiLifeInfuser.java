@@ -66,7 +66,7 @@ public class GuiLifeInfuser extends GuiContainer {
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
         if (!state.getBlock().isAir(state, tile.getWorld(), tile.getPos().down())) {
-            drawItem(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state)),
+            drawItem(new ItemStack(state.getBlock()),
                     80 + guiLeft - k, 52 + guiTop - l);
         }
 
@@ -82,7 +82,7 @@ public class GuiLifeInfuser extends GuiContainer {
             GlStateManager.enableDepth();
 
             this.renderToolTip(
-                    new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state)),
+                    new ItemStack(state.getBlock()),
                     mouseX - k, mouseY - l);
         }
 

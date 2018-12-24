@@ -2,10 +2,13 @@ package com.skyresourcesclassic.registry;
 
 import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.base.guide.SkyResourcesGuide;
+import com.skyresourcesclassic.technology.block.BlockFreezer;
+import net.minecraft.block.BlockButton;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.Loader;
 
@@ -102,12 +105,15 @@ public class ModGuidePages {
 
         SkyResourcesGuide.addPage("gemProduction", "guide.skyresourcesclassic.stage2", new ItemStack(Items.EMERALD));
 
+        SkyResourcesGuide.addPage("wildlifeAttractor", "guide.skyresources.stage2",
+                new ItemStack(ModBlocks.wildlifeAttractor));
+
         SkyResourcesGuide.addPage("alchemicalItems", "guide.skyresourcesclassic.stage3",
                 new ItemStack(ModItems.itemComponent[0]));
 
         SkyResourcesGuide.addPage("ironFreezer", "guide.skyresourcesclassic.stage3", new ItemStack(ModBlocks.ironFreezer));
-        addImagePos("ironFreezer", new BlockPos(0, -1, 0), ModBlocks.ironFreezer.getStateFromMeta(8));
-        addImagePos("ironFreezer", new BlockPos(0, 0, 0), ModBlocks.ironFreezer.getStateFromMeta(0));
+        addImagePos("ironFreezer", new BlockPos(0, -1, 0), ModBlocks.ironFreezer.getDefaultState().withProperty(BlockFreezer.PART, BlockFreezer.EnumPartType.BOTTOM).withProperty(BlockFreezer.FACING, EnumFacing.WEST));
+        addImagePos("ironFreezer", new BlockPos(0, 0, 0), ModBlocks.ironFreezer.getDefaultState().withProperty(BlockFreezer.PART, BlockFreezer.EnumPartType.TOP).withProperty(BlockFreezer.FACING, EnumFacing.WEST));
 
         SkyResourcesGuide.addPage("rockCrusher", "guide.skyresourcesclassic.stage3", new ItemStack(ModBlocks.rockCrusher));
 
@@ -143,7 +149,7 @@ public class ModGuidePages {
         addImagePos("infuser", new BlockPos(-1, 1, 0), Blocks.LEAVES.getDefaultState());
         addImagePos("infuser", new BlockPos(0, 0, 0), ModBlocks.lifeInfuser.getDefaultState());
         addImagePos("infuser", new BlockPos(0, 1, 0), ModBlocks.darkMatterBlock.getDefaultState());
-        addImagePos("infuser", new BlockPos(0, 2, 0), Blocks.STONE_BUTTON.getStateFromMeta(5));
+        addImagePos("infuser", new BlockPos(0, 2, 0), Blocks.STONE_BUTTON.getDefaultState().withProperty(BlockButton.FACING, EnumFacing.UP));
 
         SkyResourcesGuide.addPage("end", "guide.skyresourcesclassic.stage3", new ItemStack(Items.ENDER_EYE));
         addImagePos("end", new BlockPos(0, -1, 0), ModBlocks.endPortalCore.getDefaultState());
@@ -173,7 +179,7 @@ public class ModGuidePages {
         addImagePos("end", new BlockPos(2, 0, 2), Blocks.END_BRICKS.getDefaultState());
         addImagePos("end", new BlockPos(2, 1, 2), Blocks.END_BRICKS.getDefaultState());
         addImagePos("end", new BlockPos(2, 2, 2), Blocks.GLOWSTONE.getDefaultState());
-        addImagePos("end", new BlockPos(0, 0, 0), Blocks.STONE_BUTTON.getStateFromMeta(5));
+        addImagePos("end", new BlockPos(0, 0, 0), Blocks.STONE_BUTTON.getDefaultState().withProperty(BlockButton.FACING, EnumFacing.UP));
     }
 
     private static void addImagePos(String id, BlockPos pos, IBlockState block) {

@@ -86,6 +86,7 @@ public class ModRenderers {
         registerItemRenderer(Item.getItemFromBlock(ModBlocks.quickDropper));
         registerItemRenderer(Item.getItemFromBlock(ModBlocks.aqueousConcentrator));
         registerItemRenderer(Item.getItemFromBlock(ModBlocks.aqueousDeconcentrator));
+        registerItemRenderer(Item.getItemFromBlock(ModBlocks.wildlifeAttractor));
         for (int i = 0; i < ModBlocks.alchemicalCondenser.length; i++) {
             registerItemRenderer(Item.getItemFromBlock(ModBlocks.alchemicalCondenser[i]));
             registerItemRenderer(Item.getItemFromBlock(ModBlocks.crystallizer[i]));
@@ -149,8 +150,6 @@ public class ModRenderers {
 
                 @Override
                 public int colorMultiplier(ItemStack stack, int tintIndex) {
-                    if (stack.getMetadata() != 0)
-                        return -1;
                     int i;
                     for (i = 0; i < ModItems.metalCrystal.length; i++)
                         if (stack.getItem() == ModItems.metalCrystal[i]) {
@@ -166,8 +165,6 @@ public class ModRenderers {
 
                 @Override
                 public int colorMultiplier(ItemStack stack, int tintIndex) {
-                    if (stack.getMetadata() != 0)
-                        return -1;
                     int i;
                     for (i = 0; i < ModItems.dirtyGem.length; i++)
                         if (stack.getItem() == ModItems.dirtyGem[i]) {

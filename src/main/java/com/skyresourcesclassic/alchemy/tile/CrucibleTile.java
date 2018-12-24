@@ -29,7 +29,6 @@ public class CrucibleTile extends TileEntity implements ITickable, IFluidHandler
 
     public ItemStack itemIn = ItemStack.EMPTY;
     public int itemAmount;
-    int maxItemAmount = ConfigOptions.crucible.crucibleCapacity;
 
     @Override
     public IFluidTankProperties[] getTankProperties() {
@@ -39,9 +38,8 @@ public class CrucibleTile extends TileEntity implements ITickable, IFluidHandler
     @Override
     public int fill(FluidStack resource, boolean doFill) {
         if (resource != null) {
-            int filled = tank.fill(resource, doFill);
 
-            return filled;
+            return tank.fill(resource, doFill);
         }
 
         return 0;
@@ -94,7 +92,7 @@ public class CrucibleTile extends TileEntity implements ITickable, IFluidHandler
                 ProcessRecipe recipe = ProcessRecipeManager.crucibleRecipes.getRecipe(stack, 0, false, false);
 
                 int amount = recipe == null ? 0 : recipe.getFluidOutputs().get(0).amount;
-                if (itemAmount + amount <= maxItemAmount && recipe != null) {
+                if (itemAmount + amount <= ConfigOptions.crucible.crucibleCapacity && recipe != null) {
                     ItemStack input = (ItemStack) recipe.getInputs().get(0);
 
                     if (tank.getFluid() == null || tank.getFluid().getFluid() == null) {

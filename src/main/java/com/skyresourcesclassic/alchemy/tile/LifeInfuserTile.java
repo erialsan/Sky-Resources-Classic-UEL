@@ -145,8 +145,7 @@ public class LifeInfuserTile extends TileItemInventory implements ITickable {
             ProcessRecipe recipe = ProcessRecipeManager.infusionRecipes
                     .getRecipe(
                             new ArrayList<Object>(Arrays.asList((Object) getInventory().getStackInSlot(2),
-                                    (Object) new ItemStack(state.getBlock(), 1,
-                                            state.getBlock().getMetaFromState(state)))),
+                                    (Object) new ItemStack(state.getBlock()))),
                             this.getHealthInGem(), false, false);
 
             if (recipe != null && recipe.getIntParameter() <= this.getHealthInGem()

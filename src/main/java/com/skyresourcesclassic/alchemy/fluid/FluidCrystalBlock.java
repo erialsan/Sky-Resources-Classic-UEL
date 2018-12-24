@@ -43,11 +43,8 @@ public class FluidCrystalBlock extends BlockFluidClassic {
                     return false;
             }
         }
-        if (world.getBlockState(pos.add(0, 1, 0)).getBlock() == this
-                || world.getBlockState(pos.add(0, -1, 0)).getBlock() == this)
-            return false;
-
-        return true;
+        return !(world.getBlockState(pos.add(0, 1, 0)).getBlock() == this
+                || world.getBlockState(pos.add(0, -1, 0)).getBlock() == this);
     }
 
     @Override

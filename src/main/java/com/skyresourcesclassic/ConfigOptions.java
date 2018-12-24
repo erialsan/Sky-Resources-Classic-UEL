@@ -32,6 +32,10 @@ public class ConfigOptions {
     @Config.Comment("Config options for the Rock Grinders")
     public static rockGrinder rockGrinder = new rockGrinder();
 
+
+    @Config.Comment("Config options for the Rock Grinders")
+    public static wildLifeAttractor wildLifeAttractor = new wildLifeAttractor();
+
     public static class general
 
     {
@@ -46,10 +50,6 @@ public class ConfigOptions {
         @Config.Comment("Allows all dirty gem types to be obtainable")
         @Config.Name("All Dirty Gem Types")
         public boolean allowAllGemTypes = false;
-
-        @Config.Comment("Display mod info in chat on login")
-        @Config.Name("Login Mod Info")
-        public boolean displayFirstChatInfo = true;
 
         @Config.Name("Should Blaze Blocks be meltable in-world?")
         public boolean meltableBlazeBlocks = true;
@@ -134,5 +134,12 @@ public class ConfigOptions {
 
         @Config.Name("Rock Grinder Base Durability")
         public float rockGrinderBaseDurability = (float) 0.8;
+    }
+
+    public static class wildLifeAttractor {
+        @Config.Comment("Wildlife Attractor Animal Ids")
+        public String[] wildlifeAttractorAnimalIDs = new String[] { "minecraft:sheep", "minecraft:cow",
+                "minecraft:chicken", "minecraft:pig", "minecraft:rabbit", "minecraft:squid", "minecraft:horse",
+                "minecraft:parrot" };
     }
 }

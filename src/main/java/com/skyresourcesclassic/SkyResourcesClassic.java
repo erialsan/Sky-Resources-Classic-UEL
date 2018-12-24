@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = References.ModID, name = References.ModName, version = References.Version, useMetadata = true)
+@Mod(modid = References.ModID, name = References.ModName, version = References.Version)
 public class SkyResourcesClassic {
     @SidedProxy(clientSide = "com.skyresourcesclassic.proxy.ClientProxy", serverSide = "com.skyresourcesclassic.proxy.ServerProxy")
     public static CommonProxy proxy;

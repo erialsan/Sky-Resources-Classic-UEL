@@ -18,10 +18,10 @@ public class ProcessRecipe {
     private String type;
 
     public ProcessRecipe(List<Object> output, List<Object> input, float param, String type) {
-        outputs = new ArrayList<ItemStack>();
-        inputs = new ArrayList<Object>();
-        fluidOutputs = new ArrayList<FluidStack>();
-        fluidInputs = new ArrayList<FluidStack>();
+        outputs = new ArrayList<>();
+        inputs = new ArrayList<>();
+        fluidOutputs = new ArrayList<>();
+        fluidInputs = new ArrayList<>();
         intParameter = param;
         this.type = type;
 
@@ -40,10 +40,10 @@ public class ProcessRecipe {
     }
 
     public ProcessRecipe(List<Object> input, float param, String type) {
-        outputs = new ArrayList<ItemStack>();
-        inputs = new ArrayList<Object>();
-        fluidOutputs = new ArrayList<FluidStack>();
-        fluidInputs = new ArrayList<FluidStack>();
+        outputs = new ArrayList<>();
+        inputs = new ArrayList<>();
+        fluidOutputs = new ArrayList<>();
+        fluidInputs = new ArrayList<>();
         intParameter = param;
         this.type = type;
         for (Object o : input) {

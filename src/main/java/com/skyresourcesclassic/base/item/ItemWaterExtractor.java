@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -83,11 +82,11 @@ public class ItemWaterExtractor extends Item implements IFluidHandler {
                     Block block = world.getBlockState(pos).getBlock();
 
                     ProcessRecipe recipe = ProcessRecipeManager.waterExtractorExtractRecipes.getRecipe(
-                            new ItemStack(block, 1, block.getMetaFromState(world.getBlockState(pos))), 0, false, false);
+                            new ItemStack(block), 0, false, false);
 
                     if (recipe != null) {
                         IBlockState recipeOut = Block.getBlockFromItem(recipe.getOutputs().get(0).getItem())
-                                .getStateFromMeta(recipe.getOutputs().get(0).getMetadata());
+                                .getDefaultState();
                         getCompound(stack).setInteger("amount", getCompound(stack).getInteger("amount")
                                 + tank.fill(recipe.getFluidOutputs().get(0).copy(), true));
                         tank.getFluid().amount = getCompound(stack).getInteger("amount");
@@ -127,14 +126,14 @@ public class ItemWaterExtractor extends Item implements IFluidHandler {
             return EnumActionResult.SUCCESS;
         }
 
-        ProcessRecipe recipe = ProcessRecipeManager.waterExtractorInsertRecipes.getRecipe(new ArrayList<Object>(
-                        Arrays.asList(new ItemStack(block, 1, block.getMetaFromState(world.getBlockState(pos))),
+        ProcessRecipe recipe = ProcessRecipeManager.waterExtractorInsertRecipes.getRecipe(new ArrayList<>(
+                        Arrays.asList(new ItemStack(block),
                                 tank.getFluid().copy())),
                 0, false, false);
 
         if (recipe != null) {
             IBlockState recipeOut = Block.getBlockFromItem(recipe.getOutputs().get(0).getItem())
-                    .getStateFromMeta(recipe.getOutputs().get(0).getMetadata());
+                    .getDefaultState();
             world.setBlockState(pos, recipeOut, 3);
             getCompound(stack).setInteger("amount",
                     stack.getTagCompound().getInteger("amount") - recipe.getFluidInputs().get(0).amount);

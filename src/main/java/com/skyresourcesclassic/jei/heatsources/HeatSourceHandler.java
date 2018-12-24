@@ -44,7 +44,7 @@ public class HeatSourceHandler implements IRecipeHandler<HeatSourceJEI> {
                 sources.add(new HeatSourceJEI(state.getBlock().getUnlocalizedName(),
                         HeatSources.getHeatSourceValue(state)));
             else
-                sources.add(new HeatSourceJEI(new ItemStack(item, 1, state.getBlock().getMetaFromState(state)),
+                sources.add(new HeatSourceJEI(new ItemStack(item),
                         HeatSources.getHeatSourceValue(state)));
 
         }

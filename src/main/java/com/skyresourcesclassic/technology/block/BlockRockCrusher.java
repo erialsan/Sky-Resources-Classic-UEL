@@ -78,14 +78,6 @@ public class BlockRockCrusher extends BlockContainer {
         worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
     }
 
-    public IBlockState getStateFromMeta(int meta) {
-        EnumFacing enumfacing = EnumFacing.getHorizontal(meta);
-        return this.getDefaultState().withProperty(FACING, enumfacing);
-    }
-
-    /**
-     * Convert the BlockState into the correct metadata value
-     */
     public int getMetaFromState(IBlockState state) {
         int i = 0;
         i = i | ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();

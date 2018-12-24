@@ -48,7 +48,7 @@ public class ItemRockGrinder extends ItemPickaxe {
         Block block = state.getBlock();
 
         ProcessRecipe rec = new ProcessRecipe(
-                Collections.singletonList(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state))),
+                Collections.singletonList(new ItemStack(state.getBlock())),
                 Integer.MAX_VALUE, "rockgrinder");
         for (ProcessRecipe r : ProcessRecipeManager.rockGrinderRecipes.getRecipes()) {
             if (r != null && rec.isInputRecipeEqualTo(r, false)) {
@@ -73,7 +73,7 @@ public class ItemRockGrinder extends ItemPickaxe {
 
         boolean worked = false;
         ProcessRecipe rec = new ProcessRecipe(
-                Collections.singletonList(new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state))),
+                Collections.singletonList(new ItemStack(state.getBlock())),
                 Integer.MAX_VALUE, "rockgrinder");
         for (ProcessRecipe r : ProcessRecipeManager.rockGrinderRecipes.getRecipes()) {
             if (r != null && rec.isInputRecipeEqualTo(r, false)) {

@@ -181,18 +181,6 @@ public class BlockDirtFurnace extends BlockContainer {
         return EnumBlockRenderType.MODEL;
     }
 
-    /**
-     * Convert the given metadata into a BlockState for this Block
-     */
-    public IBlockState getStateFromMeta(int meta) {
-        EnumFacing enumfacing = EnumFacing.getHorizontal(meta);
-        return (meta & 8) > 0 ? this.getDefaultState().withProperty(BURNING, false).withProperty(FACING, enumfacing)
-                : this.getDefaultState().withProperty(BURNING, true).withProperty(FACING, enumfacing);
-    }
-
-    /**
-     * Convert the BlockState into the correct metadata value
-     */
     public int getMetaFromState(IBlockState state) {
         int i = 0;
         i = i | ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();

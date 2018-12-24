@@ -39,10 +39,4 @@ public class BlazePowderBlock extends BaseBlock {
     public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
         world.scheduleUpdate(pos, this, tickRate(world));
     }
-
-    @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX,
-                                            float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getStateFromMeta(meta);
-    }
 }

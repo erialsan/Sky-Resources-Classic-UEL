@@ -9,7 +9,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -75,20 +74,6 @@ public class BlockPoweredHeater extends BlockContainer {
         return true;
     }
 
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX,
-                                     float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(RUNNING, false);
-    }
-
-    public IBlockState getStateFromMeta(int meta) {
-        if (meta == 1)
-            return this.getDefaultState().withProperty(RUNNING, true);
-        return this.getDefaultState().withProperty(RUNNING, false);
-    }
-
-    /**
-     * Convert the BlockState into the correct metadata value
-     */
     public int getMetaFromState(IBlockState state) {
 
         if (state.getValue(RUNNING) == true) {

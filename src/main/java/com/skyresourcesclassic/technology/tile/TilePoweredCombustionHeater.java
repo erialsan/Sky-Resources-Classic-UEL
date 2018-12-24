@@ -73,14 +73,12 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
     }
 
     public boolean hasValidMultiblock() {
-        if (!isBlockValid(pos.up(), pos.add(-1, 1, 0))
-                || !isBlockValid(pos.up(), pos.add(1, 1, 0))
-                || !isBlockValid(pos.up(), pos.add(0, 2, 0))
-                || !isBlockValid(pos.up(), pos.add(0, 1, -1))
-                || !isBlockValid(pos.up(), pos.add(0, 1, 1))
-                || !world.isAirBlock(pos.up()))
-            return false;
-        return true;
+        return isBlockValid(pos.up(), pos.add(-1, 1, 0))
+                && isBlockValid(pos.up(), pos.add(1, 1, 0))
+                && isBlockValid(pos.up(), pos.add(0, 2, 0))
+                && isBlockValid(pos.up(), pos.add(0, 1, -1))
+                && isBlockValid(pos.up(), pos.add(0, 1, 1))
+                && world.isAirBlock(pos.up());
     }
 
     private boolean isBlockValid(BlockPos center, BlockPos pos) {

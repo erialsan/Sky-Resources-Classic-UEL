@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "skyresourcesclassic:wildlife_attractor"
+  },
+  "pattern": [
+    "HHH",
+    "HCH",
+    "HRH"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "H": {
+      "item": "minecraft:hay_block"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  }
+}

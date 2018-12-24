@@ -115,16 +115,6 @@ public class BlockFreezer extends BlockContainer {
                 .withProperty(PART, EnumPartType.BOTTOM);
     }
 
-    public IBlockState getStateFromMeta(int meta) {
-        EnumFacing enumfacing = EnumFacing.getHorizontal(meta);
-        return (meta & 8) > 0
-                ? this.getDefaultState().withProperty(PART, EnumPartType.BOTTOM).withProperty(FACING, enumfacing)
-                : this.getDefaultState().withProperty(PART, EnumPartType.TOP).withProperty(FACING, enumfacing);
-    }
-
-    /**
-     * Convert the BlockState into the correct metadata value
-     */
     public int getMetaFromState(IBlockState state) {
 
         int i = 0;

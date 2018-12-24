@@ -12,6 +12,7 @@ import com.skyresourcesclassic.registry.ModGuiHandler;
 import com.skyresourcesclassic.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
+import net.minecraft.block.BlockSnow;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -50,19 +51,18 @@ public class EventHandler {
                     RandomHelper.spawnItemInWorld(event.getWorld(), new ItemStack(Items.SNOWBALL), event.getPos());
                     event.getEntityPlayer().addPotionEffect(
                             new PotionEffect(MobEffects.MINING_FATIGUE, event.getWorld().rand.nextInt(80) + 20, 1));
+                    int layer = event.getWorld().getBlockState(event.getPos()).getValue(BlockSnow.LAYERS);
 
-                    int meta = Blocks.SNOW_LAYER.getMetaFromState(event.getWorld().getBlockState(event.getPos()));
-
-                    if (meta < 1)
+                    if (layer == 1)
                         event.getWorld().setBlockToAir(event.getPos());
                     else
-                        event.getWorld().setBlockState(event.getPos(), Blocks.SNOW_LAYER.getStateFromMeta(meta - 1));
+                        event.getWorld().setBlockState(event.getPos(), Blocks.SNOW_LAYER.getDefaultState().withProperty(BlockSnow.LAYERS, layer - 1));
                 } else if (block == Blocks.SNOW) {
                     RandomHelper.spawnItemInWorld(event.getWorld(), new ItemStack(Items.SNOWBALL), event.getPos());
                     event.getEntityPlayer().addPotionEffect(
                             new PotionEffect(MobEffects.MINING_FATIGUE, event.getWorld().rand.nextInt(80) + 20, 1));
 
-                    event.getWorld().setBlockState(event.getPos(), Blocks.SNOW_LAYER.getStateFromMeta(6));
+                    event.getWorld().setBlockState(event.getPos(), Blocks.SNOW_LAYER.getDefaultState().withProperty(BlockSnow.LAYERS, 7));
                 }
             } else if (block != null && !equip.isEmpty()) {
                 if (block == Blocks.CAULDRON) {
