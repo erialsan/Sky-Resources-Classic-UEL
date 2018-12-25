@@ -3,7 +3,7 @@
     "textures": {
         "particle": "skyresourcesclassic:blocks/steel_machine",
         "0": "skyresourcesclassic:blocks/steel_machine",
-        "1": "skyresourcesclassic:blocks/heater_top_off"
+        "1": "skyresourcesclassic:blocks/steel_heater_top_off"
     },
     "elements": [
         {

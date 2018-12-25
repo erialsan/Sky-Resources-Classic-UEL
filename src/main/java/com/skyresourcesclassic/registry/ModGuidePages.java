@@ -58,6 +58,8 @@ public class ModGuidePages {
 
         SkyResourcesGuide.addPage("heatSources", "guide.skyresourcesclassic.stage2", new ItemStack(Blocks.TORCH));
 
+        SkyResourcesGuide.addPage("heatProvider", "guide.skyresourcesclassic.stage1", new ItemStack(ModBlocks.heatProvider[0]));
+
         SkyResourcesGuide.addPage("rockGrinder", "guide.skyresourcesclassic.stage2", new ItemStack(ModItems.stoneGrinder));
 
         SkyResourcesGuide.addPage("metalCreation", "guide.skyresourcesclassic.stage2", new ItemStack(ModItems.metalCrystal[0]));
@@ -120,8 +122,6 @@ public class ModGuidePages {
         SkyResourcesGuide.addPage("rockCleaner", "guide.skyresourcesclassic.stage3", new ItemStack(ModBlocks.rockCleaner));
 
         SkyResourcesGuide.addPage("aqueous", "guide.skyresourcesclassic.stage3", new ItemStack(ModBlocks.aqueousConcentrator));
-
-        SkyResourcesGuide.addPage("poweredHeater", "guide.skyresourcesclassic.stage3", new ItemStack(ModBlocks.poweredHeater));
 
         if (Loader.isModLoaded("voidislandcontrol"))
             SkyResourcesGuide.addPage("nether", "guide.skyresourcesclassic.misc", new ItemStack(Blocks.NETHERRACK));

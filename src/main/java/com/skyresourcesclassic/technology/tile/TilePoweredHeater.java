@@ -2,7 +2,7 @@ package com.skyresourcesclassic.technology.tile;
 
 import com.skyresourcesclassic.base.IHeatSource;
 import com.skyresourcesclassic.base.tile.TileGenericPower;
-import com.skyresourcesclassic.technology.block.BlockPoweredHeater;
+import com.skyresourcesclassic.technology.block.BlockHeater;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
@@ -10,11 +10,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.energy.IEnergyStorage;
 
 public class TilePoweredHeater extends TileGenericPower implements ITickable, IEnergyStorage, IHeatSource {
-    public TilePoweredHeater() {
+    public TilePoweredHeater(int tier) {
         super("poweredHeater", 100000, 2000, 0);
+        this.tier = tier;
     }
 
-    private int powerUsage = 120;
+    private int powerUsage = 120 * getHeat() / 30;
+    private int tier;
 
     @Override
     public void update() {
@@ -22,10 +24,10 @@ public class TilePoweredHeater extends TileGenericPower implements ITickable, IE
             if (getEnergyStored() >= powerUsage && this.getRedstoneSignal() > 0) {
                 internalExtractEnergy(powerUsage, false);
                 world.setBlockState(getPos(),
-                        world.getBlockState(getPos()).withProperty(BlockPoweredHeater.RUNNING, true), 3);
+                        world.getBlockState(getPos()).withProperty(BlockHeater.RUNNING, true), 3);
             } else
                 world.setBlockState(getPos(),
-                        world.getBlockState(getPos()).withProperty(BlockPoweredHeater.RUNNING, false), 3);
+                        world.getBlockState(getPos()).withProperty(BlockHeater.RUNNING, false), 3);
 
             this.markDirty();
         }
@@ -34,11 +36,19 @@ public class TilePoweredHeater extends TileGenericPower implements ITickable, IE
     @Override
     public int getHeatValue() {
         if (getEnergyStored() >= powerUsage && this.getRedstoneSignal() > 0)
-            return 30;
+            return getHeat();
         return 0;
     }
 
     public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
         return oldState.getBlock() != newState.getBlock();
+    }
+
+
+    private int getHeat() {
+        if (tier == 3)
+            return 30;
+        else
+            return 120;
     }
 }

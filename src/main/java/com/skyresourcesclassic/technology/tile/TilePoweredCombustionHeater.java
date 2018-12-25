@@ -40,7 +40,7 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
             return 0;
         CombustionHeaterBlock block = (CombustionHeaterBlock) world.getBlockState(pos).getBlock();
 
-        return block.getMaximumHeat(world.getBlockState(pos));
+        return block.getMaximumHeat();
     }
 
     @Override

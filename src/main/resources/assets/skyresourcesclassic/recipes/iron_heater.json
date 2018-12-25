@@ -1,9 +1,9 @@
 {
   "result": {
-    "item": "skyresourcesclassic:powered_heater"
+    "item": "skyresourcesclassic:iron_heater"
   },
   "pattern": [
-    "XZX",
+    "XYX",
     "XYX",
     "XXX"
   ],
@@ -14,9 +14,6 @@
       "ore": "ingotIron"
     },
     "Y": {
-      "item": "skyresourcesclassic:steel_power_component"
-    },
-    "Z": {
       "item": "skyresourcesclassic:iron_heat_component"
     }
   }

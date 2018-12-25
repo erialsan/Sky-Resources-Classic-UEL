@@ -53,7 +53,11 @@ public class GuiEndPortalCore extends GuiContainer {
             this.drawTexturedModalRect(35, 20, 0, 0, 16, 16);
         else
             this.drawTexturedModalRect(35, 20, 16, 0, 16, 16);
+    }
 
-
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        this.drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        this.renderHoveredToolTip(mouseX, mouseY);
     }
 }

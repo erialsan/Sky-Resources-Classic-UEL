@@ -67,7 +67,10 @@ tile.skyresourcesclassic.heavy_snow.name=Heavy Snow
 tile.skyresourcesclassic.heavy_snow2.name=Very Heavy Snow
 tile.skyresourcesclassic.dirt_furnace.name=Dirt Furnace
 tile.skyresourcesclassic.bee_attractor.name=Bee Attractor
-tile.skyresourcesclassic.powered_heater.name=Advanced Heater
+tile.skyresourcesclassic.wooden_heater.name=Wooden Heat Provider
+tile.skyresourcesclassic.iron_heater.name=Iron Heat Provider
+tile.skyresourcesclassic.steel_heater.name=Steel Heat Provider
+tile.skyresourcesclassic.dm_heater.name=Dark Matter Heat Provider
 tile.skyresourcesclassic.dark_matter_warper.name=Dark Matter Warper
 tile.skyresourcesclassic.end_portal_core.name=End Portal Core
 tile.skyresourcesclassic.life_infuser.name=Life Infuser Core
@@ -141,6 +144,7 @@ container.skyresourcesclassic.combustionCollector=Combustion Collector
 container.skyresourcesclassic.quick_dropper=Quick Dropper
 container.skyresourcesclassic.aqueousConcentrator=Aqueous Concentrator
 container.skyresourcesclassic.wildlifeAttractor=Wildlife Attractor
+container.skyresourcesclassic.heater=Heat Provider
 
 item.skyresourcesclassic.iron_crystal.name=Iron Crystal Shard
 item.skyresourcesclassic.gold_crystal.name=Gold Crystal Shard
@@ -276,7 +280,7 @@ guide.skyresourcesclassic.stage1.grassIsland.title=Grass Island
 guide.skyresourcesclassic.stage1.grassIsland.text=The grass island skips over stage 1, so start with stage 2. \n This is due to having dirt and a tree on this island.
 
 guide.skyresourcesclassic.stage2.combustionHeater.title=Combustion Heater
-guide.skyresourcesclassic.stage2.combustionHeater.text=There are 4 types by default. The <recipe,,skyresourcesclassic:wooden_combustion_heater:0> , <recipe,,skyresourcesclassic:iron_combustion_heater:0> ,  <recipe,,skyresourcesclassic:steel_combustion_heater:0> and <recipe,,skyresourcesclassic:dm_combustion_heater:0> are part of the combustion multiblock structures. \n The multiblock can be set up as shown here <image,shown_here,skyresources:wooden_combustion_heater:0,combustion> \n \n <recipe,,skyresourcesclassic:wooden_combustion_heater:0> \n Maximum temperature of 100 C. \n Fuels with relatively high burn times will not work. \n \n <recipe,,skyresourcesclassic:iron_combustion_heater:0> \n Maximum temperature of 1538 C. \n Fuels with very high burn times will not work. \n \n <recipe,,skyresourcesclassic:steel_combustion_heater:0> \n Maximum temperature of 2750 C. \n Runs off of FE and requires 800 FE/tick to heat up. Right-click with empty hand to see FE and heat. \n \n <recipe,,skyresourcesclassic:dm_combustion_heater:0> \n Maximum temperature of 6040 C. \n Runs off of FE and requires 1200 FE/tick to heat up. Right-click with empty hand to see FE and heat. \n \n \n The crafting process is as follows: \n Drop a set of items into the center for crafting (NOTE: Make sure the ratio is correct). \n Provide the heater with fuel to get a high enough temperature. \n Give the heater a redstone signal (Ex: Button). \n If there was an explosion, it worked! \n \n \n There are automation upgrades including the <recipe,,minecraft:dropper:0> , <link,Quick_Dropper,skyresourcesclassic:quick_dropper:0,quick_dropper> , and <link,Combustion_Collector,skyresourcesclassic:combustion_collector:0,combustionCollector> .
+guide.skyresourcesclassic.stage2.combustionHeater.text=There are 4 types by default. The <recipe,,skyresourcesclassic:wooden_combustion_heater:0> , <recipe,,skyresourcesclassic:iron_combustion_heater:0> ,  <recipe,,skyresourcesclassic:steel_combustion_heater:0> and <recipe,,skyresourcesclassic:dm_combustion_heater:0> are part of the combustion multiblock structures. \n The multiblock can be set up as shown here <image,shown_here,skyresourcesclassic:wooden_combustion_heater:0,combustion> \n \n <recipe,,skyresourcesclassic:wooden_combustion_heater:0> \n Maximum temperature of 100 C. \n Fuels with relatively high burn times will not work. \n \n <recipe,,skyresourcesclassic:iron_combustion_heater:0> \n Maximum temperature of 1538 C. \n Fuels with very high burn times will not work. \n \n <recipe,,skyresourcesclassic:steel_combustion_heater:0> \n Maximum temperature of 2750 C. \n Runs off of FE and requires 800 FE/tick to heat up. Right-click with empty hand to see FE and heat. \n \n <recipe,,skyresourcesclassic:dm_combustion_heater:0> \n Maximum temperature of 6040 C. \n Runs off of FE and requires 1200 FE/tick to heat up. Right-click with empty hand to see FE and heat. \n \n \n The crafting process is as follows: \n Drop a set of items into the center for crafting (NOTE: Make sure the ratio is correct). \n Provide the heater with fuel to get a high enough temperature. \n Give the heater a redstone signal (Ex: Button). \n If there was an explosion, it worked! \n \n \n There are automation upgrades including the <recipe,,minecraft:dropper:0> , <link,Quick_Dropper,skyresourcesclassic:quick_dropper:0,quick_dropper> , and <link,Combustion_Collector,skyresourcesclassic:combustion_collector:0,combustionCollector> .
 
 guide.skyresourcesclassic.stage2.waterExtractor.title=Water Extractor
 guide.skyresourcesclassic.stage2.waterExtractor.text=The <recipe,,skyresourcesclassic:water_extractor:0> is used for storing, extracting, placing, and inserting water. It can hold 4000mB of water. \n To extract water from blocks, hold right-click for a little bit and let go. It can also pick up water source blocks. \n To place water, you must have 1000mB of water and shift-right click to place it in the world. \n To insert water into blocks, you must have the required water amount and right click the block. \n All recipes for extracting and inserting are in JEI. Check the uses of the <recipe,,skyresourcesclassic:water_extractor:0> . \n The water extractor can be automated with the <link,Aqueous_Concentrator_and_Deconcentrator,skyresourcesclassic:aqueous_concentrator:0,aqueous> .
@@ -292,6 +296,9 @@ guide.skyresourcesclassic.stage2.lavaBlaze1.text=Lava can be obtained by throwin
 
 guide.skyresourcesclassic.stage2.heatSources.title=Heat Sources
 guide.skyresourcesclassic.stage2.heatSources.text=Heat Sources are used for heating many functional blocks. \n Heat Sources go under these blocks: \n <link,Crucible,skyresourcesclassic:crucible:0,crucible>  \n <link,Alchemical_Condensers,skyresourcesclassic:stone_condenser:0,alchemicalCondenser> \n <link,Blaze_Powder_Block,skyresourcesclassic:blaze_powder_block:0,lavaBlaze> \n Better heat sources make the blocks mentioned earlier run faster. \n \n List of heat sources are shown in JEI. \n Look for uses of common heat sources like the <recipe,,minecraft:torch:0> and <recipe,,minecraft:obsidian:0> .
+
+guide.skyresourcesclassic.stage1.heatProvider.title=Heat Provider
+guide.skyresourcesclassic.stage1.heatProvider.text=Heat Providers are blocks that act as great <link,heat_sources,minecraft:torch:0,heatSources> , but require fuel or power to run. \n There are 4 types: \n \n <recipe,,skyresourcesclassic:wooden_heater:0> \n Uses Furnace fuels. \n Fuels last as long as they do in a Furnace \n Has a heat level of 5 \n \n <recipe,,skyresourcesclassic:iron_heater:0> \n Uses Furnace fuels. \n Fuels half the amount they'd last in a Furnace \n Has a heat level of 10 \n \n <recipe,,skyresourcesclassic:steel_heater:0> \n Uses RF. \n Requires 120RF/t \n Has a heat level of 30 \n \n <recipe,,skyresourcesclassic:dm_heater:0> \n Uses RF \n Uses 480RF/t \n Has a heat level of 120
 
 guide.skyresourcesclassic.stage2.rockGrinder.title=Rock Grinder
 guide.skyresourcesclassic.stage2.rockGrinder.text=The rock grinder allows for the player to break Cobblestone down into Gravel, and Gravel into Sand, and more. \n There are 3 by default, which are the <recipe,,skyresourcesclassic:stone_grinder:0> , <recipe,,skyresourcesclassic:iron_grinder:0> , and <recipe,,skyresourcesclassic:diamond_grinder:0> . \n Rock grinding can be automated with the <link,Rock_Crusher,skyresourcesclassic:rock_crusher:0,rockCrusher> .
@@ -334,9 +341,6 @@ guide.skyresourcesclassic.stage3.alchemicalItems.text=There are 4 alchemical ite
 
 guide.skyresourcesclassic.stage3.ironFreezer.title=Iron Freezer
 guide.skyresourcesclassic.stage3.ironFreezer.text=The <recipe,,skyresourcesclassic:iron_freezer:0> is the second tier of freezers. \n To setup the <recipe,,skyresourcesclassic:iron_freezer:0> , place 2 of these blocks vertically to form the multiblock, as <image,shown_here,skyresourcesclassic:iron_freezer:0,ironFreezer> . \n This freezer runs at 1x speed. This freezer can freeze 3 stacks of items at a time.
-
-guide.skyresourcesclassic.stage3.poweredHeater.title=Powered Heater
-guide.skyresourcesclassic.stage3.poweredHeater.text=The <recipe,,skyresourcesclassic:powered_heater:0> is a <link,heat_source,minecraft:torch:0,heatSources> . \n Requires 120 RF/tick and a redstone signal. \n Provides a heat value of 30. \n Right-click to see current RF.
 
 guide.skyresourcesclassic.stage3.rockCrusher.title=Rock Crusher
 guide.skyresourcesclassic.stage3.rockCrusher.text=The <recipe,,skyresourcesclassic:rock_crusher:0> automates <link,rock_grinding,skyresourcesclassic:stone_grinder:0,rockGrinder> . \n Requires 80 RF/tick. \n Needs a type of <link,Rock_grinder,skyresourcesclassic:stone_grinder:0,rockGrinder> to run.

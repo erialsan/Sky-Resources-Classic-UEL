@@ -33,6 +33,7 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int AqueousConcentratorGUI = 12;
     public static final int BeeAttractorGUI = 15;
     public static final int WildlifeAttractorGUI = 20;
+    public static final int HeaterGUI = 21;
     public static final int GuideGUI = 25;
 
     @Override
@@ -79,6 +80,9 @@ public class ModGuiHandler implements IGuiHandler {
             case WildlifeAttractorGUI:
                 return new ContainerWildlifeAttractor(player.inventory,
                         (TileWildlifeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
+            case HeaterGUI:
+                return new ContainerHeater(player.inventory,
+                        (TileHeater) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }
@@ -121,6 +125,9 @@ public class ModGuiHandler implements IGuiHandler {
             case WildlifeAttractorGUI:
                 return new GuiWildlifeAttractor(player.inventory,
                         (TileWildlifeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
+            case HeaterGUI:
+                return new GuiHeater(player.inventory,
+                        (TileHeater) world.getTileEntity(new BlockPos(x, y, z)));
             case GuideGUI:
                 return new GuideGUI();
             default:

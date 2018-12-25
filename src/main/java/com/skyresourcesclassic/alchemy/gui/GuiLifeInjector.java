@@ -44,4 +44,10 @@ public class GuiLifeInjector extends GuiContainer {
         this.drawTexturedModalRect(120, 29, 53, 1, 8, 8);
         this.fontRenderer.drawString("x" + (float) tile.getHealthInGem() / 2F, 130, 29, 4210752);
     }
+
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        this.drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        this.renderHoveredToolTip(mouseX, mouseY);
+    }
 }

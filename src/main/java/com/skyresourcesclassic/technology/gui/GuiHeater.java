@@ -1,20 +1,20 @@
 package com.skyresourcesclassic.technology.gui;
 
 import com.skyresourcesclassic.References;
-import com.skyresourcesclassic.technology.gui.container.ContainerDarkMatterWarper;
-import com.skyresourcesclassic.technology.tile.TileDarkMatterWarper;
+import com.skyresourcesclassic.technology.gui.container.ContainerHeater;
+import com.skyresourcesclassic.technology.tile.TileHeater;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiDarkMatterWarper extends GuiContainer {
+public class GuiHeater extends GuiContainer {
 
     private IInventory playerInv;
-    private TileDarkMatterWarper tile;
+    private TileHeater tile;
 
-    public GuiDarkMatterWarper(IInventory playerInv, TileDarkMatterWarper te) {
-        super(new ContainerDarkMatterWarper(playerInv, te));
+    public GuiHeater(IInventory playerInv, TileHeater te) {
+        super(new ContainerHeater(playerInv, te));
 
         this.playerInv = playerInv;
         this.tile = te;
@@ -27,10 +27,8 @@ public class GuiDarkMatterWarper extends GuiContainer {
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager()
-                .bindTexture(new ResourceLocation(References.ModID, "textures/gui/blank_inventory.png"));
+                .bindTexture(new ResourceLocation(References.ModID, "textures/gui/heater.png"));
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
-
-        this.drawTexturedModalRect(this.guiLeft + 79, this.guiTop + 52, 7, 83, 18, 18);
     }
 
     @Override
@@ -41,10 +39,10 @@ public class GuiDarkMatterWarper extends GuiContainer {
 
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(new ResourceLocation(References.ModID, "textures/gui/gui_icons.png"));
-        this.drawTexturedModalRect(81, 37, 85, 0, 14, 13);
-        int burn = (int) ((float) tile.getBurnTime() * 13F / (float) tile.getMaxBurnTime());
-        this.drawTexturedModalRect(81, 50 - burn, 59, 13 - burn, 14, burn);
 
+        int burn = tile.currentItemBurnTime != 0
+                ? (int) ((float) tile.fuelBurnTime * 13F / (float) tile.currentItemBurnTime) : 0;
+        this.drawTexturedModalRect(81, 50 - burn, 59, 13 - burn, 14, burn);
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {

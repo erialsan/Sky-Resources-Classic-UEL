@@ -81,4 +81,10 @@ public class GuiRockCleaner extends GuiContainer {
             this.drawHoveringText(list, mouseX - k, mouseY - l, fontRenderer);
         }
     }
+
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        this.drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        this.renderHoveredToolTip(mouseX, mouseY);
+    }
 }

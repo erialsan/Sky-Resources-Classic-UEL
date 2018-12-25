@@ -74,7 +74,6 @@ public class ModRenderers {
         registerItemRenderer(Item.getItemFromBlock(ModBlocks.fluidDropper));
         registerItemRenderer(Item.getItemFromBlock(ModBlocks.blazePowderBlock));
         registerItemRenderer(Item.getItemFromBlock(ModBlocks.dirtFurnace));
-        registerItemRenderer(Item.getItemFromBlock(ModBlocks.poweredHeater));
         registerItemRenderer(Item.getItemFromBlock(ModBlocks.darkMatterWarper));
         registerItemRenderer(Item.getItemFromBlock(ModBlocks.endPortalCore));
         registerItemRenderer(Item.getItemFromBlock(ModBlocks.lifeInfuser));
@@ -91,6 +90,7 @@ public class ModRenderers {
             registerItemRenderer(Item.getItemFromBlock(ModBlocks.alchemicalCondenser[i]));
             registerItemRenderer(Item.getItemFromBlock(ModBlocks.crystallizer[i]));
             registerItemRenderer(Item.getItemFromBlock(ModBlocks.combustionHeater[i]));
+            registerItemRenderer(Item.getItemFromBlock(ModBlocks.heatProvider[i]));
         }
 
         registerItemRenderer(ModItems.sandstoneInfusionStone);

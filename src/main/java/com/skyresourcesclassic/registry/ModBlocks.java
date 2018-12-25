@@ -31,7 +31,7 @@ public class ModBlocks {
     public static Block crystallizer[] = new Block[4];
     public static Block miniFreezer;
     public static Block ironFreezer;
-    public static Block poweredHeater;
+    public static Block heatProvider[] = new Block[4];
     public static Block darkMatterWarper;
     public static Block endPortalCore;
     public static Block lifeInfuser;
@@ -88,16 +88,19 @@ public class ModBlocks {
         heavySnow2 = registerBlock(new BaseBlock(Material.CLAY, "heavy_snow2", 1F, 1F, SoundType.SNOW));
 
         registerBlock(combustionHeater[0] = new CombustionHeaterBlock("wooden", 2.0F, 5.0F, 1));
+        registerBlock(heatProvider[0] = new BlockHeater("wooden", 2.0F, 5.0F, 1));
         for (MachineTierInfo tier : tiers) {
             registerBlock(
                     alchemicalCondenser[tier.id - 1] = new CondenserBlock(tier.name, tier.hardness, tier.resistance, tier.id));
             registerBlock(
                     crystallizer[tier.id - 1] = new CrystallizerBlock(tier.name, tier.hardness, tier.resistance, tier.id));
-            if (tier.id != 1)
+            if (tier.id != 1) {
                 registerBlock(
                         combustionHeater[tier.id - 1] = new CombustionHeaterBlock(tier.name, tier.hardness, tier.resistance, tier.id));
+                registerBlock(
+                        heatProvider[tier.id - 1] = new BlockHeater(tier.name, tier.hardness, tier.resistance, tier.id));
+            }
         }
-        poweredHeater = registerBlock(new BlockPoweredHeater("powered_heater", 4F, 12F));
         darkMatterWarper = registerBlock(new BlockDarkMatterWarper("dark_matter_warper", 8F, 12F));
         endPortalCore = registerBlock(new BlockEndPortalCore("end_portal_core", 6F, 12F));
         rockCrusher = registerBlock(new BlockRockCrusher("rock_crusher", 6F, 12F));

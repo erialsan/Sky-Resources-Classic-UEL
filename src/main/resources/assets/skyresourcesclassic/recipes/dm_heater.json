@@ -1,17 +1,16 @@
 {
   "result": {
-    "item": "skyresourcesclassic:steel_combustion_heater"
+    "item": "skyresourcesclassic:dm_heater"
   },
   "pattern": [
     "XZX",
-    "X X",
+    "XZX",
     "XYX"
   ],
   "type": "forge:ore_shaped",
   "key": {
     "X": {
-      "type": "forge:ore_dict",
-      "ore": "ingotIron"
+      "item": "skyresourcesclassic:dark_matter"
     },
     "Y": {
       "item": "skyresourcesclassic:steel_power_component"

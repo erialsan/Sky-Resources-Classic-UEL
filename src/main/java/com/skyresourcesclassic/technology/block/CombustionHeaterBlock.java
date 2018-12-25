@@ -73,7 +73,7 @@ public class CombustionHeaterBlock extends BlockContainer {
         super.breakBlock(world, pos, state);
     }
 
-    public int getMaximumHeat(IBlockState state) {
+    public int getMaximumHeat() {
         switch (tier) {
             case 1:
                 return 100;

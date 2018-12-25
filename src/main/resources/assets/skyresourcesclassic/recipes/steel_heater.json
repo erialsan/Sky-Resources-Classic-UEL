@@ -1,10 +1,10 @@
 {
   "result": {
-    "item": "skyresourcesclassic:steel_combustion_heater"
+    "item": "skyresourcesclassic:steel_heater"
   },
   "pattern": [
     "XZX",
-    "X X",
+    "XZX",
     "XYX"
   ],
   "type": "forge:ore_shaped",

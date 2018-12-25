@@ -1,7 +1,10 @@
 package com.skyresourcesclassic.technology.block;
 
 import com.skyresourcesclassic.References;
+import com.skyresourcesclassic.SkyResourcesClassic;
 import com.skyresourcesclassic.registry.ModCreativeTabs;
+import com.skyresourcesclassic.registry.ModGuiHandler;
+import com.skyresourcesclassic.technology.tile.TileHeater;
 import com.skyresourcesclassic.technology.tile.TilePoweredHeater;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -23,24 +26,38 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlockPoweredHeater extends BlockContainer {
+public class BlockHeater extends BlockContainer {
 
     public static final PropertyBool RUNNING = PropertyBool.create("running");
 
-    public BlockPoweredHeater(String name, float hardness,
-                              float resistance) {
+    public BlockHeater(String material, float hardness, float resistance, int tier) {
         super(Material.IRON);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setUnlocalizedName(References.ModID + "." + material + "_heater");
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
-        this.setRegistryName(name);
+        this.setRegistryName(material + "_heater");
         this.setDefaultState(this.blockState.getBaseState().withProperty(RUNNING, false));
+        this.tier = tier;
     }
+
+    private int tier;
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TilePoweredHeater();
+        if (tier > 2)
+            return new TilePoweredHeater(tier);
+        return new TileHeater(tier);
+    }
+
+    @Override
+    public Material getMaterial(IBlockState state) {
+        switch (tier) {
+            case 1:
+                return Material.WOOD;
+            default:
+                return Material.IRON;
+        }
     }
 
     @Override
@@ -54,21 +71,37 @@ public class BlockPoweredHeater extends BlockContainer {
     }
 
     @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        if (tier < 3) {
+            TileHeater te = (TileHeater) world.getTileEntity(pos);
+            te.dropInventory();
+        }
+
+        super.breakBlock(world, pos, state);
+    }
+
+    @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state,
                                     EntityPlayer player, EnumHand hand, EnumFacing side, float hitX,
                                     float hitY, float hitZ) {
         if (!world.isRemote) {
-            if (player.getHeldItemMainhand().isEmpty() && !player.isSneaking()) {
-                List<ITextComponent> toSend = new ArrayList();
 
-                TilePoweredHeater tile = (TilePoweredHeater) world.getTileEntity(pos);
-                toSend.add(new TextComponentString(TextFormatting.RED + "FE Stored: " + tile.getEnergyStored()
-                        + " / " + tile.getMaxEnergyStored()));
+            if (tier < 3) {
+                player.openGui(SkyResourcesClassic.instance, ModGuiHandler.HeaterGUI, world, pos.getX(), pos.getY(),
+                        pos.getZ());
+            } else {
+                if (player.getHeldItemMainhand().isEmpty() && !player.isSneaking()) {
+                    List<ITextComponent> toSend = new ArrayList();
 
-                for (ITextComponent text : toSend) {
-                    player.sendMessage(text);
+                    TilePoweredHeater tile = (TilePoweredHeater) world.getTileEntity(pos);
+                    toSend.add(new TextComponentString(TextFormatting.RED + "FE Stored: " + tile.getEnergyStored()
+                            + " / " + tile.getMaxEnergyStored()));
+
+                    for (ITextComponent text : toSend) {
+                        player.sendMessage(text);
+                    }
+
                 }
-
             }
         }
         return true;
