@@ -56,15 +56,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
-        addProcessRecipes(ProcessRecipeJEI.class, registry, "combustion");
-        addProcessRecipes(ProcessRecipeJEI.class, registry, "infusion");
-        addProcessRecipes(ProcessRecipeJEI.class, registry, "rockgrinder");
-        addProcessRecipes(ProcessRecipeJEI.class, registry, "knife");
-        addProcessRecipes(ProcessRecipeJEI.class, registry, "crucible");
-        addProcessRecipes(ProcessRecipeJEI.class, registry, "freezer");
-        addProcessRecipes(ProcessRecipeJEI.class, registry, "waterextractor-insert");
-        addProcessRecipes(ProcessRecipeJEI.class, registry, "waterextractor-extract");
-        addProcessRecipes(ProcessRecipeJEI.class, registry, "cauldronclean");
+        registry.addRecipeHandlers(new ProcessRecipeHandler());
 
         registry.addRecipes(ProcessRecipeManager.infusionRecipes.getRecipes(), InfusionRecipeCategory.UUID);
         registry.addRecipes(ProcessRecipeManager.combustionRecipes.getRecipes(), CombustionRecipeCategory.UUID);
@@ -133,12 +125,5 @@ public class JEIPlugin implements IModPlugin {
                         HeatSources.getHeatSourceValue(state)));
         }
         return sources;
-    }
-
-    private  <T extends ProcessRecipeJEI> void addProcessRecipes(Class<T> clazz, IModRegistry registry, String type) {
-        IJeiHelpers jeiHelpers = registry.getJeiHelpers();
-        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-        registry.addRecipes(ProcessRecipeJEIManager.getRecipes(clazz, guiHelper, type),
-                References.ModID + ":" + type);
     }
 }

@@ -110,10 +110,6 @@ tile.skyresourcesclassic.cobalt_molten_crystal_fluid_block.name=Molten Cobalt Cr
 tile.skyresourcesclassic.ardite_molten_crystal_fluid_block.name=Molten Ardite Crystal Fluid
 tile.skyresourcesclassic.draconium_molten_crystal_fluid_block.name=Molten Draconium Crystal Fluid
 
-
-jei.skyresourcesclassic.desc.cactusNeedle=Obtained by shift right-clicking on a cactus block.\n\nNOTE: You will take damage.
-jei.skyresourcesclassic.desc.blazePowderBlock=Heat above a heat source to turn into lava.\n\nNOTE: Better heat sources are generally faster.
-
 jei.skyresourcesclassic.recipe.healthNeeded=Health Needed:
 jei.skyresourcesclassic.recipe.rightClickOn=Right-Clicked On
 jei.skyresourcesclassic.recipe.infusion=Life Infusion
