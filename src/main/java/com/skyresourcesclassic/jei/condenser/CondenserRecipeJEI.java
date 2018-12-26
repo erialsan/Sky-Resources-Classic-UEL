@@ -2,6 +2,7 @@ package com.skyresourcesclassic.jei.condenser;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeWrapper;
+import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
@@ -10,7 +11,7 @@ import net.minecraftforge.fluids.FluidStack;
 import java.util.Collections;
 import java.util.List;
 
-public class CondenserRecipeJEI extends BlankRecipeWrapper {
+public class CondenserRecipeJEI implements IRecipeWrapper {
     private final FluidStack input;
 
     private final ItemStack output;

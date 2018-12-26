@@ -6,7 +6,7 @@ import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
+import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -15,9 +15,10 @@ import net.minecraft.util.text.translation.I18n;
 
 import java.util.List;
 
-public class CombustionRecipeCategory extends BlankRecipeCategory {
+public class CombustionRecipeCategory implements IRecipeCategory {
     private static final int[] slotInputStacks = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
     private static final int slotOutput = 9;
+    public static final String UUID = References.ModID + ":combustion";
 
     private final IDrawable background;
 
@@ -53,7 +54,7 @@ public class CombustionRecipeCategory extends BlankRecipeCategory {
 
     @Override
     public String getUid() {
-        return References.ModID + ":combustion";
+        return UUID;
     }
 
     @Override

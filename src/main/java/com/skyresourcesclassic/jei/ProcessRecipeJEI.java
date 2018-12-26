@@ -3,7 +3,7 @@ package com.skyresourcesclassic.jei;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeWrapper;
+import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ProcessRecipeJEI extends BlankRecipeWrapper {
-    ProcessRecipe rec;
+public class ProcessRecipeJEI implements IRecipeWrapper {
+    private ProcessRecipe rec;
 
     public ProcessRecipeJEI(ProcessRecipe recipe) {
         rec = recipe;

@@ -6,7 +6,7 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
+import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -15,10 +15,11 @@ import net.minecraft.util.text.translation.I18n;
 
 import java.util.List;
 
-public class RockGrinderRecipeCategory extends BlankRecipeCategory {
+public class RockGrinderRecipeCategory implements IRecipeCategory {
     private static final int slotInputStack = 0;
     private static final int slotInputGrinder = 1;
     private static final int slotOutput = 2;
+    public static final String UUID = References.ModID + ":rockgrinder";
 
     private final IDrawable background;
 
@@ -46,7 +47,7 @@ public class RockGrinderRecipeCategory extends BlankRecipeCategory {
 
     @Override
     public String getUid() {
-        return References.ModID + ":rockgrinder";
+        return UUID;
     }
 
     @Override

@@ -8,7 +8,7 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
+import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -19,10 +19,11 @@ import net.minecraftforge.fluids.FluidStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CondenserRecipeCategory extends BlankRecipeCategory {
+public class CondenserRecipeCategory implements IRecipeCategory {
     private static final int slotInputFluid = 0;
     private static final int slotOutput = 1;
     private static final int slotCondenser = 2;
+    public static final String UUID = References.ModID + ":condenser";
 
     private final IDrawable background;
 
@@ -50,7 +51,7 @@ public class CondenserRecipeCategory extends BlankRecipeCategory {
 
     @Override
     public String getUid() {
-        return References.ModID + ":condenser";
+        return UUID;
     }
 
     @Override

@@ -6,7 +6,7 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
+import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -16,9 +16,10 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
-public class CrucibleRecipeCategory extends BlankRecipeCategory {
+public class CrucibleRecipeCategory implements IRecipeCategory {
     private static final int slotInputStack = 0;
     private static final int slotOutputFluid = 1;
+    public static final String UUID = References.ModID + ":crucible";
 
     private final IDrawable background;
 
@@ -46,7 +47,7 @@ public class CrucibleRecipeCategory extends BlankRecipeCategory {
 
     @Override
     public String getUid() {
-        return References.ModID + ":crucible";
+        return UUID;
     }
 
     @Override

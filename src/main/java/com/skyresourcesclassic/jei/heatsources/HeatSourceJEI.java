@@ -1,7 +1,7 @@
 package com.skyresourcesclassic.jei.heatsources;
 
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeWrapper;
+import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.resources.I18n;
@@ -9,10 +9,10 @@ import net.minecraft.item.ItemStack;
 
 import java.util.List;
 
-public class HeatSourceJEI extends BlankRecipeWrapper {
-    ItemStack stack;
-    int value;
-    String name;
+public class HeatSourceJEI implements IRecipeWrapper {
+    private ItemStack stack;
+    private int value;
+    private String name;
 
     public HeatSourceJEI(ItemStack stack, int val) {
         this.stack = stack;

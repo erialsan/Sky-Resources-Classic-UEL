@@ -1,8 +1,8 @@
 package com.skyresourcesclassic.jei.condenser;
 
+import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.RandomHelper;
 import com.skyresourcesclassic.alchemy.fluid.FluidRegisterInfo;
-import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.registry.ModFluids;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;

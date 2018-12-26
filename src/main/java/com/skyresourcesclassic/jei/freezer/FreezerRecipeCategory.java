@@ -5,7 +5,7 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
+import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -14,9 +14,10 @@ import net.minecraft.util.text.translation.I18n;
 
 import java.util.List;
 
-public class FreezerRecipeCategory extends BlankRecipeCategory {
+public class FreezerRecipeCategory implements IRecipeCategory {
     private static final int slotInputStack = 0;
     private static final int slotOutput = 1;
+    public static final String UUID = References.ModID + ":freezer";
 
     private final IDrawable background;
 
@@ -44,7 +45,7 @@ public class FreezerRecipeCategory extends BlankRecipeCategory {
 
     @Override
     public String getUid() {
-        return References.ModID + ":freezer";
+        return UUID;
     }
 
     @Override

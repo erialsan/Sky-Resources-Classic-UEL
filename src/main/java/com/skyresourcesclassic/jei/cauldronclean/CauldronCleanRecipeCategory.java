@@ -5,7 +5,7 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.BlankRecipeCategory;
+import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Items;
@@ -15,10 +15,11 @@ import net.minecraft.util.text.translation.I18n;
 
 import java.util.List;
 
-public class CauldronCleanRecipeCategory extends BlankRecipeCategory {
+public class CauldronCleanRecipeCategory implements IRecipeCategory {
     private static final int slotInput = 0;
     private static final int slotOutput = 1;
     private static final int slotCauldron = 2;
+    public static final String UUID = References.ModID + ":cauldronclean";
 
     private final IDrawable background;
 
@@ -46,7 +47,7 @@ public class CauldronCleanRecipeCategory extends BlankRecipeCategory {
 
     @Override
     public String getUid() {
-        return References.ModID + ":cauldronclean";
+        return UUID;
     }
 
     @Override
