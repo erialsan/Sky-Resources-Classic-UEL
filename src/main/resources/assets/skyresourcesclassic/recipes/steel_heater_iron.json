@@ -1,4 +1,13 @@
 {
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "ore_condition",
+        "ore": "ingotSteel"
+      }
+    }
+  ],
   "result": {
     "item": "skyresourcesclassic:steel_heater"
   },
@@ -11,7 +20,7 @@
   "key": {
     "X": {
       "type": "forge:ore_dict",
-      "ore": "ingotSteel"
+      "ore": "ingotIron"
     },
     "Y": {
       "item": "skyresourcesclassic:steel_power_component"

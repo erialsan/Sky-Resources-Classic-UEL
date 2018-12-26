@@ -1,17 +1,26 @@
 {
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "ore_condition",
+        "ore": "ingotSteel"
+      }
+    }
+  ],
   "result": {
-    "item": "skyresourcesclassic:steel_crystallizer"
+    "item": "skyresourcesclassic:steel_condenser"
   },
   "pattern": [
-    "XYX",
+    "XXX",
     "XZX",
-    "X X"
+    "XYX"
   ],
   "type": "forge:ore_shaped",
   "key": {
     "X": {
       "type": "forge:ore_dict",
-      "ore": "ingotSteel"
+      "ore": "ingotIron"
     },
     "Y": {
       "item": "skyresourcesclassic:frozen_iron_cooling_component"

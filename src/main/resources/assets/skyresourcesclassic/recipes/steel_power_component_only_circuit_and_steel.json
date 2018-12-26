@@ -1,0 +1,42 @@
+{
+  "conditions": [
+    {
+        "type": "ore_condition",
+        "ore": "ingotSteel"
+    },
+    {
+        "type": "ore_condition",
+        "ore": "circuitBasic"
+    },
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "ore_condition",
+        "ore": "dustCoal"
+      }
+    }
+  ],
+  "result": {
+    "item": "skyresourcesclassic:steel_power_component"
+  },
+  "pattern": [
+    "XZX",
+    "XYX",
+    "XZX"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSteel"
+    },
+    "Y": {
+      "type": "forge:ore_dict",
+      "ore": "circuitBasic"
+    },
+    "Z": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    }
+  }
+}

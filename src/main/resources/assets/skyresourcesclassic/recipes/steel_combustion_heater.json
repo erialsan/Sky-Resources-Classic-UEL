@@ -11,7 +11,7 @@
   "key": {
     "X": {
       "type": "forge:ore_dict",
-      "ore": "ingotIron"
+      "ore": "ingotSteel"
     },
     "Y": {
       "item": "skyresourcesclassic:steel_power_component"

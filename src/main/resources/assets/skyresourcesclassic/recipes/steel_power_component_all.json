@@ -11,14 +11,15 @@
   "key": {
     "X": {
       "type": "forge:ore_dict",
-      "ore": "ingotIron"
+      "ore": "ingotSteel"
     },
     "Y": {
-      "item": "minecraft:redstone_block"
+      "type": "forge:ore_dict",
+      "ore": "circuitBasic"
     },
     "Z": {
       "type": "forge:ore_dict",
-      "ore": "dustRedstone"
+      "ore": "dustCoal"
     }
   }
 }

@@ -8,7 +8,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.function.BooleanSupplier;
 
-public class OreDictCondition implements IConditionFactory {
+public class OreCondition implements IConditionFactory {
 
     @Override
     public BooleanSupplier parse(JsonContext context, JsonObject json) {
