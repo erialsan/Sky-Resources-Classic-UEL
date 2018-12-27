@@ -16,7 +16,7 @@ import java.util.List;
 public class ProcessRecipeJEI implements IRecipeWrapper {
     private ProcessRecipe rec;
 
-    public ProcessRecipeJEI(ProcessRecipe recipe) {
+    protected ProcessRecipeJEI(ProcessRecipe recipe) {
         rec = recipe;
     }
 

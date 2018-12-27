@@ -15,6 +15,7 @@ import com.skyresourcesclassic.jei.infusion.InfusionRecipeCategory;
 import com.skyresourcesclassic.jei.knife.KnifeRecipeCategory;
 import com.skyresourcesclassic.jei.rockgrinder.RockGrinderRecipeCategory;
 import com.skyresourcesclassic.jei.waterextractor.WaterExtractorRecipeCategory;
+import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
 import com.skyresourcesclassic.registry.ModBlocks;
 import com.skyresourcesclassic.registry.ModItems;
@@ -56,7 +57,13 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
-        registry.addRecipeHandlers(new ProcessRecipeHandler());
+        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), CombustionRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), RockGrinderRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), KnifeRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), CrucibleRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), FreezerRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), WaterExtractorRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), CauldronCleanRecipeCategory.UUID);
 
         registry.addRecipes(ProcessRecipeManager.infusionRecipes.getRecipes(), InfusionRecipeCategory.UUID);
         registry.addRecipes(ProcessRecipeManager.combustionRecipes.getRecipes(), CombustionRecipeCategory.UUID);

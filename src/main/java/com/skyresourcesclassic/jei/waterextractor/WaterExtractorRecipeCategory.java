@@ -1,11 +1,5 @@
 package com.skyresourcesclassic.jei.waterextractor;
 
-import java.util.List;
-
-import com.skyresourcesclassic.References;
-import com.skyresourcesclassic.base.item.ItemWaterExtractor;
-import com.skyresourcesclassic.registry.ModItems;
-
 import com.skyresourcesclassic.References;
 import com.skyresourcesclassic.base.item.ItemWaterExtractor;
 import com.skyresourcesclassic.registry.ModItems;
@@ -21,83 +15,77 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fluids.FluidStack;
 
-public class WaterExtractorRecipeCategory implements IRecipeCategory
-{
-	private static final int slotInputStack = 0;
-	private static final int slotInputExtractor = 1;
-	private static final int slotOutput = 2;
-	private static final int slotInputFluid = 3;
-	private static final int slotOutputFluid = 4;
-	public static final String UUID = References.ModID + ":waterextractor";
+import java.util.List;
 
-	private final IDrawable background;
+public class WaterExtractorRecipeCategory implements IRecipeCategory {
+    private static final int slotInputStack = 0;
+    private static final int slotInputExtractor = 1;
+    private static final int slotOutput = 2;
+    private static final int slotInputFluid = 3;
+    private static final int slotOutputFluid = 4;
+    public static final String UUID = References.ModID + ":waterextractor";
 
-	private final String localizedName = I18n.translateToLocalFormatted(
-			"jei.skyresourcesclassic.recipe.waterextractor");
+    private final IDrawable background;
 
-	public WaterExtractorRecipeCategory(IGuiHelper guiHelper)
-	{
-		super();
-		background = guiHelper
-				.createDrawable(
-						new ResourceLocation(References.ModID,
-								"textures/gui/jei/extractor.png"),
-						0, 0, 150, 50);
-	}
+    private final String localizedName = I18n.translateToLocalFormatted(
+            "jei.skyresourcesclassic.recipe.waterextractor");
 
-	@Override
-	public void drawExtras(Minecraft minecraft)
-	{
-	}
+    public WaterExtractorRecipeCategory(IGuiHelper guiHelper) {
+        super();
+        background = guiHelper
+                .createDrawable(
+                        new ResourceLocation(References.ModID,
+                                "textures/gui/jei/extractor.png"),
+                        0, 0, 150, 50);
+    }
 
-	@Override
-	public IDrawable getBackground()
-	{
-		return background;
-	}
+    @Override
+    public void drawExtras(Minecraft minecraft) {
+    }
 
-	@Override
-	public String getTitle()
-	{
-		return localizedName;
-	}
+    @Override
+    public IDrawable getBackground() {
+        return background;
+    }
 
-	@Override
-	public String getUid()
-	{
-		return UUID;
-	}
+    @Override
+    public String getTitle() {
+        return localizedName;
+    }
 
-	@Override
-	public void setRecipe(IRecipeLayout layout, IRecipeWrapper wrapper, IIngredients ingredients)
-	{
-		layout.getItemStacks().init(slotInputExtractor, true, 32, 1);
-		layout.getItemStacks().init(slotInputStack, true, 53, 29);
-		layout.getItemStacks().init(slotOutput, false, 106, 15);
-		layout.getFluidStacks().init(slotInputFluid, false, 3, 4, 14, 42,
-				ItemWaterExtractor.maxAmount, true, null);
-		layout.getFluidStacks().init(slotOutputFluid, false, 132, 4, 14, 42,
-				ItemWaterExtractor.maxAmount, false, null);
+    @Override
+    public String getUid() {
+        return UUID;
+    }
 
-		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
-		List<List<FluidStack>> finputs = ingredients.getInputs(FluidStack.class);
-		layout.getItemStacks().set(slotInputStack,
-				inputs.get(0));
-		layout.getItemStacks().set(slotInputExtractor,
-				new ItemStack(ModItems.waterExtractor));
-		List<List<ItemStack>> outputs = ingredients.getOutputs(ItemStack.class);
-		List<List<FluidStack>> foutputs = ingredients.getOutputs(FluidStack.class);
-		layout.getItemStacks().set(slotOutput, outputs.get(0));
-		if(finputs != null && finputs.size() > 0)
-		layout.getFluidStacks().set(slotInputFluid, finputs.get(0));
-		if(foutputs != null && foutputs.size() > 0)
-		layout.getFluidStacks().set(slotOutputFluid, foutputs.get(0));
-	}
+    @Override
+    public void setRecipe(IRecipeLayout layout, IRecipeWrapper wrapper, IIngredients ingredients) {
+        layout.getItemStacks().init(slotInputExtractor, true, 32, 1);
+        layout.getItemStacks().init(slotInputStack, true, 53, 29);
+        layout.getItemStacks().init(slotOutput, false, 106, 15);
+        layout.getFluidStacks().init(slotInputFluid, false, 3, 4, 14, 42,
+                ItemWaterExtractor.maxAmount, true, null);
+        layout.getFluidStacks().init(slotOutputFluid, false, 132, 4, 14, 42,
+                ItemWaterExtractor.maxAmount, false, null);
 
-	@Override
-	public String getModName()
-	{
-		return References.ModName;
-	}
+        List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
+        List<List<FluidStack>> finputs = ingredients.getInputs(FluidStack.class);
+        layout.getItemStacks().set(slotInputStack,
+                inputs.get(0));
+        layout.getItemStacks().set(slotInputExtractor,
+                new ItemStack(ModItems.waterExtractor));
+        List<List<ItemStack>> outputs = ingredients.getOutputs(ItemStack.class);
+        List<List<FluidStack>> foutputs = ingredients.getOutputs(FluidStack.class);
+        layout.getItemStacks().set(slotOutput, outputs.get(0));
+        if (finputs != null && finputs.size() > 0)
+            layout.getFluidStacks().set(slotInputFluid, finputs.get(0));
+        if (foutputs != null && foutputs.size() > 0)
+            layout.getFluidStacks().set(slotOutputFluid, foutputs.get(0));
+    }
+
+    @Override
+    public String getModName() {
+        return References.ModName;
+    }
 
 }
