@@ -53,7 +53,7 @@ public class FluidDropperTile extends TileBase implements ITickable, IFluidHandl
     }
 
     public FluidDropperTile() {
-        super("fluidDropper");
+        super("fluid_dropper");
         tank = new FluidTank(ConfigOptions.fluidDropper.fluidDropperCapacity);
     }
 

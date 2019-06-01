@@ -65,7 +65,7 @@ public class TileItemInventory extends TileBase {
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            return (T) this.inventory;
+            return (T) inventory;
         }
         return super.getCapability(capability, facing);
     }

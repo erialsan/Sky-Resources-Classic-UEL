@@ -23,7 +23,7 @@ public class ItemComponent extends Item {
     public ItemComponent(String name, CreativeTabs tab) {
         super();
 
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         setRegistryName(name);
         this.setCreativeTab(tab);
     }
@@ -33,8 +33,8 @@ public class ItemComponent extends Item {
         if (!playerIn.canPlayerEdit(pos.offset(facing), facing, playerIn.getHeldItem(hand))) {
             return EnumActionResult.FAIL;
         } else {
-            if (playerIn.getHeldItem(hand).getUnlocalizedName().equals("item.skyresourcesclassic.plant_matter")
-                    || playerIn.getHeldItem(hand).getUnlocalizedName().equals("item.skyresourcesclassic.enriched_bonemeal")) {
+            if (playerIn.getHeldItem(hand).getTranslationKey().equals("item.skyresourcesclassic.plant_matter")
+                    || playerIn.getHeldItem(hand).getTranslationKey().equals("item.skyresourcesclassic.enriched_bonemeal")) {
                 if (applyBonemeal(playerIn.getHeldItem(hand), worldIn, pos)) {
                     if (!worldIn.isRemote) {
                         worldIn.playEvent(2005, pos, 0);
@@ -50,10 +50,10 @@ public class ItemComponent extends Item {
 
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        if (stack.getUnlocalizedName().equals("item.skyresourcesclassic.plant_matter")) {
+        if (stack.getTranslationKey().equals("item.skyresourcesclassic.plant_matter")) {
             tooltip.add(TextFormatting.DARK_GRAY + "Acts as bonemeal");
             tooltip.add(TextFormatting.DARK_GRAY + "Grows instantly");
-        } else if (stack.getUnlocalizedName().equals("item.skyresourcesclassic.enriched_bonemeal")) {
+        } else if (stack.getTranslationKey().equals("item.skyresourcesclassic.enriched_bonemeal")) {
             tooltip.add(TextFormatting.DARK_GRAY + "Grows instantly");
         }
     }

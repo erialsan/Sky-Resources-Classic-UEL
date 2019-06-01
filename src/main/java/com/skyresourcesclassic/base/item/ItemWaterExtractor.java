@@ -44,7 +44,7 @@ public class ItemWaterExtractor extends Item implements IFluidHandler {
         this.maxStackSize = 1;
         this.setCreativeTab(ModCreativeTabs.tabMain);
         tank = new FluidTank(new FluidStack(FluidRegistry.WATER, 0), maxAmount);
-        setUnlocalizedName(References.ModID + ".water_extractor");
+        setTranslationKey(References.ModID + ".water_extractor");
         setRegistryName("water_extractor");
     }
 
@@ -69,9 +69,9 @@ public class ItemWaterExtractor extends Item implements IFluidHandler {
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
             if (!world.isRemote && timeLeft <= getMaxItemUseDuration(stack) - 25) {
-                Vec3d vec3d = player.getPositionVector().addVector(0, player.eyeHeight, 0);
+                Vec3d vec3d = player.getPositionVector().add(0, player.eyeHeight, 0);
                 Vec3d vec3d1 = player.getLookVec();
-                Vec3d vec3d2 = vec3d.addVector(vec3d1.x * 5, vec3d1.y * 5, vec3d1.z * 5);
+                Vec3d vec3d2 = vec3d.add(vec3d1.x * 5, vec3d1.y * 5, vec3d1.z * 5);
                 RayTraceResult rayTrace = world.rayTraceBlocks(vec3d, vec3d2, false, false, true);
 
                 if ((rayTrace != null)) {

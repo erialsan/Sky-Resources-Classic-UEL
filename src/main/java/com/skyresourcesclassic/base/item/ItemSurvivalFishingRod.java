@@ -20,7 +20,7 @@ public class ItemSurvivalFishingRod extends ItemFishingRod {
     public ItemSurvivalFishingRod(String name) {
         super();
         this.setMaxDamage(32);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabMain);
         setRegistryName(name);
     }

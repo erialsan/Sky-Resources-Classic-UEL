@@ -25,7 +25,7 @@ public class LifeInfuserBlock extends BlockContainer {
     public LifeInfuserBlock(String name, float hardness,
                             float resistance) {
         super(Material.WOOD);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabAlchemy);
         this.setHardness(hardness);
         this.setResistance(resistance);
@@ -49,7 +49,7 @@ public class LifeInfuserBlock extends BlockContainer {
     }
 
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
 

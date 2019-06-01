@@ -34,7 +34,7 @@ public class BlockRockCleaner extends BlockContainer {
 
     public BlockRockCleaner(String name, float hardness, float resistance) {
         super(Material.ROCK);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);

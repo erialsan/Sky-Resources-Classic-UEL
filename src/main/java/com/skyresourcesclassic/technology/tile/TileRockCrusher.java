@@ -18,7 +18,7 @@ import java.util.Collections;
 
 public class TileRockCrusher extends TileGenericPower implements ITickable {
     public TileRockCrusher() {
-        super("rockCrusher", 100000, 2000, 0, 5, new Integer[]{2, 3, 4}, new Integer[]{0, 1});
+        super("rock_crusher", 100000, 2000, 0, 5, new Integer[]{2, 3, 4}, new Integer[]{0, 1});
         this.setInventory(new ItemHandlerSpecial(5, new Integer[]{2, 3, 4}, new Integer[]{0, 1}) {
             protected void onContentsChanged(int slot) {
                 super.onContentsChanged(slot);
@@ -35,7 +35,7 @@ public class TileRockCrusher extends TileGenericPower implements ITickable {
     }
 
     private int powerUsage = 80;
-    private int curProgress;
+    private int curProgress = 0;
 
     private NonNullList<ItemStack> bufferStacks = NonNullList.create();
 

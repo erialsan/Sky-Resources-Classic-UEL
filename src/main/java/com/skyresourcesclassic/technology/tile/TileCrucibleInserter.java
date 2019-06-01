@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 
 public class TileCrucibleInserter extends TileItemInventory {
     public TileCrucibleInserter() {
-        super("crucibleInserter", 1);
+        super("crucible_inserter", 1);
         this.setInventory(new ItemHandlerSpecial(1) {
             protected void onContentsChanged(int slot) {
                 super.onContentsChanged(slot);

@@ -19,7 +19,7 @@ import java.util.List;
 public class TileEndPortalCore extends TileItemInventory implements ITickable {
 
     public TileEndPortalCore() {
-        super("endPortalCore", 1, null, new Integer[]{0});
+        super("end_portal_core", 1, null, new Integer[]{0});
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TileEndPortalCore extends TileItemInventory implements ITickable {
         }
     }
 
-    void spawnFish() {
+    private void spawnFish() {
         List<EntitySilverfish> list = world.getEntitiesWithinAABB(EntitySilverfish.class, new AxisAlignedBB(
                 pos.getX() - 4, pos.getY(), pos.getZ() - 4, pos.getX() + 4, pos.getY() + 5F, pos.getZ() + 4));
         if (!ConfigOptions.general.endWussMode && world.rand.nextInt(90) == 0 && list.size() < 16) {

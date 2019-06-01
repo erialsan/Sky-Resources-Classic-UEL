@@ -26,7 +26,7 @@ public class ItemHealthGem extends Item implements IHealthBoostItem {
     public ItemHealthGem() {
         super();
 
-        setUnlocalizedName(References.ModID + ".item_health_gem");
+        setTranslationKey(References.ModID + ".item_health_gem");
         setRegistryName("Item_health_gem");
         setHasSubtypes(true);
         this.setCreativeTab(ModCreativeTabs.tabAlchemy);

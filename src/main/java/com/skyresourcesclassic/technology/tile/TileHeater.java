@@ -17,14 +17,14 @@ public class TileHeater extends TileItemInventory implements ITickable, IHeatSou
         this.tier = tier;
     }
 
-    public int fuelBurnTime;
-    public int currentItemBurnTime;
+    public int fuelBurnTime = 0;
+    public int currentItemBurnTime = 0;
     private int tier;
 
     @Override
     public void update() {
         if (!world.isRemote) {
-            if (fuelBurnTime > 0 && this.getRedstoneSignal() > 0) {
+            if (fuelBurnTime > 0 && getRedstoneSignal() > 0) {
                 fuelBurnTime--;
                 world.setBlockState(getPos(),
                         world.getBlockState(getPos()).withProperty(BlockHeater.RUNNING, true), 3);
@@ -32,7 +32,7 @@ public class TileHeater extends TileItemInventory implements ITickable, IHeatSou
                 world.setBlockState(getPos(),
                         world.getBlockState(getPos()).withProperty(BlockHeater.RUNNING, false), 3);
 
-            if (this.getRedstoneSignal() > 0) {
+            if (getRedstoneSignal() > 0) {
                 if (fuelBurnTime > 0 || this.getInventory().getStackInSlot(0) != ItemStack.EMPTY) {
                     if (fuelBurnTime == 0
                             && isValidFuel(getInventory().getStackInSlot(0))) {
@@ -70,6 +70,7 @@ public class TileHeater extends TileItemInventory implements ITickable, IHeatSou
         return 0;
     }
 
+    @Override
     public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
         return oldState.getBlock() != newState.getBlock();
     }

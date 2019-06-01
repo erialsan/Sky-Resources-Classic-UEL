@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 public class ItemHeavyExplosiveSnowball extends Item {
     public ItemHeavyExplosiveSnowball(String name) {
         this.maxStackSize = 8;
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         setRegistryName(name);
         this.setCreativeTab(ModCreativeTabs.tabMain);
     }

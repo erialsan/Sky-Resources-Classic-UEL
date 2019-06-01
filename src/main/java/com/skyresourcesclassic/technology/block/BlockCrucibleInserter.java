@@ -21,7 +21,7 @@ public class BlockCrucibleInserter extends BlockContainer {
     public BlockCrucibleInserter(String name, float hardness,
                                  float resistance) {
         super(Material.ROCK);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
@@ -45,7 +45,7 @@ public class BlockCrucibleInserter extends BlockContainer {
     }
 
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
 

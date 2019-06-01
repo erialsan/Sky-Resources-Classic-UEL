@@ -9,7 +9,7 @@ public class ModItemFood extends ItemFood {
     public ModItemFood(int amount, float saturation, boolean isWolfFood,
                        String name) {
         super(amount, saturation, isWolfFood);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         setRegistryName(name);
         this.setCreativeTab(ModCreativeTabs.tabMain);
     }

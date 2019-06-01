@@ -32,7 +32,7 @@ public class BlockHeater extends BlockContainer {
 
     public BlockHeater(String material, float hardness, float resistance, int tier) {
         super(Material.IRON);
-        this.setUnlocalizedName(References.ModID + "." + material + "_heater");
+        this.setTranslationKey(References.ModID + "." + material + "_heater");
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);

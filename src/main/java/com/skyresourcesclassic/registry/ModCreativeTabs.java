@@ -11,7 +11,7 @@ public class ModCreativeTabs {
             "skyresourcesclassic.tabMain") {
         @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getTabIconItem() {
+        public ItemStack createIcon() {
             return new ItemStack(ModItems.ironKnife);
         }
     };
@@ -20,7 +20,7 @@ public class ModCreativeTabs {
             "skyresourcesclassic.tabAlchemy") {
         @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getTabIconItem() {
+        public ItemStack createIcon() {
             return new ItemStack(ModItems.sandstoneInfusionStone);
         }
     };
@@ -29,7 +29,7 @@ public class ModCreativeTabs {
             "skyresourcesclassic.tabTech") {
         @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getTabIconItem() {
+        public ItemStack createIcon() {
             return new ItemStack(ModBlocks.combustionHeater[0]);
         }
     };

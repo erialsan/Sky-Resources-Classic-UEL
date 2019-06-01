@@ -23,7 +23,7 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import java.util.List;
 
 public class CrucibleTile extends TileEntity implements ITickable, IFluidHandler {
-    FluidTank tank;
+    private FluidTank tank;
 
     public static int tankCapacity = ConfigOptions.crucible.crucibleCapacity;
 

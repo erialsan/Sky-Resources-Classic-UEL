@@ -26,7 +26,7 @@ public class TileWildlifeAttractor extends TileGenericPower implements ITickable
     private int matterLeft = 0;
 
     public TileWildlifeAttractor() {
-        super("wildlifeAttractor", 100000, 2000, 0, 1, null, new Integer[]{0});
+        super("wildlife_attractor", 100000, 2000, 0, 1, null, new Integer[]{0});
         tank = new FluidTank(4000);
     }
 

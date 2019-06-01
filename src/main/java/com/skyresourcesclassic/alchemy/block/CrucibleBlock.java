@@ -34,7 +34,7 @@ public class CrucibleBlock extends BlockContainer {
 
     public CrucibleBlock(String name, float hardness, float resistance) {
         super(Material.ROCK);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabAlchemy);
         this.setHardness(hardness);
         this.setResistance(resistance);

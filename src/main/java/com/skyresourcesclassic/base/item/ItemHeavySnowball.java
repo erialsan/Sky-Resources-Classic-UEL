@@ -24,7 +24,7 @@ public class ItemHeavySnowball extends Item
 	public ItemHeavySnowball(String name)
 	{
 		this.maxStackSize = 8;
-		this.setUnlocalizedName(References.ModID + "." + name);
+		this.setTranslationKey(References.ModID + "." + name);
 		setRegistryName(name);
 		this.setCreativeTab(ModCreativeTabs.tabMain);
 	}

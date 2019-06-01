@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class LifeInjectorBlock extends BlockContainer {
     public LifeInjectorBlock(String name, float hardness, float resistance) {
         super(Material.WOOD);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabAlchemy);
         this.setHardness(hardness);
         this.setResistance(resistance);
@@ -48,7 +48,7 @@ public class LifeInjectorBlock extends BlockContainer {
     }
 
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
 

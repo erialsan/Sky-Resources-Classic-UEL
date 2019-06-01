@@ -9,7 +9,7 @@ public class DirtyGemItem extends Item {
     public DirtyGemItem(String gem) {
         super();
 
-        setUnlocalizedName(References.ModID + ".dirty_" + gem);
+        setTranslationKey(References.ModID + ".dirty_" + gem);
         setRegistryName("dirty_" + gem);
         setHasSubtypes(true);
         this.setCreativeTab(ModCreativeTabs.tabTech);

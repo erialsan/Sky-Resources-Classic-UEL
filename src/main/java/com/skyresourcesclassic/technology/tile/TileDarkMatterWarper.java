@@ -20,7 +20,7 @@ import java.util.List;
 
 public class TileDarkMatterWarper extends TileItemInventory implements ITickable {
     public TileDarkMatterWarper() {
-        super("darkMatterWarper", 1, null, new Integer[]{0});
+        super("darkMatter_warper", 1, null, new Integer[]{0});
     }
 
     private int burnTime;
@@ -28,7 +28,6 @@ public class TileDarkMatterWarper extends TileItemInventory implements ITickable
 
     @Override
     public void update() {
-
         if (!world.isRemote) {
             if (burnTime <= 0) {
                 if (getInventory().getStackInSlot(0) != ItemStack.EMPTY
@@ -97,7 +96,7 @@ public class TileDarkMatterWarper extends TileItemInventory implements ITickable
             } else {
                 for (EntityLivingBase entity : list) {
                     if (!entity.isDead && entity instanceof EntityPlayer) {
-                        if (entity instanceof EntityPlayer && ((EntityPlayer) entity).isCreative())
+                        if (((EntityPlayer) entity).isCreative())
                             continue;
                         entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 5, 2));
                         entity.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 5, 2));
@@ -107,7 +106,7 @@ public class TileDarkMatterWarper extends TileItemInventory implements ITickable
                 }
             }
 
-            this.markDirty();
+            markDirty();
         }
     }
 

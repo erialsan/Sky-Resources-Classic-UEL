@@ -31,7 +31,7 @@ import java.util.List;
 public class CombustionHeaterBlock extends BlockContainer {
     public CombustionHeaterBlock(String material, float hardness, float resistance, int tier) {
         super(Material.WOOD);
-        this.setUnlocalizedName(References.ModID + "." + material + "_combustion_heater");
+        this.setTranslationKey(References.ModID + "." + material + "_combustion_heater");
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);

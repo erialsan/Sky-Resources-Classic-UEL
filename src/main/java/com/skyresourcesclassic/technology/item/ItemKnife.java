@@ -33,7 +33,7 @@ public class ItemKnife extends Item {
         this.setMaxDamage((int) (material.getMaxUses() * ConfigOptions.knife.knifeBaseDurability));
         toolMaterial = material;
         this.damageVsEntity = ConfigOptions.knife.knifeBaseDamage + material.getAttackDamage();
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         setRegistryName(name);
         this.setMaxStackSize(1);
         this.setNoRepair();

@@ -22,7 +22,7 @@ public class FluidCrystalBlock extends BlockFluidClassic {
     public FluidCrystalBlock(Fluid fluid, Material material, String unlocalizedName,
                              String registryName) {
         super(fluid, material);
-        this.setUnlocalizedName(References.ModID + "." + unlocalizedName);
+        this.setTranslationKey(References.ModID + "." + unlocalizedName);
         this.setRegistryName(registryName);
         this.setTickRandomly(true);
     }
@@ -30,7 +30,7 @@ public class FluidCrystalBlock extends BlockFluidClassic {
     @Override
     @Nonnull
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
 

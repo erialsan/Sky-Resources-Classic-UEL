@@ -300,25 +300,6 @@ public class RandomHelper {
 
     }
 
-    public static ItemStack fillInventory(IItemHandler inv, ItemStack stack) {
-        if (inv != null) {
-            for (int i = 0; i < inv.getSlots(); i++) {
-                if (stack.isEmpty())
-                    return ItemStack.EMPTY;
-                ItemStack inside = inv.getStackInSlot(i);
-                if (inside.isEmpty()) {
-                    inv.insertItem(i, stack, false);
-                    return ItemStack.EMPTY;
-                } else if (RandomHelper.canStacksMerge(inside, stack)) {
-                    stack.shrink(RandomHelper.mergeStacks(stack, inside,
-                            true));
-                }
-            }
-        }
-        return stack;
-
-    }
-
     public static ItemStack fillInternalInventory(ItemHandlerSpecial inv, ItemStack stack) {
         if (inv != null) {
             for (int i = 0; i < inv.getSlots(); i++) {

@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 public class CondenserBlock extends BlockContainer {
     public CondenserBlock(String material, float hardness, float resistance, int tier) {
         super(Material.ROCK);
-        this.setUnlocalizedName(References.ModID + "." + material + "_condenser");
+        this.setTranslationKey(References.ModID + "." + material + "_condenser");
         this.setCreativeTab(ModCreativeTabs.tabAlchemy);
         this.setHardness(hardness);
         this.setResistance(resistance);

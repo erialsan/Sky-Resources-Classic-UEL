@@ -22,12 +22,12 @@ import java.util.List;
 
 public class TileRockCleaner extends TileGenericPower implements ITickable, IFluidHandler {
     public TileRockCleaner() {
-        super("rockCleaner", 100000, 2000, 0, 4, new Integer[]{1, 2, 3}, new Integer[]{0});
+        super("rock_cleaner", 100000, 2000, 0, 4, new Integer[]{1, 2, 3}, new Integer[]{0});
         tank = new FluidTank(4000);
     }
 
     private int powerUsage = 80;
-    private int curProgress;
+    private int curProgress = 0;
 
     private NonNullList<ItemStack> bufferStacks = NonNullList.create();
 

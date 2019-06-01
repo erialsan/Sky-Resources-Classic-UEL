@@ -25,7 +25,7 @@ import java.util.Arrays;
 public class ItemInfusionStone extends Item {
     public ItemInfusionStone(int durability, String name) {
         this.setMaxDamage(durability);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         setRegistryName(name);
         this.setMaxStackSize(1);
         this.setNoRepair();

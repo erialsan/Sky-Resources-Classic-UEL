@@ -26,7 +26,7 @@ import java.util.List;
 public class TilePoweredCombustionHeater extends TileGenericPower implements ITickable {
 
     public TilePoweredCombustionHeater(int tier) {
-        super("combustionHeaterPowered", 100000, 2000, 0);
+        super("combustion_heater_powered", 100000, 2000, 0);
         this.tier = tier;
     }
 
@@ -175,10 +175,8 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
             items.add(i.getItem());
         }
 
-        ProcessRecipe recipe = ProcessRecipeManager.combustionRecipes.getMultiRecipe(items, currentHeatValue, true,
+        return ProcessRecipeManager.combustionRecipes.getMultiRecipe(items, currentHeatValue, true,
                 true);
-
-        return recipe;
     }
 
     @Override
@@ -196,6 +194,7 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
         currentHeatValue = compound.getInteger("heat");
     }
 
+    @Override
     public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
         return oldState.getBlock() != newState.getBlock();
     }

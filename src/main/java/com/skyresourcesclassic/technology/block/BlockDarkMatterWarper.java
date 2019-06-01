@@ -26,7 +26,7 @@ public class BlockDarkMatterWarper extends BlockContainer {
 
     public BlockDarkMatterWarper(String name, float hardness, float resistance) {
         super(Material.IRON);
-        this.setUnlocalizedName(References.ModID + "." + name);
+        this.setTranslationKey(References.ModID + "." + name);
         this.setCreativeTab(ModCreativeTabs.tabTech);
         this.setHardness(hardness);
         this.setResistance(resistance);
