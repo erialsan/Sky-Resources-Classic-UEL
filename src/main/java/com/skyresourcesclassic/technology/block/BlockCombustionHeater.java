@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CombustionHeaterBlock extends BlockContainer {
-    public CombustionHeaterBlock(String material, float hardness, float resistance, int tier) {
+public class BlockCombustionHeater extends BlockContainer {
+    public BlockCombustionHeater(String material, float hardness, float resistance, int tier) {
         super(Material.WOOD);
         this.setTranslationKey(References.ModID + "." + material + "_combustion_heater");
         this.setCreativeTab(ModCreativeTabs.tabTech);
@@ -56,11 +56,15 @@ public class CombustionHeaterBlock extends BlockContainer {
         }
     }
 
+    public int getTier() {
+        return tier;
+    }
+
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         if (tier > 2)
-            return new TilePoweredCombustionHeater(tier);
-        return new TileCombustionHeater(tier);
+            return new TilePoweredCombustionHeater();
+        return new TileCombustionHeater();
     }
 
     @Override

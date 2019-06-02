@@ -4,7 +4,7 @@ import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.base.tile.TileItemInventory;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
-import com.skyresourcesclassic.technology.block.CombustionHeaterBlock;
+import com.skyresourcesclassic.technology.block.BlockCombustionHeater;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -24,30 +24,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TileCombustionHeater extends TileItemInventory implements ITickable {
-    public TileCombustionHeater(int tier) {
+    public TileCombustionHeater() {
         super("combustion_heater", 1, null, new Integer[]{0});
-        this.tier = tier;
     }
 
     public int currentHeatValue = 0;
     public int fuelBurnTime = 0;
     private int heatPerTick = 0;
     public int currentItemBurnTime = 0;
-    private int tier;
+
+    private int getTier() {
+        return ((BlockCombustionHeater) getWorld().getBlockState(pos).getBlock()).getTier();
+    }
 
     public int getMaxHeat() {
-        if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
+        if (!(world.getBlockState(pos).getBlock() instanceof BlockCombustionHeater))
             return 0;
-        CombustionHeaterBlock block = (CombustionHeaterBlock) world.getBlockState(pos).getBlock();
+        BlockCombustionHeater block = (BlockCombustionHeater) world.getBlockState(pos).getBlock();
 
         return block.getMaximumHeat();
     }
 
     private int getMaxHeatPerTick() {
-        if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
+        if (!(world.getBlockState(pos).getBlock() instanceof BlockCombustionHeater))
             return 0;
 
-        switch (tier) {
+        switch (getTier()) {
             case 1:
                 return 8;
             default:
@@ -212,7 +214,7 @@ public class TileCombustionHeater extends TileItemInventory implements ITickable
                         }
                     }
 
-                    currentHeatValue *= tier == 1 ? 0.7F : 0.85F;
+                    currentHeatValue *= getTier() == 1 ? 0.7F : 0.85F;
 
                     ItemStack stack = recipe.getOutputs().get(0).copy();
 

@@ -23,6 +23,10 @@ public class CondenserBlock extends BlockContainer {
 
     private int tier;
 
+    public int getTier() {
+        return tier;
+    }
+
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
@@ -30,6 +34,6 @@ public class CondenserBlock extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new CondenserTile(tier);
+        return new CondenserTile();
     }
 }

@@ -12,14 +12,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class TileHeater extends TileItemInventory implements ITickable, IHeatSource {
-    public TileHeater(int tier) {
+    public TileHeater() {
         super("heater", 1, null, new Integer[]{0});
-        this.tier = tier;
     }
 
     public int fuelBurnTime = 0;
     public int currentItemBurnTime = 0;
-    private int tier;
+
+    private int getTier() {
+        return ((BlockHeater) getWorld().getBlockState(pos).getBlock()).getTier();
+    }
 
     @Override
     public void update() {
@@ -93,7 +95,7 @@ public class TileHeater extends TileItemInventory implements ITickable, IHeatSou
     }
 
     private int getHeat() {
-        if (tier == 1)
+        if (getTier() == 1)
             return 5;
         else
             return 10;

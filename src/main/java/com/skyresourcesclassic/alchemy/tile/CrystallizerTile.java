@@ -1,5 +1,6 @@
 package com.skyresourcesclassic.alchemy.tile;
 
+import com.skyresourcesclassic.alchemy.block.CrystallizerBlock;
 import com.skyresourcesclassic.alchemy.fluid.FluidCrystalBlock;
 import com.skyresourcesclassic.alchemy.fluid.FluidRegisterInfo;
 import com.skyresourcesclassic.base.tile.TileBase;
@@ -23,14 +24,16 @@ import net.minecraftforge.items.IItemHandler;
 import java.util.Random;
 
 public class CrystallizerTile extends TileBase implements ITickable {
-    public CrystallizerTile(int tier) {
+    public CrystallizerTile() {
         super("crystallizer");
-        this.tier = tier;
     }
 
     private int timeCondense;
     private int randInterval;
-    private int tier;
+
+    private int getTier() {
+        return ((CrystallizerBlock) getWorld().getBlockState(pos).getBlock()).getTier();
+    }
 
     @Override
     public void update() {
@@ -51,7 +54,7 @@ public class CrystallizerTile extends TileBase implements ITickable {
                         .crystalFluidInfos()[ModBlocks.crystalFluidBlocks.indexOf(crystalBlock)].crystalIndex]);
 
                 if (output(stack, true))
-                    if (tier != 1 || type == FluidRegisterInfo.CrystalFluidType.NORMAL) {
+                    if (getTier() != 1 || type == FluidRegisterInfo.CrystalFluidType.NORMAL) {
                         if (crystalBlock.isSourceBlock(world, pos.up())
                                 && crystalBlock.isNotFlowing(world, pos.up(), world.getBlockState(pos.up())))
                             timeCondense++;
@@ -122,7 +125,7 @@ public class CrystallizerTile extends TileBase implements ITickable {
     }
 
     private float getCrystallizeSpeedFromTier() {
-        switch (tier) {
+        switch (getTier()) {
             case 1:
                 return 0.5f;
             case 2:
@@ -136,7 +139,7 @@ public class CrystallizerTile extends TileBase implements ITickable {
     }
 
     private float getCrystallizeEfficiencyFromTier() {
-        switch (tier) {
+        switch (getTier()) {
             case 1:
                 return 1;
             case 2:

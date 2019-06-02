@@ -22,8 +22,7 @@ public class TileBase extends TileEntity {
     private int redstoneSignal, prevRedstoneSignal;
 
     public boolean receivedPulse() {
-        boolean pulse = getRedstoneSignal() > 0 && prevRedstoneSignal == 0;
-        return pulse;
+        return getRedstoneSignal() > 0 && prevRedstoneSignal == 0;
     }
 
     private boolean canAcceptRedstone() {
@@ -38,8 +37,7 @@ public class TileBase extends TileEntity {
 
     public void updateRedstone() {
         if (!world.isRemote) {
-
-            prevRedstoneSignal = redstoneSignal + 0;
+            prevRedstoneSignal = redstoneSignal;
             redstoneSignal = 0;
             if (canAcceptRedstone()) {
                 for (EnumFacing dir : EnumFacing.VALUES) {
@@ -75,6 +73,7 @@ public class TileBase extends TileEntity {
         this.readFromNBT(tag);
     }
 
+    @Override
     public void markDirty() {
         super.markDirty();
         if (world != null && !world.isRemote)

@@ -46,8 +46,8 @@ public class BlockHeater extends BlockContainer {
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         if (tier > 2)
-            return new TilePoweredHeater(tier);
-        return new TileHeater(tier);
+            return new TilePoweredHeater();
+        return new TileHeater();
     }
 
     @Override
@@ -58,6 +58,10 @@ public class BlockHeater extends BlockContainer {
             default:
                 return Material.IRON;
         }
+    }
+
+    public int getTier() {
+        return tier;
     }
 
     @Override

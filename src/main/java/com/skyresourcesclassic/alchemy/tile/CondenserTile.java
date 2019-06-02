@@ -2,6 +2,7 @@ package com.skyresourcesclassic.alchemy.tile;
 
 import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.RandomHelper;
+import com.skyresourcesclassic.alchemy.block.CondenserBlock;
 import com.skyresourcesclassic.alchemy.fluid.FluidCrystalBlock;
 import com.skyresourcesclassic.alchemy.fluid.FluidRegisterInfo;
 import com.skyresourcesclassic.base.HeatSources;
@@ -20,13 +21,15 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.Random;
 
 public class CondenserTile extends TileBase implements ITickable {
-    public CondenserTile(int tier) {
+    public CondenserTile() {
         super("condenser");
-        this.tier = tier;
     }
 
     private int timeCondense;
-    private int tier;
+
+    private int getTier() {
+        return ((CondenserBlock) getWorld().getBlockState(pos).getBlock()).getTier();
+    }
 
     @Override
     public void update() {
@@ -48,7 +51,7 @@ public class CondenserTile extends TileBase implements ITickable {
             ItemStack stack = OreDictionary.getOres(oreDictCheck).get(0).copy();
             stack.setCount(1);
 
-            if ((tier != 1 || fluidType == FluidRegisterInfo.CrystalFluidType.NORMAL) && crystalBlock.isSourceBlock(world, pos.up())
+            if ((getTier() != 1 || fluidType == FluidRegisterInfo.CrystalFluidType.NORMAL) && crystalBlock.isSourceBlock(world, pos.up())
                     && crystalBlock.isNotFlowing(world, pos.up(), world.getBlockState(pos.up()))
                     && OreDictionary.getOres(oreDictCheck).size() > 0
                     && HeatSources.isValidHeatSource(pos.down(), world)) {
@@ -73,7 +76,7 @@ public class CondenserTile extends TileBase implements ITickable {
                 * ConfigOptions.condenser.condenserProcessTimeBase
                 * (ModFluids.crystalFluidInfos()[ModBlocks.crystalFluidBlocks
                 .indexOf(block)].type == FluidRegisterInfo.CrystalFluidType.NORMAL ? 1 : 20)
-                * (1F / tier));
+                * (1F / getTier()));
     }
 
     @Override

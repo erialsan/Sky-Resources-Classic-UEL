@@ -23,6 +23,9 @@ public class CrystallizerBlock extends BlockContainer {
 
     private int tier;
 
+    public int getTier() {
+        return tier;
+    }
 
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
@@ -31,6 +34,6 @@ public class CrystallizerBlock extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new CrystallizerTile(tier);
+        return new CrystallizerTile();
     }
 }

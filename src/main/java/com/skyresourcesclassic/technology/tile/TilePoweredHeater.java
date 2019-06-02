@@ -10,13 +10,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.energy.IEnergyStorage;
 
 public class TilePoweredHeater extends TileGenericPower implements ITickable, IEnergyStorage, IHeatSource {
-    public TilePoweredHeater(int tier) {
+    public TilePoweredHeater() {
         super("powered_heater", 100000, 2000, 0);
-        this.tier = tier;
     }
 
     private int powerUsage = 120 * getHeat() / 30;
-    private int tier;
+
+    private int getTier() {
+        return ((BlockHeater) getWorld().getBlockState(pos).getBlock()).getTier();
+    }
 
     @Override
     public void update() {
@@ -46,7 +48,7 @@ public class TilePoweredHeater extends TileGenericPower implements ITickable, IE
 
 
     private int getHeat() {
-        if (tier == 3)
+        if (getTier() == 3)
             return 30;
         else
             return 120;

@@ -14,34 +14,34 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public final class ModEntities {
     public static void init() {
-        registerTileEntity(TileCombustionHeater.class, "::combustionHeatertile");
-        registerTileEntity(FluidDropperTile.class, ":fluidDroppertile");
-        registerTileEntity(CondenserTile.class, ":condensertile");
-        registerTileEntity(CrucibleTile.class, ":crucibletile");
-        registerTileEntity(FreezerTile.class, ":freezertile");
-        registerTileEntity(MiniFreezerTile.class, ":minifreezertile");
-        registerTileEntity(DirtFurnaceTile.class, ":dirtfurnacetile");
-        registerTileEntity(TilePoweredHeater.class, ":poweredHeatertile");
-        registerTileEntity(TilePoweredCombustionHeater.class, ":poweredcombustionheatertile");
-        registerTileEntity(CrystallizerTile.class, ":crystallizertile");
-        registerTileEntity(TileDarkMatterWarper.class, ":darkmatterwarpertile");
-        registerTileEntity(TileEndPortalCore.class, ":endportalcoretile");
-        registerTileEntity(LifeInfuserTile.class, ":lifeinfusertile");
-        registerTileEntity(LifeInjectorTile.class, ":lifeinjectortile");
-        registerTileEntity(TileCrucibleInserter.class, ":crucibleinsertertile");
-        registerTileEntity(TileRockCrusher.class, ":rockcrushertile");
-        registerTileEntity(TileRockCleaner.class, ":rockcleanertile");
-        registerTileEntity(TileCombustionCollector.class, ":combustioncollectortile");
-        registerTileEntity(TileQuickDropper.class, ":quickdroppertile");
-        registerTileEntity(TileAqueousConcentrator.class, ":aqueousconcentratortile");
-        registerTileEntity(TileBeeAttractor.class, ":beeAttractorTile");
-        registerTileEntity(TileWildlifeAttractor.class, ":wildlifeAttractorTile");
-        registerTileEntity(TileHeater.class, ":heaterTile");
+        registerTileEntity(TileCombustionHeater.class, ":combustion_heater_tile");
+        registerTileEntity(FluidDropperTile.class, ":fluid_dropper_tile");
+        registerTileEntity(CondenserTile.class, ":condenser_tile");
+        registerTileEntity(CrucibleTile.class, ":crucible_tile");
+        registerTileEntity(FreezerTile.class, ":freezer_tile");
+        registerTileEntity(MiniFreezerTile.class, ":mini_freezer_tile");
+        registerTileEntity(DirtFurnaceTile.class, ":dirt_furnace_tile");
+        registerTileEntity(TilePoweredHeater.class, ":powered_heatertile");
+        registerTileEntity(TilePoweredCombustionHeater.class, ":powered_combustion_heater_tile");
+        registerTileEntity(CrystallizerTile.class, ":crystallizer_tile");
+        registerTileEntity(TileDarkMatterWarper.class, ":dark_matter_warper_tile");
+        registerTileEntity(TileEndPortalCore.class, ":end_portal_core_tile");
+        registerTileEntity(LifeInfuserTile.class, ":life_infuser_tile");
+        registerTileEntity(LifeInjectorTile.class, ":life_injector_tile");
+        registerTileEntity(TileCrucibleInserter.class, ":crucible_inserter_tile");
+        registerTileEntity(TileRockCrusher.class, ":rock_crusher_tile");
+        registerTileEntity(TileRockCleaner.class, ":rock_cleaner_tile");
+        registerTileEntity(TileCombustionCollector.class, ":combustion_collector_tile");
+        registerTileEntity(TileQuickDropper.class, ":quick_dropper_tile");
+        registerTileEntity(TileAqueousConcentrator.class, ":aqueous_concentrator_tile");
+        registerTileEntity(TileBeeAttractor.class, ":bee_attractor_tile");
+        registerTileEntity(TileWildlifeAttractor.class, ":wildlife_attractor_tile");
+        registerTileEntity(TileHeater.class, ":heater_tile");
 
-        EntityRegistry.registerModEntity(new ResourceLocation(References.ModID, "heavysnowball"),
-                EntityHeavySnowball.class, References.ModID + ":heavysnowball", 1, SkyResourcesClassic.instance, 64, 2, true);
-        EntityRegistry.registerModEntity(new ResourceLocation(References.ModID, "heavyexplosivesnowball"),
-                EntityHeavyExplosiveSnowball.class, References.ModID + ":heavyexplosivesnowball", 2,
+        EntityRegistry.registerModEntity(new ResourceLocation(References.ModID, "heavy_snowball"),
+                EntityHeavySnowball.class, References.ModID + ":heavy_snowball", 1, SkyResourcesClassic.instance, 64, 2, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(References.ModID, "heavy_explosive_snowball"),
+                EntityHeavyExplosiveSnowball.class, References.ModID + ":heavy_explosive_snowball", 2,
                 SkyResourcesClassic.instance, 64, 2, true);
     }
 

@@ -3,7 +3,7 @@ package com.skyresourcesclassic.technology.tile;
 import com.skyresourcesclassic.base.tile.TileGenericPower;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
-import com.skyresourcesclassic.technology.block.CombustionHeaterBlock;
+import com.skyresourcesclassic.technology.block.BlockCombustionHeater;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -25,20 +25,22 @@ import java.util.List;
 
 public class TilePoweredCombustionHeater extends TileGenericPower implements ITickable {
 
-    public TilePoweredCombustionHeater(int tier) {
+    public TilePoweredCombustionHeater() {
         super("combustion_heater_powered", 100000, 2000, 0);
-        this.tier = tier;
     }
 
     public int currentHeatValue;
     private int heatPerTick = 20;
     private int powerUsage = 800;
-    private int tier;
+
+    private int getTier() {
+        return ((BlockCombustionHeater) getWorld().getBlockState(pos).getBlock()).getTier();
+    }
 
     public int getMaxHeat() {
-        if (!(world.getBlockState(pos).getBlock() instanceof CombustionHeaterBlock))
+        if (!(world.getBlockState(pos).getBlock() instanceof BlockCombustionHeater))
             return 0;
-        CombustionHeaterBlock block = (CombustionHeaterBlock) world.getBlockState(pos).getBlock();
+        BlockCombustionHeater block = (BlockCombustionHeater) world.getBlockState(pos).getBlock();
 
         return block.getMaximumHeat();
     }
@@ -51,8 +53,8 @@ public class TilePoweredCombustionHeater extends TileGenericPower implements ITi
 
         if (!this.world.isRemote) {
             updateRedstone();
-            heatPerTick = 40 * (tier - 2);
-            powerUsage = 400 * (tier - 1);
+            heatPerTick = 40 * (getTier() - 2);
+            powerUsage = 400 * (getTier() - 1);
             if (getEnergyStored() >= powerUsage && currentHeatValue < getMaxHeat()) {
                 internalExtractEnergy(powerUsage, false);
                 currentHeatValue += heatPerTick;
