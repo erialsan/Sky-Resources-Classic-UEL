@@ -67,9 +67,7 @@ public class TileHeater extends TileItemInventory implements ITickable, IHeatSou
 
     @Override
     public int getHeatValue() {
-        if (fuelBurnTime > 0 && this.getRedstoneSignal() > 0)
-            return getHeat();
-        return 0;
+        return fuelBurnTime > 0 && getRedstoneSignal() > 0 ? getHeat() : 0;
     }
 
     @Override

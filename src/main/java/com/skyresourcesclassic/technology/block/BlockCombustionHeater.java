@@ -31,11 +31,12 @@ import java.util.List;
 public class BlockCombustionHeater extends BlockContainer {
     public BlockCombustionHeater(String material, float hardness, float resistance, int tier) {
         super(Material.WOOD);
-        this.setTranslationKey(References.ModID + "." + material + "_combustion_heater");
-        this.setCreativeTab(ModCreativeTabs.tabTech);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(material + "_combustion_heater");
+        setTranslationKey(References.ModID + "." + material + "_combustion_heater");
+        setCreativeTab(ModCreativeTabs.tabTech);
+        setHardness(hardness);
+        setResistance(resistance);
+        hasTileEntity = true;
+        setRegistryName(material + "_combustion_heater");
         this.tier = tier;
     }
 

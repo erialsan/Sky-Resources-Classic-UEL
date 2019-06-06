@@ -24,16 +24,13 @@ public class HeatSources {
 
     public static boolean isValidHeatSource(BlockPos pos, World world) {
         if (!validHeatSources.containsKey(world.getBlockState(pos))) {
-            for (IBlockState key : validHeatSources.keySet()) {
-                IBlockState block = key;
-                if (block.getBlock() == world.getBlockState(pos).getBlock())
+            for (IBlockState key : validHeatSources.keySet())
+                if (key.getBlock() == world.getBlockState(pos).getBlock())
                     return true;
-            }
 
             TileEntity tile = world.getTileEntity(pos);
-            if (tile != null && tile instanceof IHeatSource)
-                return true;
-
+            if (tile instanceof IHeatSource)
+                return getHeatSourceValue(pos, world) > 0;
         } else
             return true;
 
@@ -42,11 +39,9 @@ public class HeatSources {
 
     private static boolean isValidHeatSource(IBlockState state) {
         if (!validHeatSources.containsKey(state)) {
-            for (IBlockState key : validHeatSources.keySet()) {
-                IBlockState block = key;
-                if (block.getBlock() == state.getBlock())
+            for (IBlockState key : validHeatSources.keySet())
+                if (key.getBlock() == state.getBlock())
                     return true;
-            }
 
         } else
             return true;
@@ -63,14 +58,13 @@ public class HeatSources {
             return validHeatSources.get(state);
         else {
             for (IBlockState key : validHeatSources.keySet()) {
-                IBlockState block = key;
                 int val = validHeatSources.get(key);
-                if (block.getBlock() == state.getBlock())
+                if (key.getBlock() == state.getBlock())
                     return val;
             }
 
             TileEntity tile = world.getTileEntity(pos);
-            if (tile != null && tile instanceof IHeatSource) {
+            if (tile instanceof IHeatSource) {
                 IHeatSource source = (IHeatSource) tile;
                 return source.getHeatValue();
             }
@@ -86,9 +80,8 @@ public class HeatSources {
             return validHeatSources.get(state);
         else {
             for (IBlockState key : validHeatSources.keySet()) {
-                IBlockState block = key;
                 int val = validHeatSources.get(key);
-                if (block.getBlock() == state.getBlock())
+                if (key.getBlock() == state.getBlock())
                     return val;
             }
         }
@@ -98,20 +91,18 @@ public class HeatSources {
     private static List<IBlockState> ctRemoved;
     private static HashMap<IBlockState, Integer> ctAdded;
 
-    public static void removeCTHeatSource(IBlockState blockState)
-    {
+    public static void removeCTHeatSource(IBlockState blockState) {
         ctRemoved.add(blockState);
     }
-    public static void addCTHeatSource(IBlockState blockState, int value)
-    {
+
+    public static void addCTHeatSource(IBlockState blockState, int value) {
         ctAdded.put(blockState, value);
     }
 
-    public static void ctRecipes()
-    {
-        for(IBlockState s : ctRemoved)
+    public static void ctRecipes() {
+        for (IBlockState s : ctRemoved)
             removeHeatSource(s);
-        for(IBlockState s : ctAdded.keySet())
+        for (IBlockState s : ctAdded.keySet())
             addHeatSource(s, ctAdded.get(s));
     }
 

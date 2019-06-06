@@ -10,7 +10,6 @@ import com.skyresourcesclassic.technology.tile.TileAqueousConcentrator;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -34,12 +33,13 @@ public class BlockAqueousConcentrator extends BlockContainer {
 
     public BlockAqueousConcentrator(String name, float hardness, float resistance) {
         super(Material.GROUND);
-        this.setTranslationKey(References.ModID + "." + name);
-        this.setCreativeTab(ModCreativeTabs.tabTech);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(name);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        setTranslationKey(References.ModID + "." + name);
+        setCreativeTab(ModCreativeTabs.tabTech);
+        setHardness(hardness);
+        setResistance(resistance);
+        setRegistryName(name);
+        hasTileEntity = true;
+        setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 
     @Nullable
@@ -57,7 +57,7 @@ public class BlockAqueousConcentrator extends BlockContainer {
             IBlockState iblockstate1 = worldIn.getBlockState(pos.south());
             IBlockState iblockstate2 = worldIn.getBlockState(pos.west());
             IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
-            EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
+            EnumFacing enumfacing = state.getValue(FACING);
 
             if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
                 enumfacing = EnumFacing.SOUTH;
@@ -85,7 +85,7 @@ public class BlockAqueousConcentrator extends BlockContainer {
 
     public int getMetaFromState(IBlockState state) {
         int i = 0;
-        i = i | ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();
+        i = i | state.getValue(FACING).getHorizontalIndex();
 
         return i;
     }
@@ -95,7 +95,7 @@ public class BlockAqueousConcentrator extends BlockContainer {
      * blockstate. If inapplicable, returns the passed blockstate.
      */
     public IBlockState withRotation(IBlockState state, Rotation rot) {
-        return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     /**
@@ -103,11 +103,11 @@ public class BlockAqueousConcentrator extends BlockContainer {
      * inapplicable, returns the passed blockstate.
      */
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{FACING});
+        return new BlockStateContainer(this, FACING);
     }
 
     @Override

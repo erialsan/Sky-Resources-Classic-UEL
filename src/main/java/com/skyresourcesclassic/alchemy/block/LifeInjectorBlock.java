@@ -23,11 +23,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class LifeInjectorBlock extends BlockContainer {
     public LifeInjectorBlock(String name, float hardness, float resistance) {
         super(Material.WOOD);
-        this.setTranslationKey(References.ModID + "." + name);
-        this.setCreativeTab(ModCreativeTabs.tabAlchemy);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(name);
+        setTranslationKey(References.ModID + "." + name);
+        setCreativeTab(ModCreativeTabs.tabAlchemy);
+        setHardness(hardness);
+        setResistance(resistance);
+        setRegistryName(name);
     }
 
     public boolean isFullCube(IBlockState state) {

@@ -29,7 +29,7 @@ public class ItemSurvivalFishingRod extends ItemFishingRod {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
 
         if (playerIn.fishEntity != null) {
-            int i = playerIn.fishEntity.handleHookRetraction();
+            playerIn.fishEntity.handleHookRetraction();
             playerIn.swingArm(handIn);
         } else {
             worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_BOBBER_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));

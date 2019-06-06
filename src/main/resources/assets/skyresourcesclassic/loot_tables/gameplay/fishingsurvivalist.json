@@ -12,7 +12,7 @@
                 },
                 {
                     "type": "loot_table",
-                    "name": "skyresources:gameplay/fishing/survivalistjunk",
+                    "name": "skyresourcesclassic:gameplay/fishing/survivalistjunk",
                     "weight": 50,
                     "quality": -1
                 },

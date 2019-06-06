@@ -8,10 +8,9 @@ public class DirtyGemItem extends Item {
 
     public DirtyGemItem(String gem) {
         super();
-
         setTranslationKey(References.ModID + ".dirty_" + gem);
         setRegistryName("dirty_" + gem);
         setHasSubtypes(true);
-        this.setCreativeTab(ModCreativeTabs.tabTech);
+        setCreativeTab(ModCreativeTabs.tabTech);
     }
 }

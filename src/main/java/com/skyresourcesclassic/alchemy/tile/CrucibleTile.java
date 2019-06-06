@@ -4,6 +4,7 @@ import com.skyresourcesclassic.ConfigOptions;
 import com.skyresourcesclassic.base.HeatSources;
 import com.skyresourcesclassic.recipe.ProcessRecipe;
 import com.skyresourcesclassic.recipe.ProcessRecipeManager;
+import com.skyresourcesclassic.technology.tile.TileCrucibleInserter;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,8 +28,8 @@ public class CrucibleTile extends TileEntity implements ITickable, IFluidHandler
 
     public static int tankCapacity = ConfigOptions.crucible.crucibleCapacity;
 
-    public ItemStack itemIn = ItemStack.EMPTY;
-    public int itemAmount;
+    private ItemStack itemIn = ItemStack.EMPTY;
+    private int itemAmount;
 
     @Override
     public IFluidTankProperties[] getTankProperties() {
@@ -87,24 +88,13 @@ public class CrucibleTile extends TileEntity implements ITickable, IFluidHandler
                     pos.getY() + 0.2, pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1));
 
             for (EntityItem entity : list) {
-                ItemStack stack = entity.getItem();
-
-                ProcessRecipe recipe = ProcessRecipeManager.crucibleRecipes.getRecipe(stack, 0, false, false);
-
-                int amount = recipe == null ? 0 : recipe.getFluidOutputs().get(0).amount;
-                if (itemAmount + amount <= ConfigOptions.crucible.crucibleCapacity && recipe != null) {
-                    ItemStack input = (ItemStack) recipe.getInputs().get(0);
-
-                    if (tank.getFluid() == null || tank.getFluid().getFluid() == null) {
-                        this.itemIn = input;
-                    }
-
-                    if (itemIn == input) {
-                        itemAmount += amount;
-                        stack.shrink(1);
-                    }
-                }
+                insertStack(entity.getItem());
             }
+            TileEntity tile = world.getTileEntity(pos.up());
+            if (tile != null && tile instanceof TileCrucibleInserter
+                    && !((TileCrucibleInserter) tile).getInventory().getStackInSlot(0).isEmpty())
+                insertStack(((TileCrucibleInserter) tile).getInventory().getStackInSlot(0));
+
             if (itemAmount > 0) {
                 int val = Math.min(getHeatSourceVal(), itemAmount);
                 if (itemIn != ItemStack.EMPTY && val > 0 && tank.getFluidAmount() + val <= tank.getCapacity()) {
@@ -113,12 +103,32 @@ public class CrucibleTile extends TileEntity implements ITickable, IFluidHandler
                     itemAmount -= val;
                 }
 
-                if (tank.getFluidAmount() == 0 && itemAmount == 0)
+                if (tank.getFluidAmount() == 0 && itemAmount == 0) {
                     itemIn = ItemStack.EMPTY;
+                }
+                markDirty();
+
 
             }
+        }
+    }
+
+    private void insertStack(ItemStack stack) {
+        ProcessRecipe recipe = ProcessRecipeManager.crucibleRecipes.getRecipe(stack, 0, false, false);
+
+        int amount = recipe == null ? 0 : recipe.getFluidOutputs().get(0).amount;
+        if (itemAmount + amount <= ConfigOptions.crucible.crucibleCapacity && recipe != null) {
+            ItemStack input = (ItemStack) recipe.getInputs().get(0);
+
+            if (tank.getFluid() == null || tank.getFluid().getFluid() == null) {
+                this.itemIn = input;
+            }
+
+            if (itemIn == input) {
+                itemAmount += amount;
+                stack.shrink(1);
+            }
             markDirty();
-            world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 3);
         }
     }
 
@@ -152,7 +162,7 @@ public class CrucibleTile extends TileEntity implements ITickable, IFluidHandler
     int getHeatSourceVal() {
         if (HeatSources.isValidHeatSource(pos.down(), world)) {
             if (HeatSources.getHeatSourceValue(pos.down(), world) > 0)
-                return Math.max(HeatSources.getHeatSourceValue(pos.down(), world) / 3, 1);
+                return (int) Math.ceil(HeatSources.getHeatSourceValue(pos.down(), world) / 3f);
         }
         return 0;
     }

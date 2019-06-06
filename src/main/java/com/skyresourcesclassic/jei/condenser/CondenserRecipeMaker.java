@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CondenserRecipeMaker {
     public static List<CondenserRecipeJEI> getRecipes() {
-        ArrayList<CondenserRecipeJEI> recipes = new ArrayList<CondenserRecipeJEI>();
+        ArrayList<CondenserRecipeJEI> recipes = new ArrayList<>();
 
         for (int i = 0; i < ModFluids.crystalFluids.size(); i++) {
             if (OreDictionary.getOres("ingot" + RandomHelper.capatilizeString(ModFluids.crystalFluidInfos()[i].name))
@@ -29,7 +29,6 @@ public class CondenserRecipeMaker {
                 recipes.add(addRecipe);
             }
         }
-
         return recipes;
     }
 }

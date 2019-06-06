@@ -19,11 +19,12 @@ import net.minecraft.world.World;
 public class BlockEndPortalCore extends BlockContainer {
     public BlockEndPortalCore(String name, float hardness, float resistance) {
         super(Material.ROCK);
-        this.setTranslationKey(References.ModID + "." + name);
-        this.setCreativeTab(ModCreativeTabs.tabTech);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(name);
+        setTranslationKey(References.ModID + "." + name);
+        setCreativeTab(ModCreativeTabs.tabTech);
+        setHardness(hardness);
+        setResistance(resistance);
+        setRegistryName(name);
+        hasTileEntity = true;
     }
 
     @Override

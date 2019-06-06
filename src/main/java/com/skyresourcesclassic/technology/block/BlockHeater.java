@@ -32,12 +32,13 @@ public class BlockHeater extends BlockContainer {
 
     public BlockHeater(String material, float hardness, float resistance, int tier) {
         super(Material.IRON);
-        this.setTranslationKey(References.ModID + "." + material + "_heater");
-        this.setCreativeTab(ModCreativeTabs.tabTech);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(material + "_heater");
-        this.setDefaultState(this.blockState.getBaseState().withProperty(RUNNING, false));
+        setTranslationKey(References.ModID + "." + material + "_heater");
+        setCreativeTab(ModCreativeTabs.tabTech);
+        setHardness(hardness);
+        setResistance(resistance);
+        setRegistryName(material + "_heater");
+        setDefaultState(this.blockState.getBaseState().withProperty(RUNNING, false));
+        hasTileEntity = true;
         this.tier = tier;
     }
 
@@ -45,9 +46,7 @@ public class BlockHeater extends BlockContainer {
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        if (tier > 2)
-            return new TilePoweredHeater();
-        return new TileHeater();
+        return tier > 2 ? new TilePoweredHeater() : new TileHeater();
     }
 
     @Override

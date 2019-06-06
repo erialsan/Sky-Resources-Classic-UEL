@@ -13,11 +13,12 @@ import net.minecraft.world.World;
 public class CrystallizerBlock extends BlockContainer {
     public CrystallizerBlock(String material, float hardness, float resistance, int tier) {
         super(Material.ROCK);
-        this.setTranslationKey(References.ModID + "." + material + "_crystallizer");
-        this.setCreativeTab(ModCreativeTabs.tabAlchemy);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(material + "_crystallizer");
+        setTranslationKey(References.ModID + "." + material + "_crystallizer");
+        setCreativeTab(ModCreativeTabs.tabAlchemy);
+        setHardness(hardness);
+        setResistance(resistance);
+        setRegistryName(material + "_crystallizer");
+        hasTileEntity = true;
         this.tier = tier;
     }
 

@@ -29,7 +29,7 @@ public class TileGenericPower extends TileItemInventory implements IEnergyStorag
 
     @Override
     public int receiveEnergy(int maxReceive, boolean simulate) {
-        int energyReceived = (int) Math.min(getMaxEnergyStored() - energy, Math.min(this.maxReceive, maxReceive));
+        int energyReceived = Math.min(getMaxEnergyStored() - energy, Math.min(this.maxReceive, maxReceive));
         if (!simulate) {
             energy += energyReceived;
             this.markDirty();
@@ -39,7 +39,7 @@ public class TileGenericPower extends TileItemInventory implements IEnergyStorag
 
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
-        int energyExtract = (int) Math.min(energy, Math.min(this.maxExtract, maxExtract));
+        int energyExtract = Math.min(energy, Math.min(this.maxExtract, maxExtract));
         if (!simulate) {
             System.out.println("HERE");
             energy -= energyExtract;
@@ -49,7 +49,7 @@ public class TileGenericPower extends TileItemInventory implements IEnergyStorag
     }
 
     public int internalExtractEnergy(int extract, boolean simulate) {
-        int energyExtract = (int) Math.min(energy, extract);
+        int energyExtract = Math.min(energy, extract);
         if (!simulate) {
             energy -= extract;
             this.markDirty();

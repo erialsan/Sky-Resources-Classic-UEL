@@ -14,8 +14,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class CommonProxy {
-    EventHandler events = new EventHandler();
-
     public void preInit(FMLPreInitializationEvent e) {
         ModFluids.init();
         ModBlocks.init();
@@ -28,11 +26,10 @@ public class CommonProxy {
 
         ModGuidePages.init();
         new ModGuiHandler();
-
     }
 
     public void init(FMLInitializationEvent e) {
-        MinecraftForge.EVENT_BUS.register(events);
+        MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new ModBucketHandler());
         NetworkRegistry.INSTANCE.registerGuiHandler(SkyResourcesClassic.instance, new ModGuiHandler());
         ModEntities.init();

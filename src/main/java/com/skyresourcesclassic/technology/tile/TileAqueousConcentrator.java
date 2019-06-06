@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class TileAqueousConcentrator extends TileGenericPower implements ITickable, IFluidHandler {
     public TileAqueousConcentrator() {
-        super("aqueousConcentrator", 100000, 2000, 0, 2, new Integer[]{1}, new Integer[]{0});
+        super("aqueous_concentrator", 100000, 2000, 0, 2, new Integer[]{1}, new Integer[]{0});
         tank = new FluidTank(4000);
     }
 

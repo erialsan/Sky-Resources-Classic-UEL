@@ -51,12 +51,13 @@ public class EventHandler {
                     RandomHelper.spawnItemInWorld(event.getWorld(), new ItemStack(Items.SNOWBALL), event.getPos());
                     event.getEntityPlayer().addPotionEffect(
                             new PotionEffect(MobEffects.MINING_FATIGUE, event.getWorld().rand.nextInt(80) + 20, 1));
-                    int layer = event.getWorld().getBlockState(event.getPos()).getValue(BlockSnow.LAYERS);
 
-                    if (layer == 1)
+                    int meta = Blocks.SNOW_LAYER.getMetaFromState(event.getWorld().getBlockState(event.getPos()));
+
+                    if (meta < 1)
                         event.getWorld().setBlockToAir(event.getPos());
                     else
-                        event.getWorld().setBlockState(event.getPos(), Blocks.SNOW_LAYER.getDefaultState().withProperty(BlockSnow.LAYERS, layer - 1));
+                        event.getWorld().setBlockState(event.getPos(), Blocks.SNOW_LAYER.getStateFromMeta(meta - 1));
                 } else if (block == Blocks.SNOW) {
                     RandomHelper.spawnItemInWorld(event.getWorld(), new ItemStack(Items.SNOWBALL), event.getPos());
                     event.getEntityPlayer().addPotionEffect(
@@ -67,8 +68,7 @@ public class EventHandler {
             } else if (block != null && !equip.isEmpty()) {
                 if (block == Blocks.CAULDRON) {
 
-                    int i = ((Integer) event.getWorld().getBlockState(event.getPos()).getValue(BlockCauldron.LEVEL))
-                            .intValue();
+                    int i = event.getWorld().getBlockState(event.getPos()).getValue(BlockCauldron.LEVEL).intValue();
                     ItemStack item = event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND);
 
                     if (i > 0) {

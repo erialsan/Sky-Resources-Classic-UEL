@@ -85,27 +85,46 @@ public class ItemWaterExtractor extends Item implements IFluidHandler {
                             new ItemStack(block), 0, false, false);
 
                     if (recipe != null) {
-                        IBlockState recipeOut = Block.getBlockFromItem(recipe.getOutputs().get(0).getItem())
-                                .getDefaultState();
-                        getCompound(stack).setInteger("amount", getCompound(stack).getInteger("amount")
-                                + tank.fill(recipe.getFluidOutputs().get(0).copy(), true));
-                        tank.getFluid().amount = getCompound(stack).getInteger("amount");
-                        world.setBlockState(pos, recipe.getOutputs().get(0) == ItemStack.EMPTY
-                                ? Blocks.AIR.getDefaultState() : recipeOut, 3);
-                        world.playSound(null, player.posX, player.posY, player.posZ,
-                                SoundEvents.ENTITY_PLAYER_SPLASH, SoundCategory.NEUTRAL, 1.0F,
-                                1.0F / (itemRand.nextFloat() * 0.4F + 1.2F));
+                        for (int x = -1; x <= 1; x++) {
+                            for (int y = -1; y <= 1; y++) {
+                                for (int z = -1; z <= 1; z++) {
+                                    BlockPos blockPos = new BlockPos(pos.getX() + x, pos.getY() + y, pos.getZ() + z);
+                                    Block radiusBlock = world.getBlockState(blockPos).getBlock();
+                                    if (block == radiusBlock) {
+                                        ProcessRecipe radiusBlockRecipe = ProcessRecipeManager.waterExtractorExtractRecipes.getRecipe(
+                                                new ItemStack(radiusBlock, 1, radiusBlock.getMetaFromState(world.getBlockState(blockPos))), 0, false, false);
+                                        if (radiusBlockRecipe != null) {
+                                            IBlockState recipeOut = Block.getBlockFromItem(radiusBlockRecipe.getOutputs().get(0).getItem())
+                                                    .getStateFromMeta(radiusBlockRecipe.getOutputs().get(0).getMetadata());
+                                            int newAmount = 0;
+                                            if (getCompound(stack).getInteger("amount") + tank.fill(radiusBlockRecipe.getFluidOutputs().get(0).copy(), true) <= maxAmount)
+                                                newAmount = getCompound(stack).getInteger("amount") +
+                                                        tank.fill(radiusBlockRecipe.getFluidOutputs().get(0).copy(), true);
+                                            else newAmount = maxAmount;
+                                            getCompound(stack).setInteger("amount", newAmount);
+                                            tank.getFluid().amount = getCompound(stack).getInteger("amount");
+                                            world.setBlockState(blockPos, radiusBlockRecipe.getOutputs().get(0) == ItemStack.EMPTY
+                                                    ? Blocks.AIR.getDefaultState() : recipeOut, 3);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_SPLASH, SoundCategory.NEUTRAL,
+                                1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F));
                         return;
                     }
                     if (world.getBlockState(pos.add(blockHitSide.getDirectionVec())) == Blocks.WATER.getDefaultState()
                             && getCompound(stack).getInteger("amount") < maxAmount) {
                         world.setBlockToAir(pos.add(blockHitSide.getDirectionVec()));
-                        getCompound(stack).setInteger("amount", getCompound(stack).getInteger("amount") + 1000);
-                        world.playSound(null, player.posX, player.posY, player.posZ,
-                                SoundEvents.ENTITY_PLAYER_SPLASH, SoundCategory.NEUTRAL, 1.0F,
-                                1.0F / (itemRand.nextFloat() * 0.4F + 1.2F));
+                        int newAmount = 0;
+                        if (getCompound(stack).getInteger("amount") + 1000 <= maxAmount)
+                            newAmount = getCompound(stack).getInteger("amount") + 1000;
+                        else newAmount = maxAmount;
+                        getCompound(stack).setInteger("amount", newAmount);
+                        world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_SPLASH, SoundCategory.NEUTRAL,
+                                1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F));
                     }
-
                 }
             }
         }

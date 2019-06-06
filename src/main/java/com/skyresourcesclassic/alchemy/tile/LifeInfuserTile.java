@@ -20,7 +20,7 @@ import java.util.*;
 
 public class LifeInfuserTile extends TileItemInventory implements ITickable {
     public LifeInfuserTile() {
-        super("lifeInfuser", 3, null, new Integer[]{1, 2});
+        super("life_infuser", 3, null, new Integer[]{1, 2});
         this.setInventory(new ItemHandlerSpecial(3, null, new Integer[]{1, 2}) {
             protected void onContentsChanged(int slot) {
                 super.onContentsChanged(slot);

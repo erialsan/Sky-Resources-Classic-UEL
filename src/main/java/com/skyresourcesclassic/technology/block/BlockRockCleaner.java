@@ -10,7 +10,6 @@ import com.skyresourcesclassic.technology.tile.TileRockCleaner;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -34,11 +33,12 @@ public class BlockRockCleaner extends BlockContainer {
 
     public BlockRockCleaner(String name, float hardness, float resistance) {
         super(Material.ROCK);
-        this.setTranslationKey(References.ModID + "." + name);
-        this.setCreativeTab(ModCreativeTabs.tabTech);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(name);
+        setTranslationKey(References.ModID + "." + name);
+        setCreativeTab(ModCreativeTabs.tabTech);
+        setHardness(hardness);
+        setResistance(resistance);
+        setRegistryName(name);
+        hasTileEntity = true;
     }
 
     @Nullable
@@ -106,7 +106,7 @@ public class BlockRockCleaner extends BlockContainer {
     }
 
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{FACING});
+        return new BlockStateContainer(this, FACING);
     }
 
     @Override

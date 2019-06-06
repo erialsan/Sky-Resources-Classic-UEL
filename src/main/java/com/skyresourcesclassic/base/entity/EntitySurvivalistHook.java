@@ -34,8 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 public class EntitySurvivalistHook extends EntityFishHook {
-    private static final DataParameter<Integer> DATA_HOOKED_ENTITY = EntityDataManager
-            .<Integer>createKey(EntityFishHook.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> DATA_HOOKED_ENTITY = EntityDataManager.createKey(EntityFishHook.class, DataSerializers.VARINT);
     private boolean inGround;
     private int ticksInGround = 0;
     private EntityPlayer angler;
@@ -113,7 +112,7 @@ public class EntitySurvivalistHook extends EntityFishHook {
 
     public void notifyDataManagerChange(DataParameter<?> key) {
         if (DATA_HOOKED_ENTITY.equals(key)) {
-            int i = ((Integer) this.getDataManager().get(DATA_HOOKED_ENTITY)).intValue();
+            int i = getDataManager().get(DATA_HOOKED_ENTITY).intValue();
             this.caughtEntity = i > 0 ? this.world.getEntityByID(i - 1) : null;
         }
 
@@ -443,6 +442,7 @@ public class EntitySurvivalistHook extends EntityFishHook {
     public void readEntityFromNBT(NBTTagCompound compound) {
     }
 
+    @Override
     public int handleHookRetraction() {
         if (!this.world.isRemote && this.angler != null) {
             int i = 0;
@@ -463,7 +463,6 @@ public class EntitySurvivalistHook extends EntityFishHook {
                     double d1 = this.angler.posY - this.posY;
                     double d2 = this.angler.posZ - this.posZ;
                     double d3 = (double) MathHelper.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
-                    double d4 = 0.1D;
                     entityitem.motionX = d0 * 0.1D;
                     entityitem.motionY = d1 * 0.1D + (double) MathHelper.sqrt(d3) * 0.08D;
                     entityitem.motionZ = d2 * 0.1D;

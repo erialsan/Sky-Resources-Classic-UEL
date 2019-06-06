@@ -48,21 +48,20 @@ public class CondenserTile extends TileBase implements ITickable {
 
             String oreDictCheck = "ingot" + RandomHelper.capatilizeString(type);
 
-            ItemStack stack = OreDictionary.getOres(oreDictCheck).get(0).copy();
-            stack.setCount(1);
-
             if ((getTier() != 1 || fluidType == FluidRegisterInfo.CrystalFluidType.NORMAL) && crystalBlock.isSourceBlock(world, pos.up())
                     && crystalBlock.isNotFlowing(world, pos.up(), world.getBlockState(pos.up()))
                     && OreDictionary.getOres(oreDictCheck).size() > 0
                     && HeatSources.isValidHeatSource(pos.down(), world)) {
-                this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextFloat(),
+                world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextFloat(),
                         pos.getY() + 1.5D, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
                 if (!world.isRemote)
-                    timeCondense += HeatSources.getHeatSourceValue(pos.down(), world);
+                timeCondense += HeatSources.getHeatSourceValue(pos.down(), world);
             } else if (!world.isRemote)
-                timeCondense = 0;
+            timeCondense = 0;
 
             if (timeCondense >= getTimeToCondense(crystalBlock)) {
+                ItemStack stack = OreDictionary.getOres(oreDictCheck).get(0).copy();
+                stack.setCount(1);
                 world.setBlockToAir(pos.up());
                 Entity entity = new EntityItem(world, pos.getX() + 0.5F, pos.getY() + 1.5F, pos.getZ() + 0.5F, stack);
                 world.spawnEntity(entity);

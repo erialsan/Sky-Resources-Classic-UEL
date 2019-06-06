@@ -14,43 +14,39 @@ public class TilePoweredHeater extends TileGenericPower implements ITickable, IE
         super("powered_heater", 100000, 2000, 0);
     }
 
-    private int powerUsage = 120 * getHeat() / 30;
-
-    private int getTier() {
-        return ((BlockHeater) getWorld().getBlockState(pos).getBlock()).getTier();
+    private int getPowerUsage() {
+        return 120 * getHeat() / 30;
     }
 
     @Override
     public void update() {
         if (!world.isRemote) {
-            if (getEnergyStored() >= powerUsage && this.getRedstoneSignal() > 0) {
-                internalExtractEnergy(powerUsage, false);
+            if (getEnergyStored() >= getPowerUsage() && getRedstoneSignal() > 0) {
+                internalExtractEnergy(getPowerUsage(), false);
                 world.setBlockState(getPos(),
                         world.getBlockState(getPos()).withProperty(BlockHeater.RUNNING, true), 3);
             } else
                 world.setBlockState(getPos(),
                         world.getBlockState(getPos()).withProperty(BlockHeater.RUNNING, false), 3);
 
-            this.markDirty();
+            markDirty();
         }
     }
 
     @Override
     public int getHeatValue() {
-        if (getEnergyStored() >= powerUsage && this.getRedstoneSignal() > 0)
-            return getHeat();
-        return 0;
+        return getEnergyStored() >= getPowerUsage() && getRedstoneSignal() > 0 ? getHeat() : 0;
     }
 
     public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
         return oldState.getBlock() != newState.getBlock();
     }
 
-
     private int getHeat() {
-        if (getTier() == 3)
-            return 30;
-        else
-            return 120;
+        return getTier() == 3 ? 30 : 120;
+    }
+
+    private int getTier() {
+        return ((BlockHeater) getWorld().getBlockState(pos).getBlock()).getTier();
     }
 }

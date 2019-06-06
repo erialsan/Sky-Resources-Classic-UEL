@@ -8,7 +8,6 @@ import com.skyresourcesclassic.technology.tile.FreezerTile;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -23,17 +22,18 @@ import net.minecraft.world.World;
 
 public class BlockFreezer extends BlockContainer {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    public static final PropertyEnum<EnumPartType> PART = PropertyEnum.<EnumPartType>create("part",
+    public static final PropertyEnum<EnumPartType> PART = PropertyEnum.create("part",
             EnumPartType.class);
 
     public BlockFreezer(String name, float hardness, float resistance) {
         super(Material.IRON);
-        this.setTranslationKey(References.ModID + "." + name);
-        this.setCreativeTab(ModCreativeTabs.tabTech);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(name);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        setTranslationKey(References.ModID + "." + name);
+        setCreativeTab(ModCreativeTabs.tabTech);
+        setHardness(hardness);
+        setResistance(resistance);
+        setRegistryName(name);
+        setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        hasTileEntity = true;
     }
 
     @Override
@@ -118,7 +118,7 @@ public class BlockFreezer extends BlockContainer {
     public int getMetaFromState(IBlockState state) {
 
         int i = 0;
-        i = i | ((EnumFacing) state.getValue(FACING)).getHorizontalIndex();
+        i = i | state.getValue(FACING).getHorizontalIndex();
 
         if (state.getValue(PART) == EnumPartType.TOP) {
             i |= 8;
@@ -140,11 +140,11 @@ public class BlockFreezer extends BlockContainer {
      * inapplicable, returns the passed blockstate.
      */
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{FACING, PART});
+        return new BlockStateContainer(this, FACING, PART);
     }
 
     public enum EnumPartType implements IStringSerializable {

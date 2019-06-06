@@ -31,6 +31,7 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int CombustionCollectorGUI = 10;
     public static final int QuickDropperGUI = 11;
     public static final int AqueousConcentratorGUI = 12;
+    public static final int CrucibleInserterGUI = 13;
     public static final int BeeAttractorGUI = 15;
     public static final int WildlifeAttractorGUI = 20;
     public static final int HeaterGUI = 21;
@@ -74,6 +75,8 @@ public class ModGuiHandler implements IGuiHandler {
             case AqueousConcentratorGUI:
                 return new ContainerAqueousConcentrator(player.inventory,
                         (TileAqueousConcentrator) world.getTileEntity(new BlockPos(x, y, z)));
+            case CrucibleInserterGUI:
+                return new ContainerCrucibleInserter(player.inventory, (TileCrucibleInserter) world.getTileEntity(new BlockPos(x, y, z)));
             case BeeAttractorGUI:
                 return new ContainerBeeAttractor(player.inventory,
                         (TileBeeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
@@ -120,6 +123,8 @@ public class ModGuiHandler implements IGuiHandler {
             case AqueousConcentratorGUI:
                 return new GuiAqueousConcentrator(player.inventory,
                         (TileAqueousConcentrator) world.getTileEntity(new BlockPos(x, y, z)));
+            case CrucibleInserterGUI:
+                return new GuiCrucibleInserter(player.inventory, (TileCrucibleInserter) world.getTileEntity(new BlockPos(x, y, z)));
             case BeeAttractorGUI:
                 return new GuiBeeAttractor(player.inventory, (TileBeeAttractor) world.getTileEntity(new BlockPos(x, y, z)));
             case WildlifeAttractorGUI:

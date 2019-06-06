@@ -34,11 +34,12 @@ public class CrucibleBlock extends BlockContainer {
 
     public CrucibleBlock(String name, float hardness, float resistance) {
         super(Material.ROCK);
-        this.setTranslationKey(References.ModID + "." + name);
-        this.setCreativeTab(ModCreativeTabs.tabAlchemy);
-        this.setHardness(hardness);
-        this.setResistance(resistance);
-        this.setRegistryName(name);
+        setTranslationKey(References.ModID + "." + name);
+        setCreativeTab(ModCreativeTabs.tabAlchemy);
+        setHardness(hardness);
+        setResistance(resistance);
+        setRegistryName(name);
+        hasTileEntity = true;
     }
 
     @Override

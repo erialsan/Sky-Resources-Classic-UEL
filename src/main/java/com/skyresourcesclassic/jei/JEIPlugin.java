@@ -57,13 +57,14 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
-        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), CombustionRecipeCategory.UUID);
-        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), RockGrinderRecipeCategory.UUID);
-        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), KnifeRecipeCategory.UUID);
-        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), CrucibleRecipeCategory.UUID);
-        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), FreezerRecipeCategory.UUID);
-        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), WaterExtractorRecipeCategory.UUID);
-        registry.handleRecipes(ProcessRecipe.class, recipe -> new ProcessRecipeJEI(recipe), CauldronCleanRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, ProcessRecipeJEI::new, InfusionRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, ProcessRecipeJEI::new, CombustionRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, ProcessRecipeJEI::new, RockGrinderRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, ProcessRecipeJEI::new, KnifeRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, ProcessRecipeJEI::new, CrucibleRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, ProcessRecipeJEI::new, FreezerRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, ProcessRecipeJEI::new, WaterExtractorRecipeCategory.UUID);
+        registry.handleRecipes(ProcessRecipe.class, ProcessRecipeJEI::new, CauldronCleanRecipeCategory.UUID);
 
         registry.addRecipes(ProcessRecipeManager.infusionRecipes.getRecipes(), InfusionRecipeCategory.UUID);
         registry.addRecipes(ProcessRecipeManager.combustionRecipes.getRecipes(), CombustionRecipeCategory.UUID);

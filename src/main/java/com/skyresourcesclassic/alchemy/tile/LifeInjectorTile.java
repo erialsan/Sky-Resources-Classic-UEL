@@ -15,7 +15,7 @@ import java.util.List;
 public class LifeInjectorTile extends TileItemInventory implements ITickable {
 
     public LifeInjectorTile() {
-        super("lifeInjector", 1);
+        super("life_injector", 1);
     }
 
     private int cooldown;
