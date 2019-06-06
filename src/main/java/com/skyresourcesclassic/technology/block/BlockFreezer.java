@@ -92,7 +92,7 @@ public class BlockFreezer extends BlockContainer {
             IBlockState iblockstate1 = worldIn.getBlockState(pos.south());
             IBlockState iblockstate2 = worldIn.getBlockState(pos.west());
             IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
-            EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
+            EnumFacing enumfacing = state.getValue(FACING);
 
             if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
                 enumfacing = EnumFacing.SOUTH;
@@ -111,8 +111,7 @@ public class BlockFreezer extends BlockContainer {
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
                                             float hitZ, int meta, EntityLivingBase placer) {
         super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer);
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite())
-                .withProperty(PART, EnumPartType.BOTTOM);
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(PART, EnumPartType.BOTTOM);
     }
 
     public int getMetaFromState(IBlockState state) {
@@ -125,6 +124,14 @@ public class BlockFreezer extends BlockContainer {
         }
 
         return i;
+    }
+
+    public IBlockState getStateFromMeta(int meta)
+    {
+        EnumFacing enumfacing = EnumFacing.byHorizontalIndex(meta);
+        return (meta & 8) > 0
+                ? this.getDefaultState().withProperty(PART, EnumPartType.BOTTOM).withProperty(FACING, enumfacing)
+                : this.getDefaultState().withProperty(PART, EnumPartType.TOP).withProperty(FACING, enumfacing);
     }
 
     /**

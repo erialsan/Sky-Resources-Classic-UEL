@@ -7,6 +7,7 @@ import com.skyresourcesclassic.registry.ModCreativeTabs;
 import com.skyresourcesclassic.registry.ModGuiHandler;
 import com.skyresourcesclassic.technology.tile.DirtFurnaceTile;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -184,6 +185,18 @@ public class BlockDirtFurnace extends BlockContainer {
         }
 
         return i;
+    }
+
+    public IBlockState getStateFromMeta(int meta)
+    {
+        EnumFacing enumfacing = EnumFacing.byIndex(meta);
+
+        if (enumfacing.getAxis() == EnumFacing.Axis.Y)
+        {
+            enumfacing = EnumFacing.NORTH;
+        }
+
+        return this.getDefaultState().withProperty(FACING, enumfacing);
     }
 
     public IBlockState withRotation(IBlockState state, Rotation rot) {

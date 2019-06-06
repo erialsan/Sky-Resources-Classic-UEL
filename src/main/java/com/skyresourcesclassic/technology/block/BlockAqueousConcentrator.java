@@ -90,6 +90,11 @@ public class BlockAqueousConcentrator extends BlockContainer {
         return i;
     }
 
+    public IBlockState getStateFromMeta(int meta) {
+        EnumFacing enumfacing = EnumFacing.byHorizontalIndex(meta);
+        return this.getDefaultState().withProperty(FACING, enumfacing);
+    }
+
     /**
      * Returns the blockstate with the given rotation from the passed
      * blockstate. If inapplicable, returns the passed blockstate.

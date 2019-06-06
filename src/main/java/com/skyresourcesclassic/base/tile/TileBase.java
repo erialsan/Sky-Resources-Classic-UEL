@@ -77,7 +77,7 @@ public class TileBase extends TileEntity {
     public void markDirty() {
         super.markDirty();
         if (world != null && !world.isRemote)
-            world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 0);
+            world.notifyBlockUpdate(getPos(), world.getBlockState(getPos()), world.getBlockState(getPos()), 2);
     }
 
     @Override

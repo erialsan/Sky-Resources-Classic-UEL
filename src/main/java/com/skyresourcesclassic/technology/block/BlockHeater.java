@@ -8,7 +8,6 @@ import com.skyresourcesclassic.technology.tile.TileHeater;
 import com.skyresourcesclassic.technology.tile.TilePoweredHeater;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -111,16 +110,15 @@ public class BlockHeater extends BlockContainer {
     }
 
     public int getMetaFromState(IBlockState state) {
-
-        if (state.getValue(RUNNING) == true) {
-            return 1;
-        }
-
-        return 0;
+        return state.getValue(RUNNING) ? 1 : 0;
     }
 
+    public IBlockState getStateFromMeta(int meta) {
+        return this.getDefaultState().withProperty(RUNNING, meta == 1);
+    }
+
+
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]
-                {RUNNING});
+        return new BlockStateContainer(this, RUNNING);
     }
 }
