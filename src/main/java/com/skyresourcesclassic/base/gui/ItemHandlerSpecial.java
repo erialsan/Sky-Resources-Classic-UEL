@@ -39,8 +39,8 @@ public class ItemHandlerSpecial extends ItemStackHandler {
         return !slotsNoInsert.contains(slot);
     }
 
-    private List<Integer> slotsNoExtract;
-    private List<Integer> slotsNoInsert;
+    protected List<Integer> slotsNoExtract;
+    protected List<Integer> slotsNoInsert;
 
     public ItemStack extractItem(int slot, int amount, boolean simulate) {
         if (slotsNoExtract.contains(slot))

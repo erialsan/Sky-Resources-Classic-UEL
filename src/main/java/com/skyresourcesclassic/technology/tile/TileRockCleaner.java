@@ -33,46 +33,40 @@ public class TileRockCleaner extends TileGenericPower implements ITickable, IFlu
 
     @Override
     public void update() {
-        if (!this.world.isRemote) {
-            if (bufferStacks.size() > 0 && fullOutput()) {
-                this.addToOutput(1);
-                this.addToOutput(2);
-                this.addToOutput(3);
-            } else {
-                boolean hasRecipes = hasRecipes();
-                if (curProgress < 100 && getEnergyStored() >= powerUsage && hasRecipes && tank.getFluidAmount() >= 250
-                        && bufferStacks.size() == 0) {
-                    internalExtractEnergy(powerUsage, false);
-                    curProgress += 20;
-                } else if (!hasRecipes)
-                    curProgress = 0;
-                if (curProgress >= 100 && hasRecipes) {
-                    List<ProcessRecipe> recipes = ProcessRecipeManager.cauldronCleanRecipes.getRecipes();
-                    for (ProcessRecipe r : recipes)
-
-                    {
-                        if (((ItemStack) r.getInputs().get(0)).isItemEqual(this.getInventory().getStackInSlot(0))) {
-                            if (!world.isRemote) {
-                                // int level =
-                                // EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE,
-                                // this.getInventory().getStackInSlot(0));
-                                float chance = r.getIntParameter() * (((float) 0 + 3F) / 3F);
-                                while (chance >= 1) {
-                                    bufferStacks.add(r.getOutputs().get(0).copy());
-                                    chance -= 1;
+        if (!world.isRemote) {
+            if (this.getRedstoneSignal() == 0) {
+                if (bufferStacks.size() > 0 && !fullOutput()) {
+                    this.addToOutput(1);
+                    this.addToOutput(2);
+                    this.addToOutput(3);
+                } else {
+                    boolean hasRecipes = hasRecipes();
+                    if (curProgress < 100 && getEnergyStored() >= powerUsage && hasRecipes && tank.getFluidAmount() >= 250 && bufferStacks.size() == 0) {
+                        internalExtractEnergy(powerUsage, false);
+                        curProgress += 20;
+                    } else if (!hasRecipes)
+                        curProgress = 0;
+                    if (curProgress >= 100 && hasRecipes) {
+                        List<ProcessRecipe> recipes = ProcessRecipeManager.cauldronCleanRecipes.getRecipes();
+                        for (ProcessRecipe r : recipes) {
+                            if (((ItemStack) r.getInputs().get(0)).isItemEqual(this.getInventory().getStackInSlot(0))) {
+                                if (!world.isRemote) {
+                                    float chance = r.getIntParameter() * 2;
+                                    if (chance >= 1) {
+                                        bufferStacks.add(r.getOutputs().get(0).copy());
+                                    } else if (this.world.rand.nextFloat() <= chance)
+                                        bufferStacks.add(r.getOutputs().get(0).copy());
                                 }
-                                if (this.world.rand.nextFloat() <= chance)
-                                    bufferStacks.add(r.getOutputs().get(0).copy());
                             }
                         }
+                        tank.drain(250, true);
+                        getInventory().getStackInSlot(0).shrink(1);
+                        curProgress = 0;
                     }
-                    tank.drain(250, true);
-                    this.getInventory().getStackInSlot(0).shrink(1);
-                    curProgress = 0;
                 }
             }
-            this.markDirty();
         }
+        markDirty();
     }
 
     private void addToOutput(int slot) {
@@ -92,9 +86,7 @@ public class TileRockCleaner extends TileGenericPower implements ITickable, IFlu
 
     private boolean hasRecipes() {
         List<ProcessRecipe> recipes = ProcessRecipeManager.cauldronCleanRecipes.getRecipes();
-        for (ProcessRecipe r : recipes)
-
-        {
+        for (ProcessRecipe r : recipes) {
             if (r != null && this.getInventory().getStackInSlot(0).isItemEqual((ItemStack) r.getInputs().get(0))
                     && !((ItemStack) r.getInputs().get(0)).isEmpty() && !this.getInventory().getStackInSlot(0).isEmpty()
                     && !r.getOutputs().get(0).isEmpty()) {

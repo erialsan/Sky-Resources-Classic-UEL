@@ -19,7 +19,7 @@ import java.util.Collections;
 public class TileRockCrusher extends TileGenericPower implements ITickable {
     public TileRockCrusher() {
         super("rock_crusher", 100000, 2000, 0, 5, new Integer[]{2, 3, 4}, new Integer[]{0, 1});
-        this.setInventory(new ItemHandlerSpecial(5, new Integer[]{2, 3, 4}, new Integer[]{0, 1}) {
+        setInventory(new ItemHandlerSpecial(5, new Integer[]{2, 3, 4}, new Integer[]{0, 1}) {
             protected void onContentsChanged(int slot) {
                 super.onContentsChanged(slot);
                 TileRockCrusher.this.markDirty();
@@ -29,7 +29,7 @@ public class TileRockCrusher extends TileGenericPower implements ITickable {
                 if (slot == 0)
                     return stack.getItem() instanceof ItemRockGrinder;
                 else
-                    return !(stack.getItem() instanceof ItemRockGrinder);
+                    return !slotsNoInsert.contains(slot) && !(stack.getItem() instanceof ItemRockGrinder);
             }
         });
     }
