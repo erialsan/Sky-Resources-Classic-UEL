@@ -73,7 +73,7 @@ public class ModCrafting {
                         new ItemStack(Blocks.PUMPKIN, 1, OreDictionary.WILDCARD_VALUE))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Items.NETHER_WART), 19,
-                new ArrayList<>(Arrays.asList(new ItemStack(Items.SPIDER_EYE, 8),
+                new ArrayList<>(Arrays.asList(new ItemStack(Items.SPIDER_EYE, 4),
                         new ItemStack(Blocks.RED_MUSHROOM, 1, OreDictionary.WILDCARD_VALUE))));
 
         ProcessRecipeManager.infusionRecipes.addRecipe(new ItemStack(Blocks.RED_MUSHROOM), 15,
@@ -95,6 +95,7 @@ public class ModCrafting {
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.BLAZE_POWDER, 3), 75,
                 new ArrayList<>(Arrays.asList(new ItemStack(Items.GUNPOWDER))));
+
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.GUNPOWDER), 120,
                 new ArrayList<>(Arrays.asList(new ItemStack(Items.FLINT))));
 
@@ -273,9 +274,6 @@ public class ModCrafting {
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.GLOWSTONE_DUST, 5), 500,
                 new ArrayList<>(
                         Arrays.asList(new ItemStack(Items.REDSTONE, 4), new ItemStack(Items.BLAZE_POWDER, 2))));
-
-        ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Items.DYE, 8, 4), 800, new ArrayList<>(
-                Arrays.asList(new ItemStack(ModItems.metalCrystal[15]), new ItemStack(Items.FLINT, 3))));
 
         ProcessRecipeManager.combustionRecipes.addRecipe(new ItemStack(Blocks.END_STONE, 1), 1400,
                 new ArrayList<>(Arrays.asList(new ItemStack(Blocks.STONE, 6, 3), new ItemStack(Items.SUGAR, 2),

@@ -51,8 +51,6 @@ public class HeatSources {
 
     public static int getHeatSourceValue(BlockPos pos, World world) {
         IBlockState state = world.getBlockState(pos);
-        if (!isValidHeatSource(pos, world))
-            return 0;
 
         if (validHeatSources.containsKey(state))
             return validHeatSources.get(state);
